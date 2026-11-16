@@ -42,9 +42,12 @@ Refuses to write into a non-empty `RUN_DIR` unless `--overwrite`.
 owstudy-strength tune --input DIR --config FILE --out TUNE_DIR [--jobs N]
 ```
 
-Grid-searches the `tune:` grids in the config, scoring **validation-period** log loss only
-(the test period is never read for scoring). Writes `best_config.yaml`, `grid_results.csv`
-(every config × metric × variant × validation log loss/Brier/accuracy), and `sensitivity.csv`.
+Runs the `tune.stages` in order, each stage grid-searching its own parameters starting from the
+best values of earlier stages and choosing by its `target` column's **validation-period** log
+loss (the test period is never read for scoring). Exits 2 if the total number of configs exceeds
+`tune.max_configs` or a stage names a scoring constant (`score.a`, `score.def_curve`, `modes.*`).
+Writes `best_config.yaml`, `grid_results.csv` (every stage × config × metric × variant ×
+validation log loss/Brier/accuracy), and `sensitivity.csv`.
 `--jobs` parallelizes; output is sorted so it is identical for any `N`.
 
 ## `report`

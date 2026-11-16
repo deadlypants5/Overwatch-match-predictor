@@ -331,10 +331,13 @@ check that the drop in that player's and team's strength matches a hand calculat
   points MUST come from objective progress in symmetric modes and on
   attack. On defense in asymmetric modes, they MUST come from the attackers' time remaining, so
   that less time remaining gives defenders more points. `D_AB = −D_BA` MUST always hold.
-- **FR-017**: The constants `a`, `X_n`, and `C_n` (asymmetric modes only; symmetric modes have
-  `C_n` fixed to `X_n`) MUST be tuned on the validation period only
-  (Constitution Principle II), and the chosen values MUST be reported along with how sensitive
-  the results are to them.
+- **FR-017**: In this feature the scoring constants `a`, `X_n`, and `C_n` (asymmetric modes
+  only; symmetric modes have `C_n` fixed to `X_n`) and the defender time-to-points function are
+  fixed placeholder values from the configuration and MUST NOT be tuned. Tuning them for accuracy
+  on the validation period (Constitution Principle II) is deferred until real data exists from
+  the data collection feature. The rating parameters (`K_team`, the team-Elo mapping scale `s`,
+  `γ`, `α`, `β`) MUST be tuned on the validation period only, in stages per metric family, and
+  the chosen values MUST be reported along with how sensitive the results are to them.
 - **FR-018**: The report MUST compare the win/loss variant and the score-differential variant of
   each metric on the same hold-out period.
 
@@ -420,7 +423,7 @@ check that the drop in that player's and team's strength matches a hand calculat
   In the win/loss variant a segment has no result of its own, so it uses the map result, but
   its expected outcome and weight still come from the segment.
 - Default defender time-to-points function is linear: defender points scale with the
-  fraction of the attack clock the attackers used. Other shapes can be compared during tuning.
+  fraction of the attack clock the attackers used. Other shapes can be compared when the scoring constants are tuned on real data (FR-017).
 - Default differential-to-`S` mapping is a logistic curve centered at 0, constrained so the map
   winner's `S` is at least 0.5 and the loser's is at most 0.5.
 - Objective progress is measured in each mode's natural unit (capture percentage, payload

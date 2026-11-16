@@ -208,12 +208,20 @@ alternatives considered. No `NEEDS CLARIFICATION` items remain.
 
 - **Decision**: Split boundaries are dates in config (`train_end`, `validation_end`); test is
   everything after. Ratings are always computed over the full history in one pass (that's
-  legitimate: each snapshot only uses earlier maps). `tune` runs a grid search over K values,
-  `a`, `X_n`, `C_n`, `s` scoring **validation-period** log loss only; it writes the best config
-  and a sensitivity table (log loss vs. each parameter, others fixed). `report` scores the test
+  legitimate: each snapshot only uses earlier maps). `tune` runs a staged grid search, one stage
+  per metric family (team `K`; team-Elo mapping `s`; player `γ`, `α`, `β`; player-on-hero `γ`),
+  each stage starting from the best values of earlier stages and scoring its target column's
+  **validation-period** log loss only; it writes the best config and a sensitivity table (log
+  loss vs. each parameter, others at the stage's best). Staging works because the families are
+  mostly separable (`K_team` only moves team Elo, `γ_ph` only moves player-on-hero ratings) and
+  keeps the search near 100 configs instead of a full cartesian product. The scoring constants
+  `a`, `X_n`, `C_n` and the defender curve are fixed placeholders in this feature; they are tuned
+  for accuracy once real data exists (FR-017), so σ_n never goes stale during `tune`. `report` scores the test
   period once with the chosen config. Metrics via `sklearn.metrics.log_loss`,
   `brier_score_loss`, `accuracy_score`, and `sklearn.calibration.calibration_curve`. Baselines:
-  higher-team-Elo pick, team-Elo probability, coin flip (0.5).
+  higher-team-Elo pick, team-Elo probability, coin flip (0.5), and the previous best metric so
+  far (lowest validation log loss among `p_*` columns from earlier stories; team-Elo
+  probability until a later metric beats it).
 - **Rationale**: Grid search is transparent and cheap (a full run is well under a second per
   config at 1,000 maps); random search/optuna add a dependency with no need.
 - **Alternatives**: Optuna (extra dependency, nondeterminism concerns).
@@ -232,7 +240,8 @@ alternatives considered. No `NEEDS CLARIFICATION` items remain.
 
 - **Decision**: Pure-Python loop over dicts of floats; pandas only for load/validate and
   writing. Estimated cost: ~1,000 maps × ~10 players × ~2 heroes × 2 variants ≈ 40k updates —
-  well under 1 s per run. `tune` grids of a few hundred configs fit in the 5-minute budget;
+  well under 1 s per run. staged `tune` (93 configs with the default stages, capped by
+  `tune.max_configs`) fits in the 5-minute budget;
   `tune` can use `concurrent.futures.ProcessPoolExecutor` (results sorted before writing, so
   determinism holds).
 

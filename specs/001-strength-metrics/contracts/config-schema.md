@@ -44,20 +44,35 @@ splits:
   validation_end: 2026-09-30   # inclusive; test = after this date
 
 
-tune:                          # used only by `tune`; each list is a grid axis
-  k.team: [5, 10, 20, 30, 50]                 # thesis Elo grid: 1–500 (Table 4.4)
-  k.gamma.player.diff: [25, 50, 75, 100, 250]  # thesis grid 25–500 (Table 4.2)
-  k.gamma.player_hero.diff: [25, 50, 75, 100, 250]
-  marveldoss.alpha: [50, 100, 250, 500]
-  marveldoss.beta: [0.5, 1.0, 2.0, 4.0]
-  score.a: [0.0, 0.01, 0.02, 0.05]
-  score.s: [0.25, 0.5, 1.0]
-  modes.escort.C: [0.5, 1.0, 1.5]
-  modes.hybrid.C: [0.5, 1.0, 1.5]
+tune:                          # used only by `tune`
+  max_configs: 500             # total across all stages; tune refuses larger searches (exit 2)
+  stages:                      # run in order; each stage starts from the best values of earlier stages
+    - name: team
+      target: {column: p_team_elo_a, variant: wl}
+      grid:
+        k.team: [5, 10, 20, 30, 50]                    # thesis Elo grid: 1–500 (Table 4.4)
+    - name: team_diff
+      target: {column: p_team_elo_a, variant: diff}
+      grid:
+        score.s: [0.25, 0.5, 1.0]
+    - name: player
+      target: {column: p_player_a, variant: diff}
+      grid:
+        k.gamma.player.diff: [25, 50, 75, 100, 250]    # thesis grid 25–500 (Table 4.2)
+        marveldoss.alpha: [50, 100, 250, 500]
+        marveldoss.beta: [0.5, 1.0, 2.0, 4.0]
+    - name: player_hero        # alpha and beta are inherited from the player stage
+      target: {column: p_ts_player_hero_career_a, variant: diff}
+      grid:
+        k.gamma.player_hero.diff: [25, 50, 75, 100, 250]
 ```
+
+Default stages total 5 + 3 + 80 + 5 = 93 configs. A stage grid may not name the scoring
+constants `score.a`, `score.def_curve` or anything under `modes`; `tune` rejects it (FR-017).
 
 The thesis's hyperparameter values (e.g., its best pair, 100 and 2500) are on NBA point and
 1000-baseline scales and do not transfer. Only the shape of its grid search is reused.
-Numeric values above are placeholders; the shipped default is whatever `tune` selects on the
-validation period, committed with its `grid_results.csv` (FR-017). For symmetric modes `C` must
-be absent (it is fixed to `X`).
+Numeric values above are placeholders. The rating parameters ship as whatever `tune` selects on
+the validation period, committed with its `grid_results.csv`. `score.a`, `score.def_curve` and
+`modes.*` stay placeholders in this feature and are tuned once real data exists (FR-017). For
+symmetric modes `C` must be absent (it is fixed to `X`).

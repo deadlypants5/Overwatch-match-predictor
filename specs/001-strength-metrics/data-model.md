@@ -84,7 +84,9 @@ resolved through this table on load; ratings key only on `stable_id`.
 - `modes`: per `mode_id`: `symmetric: bool`, `X`, and `C` (asymmetric only; symmetric → `C := X`).
 - `splits`: `train_end`, `validation_end` (dates).
 - `include_unverified: bool`.
-- `tune`: grids per parameter (used only by `tune`).
+- `tune`: `max_configs` and ordered `stages`, each with a `name`, a `target` (`column`,
+  `variant`) and a `grid` of rating parameters (used only by `tune`; scoring constants are not
+  tunable in this feature, FR-017).
 
 **Rule**: Every value used by the math comes from RunConfig; the resolved RunConfig is written
 into each run directory (FR-010).
