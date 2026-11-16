@@ -19,22 +19,49 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 - A **reference fixture** `tests/fixtures/reference/<case>/` contains `input/` (CSVs per contracts/input-schema.md), `config.yaml`, `expected/*.csv` (only the columns being checked, values computed by hand), and a `README.md` with the arithmetic written out step by step. `tests/reference/test_reference_cases.py` (T020) discovers it automatically.
 - Every output column must be registered in `timing.py` (T014) with its timing class from output-schema.md.
 
-## Format: `[ID] [P?] [Story] Description`
+## At a glance
 
-- **[P]**: Can run in parallel (different files, no dependency on an incomplete task)
-- **[Story]**: The user story the task belongs to (US1, US2a, US2, US3, US4, US5)
+| Phase | What you get at the end | Tasks |
+|---|---|---|
+| 1. Setup | Project file, folders, settings, dependencies | T001–T005 |
+| 2. Foundations | Input loading and checks, time ordering, output writer, engine loop, `validate` command | T006–T020 |
+| 3. Team Elo (US1) 🎯 MVP | Each team's rating before every map and its win chance, plus reports and the leakage check | T021–T035 |
+| 4. Score differential (US2a) | How decisively each map (and segment) was won, on one scale for all modes | T036–T051 |
+| 5. Player ratings (US2) | A rating per player, and team strength built from its players | T052–T060 |
+| 6. Player-on-hero (US3) | A rating for each player on each hero | T061–T068 |
+| 7. Hero and composition (US4) | A rating per hero, and the strength of each team's lineup | T069–T076 |
+| 8. Ban impact (US5) | How much each ban costs the other team | T077–T081 |
+| 9. Tuning | Settings chosen on the validation period only | T082–T085 |
+| 10. Polish | Speed and edge-case tests, report completeness, README | T086–T091 |
 
----
+There are no hand-done steps in this feature: every task can be built by an implementer. The
+input data comes from feature 002.
+
+## How to read a task
+
+Each task is one checkbox. The **bold headline** says what it does in plain words. The indented
+text under it holds the exact files, formulas and rules an implementer needs.
+
+- **T###**: task ID, in rough build order
+- **[P]**: can be done at the same time as other [P] tasks (different files, nothing unfinished blocking it)
+- **[US1]–[US5]**: which part of the feature it belongs to (US1 team Elo · US2a score differential · US2 players · US3 player-on-hero · US4 hero and composition · US5 bans)
+- **"Hand example"** tasks build a tiny case worked out by hand; the code must match it exactly
+- **"Test:"** tasks are written before the code and should fail until it's built
 
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create `pyproject.toml`: package `owstudy` in src layout, `requires-python = ">=3.11"`, dependencies pandas, numpy, scikit-learn, PyYAML; dev group pytest, hypothesis; console script `owstudy-strength = "owstudy.strength.cli:main"`; `[tool.pytest.ini_options]` with `testpaths = ["tests"]` and a `perf` marker
-- [ ] T002 Create the package skeleton from plan.md: `src/owstudy/__init__.py`, `src/owstudy/strength/__init__.py`, `src/owstudy/strength/__main__.py` (calls `cli.main()`), and empty `__init__.py` files in `src/owstudy/strength/io/`, `rating/`, `scoring/`, `metrics/`, `evaluate/`
-- [ ] T003 [P] Create the test tree `tests/unit/`, `tests/reference/`, `tests/property/`, `tests/leakage/`, `tests/integration/`, `tests/perf/`, `tests/fixtures/reference/`, plus `tests/conftest.py` with fixtures `fixtures_dir`, `reference_cases` (list of case directories) and `tmp_run_dir`
-- [ ] T004 [P] Create `configs/strength/default.yaml` with exactly the keys and placeholder values in contracts/config-schema.md (`schema_version: 1`, `initial_rating`, `elo_scale`, `k`, `marveldoss`, `normalization`, `score`, `modes`, `excluded_modes: [clash]`, `include_unverified: false`, `splits`, `tune`)
-- [ ] T005 Run `uv lock` and `uv sync` to produce `uv.lock` and install in editable mode. Add `runs/` to `.gitignore`
+- [ ] T001 **Set up the Python project file**
+  Create `pyproject.toml`: package `owstudy` in src layout, `requires-python = ">=3.11"`, dependencies pandas, numpy, scikit-learn, PyYAML; dev group pytest, hypothesis; console script `owstudy-strength = "owstudy.strength.cli:main"`; `[tool.pytest.ini_options]` with `testpaths = ["tests"]` and a `perf` marker
+- [ ] T002 **Create the empty package folders**
+  Create the package skeleton from plan.md: `src/owstudy/__init__.py`, `src/owstudy/strength/__init__.py`, `src/owstudy/strength/__main__.py` (calls `cli.main()`), and empty `__init__.py` files in `src/owstudy/strength/io/`, `rating/`, `scoring/`, `metrics/`, `evaluate/`
+- [ ] T003 [P] **Create the test folders and shared test helpers**
+  Create the test tree `tests/unit/`, `tests/reference/`, `tests/property/`, `tests/leakage/`, `tests/integration/`, `tests/perf/`, `tests/fixtures/reference/`, plus `tests/conftest.py` with fixtures `fixtures_dir`, `reference_cases` (list of case directories) and `tmp_run_dir`
+- [ ] T004 [P] **Write the default settings file**
+  Create `configs/strength/default.yaml` with exactly the keys and placeholder values in contracts/config-schema.md (`schema_version: 1`, `initial_rating`, `elo_scale`, `k`, `marveldoss`, `normalization`, `score`, `modes`, `excluded_modes: [clash]`, `include_unverified: false`, `splits`, `tune`)
+- [ ] T005 **Install and lock the dependencies**
+  Run `uv lock` and `uv sync` to produce `uv.lock` and install in editable mode. Add `runs/` to `.gitignore`
 
 ---
 
@@ -44,21 +71,36 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Implement `src/owstudy/strength/config.py`: frozen `RunConfig` dataclasses mirroring contracts/config-schema.md; `load_config(path)` that rejects unknown keys, fills defaults (`initial_rating` 1500 per entity type, `elo_scale` 400, `min_maps_for_sigma` 30), requires every mode to have `symmetric` and `X`, rejects `C` on symmetric modes ("For symmetric modes `C` must be absent (it is fixed to `X`)") and sets `C := X` for them, requires `C` on asymmetric modes; `resolve()` → plain dict; `dump_resolved_yaml()` with sorted keys; `config_sha256()` over the canonical resolved YAML; `with_overrides(dotted_key → value)` for `tune` (keys like `k.gamma.player.diff`)
-- [ ] T007 [P] Write `tests/unit/test_config.py`: unknown key error, symmetric mode with `C` rejected, asymmetric without `C` rejected, defaults filled, the same config gives the same hash, `with_overrides` on dotted keys
-- [ ] T008 Implement `src/owstudy/strength/io/load.py`: frozen dataclasses `MapRecord`, `Segment`, `SegmentHero`, `Ban`, `Attack`, `Alias` with the fields in data-model.md §1; `read_input_dir(path)` that reads `maps.csv`, `segments.csv`, `segment_heroes.csv`, `bans.csv`, `attacks.csv`, `entities/aliases.csv` (optional, identity mapping if absent) as UTF-8 with empty cell = missing; resolve team/player/hero aliases to `stable_id` by `valid_from`/`valid_to` against the map `date`; when map-level `kills_*`/`obj_*` are empty, sum them from segments. Input files are read only and never modified
-- [ ] T009 Implement `src/owstudy/strength/io/segments.py`: check per map that `segment_no` is "Contiguous `1..G` per map", `end_s > start_s`, segments "tile the map without gaps or overlaps", no segment crosses an `attack_order` boundary, clock positions lie in `[0, attack_clock_s]`; check "Exactly 5 players per team per segment, and the same 5 players in every segment of a map" else soft flag `bad_roster`; a player missing a hero row in any segment → soft flag `missing_hero_time`; derive `t_jik = Σ_{g: i on k} (end_s − start_s)` and `T_ji = Σ_k t_jik` and `T_map`
-- [ ] T010 Implement `src/owstudy/strength/io/validate.py`: collect **all** hard errors listed in contracts/input-schema.md "Validation errors" (unknown/missing column, duplicate `map_id` or `(series_id, map_number)`, unknown `map_id` references, segment tiling errors from T009, map totals disagreeing with summed segments, `time_remaining_s > attack_clock_s`, progress outside [0,1], asymmetric map without attacks for both teams, alias overlaps, `team_a_id == team_b_id`, `winner` not in `a|b|draw`, more than one ban per team per map) and raise one `InputValidationError` listing them; raise `MissingModeConstantError` for a `mode_id` that is neither in `config.modes` nor in `excluded_modes`; turn soft problems into `ExclusionRecord(map_id, team_id?, player_id?, metric_scope, reason)` with `metric_scope ∈ all|player|player_hero|hero|diff|ban` and `reason ∈ clash_mode | unverified | bad_roster | missing_hero_time | missing_score | no_segment_score`; Clash → `(all, clash_mode)`; unverified when `include_unverified: false` → `(all, unverified)`; missing map kills/objective → `(diff, missing_score)`; missing segment kills/objective → `(player_hero diff, no_segment_score)`. Expose `load_inputs(path, config) -> Inputs`
-- [ ] T011 Implement `src/owstudy/strength/io/order.py`: sort by `(date, series_start, series_id, map_number)` and assign dense `map_seq` 0..N−1; when two series on the same date both lack `series_start` **and share any team or player**, raise `OrderingConflictError` listing them; otherwise fall back to `series_id` order (research R11)
-- [ ] T012 [P] Implement `src/owstudy/strength/io/write.py`: `write_table(df, path, columns)` with a fixed column order, rows sorted by `(map_seq, team_side, entity_id)` (or the table's declared key), floats formatted `%.10f`, empty string for missing, `\n` line endings, UTF-8 without BOM; `write_manifest()` with package version, SHA-256 of each input file, config SHA-256, row counts, and **no timestamps or absolute paths**; `write_run(result, run_dir, overwrite=False)` that refuses a non-empty `run_dir` unless `overwrite`
-- [ ] T013 [P] Write `tests/unit/test_io.py`: one test per hard error in T010 (each built from a tiny inline input dir), each soft flag produces the right `ExclusionRecord`, alias rename resolves to the same stable ID, ordering conflict raised only when series share an entity, writer output is byte-identical across two calls and contains no `\r`
-- [ ] T014 [P] Implement `src/owstudy/strength/timing.py`: a registry `COLUMN_TIMING: dict[str, str]` mapping every `map_features.csv` and `segment_features.csv` column in contracts/output-schema.md to `key | pre_map | map_start | segment | post_map | label`; `feature_timing_table()` for `feature_timing.csv`; `assert_all_registered(columns)` raising on any unregistered column
-- [ ] T015 [P] Implement `src/owstudy/strength/rating/base.py`: `RatingSystem` Protocol with `expected(r_a: float, r_b: float) -> float` and `delta(s: float, mu: float, weight: float = 1.0) -> float` (research R3). Metric modules call only this protocol, never an Elo formula directly
-- [ ] T016 Implement `src/owstudy/strength/engine.py`: `State` holding dicts keyed per data-model.md §3 (`TeamRating[(variant, team_id)]`, `PlayerRating[(variant, player_id)]`, `PlayerHeroRating[(variant, player_id, hero_id)]`, `HeroAggregate[(variant, hero_id)]`, `PlayerTeamHistory[player_id]`) with `variant ∈ {wl, diff}`; `snapshot(view, map)` that receives a read-only view (`types.MappingProxyType`); `score(map)`; `update(state, map, scores)` as the **only** function that mutates state; `run_history(inputs, config) -> RunResult` that loops maps by `map_seq` calling snapshot → score → update for each enabled metric module (a registry list that later phases append to), is pure (no I/O, never mutates `inputs`/`config`), and iterates dicts only through `sorted()`. `RunResult` has `map_features`, `segment_features`, `snapshots` (dict of DataFrames), `map_scores`, `segment_scores`, `ban_impact`, `exclusions`
-- [ ] T017 Implement `src/owstudy/strength/__init__.py` public API (`load_inputs`, `load_config`, `run_history`, `write_run`) and `src/owstudy/strength/cli.py`: argparse subcommands `validate`, `fit-normalization`, `run`, `tune`, `report`, `check-leakage` with the arguments in contracts/cli.md; map exceptions to exit codes `1` data error (print every problem), `2` usage, `3` ordering conflict, `4` missing mode constant, `5` leakage. Fully implement `validate` (prints maps, teams, players, heroes, date range, would-be exclusions by reason; writes nothing). The other subcommands are stubs that later tasks fill in
-- [ ] T018 Write `tests/fixtures/make_sample_season.py` (fixed seed 0, deterministic) that generates and commits `tests/fixtures/sample_season/` (~150 maps, ~8 teams, all five in-scope modes, hero swaps, bans, dates spanning the default `splits`) with exactly one of each seeded problem: a Clash map, a bad-roster map, a map with missing hero time, a map with missing kills, a map with segment heroes but no segment kills/objective, and an unverified map. Run it and commit the CSVs
-- [ ] T019 [P] Write `tests/integration/test_validate_cli.py`: `owstudy-strength validate` on `tests/fixtures/sample_season` exits 0 and lists all six seeded exclusions; an input with a hard error exits 1; an ordering conflict exits 3; a mode missing from config exits 4
-- [ ] T020 Write `tests/reference/test_reference_cases.py`: parametrized over every directory in `tests/fixtures/reference/`; runs `run_history` on `input/` with `config.yaml` and, for each `expected/<table>.csv`, joins on the key columns and asserts every given value matches to 4 decimal places (SC-001); fails if a case has no `README.md`
+- [ ] T006 **Load and check the settings**
+  Implement `src/owstudy/strength/config.py`: frozen `RunConfig` dataclasses mirroring contracts/config-schema.md; `load_config(path)` that rejects unknown keys, fills defaults (`initial_rating` 1500 per entity type, `elo_scale` 400, `min_maps_for_sigma` 30), requires every mode to have `symmetric` and `X`, rejects `C` on symmetric modes ("For symmetric modes `C` must be absent (it is fixed to `X`)") and sets `C := X` for them, requires `C` on asymmetric modes; `resolve()` → plain dict; `dump_resolved_yaml()` with sorted keys; `config_sha256()` over the canonical resolved YAML; `with_overrides(dotted_key → value)` for `tune` (keys like `k.gamma.player.diff`)
+- [ ] T007 [P] **Test: settings loading**
+  Write `tests/unit/test_config.py`: unknown key error, symmetric mode with `C` rejected, asymmetric without `C` rejected, defaults filled, the same config gives the same hash, `with_overrides` on dotted keys
+- [ ] T008 **Read the input CSVs and resolve name aliases**
+  Implement `src/owstudy/strength/io/load.py`: frozen dataclasses `MapRecord`, `Segment`, `SegmentHero`, `Ban`, `Attack`, `Alias` with the fields in data-model.md §1; `read_input_dir(path)` that reads `maps.csv`, `segments.csv`, `segment_heroes.csv`, `bans.csv`, `attacks.csv`, `entities/aliases.csv` (optional, identity mapping if absent) as UTF-8 with empty cell = missing; resolve team/player/hero aliases to `stable_id` by `valid_from`/`valid_to` against the map `date`; when map-level `kills_*`/`obj_*` are empty, sum them from segments. Input files are read only and never modified
+- [ ] T009 **Check that each map's segments fit together**
+  Implement `src/owstudy/strength/io/segments.py`: check per map that `segment_no` is "Contiguous `1..G` per map", `end_s > start_s`, segments "tile the map without gaps or overlaps", no segment crosses an `attack_order` boundary, clock positions lie in `[0, attack_clock_s]`; check "Exactly 5 players per team per segment, and the same 5 players in every segment of a map" else soft flag `bad_roster`; a player missing a hero row in any segment → soft flag `missing_hero_time`; derive `t_jik = Σ_{g: i on k} (end_s − start_s)` and `T_ji = Σ_k t_jik` and `T_map`
+- [ ] T010 **Collect every input error at once, and flag maps to leave out**
+  Implement `src/owstudy/strength/io/validate.py`: collect **all** hard errors listed in contracts/input-schema.md "Validation errors" (unknown/missing column, duplicate `map_id` or `(series_id, map_number)`, unknown `map_id` references, segment tiling errors from T009, map totals disagreeing with summed segments, `time_remaining_s > attack_clock_s`, progress outside [0,1], asymmetric map without attacks for both teams, alias overlaps, `team_a_id == team_b_id`, `winner` not in `a|b|draw`, more than one ban per team per map) and raise one `InputValidationError` listing them; raise `MissingModeConstantError` for a `mode_id` that is neither in `config.modes` nor in `excluded_modes`; turn soft problems into `ExclusionRecord(map_id, team_id?, player_id?, metric_scope, reason)` with `metric_scope ∈ all|player|player_hero|hero|diff|ban` and `reason ∈ clash_mode | unverified | bad_roster | missing_hero_time | missing_score | no_segment_score`; Clash → `(all, clash_mode)`; unverified when `include_unverified: false` → `(all, unverified)`; missing map kills/objective → `(diff, missing_score)`; missing segment kills/objective → `(player_hero diff, no_segment_score)`. Expose `load_inputs(path, config) -> Inputs`
+- [ ] T011 **Put maps in time order**
+  Implement `src/owstudy/strength/io/order.py`: sort by `(date, series_start, series_id, map_number)` and assign dense `map_seq` 0..N−1; when two series on the same date both lack `series_start` **and share any team or player**, raise `OrderingConflictError` listing them; otherwise fall back to `series_id` order (research R11)
+- [ ] T012 [P] **Write output files exactly the same way every time**
+  Implement `src/owstudy/strength/io/write.py`: `write_table(df, path, columns)` with a fixed column order, rows sorted by `(map_seq, team_side, entity_id)` (or the table's declared key), floats formatted `%.10f`, empty string for missing, `\n` line endings, UTF-8 without BOM; `write_manifest()` with package version, SHA-256 of each input file, config SHA-256, row counts, and **no timestamps or absolute paths**; `write_run(result, run_dir, overwrite=False)` that refuses a non-empty `run_dir` unless `overwrite`
+- [ ] T013 [P] **Test: reading, checking, ordering and writing**
+  Write `tests/unit/test_io.py`: one test per hard error in T010 (each built from a tiny inline input dir), each soft flag produces the right `ExclusionRecord`, alias rename resolves to the same stable ID, ordering conflict raised only when series share an entity, writer output is byte-identical across two calls and contains no `\r`
+- [ ] T014 [P] **Label every output column with when it becomes known**
+  Implement `src/owstudy/strength/timing.py`: a registry `COLUMN_TIMING: dict[str, str]` mapping every `map_features.csv` and `segment_features.csv` column in contracts/output-schema.md to `key | pre_map | map_start | segment | post_map | label`; `feature_timing_table()` for `feature_timing.csv`; `assert_all_registered(columns)` raising on any unregistered column
+- [ ] T015 [P] **One shared interface for rating systems**
+  Implement `src/owstudy/strength/rating/base.py`: `RatingSystem` Protocol with `expected(r_a: float, r_b: float) -> float` and `delta(s: float, mu: float, weight: float = 1.0) -> float` (research R3). Metric modules call only this protocol, never an Elo formula directly
+- [ ] T016 **The engine loop: snapshot, score, update, map by map**
+  Implement `src/owstudy/strength/engine.py`: `State` holding dicts keyed per data-model.md §3 (`TeamRating[(variant, team_id)]`, `PlayerRating[(variant, player_id)]`, `PlayerHeroRating[(variant, player_id, hero_id)]`, `HeroAggregate[(variant, hero_id)]`, `PlayerTeamHistory[player_id]`) with `variant ∈ {wl, diff}`; `snapshot(view, map)` that receives a read-only view (`types.MappingProxyType`); `score(map)`; `update(state, map, scores)` as the **only** function that mutates state; `run_history(inputs, config) -> RunResult` that loops maps by `map_seq` calling snapshot → score → update for each enabled metric module (a registry list that later phases append to), is pure (no I/O, never mutates `inputs`/`config`), and iterates dicts only through `sorted()`. `RunResult` has `map_features`, `segment_features`, `snapshots` (dict of DataFrames), `map_scores`, `segment_scores`, `ban_impact`, `exclusions`
+- [ ] T017 **Public API and the command-line shell (with `validate` working)**
+  Implement `src/owstudy/strength/__init__.py` public API (`load_inputs`, `load_config`, `run_history`, `write_run`) and `src/owstudy/strength/cli.py`: argparse subcommands `validate`, `fit-normalization`, `run`, `tune`, `report`, `check-leakage` with the arguments in contracts/cli.md; map exceptions to exit codes `1` data error (print every problem), `2` usage, `3` ordering conflict, `4` missing mode constant, `5` leakage. Fully implement `validate` (prints maps, teams, players, heroes, date range, would-be exclusions by reason; writes nothing). The other subcommands are stubs that later tasks fill in
+- [ ] T018 **Generate a fake sample season with one of each problem**
+  Write `tests/fixtures/make_sample_season.py` (fixed seed 0, deterministic) that generates and commits `tests/fixtures/sample_season/` (~150 maps, ~8 teams, all five in-scope modes, hero swaps, bans, dates spanning the default `splits`) with exactly one of each seeded problem: a Clash map, a bad-roster map, a map with missing hero time, a map with missing kills, a map with segment heroes but no segment kills/objective, and an unverified map. Run it and commit the CSVs
+- [ ] T019 [P] **Test: the `validate` command**
+  Write `tests/integration/test_validate_cli.py`: `owstudy-strength validate` on `tests/fixtures/sample_season` exits 0 and lists all six seeded exclusions; an input with a hard error exits 1; an ordering conflict exits 3; a mode missing from config exits 4
+- [ ] T020 **Test runner for the hand-calculated examples**
+  Write `tests/reference/test_reference_cases.py`: parametrized over every directory in `tests/fixtures/reference/`; runs `run_history` on `input/` with `config.yaml` and, for each `expected/<table>.csv`, joins on the key columns and asserts every given value matches to 4 decimal places (SC-001); fails if a case has no `README.md`
 
 **Checkpoint**: `validate` works on the sample season; the engine loop runs with no metrics registered.
 
@@ -72,24 +114,39 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 1 ⚠️ (write first, must fail)
 
-- [ ] T021 [P] [US1] Create reference fixture `tests/fixtures/reference/elo_first_map/`: two new teams, one map, `k.team: 20`; expected `p_team_elo_a = 0.5`, winner `rating_post = 1510`, loser `1490` (US1 scenario 1)
-- [ ] T022 [P] [US1] Create reference fixture `tests/fixtures/reference/elo_draw/`: one drawn map; expected `S = 0.5` for both and no rating change between equal teams, plus a second draw between unequal teams with the hand-calculated change (US1 scenario 3)
-- [ ] T023 [P] [US1] Create reference fixture `tests/fixtures/reference/elo_5maps_3teams/`: 5 maps, 3 teams, including one team changing display name through `entities/aliases.csv`; expected `rating_pre`/`rating_post` per map computed by hand (US1 scenario 2, rebrand edge case)
-- [ ] T024 [P] [US1] Write `tests/unit/test_elo.py`: `expected` is `1 / (1 + 10^((R_B − R_A)/400))`, symmetric (`expected(a,b) + expected(b,a) = 1`), `delta(s, mu) = K·(s − mu)`
+- [ ] T021 [P] [US1] **Hand example: two new teams play their first map**
+  Create reference fixture `tests/fixtures/reference/elo_first_map/`: two new teams, one map, `k.team: 20`; expected `p_team_elo_a = 0.5`, winner `rating_post = 1510`, loser `1490` (US1 scenario 1)
+- [ ] T022 [P] [US1] **Hand example: drawn maps**
+  Create reference fixture `tests/fixtures/reference/elo_draw/`: one drawn map; expected `S = 0.5` for both and no rating change between equal teams, plus a second draw between unequal teams with the hand-calculated change (US1 scenario 3)
+- [ ] T023 [P] [US1] **Hand example: 5 maps, 3 teams, one rename**
+  Create reference fixture `tests/fixtures/reference/elo_5maps_3teams/`: 5 maps, 3 teams, including one team changing display name through `entities/aliases.csv`; expected `rating_pre`/`rating_post` per map computed by hand (US1 scenario 2, rebrand edge case)
+- [ ] T024 [P] [US1] **Test: the Elo formula**
+  Write `tests/unit/test_elo.py`: `expected` is `1 / (1 + 10^((R_B − R_A)/400))`, symmetric (`expected(a,b) + expected(b,a) = 1`), `delta(s, mu) = K·(s − mu)`
 
 ### Implementation for User Story 1
 
-- [ ] T025 [P] [US1] Implement `src/owstudy/strength/rating/elo.py`: `EloRating(k, scale=400)` satisfying `RatingSystem` with Formula "Expectation" and "Team update"
-- [ ] T026 [P] [US1] Implement `src/owstudy/strength/scoring/outcome.py` part 1: `s_wl(winner) -> (S_A, S_B)` with `a → (1, 0)`, `b → (0, 1)`, `draw → (0.5, 0.5)`
-- [ ] T027 [US1] Implement `src/owstudy/strength/metrics/team.py` (`wl` variant): snapshot `team_elo_a`, `team_elo_b`, `p_team_elo_a`, `is_default` (new team initialized at `initial_rating.team` and flagged); update via `EloRating` with `k.team`. Ratings key on stable team ID only, so a player changing teams never moves team Elo. Team Elo updates even when a map has player-level exclusions; it is skipped only for `metric_scope = all` exclusions
-- [ ] T028 [US1] Register the team metric in `src/owstudy/strength/engine.py` and emit `snapshots_team.csv` rows (`map_seq, map_id, patch_id, variant, team_id, rating_pre, rating_post, is_default`), the key columns and `label_outcome_a`, `label_S_a` of `map_features.csv`, and `S_wl_a` in `map_scores.csv`; register the new columns in `timing.py`
-- [ ] T029 [US1] Implement the `run` subcommand in `src/owstudy/strength/cli.py`: load config + inputs, `run_history`, `write_run` producing every file in contracts/output-schema.md (empty-but-headed tables for metrics not yet built), `config.resolved.yaml`, `feature_timing.csv`, `exclusions.csv`, `manifest.json`; refuse a non-empty `--out` without `--overwrite`
-- [ ] T030 [P] [US1] Implement `src/owstudy/strength/evaluate/splits.py`: label each map `train` (`date ≤ train_end`), `validation` (`≤ validation_end`), else `test`; fill the `split` column of `map_features.csv` from it in `report` and `run`
-- [ ] T031 [P] [US1] Implement `src/owstudy/strength/evaluate/scoring.py`: `score_probs(p, y)` → log loss, Brier, accuracy via `sklearn.metrics` and a 10-bin reliability table via `sklearn.calibration.calibration_curve`; baselines: coin flip 0.5, always-pick-higher-team-Elo (`wl` team Elo), team-Elo probability, and **previous best**: the `p_*` column (any variant) with the lowest validation log loss among metrics from earlier stories (falls back to team-Elo probability in US1). Draws (`label_outcome_a = 0.5`) are excluded from scoring and counted
-- [ ] T032 [US1] Implement `src/owstudy/strength/evaluate/report.py` and the `report` subcommand: read a run directory, write `RUN_DIR/report/report.md` plus CSV tables with, per split, every `p_*` column scored against `label_outcome_a` next to the four baselines, a calibration table, and exclusion counts by `reason × metric_scope` (FR-013). Test-period numbers appear only with `--include-test`. `post_map` columns go in a separate section titled "Post-map measurements (not pre-map features)". The report is organized as a list of section builders that later stories append to
-- [ ] T033 [US1] Implement `src/owstudy/strength/leakage.py` and the `check-leakage` subcommand (research R13): **perturbation**: for `--samples` maps `m` chosen with `--seed`, flip the result and scramble kills/objective of `m` and every later map, rerun, and assert every snapshot for maps `< m` and every `pre_map`/`map_start` column for `m` is unchanged; **truncation**: running on maps `[0, m]` gives the same snapshot for `m`; **coverage**: every `map_features.csv` column is registered in `timing.py`. Print `0 maps with leakage` and exit 0, or exit 5 naming the map and column
-- [ ] T034 [P] [US1] Write `tests/leakage/test_leakage.py`: calls `leakage.check(...)` on `tests/fixtures/sample_season` and asserts no violations (SC-002); a deliberately leaky dummy metric registered in the test is detected
-- [ ] T035 [P] [US1] Write `tests/integration/test_determinism.py` (two `run`s → `filecmp.dircmp` shows no differences, SC-005) and `tests/integration/test_run_cli.py` (run output contains every file in output-schema.md; `--overwrite` refusal; `report` without `--include-test` has no test-period numbers; team-Elo validation log loss < 0.693 on the sample season, SC-003)
+- [ ] T025 [P] [US1] **Elo rating system**
+  Implement `src/owstudy/strength/rating/elo.py`: `EloRating(k, scale=400)` satisfying `RatingSystem` with Formula "Expectation" and "Team update"
+- [ ] T026 [P] [US1] **Win/loss score for a map**
+  Implement `src/owstudy/strength/scoring/outcome.py` part 1: `s_wl(winner) -> (S_A, S_B)` with `a → (1, 0)`, `b → (0, 1)`, `draw → (0.5, 0.5)`
+- [ ] T027 [US1] **Team Elo before each map, and the win chance**
+  Implement `src/owstudy/strength/metrics/team.py` (`wl` variant): snapshot `team_elo_a`, `team_elo_b`, `p_team_elo_a`, `is_default` (new team initialized at `initial_rating.team` and flagged); update via `EloRating` with `k.team`. Ratings key on stable team ID only, so a player changing teams never moves team Elo. Team Elo updates even when a map has player-level exclusions; it is skipped only for `metric_scope = all` exclusions
+- [ ] T028 [US1] **Hook team Elo into the engine and write its snapshots**
+  Register the team metric in `src/owstudy/strength/engine.py` and emit `snapshots_team.csv` rows (`map_seq, map_id, patch_id, variant, team_id, rating_pre, rating_post, is_default`), the key columns and `label_outcome_a`, `label_S_a` of `map_features.csv`, and `S_wl_a` in `map_scores.csv`; register the new columns in `timing.py`
+- [ ] T029 [US1] **Add the `run` command**
+  Implement the `run` subcommand in `src/owstudy/strength/cli.py`: load config + inputs, `run_history`, `write_run` producing every file in contracts/output-schema.md (empty-but-headed tables for metrics not yet built), `config.resolved.yaml`, `feature_timing.csv`, `exclusions.csv`, `manifest.json`; refuse a non-empty `--out` without `--overwrite`
+- [ ] T030 [P] [US1] **Split maps into training, validation and test periods**
+  Implement `src/owstudy/strength/evaluate/splits.py`: label each map `train` (`date ≤ train_end`), `validation` (`≤ validation_end`), else `test`; fill the `split` column of `map_features.csv` from it in `report` and `run`
+- [ ] T031 [P] [US1] **Score predictions (log loss, Brier, accuracy)**
+  Implement `src/owstudy/strength/evaluate/scoring.py`: `score_probs(p, y)` → log loss, Brier, accuracy via `sklearn.metrics` and a 10-bin reliability table via `sklearn.calibration.calibration_curve`; baselines: coin flip 0.5, always-pick-higher-team-Elo (`wl` team Elo), team-Elo probability, and **previous best**: the `p_*` column (any variant) with the lowest validation log loss among metrics from earlier stories (falls back to team-Elo probability in US1). Draws (`label_outcome_a = 0.5`) are excluded from scoring and counted
+- [ ] T032 [US1] **Add the `report` command**
+  Implement `src/owstudy/strength/evaluate/report.py` and the `report` subcommand: read a run directory, write `RUN_DIR/report/report.md` plus CSV tables with, per split, every `p_*` column scored against `label_outcome_a` next to the four baselines, a calibration table, and exclusion counts by `reason × metric_scope` (FR-013). Test-period numbers appear only with `--include-test`. `post_map` columns go in a separate section titled "Post-map measurements (not pre-map features)". The report is organized as a list of section builders that later stories append to
+- [ ] T033 [US1] **Leakage check: no future data in any feature**
+  Implement `src/owstudy/strength/leakage.py` and the `check-leakage` subcommand (research R13): **perturbation**: for `--samples` maps `m` chosen with `--seed`, flip the result and scramble kills/objective of `m` and every later map, rerun, and assert every snapshot for maps `< m` and every `pre_map`/`map_start` column for `m` is unchanged; **truncation**: running on maps `[0, m]` gives the same snapshot for `m`; **coverage**: every `map_features.csv` column is registered in `timing.py`. Print `0 maps with leakage` and exit 0, or exit 5 naming the map and column
+- [ ] T034 [P] [US1] **Test: no leakage on the sample season**
+  Write `tests/leakage/test_leakage.py`: calls `leakage.check(...)` on `tests/fixtures/sample_season` and asserts no violations (SC-002); a deliberately leaky dummy metric registered in the test is detected
+- [ ] T035 [P] [US1] **Test: same input gives the same output; `run` command works**
+  Write `tests/integration/test_determinism.py` (two `run`s → `filecmp.dircmp` shows no differences, SC-005) and `tests/integration/test_run_cli.py` (run output contains every file in output-schema.md; `--overwrite` refusal; `report` without `--include-test` has no test-period numbers; team-Elo validation log loss < 0.693 on the sample season, SC-003)
 
 **Checkpoint**: MVP. Team Elo, pre-map probabilities, report against baselines, leakage check, determinism.
 
@@ -103,25 +160,41 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 2a ⚠️ (write first, must fail)
 
-- [ ] T036 [P] [US2a] Create reference fixtures `tests/fixtures/reference/diff_control/`, `diff_push/`, `diff_flashpoint/`: symmetric maps with expected `points_a/b = X·obj`, `D_ab`, and one Control map with kills 30–20 and equal objective giving `D_ab = a × 10` (US2a scenario 1, US2 scenario 4)
-- [ ] T037 [P] [US2a] Create reference fixtures `tests/fixtures/reference/diff_escort/` and `diff_hybrid/`: both teams attack; each team gets `X·att` for its own attack and `C·def` with `def = 1 − time_remaining/attack_clock`; one attack using banked time; a second map where attackers finish with more time remaining gives defenders fewer points (US2a scenarios 2–4, overtime edge case)
-- [ ] T038 [P] [US2a] Create reference fixture `tests/fixtures/reference/diff_clamp/`: map loser wins kills by a wide margin so `D_ab` favors the loser; expected `S_diff_a` clamped to 0.5 on the winner's side and `clamped = true` (US2a scenario 6)
-- [ ] T039 [P] [US2a] Create reference fixture `tests/fixtures/reference/segment_diff_sum/`: an escort map with several segments in both attack halves; expected `D_g` per segment that sum to `D_ab`, defender segment points `curve(e_end/clock) − curve(e_start/clock)`, and `t_hat_g` summing to 1
-- [ ] T040 [P] [US2a] Create reference fixture `tests/fixtures/reference/normalization_sigma/`: training maps in two modes plus validation maps with extreme differentials; expected `σ_n` (std of `D_map / T_map` in minutes over training maps of that mode only) unchanged by the validation maps, and `D_norm_ab = D_ab / σ_n` (US2a scenario 7)
-- [ ] T041 [P] [US2a] Write `tests/property/test_differential_props.py` (hypothesis): `D_BA = −D_AB`; `Σ_g D_g = D_AB` and `Σ_g t̂_g = 1` within 1e-9 for random segmentations; for any curve, segment defender points sum to the attack's total; `S_diff_a ∈ [0, 1]`, winner's `S ≥ 0.5`, loser's `≤ 0.5`, `S_diff_b = 1 − S_diff_a`; two maps with the same kill/objective differences differ only through `X_n`, `C_n` (US2a scenario 5)
-- [ ] T042 [P] [US2a] Write `tests/unit/test_differential.py`: linear defender curve and `power(γ)` curve are monotone, clipped to [0, 1]; symmetric mode uses `C = X`; a mode with no constants raises `MissingModeConstantError`; Clash is excluded and flagged; fewer than `min_maps_for_sigma` training maps → pooled σ and a flag
+- [ ] T036 [P] [US2a] **Hand examples: score differential for Control, Push and Flashpoint**
+  Create reference fixtures `tests/fixtures/reference/diff_control/`, `diff_push/`, `diff_flashpoint/`: symmetric maps with expected `points_a/b = X·obj`, `D_ab`, and one Control map with kills 30–20 and equal objective giving `D_ab = a × 10` (US2a scenario 1, US2 scenario 4)
+- [ ] T037 [P] [US2a] **Hand examples: score differential for Escort and Hybrid**
+  Create reference fixtures `tests/fixtures/reference/diff_escort/` and `diff_hybrid/`: both teams attack; each team gets `X·att` for its own attack and `C·def` with `def = 1 − time_remaining/attack_clock`; one attack using banked time; a second map where attackers finish with more time remaining gives defenders fewer points (US2a scenarios 2–4, overtime edge case)
+- [ ] T038 [P] [US2a] **Hand example: the differential can't contradict the result**
+  Create reference fixture `tests/fixtures/reference/diff_clamp/`: map loser wins kills by a wide margin so `D_ab` favors the loser; expected `S_diff_a` clamped to 0.5 on the winner's side and `clamped = true` (US2a scenario 6)
+- [ ] T039 [P] [US2a] **Hand example: segment differentials add up to the map's**
+  Create reference fixture `tests/fixtures/reference/segment_diff_sum/`: an escort map with several segments in both attack halves; expected `D_g` per segment that sum to `D_ab`, defender segment points `curve(e_end/clock) − curve(e_start/clock)`, and `t_hat_g` summing to 1
+- [ ] T040 [P] [US2a] **Hand example: fitting the per-mode scale on training maps only**
+  Create reference fixture `tests/fixtures/reference/normalization_sigma/`: training maps in two modes plus validation maps with extreme differentials; expected `σ_n` (std of `D_map / T_map` in minutes over training maps of that mode only) unchanged by the validation maps, and `D_norm_ab = D_ab / σ_n` (US2a scenario 7)
+- [ ] T041 [P] [US2a] **Test: differential properties (random inputs)**
+  Write `tests/property/test_differential_props.py` (hypothesis): `D_BA = −D_AB`; `Σ_g D_g = D_AB` and `Σ_g t̂_g = 1` within 1e-9 for random segmentations; for any curve, segment defender points sum to the attack's total; `S_diff_a ∈ [0, 1]`, winner's `S ≥ 0.5`, loser's `≤ 0.5`, `S_diff_b = 1 − S_diff_a`; two maps with the same kill/objective differences differ only through `X_n`, `C_n` (US2a scenario 5)
+- [ ] T042 [P] [US2a] **Test: differential details**
+  Write `tests/unit/test_differential.py`: linear defender curve and `power(γ)` curve are monotone, clipped to [0, 1]; symmetric mode uses `C = X`; a mode with no constants raises `MissingModeConstantError`; Clash is excluded and flagged; fewer than `min_maps_for_sigma` training maps → pooled σ and a flag
 
 ### Implementation for User Story 2a
 
-- [ ] T043 [US2a] Implement map-level differential in `src/owstudy/strength/scoring/differential.py` (research R8): defender points `def = 1 − time_remaining_s / attack_clock_s` clipped to [0, 1] through `def_curve` (`linear`, or `power` with `gamma`); symmetric `D_AB = a·(K_A − K_B) + X_n·(Obj_A − Obj_B)`; asymmetric `D_AB = a·(K_A − K_B) + [X_n·att_A + C_n·def_A] − [X_n·att_B + C_n·def_B]`; compute `D_AB` once and return `D_BA = −D_AB`; return `points_a`, `points_b`, `D_ab`, `score_status` (`ok | missing_score | excluded`)
-- [ ] T044 [US2a] Add per-segment differential to `src/owstudy/strength/scoring/differential.py`: same formula on segment kills and objective gained; asymmetric defenders get `curve(clock_elapsed_end_s/clock) − curve(clock_elapsed_start_s/clock)`; `t̂_g = d_g / T_map`; raise if `|Σ D_g − D_AB| > 1e-9` or `|Σ t̂_g − 1| > 1e-9`; segments with missing kills/objective get `score_status = no_segment_score`
-- [ ] T045 [US2a] Implement `src/owstudy/strength/normalization.py` (research R17 N1–N3): `fit_sigma(inputs, config)` using **only maps with `date ≤ splits.train_end`**, σ_n = std of `D_map / T_map` (minutes) per mode, pooled σ for modes with fewer than `min_maps_for_sigma` training maps (returned with a flag list); `normalize(D, mode) = D / σ_n`; `run` refuses the `diff` variant (clear error) when `normalization.sigma` is empty, while `wl` still runs
-- [ ] T046 [US2a] Implement the `fit-normalization` subcommand in `src/owstudy/strength/cli.py`: write a copy of `--config` to `--out` with `normalization.sigma` filled in (sorted keys), print maps per mode and the modes that fell back to pooled σ
-- [ ] T047 [US2a] Extend `src/owstudy/strength/scoring/outcome.py`: `s_diff(D_norm_ab, winner, s)` = `1 / (1 + exp(−D̃_AB / s))`, then `max(·, 0.5)` if A won, `min(·, 0.5)` if A lost, unclamped on a draw, `S_B = 1 − S_A`, returning `clamped`; segment `S_g_wl_a = S_wl_a` (the map result) and segment `D_norm_g` unclamped
-- [ ] T048 [US2a] Add the `diff` variant of team Elo to `src/owstudy/strength/metrics/team.py` using `S_diff_a`; maps with `missing_score` skip the `diff` update and record a `(diff, missing_score)` exclusion
-- [ ] T049 [US2a] Wire scoring into `src/owstudy/strength/engine.py` `score()` and emit `map_scores.csv` (`map_seq, map_id, mode_id, duration_s, kills_a, kills_b, points_a, points_b, D_ab, sigma_mode, D_norm_ab, S_wl_a, S_diff_a, clamped, score_status`), `segment_scores.csv` (`map_seq, map_id, segment_no, duration_s, kills_a, kills_b, t_hat_g, points_a, points_b, D_g, D_norm_g, S_g_wl_a, score_status`), and `label_D_ab` in `map_features.csv`; register columns in `timing.py`
-- [ ] T050 [US2a] Add report sections in `src/owstudy/strength/evaluate/report.py`: count of "differential disagrees with result" (clamped) maps, σ_n per mode with pooled-fallback flags, team Elo `wl` vs `diff` on the same split (FR-018, SC-008)
-- [ ] T051 [P] [US2a] Write `tests/leakage/test_normalization_training_only.py`: changing any validation- or test-period map leaves `fit_sigma` output identical, and `fit_sigma` reads no map after `train_end`
+- [ ] T043 [US2a] **Map-level score differential**
+  Implement map-level differential in `src/owstudy/strength/scoring/differential.py` (research R8): defender points `def = 1 − time_remaining_s / attack_clock_s` clipped to [0, 1] through `def_curve` (`linear`, or `power` with `gamma`); symmetric `D_AB = a·(K_A − K_B) + X_n·(Obj_A − Obj_B)`; asymmetric `D_AB = a·(K_A − K_B) + [X_n·att_A + C_n·def_A] − [X_n·att_B + C_n·def_B]`; compute `D_AB` once and return `D_BA = −D_AB`; return `points_a`, `points_b`, `D_ab`, `score_status` (`ok | missing_score | excluded`)
+- [ ] T044 [US2a] **Segment-level score differential**
+  Add per-segment differential to `src/owstudy/strength/scoring/differential.py`: same formula on segment kills and objective gained; asymmetric defenders get `curve(clock_elapsed_end_s/clock) − curve(clock_elapsed_start_s/clock)`; `t̂_g = d_g / T_map`; raise if `|Σ D_g − D_AB| > 1e-9` or `|Σ t̂_g − 1| > 1e-9`; segments with missing kills/objective get `score_status = no_segment_score`
+- [ ] T045 [US2a] **Fit the per-mode scale from training maps only**
+  Implement `src/owstudy/strength/normalization.py` (research R17 N1–N3): `fit_sigma(inputs, config)` using **only maps with `date ≤ splits.train_end`**, σ_n = std of `D_map / T_map` (minutes) per mode, pooled σ for modes with fewer than `min_maps_for_sigma` training maps (returned with a flag list); `normalize(D, mode) = D / σ_n`; `run` refuses the `diff` variant (clear error) when `normalization.sigma` is empty, while `wl` still runs
+- [ ] T046 [US2a] **Add the `fit-normalization` command**
+  Implement the `fit-normalization` subcommand in `src/owstudy/strength/cli.py`: write a copy of `--config` to `--out` with `normalization.sigma` filled in (sorted keys), print maps per mode and the modes that fell back to pooled σ
+- [ ] T047 [US2a] **Turn the differential into a 0–1 score**
+  Extend `src/owstudy/strength/scoring/outcome.py`: `s_diff(D_norm_ab, winner, s)` = `1 / (1 + exp(−D̃_AB / s))`, then `max(·, 0.5)` if A won, `min(·, 0.5)` if A lost, unclamped on a draw, `S_B = 1 − S_A`, returning `clamped`; segment `S_g_wl_a = S_wl_a` (the map result) and segment `D_norm_g` unclamped
+- [ ] T048 [US2a] **Team Elo variant that uses the score differential**
+  Add the `diff` variant of team Elo to `src/owstudy/strength/metrics/team.py` using `S_diff_a`; maps with `missing_score` skip the `diff` update and record a `(diff, missing_score)` exclusion
+- [ ] T049 [US2a] **Hook scoring into the engine and write map scores**
+  Wire scoring into `src/owstudy/strength/engine.py` `score()` and emit `map_scores.csv` (`map_seq, map_id, mode_id, duration_s, kills_a, kills_b, points_a, points_b, D_ab, sigma_mode, D_norm_ab, S_wl_a, S_diff_a, clamped, score_status`), `segment_scores.csv` (`map_seq, map_id, segment_no, duration_s, kills_a, kills_b, t_hat_g, points_a, points_b, D_g, D_norm_g, S_g_wl_a, score_status`), and `label_D_ab` in `map_features.csv`; register columns in `timing.py`
+- [ ] T050 [US2a] **Report: differential checks and per-mode scales**
+  Add report sections in `src/owstudy/strength/evaluate/report.py`: count of "differential disagrees with result" (clamped) maps, σ_n per mode with pooled-fallback flags, team Elo `wl` vs `diff` on the same split (FR-018, SC-008)
+- [ ] T051 [P] [US2a] **Test: the scale fit never looks at validation or test maps**
+  Write `tests/leakage/test_normalization_training_only.py`: changing any validation- or test-period map leaves `fit_sigma` output identical, and `fit_sigma` reads no map after `train_end`
 
 **Checkpoint**: Differentials match hand scores for every mode; team Elo runs in both variants.
 
@@ -135,18 +208,27 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 2 ⚠️ (write first, must fail)
 
-- [ ] T052 [P] [US2] Create reference fixture `tests/fixtures/reference/player_substitution/`: a 3-map series where one player is substituted after map 1; expected `m_a` per map uses the five who played; the substitute's `rating_post` changes only on maps played; the new player starts at 1500 with `is_default = true`; a player who moves to another team keeps their rating while team Elo stays with the team (US2 scenarios 1–2, edge case)
-- [ ] T053 [P] [US2] Create reference fixture `tests/fixtures/reference/marveldoss_expected_pm/`: unequal pre-map player ratings; hand-calculated `m_j`, `m̂_ji`, `μ_ji = t_ji (p_ji + 4 m̂_ji − 5 m_k) / α` (t in minutes), `b = F(D̃ − μ)` with `F(x) = 1/(1 + e^{−x/β}) − 0.5`, `K = γ·t̂`, final `p̂` for both `diff` and `wl` variants side by side (FR-020, US2 scenario 3)
-- [ ] T054 [P] [US2] Create reference fixture `tests/fixtures/reference/marveldoss_conservation/`: an unequal-time case (use a segment-level hero update built on the same function, or a direct call through a unit-level fixture) where `d = Σ t̂ b ≠ 0` before correction; expected `b̂ = 2b − d / Σ_{own team} t̂` and the sum of ratings unchanged after the update
-- [ ] T055 [P] [US2] Write `tests/unit/test_marveldoss.py`: `F` is odd and bounded to (−0.5, 0.5); `μ = 0` when all ratings are equal; after conservation `Σ t̂·b̂ = 0` within 1e-9; with equal times and `F` odd, `d = 0` so the step is an identity; `K = γ·t̂`; with all players playing the full map, all five teammates get the same update (research R4 consequence)
+- [ ] T052 [P] [US2] **Hand example: a player substituted mid-series**
+  Create reference fixture `tests/fixtures/reference/player_substitution/`: a 3-map series where one player is substituted after map 1; expected `m_a` per map uses the five who played; the substitute's `rating_post` changes only on maps played; the new player starts at 1500 with `is_default = true`; a player who moves to another team keeps their rating while team Elo stays with the team (US2 scenarios 1–2, edge case)
+- [ ] T053 [P] [US2] **Hand example: expected +/- with unequal player ratings**
+  Create reference fixture `tests/fixtures/reference/marveldoss_expected_pm/`: unequal pre-map player ratings; hand-calculated `m_j`, `m̂_ji`, `μ_ji = t_ji (p_ji + 4 m̂_ji − 5 m_k) / α` (t in minutes), `b = F(D̃ − μ)` with `F(x) = 1/(1 + e^{−x/β}) − 0.5`, `K = γ·t̂`, final `p̂` for both `diff` and `wl` variants side by side (FR-020, US2 scenario 3)
+- [ ] T054 [P] [US2] **Hand example: rating points are conserved**
+  Create reference fixture `tests/fixtures/reference/marveldoss_conservation/`: an unequal-time case (use a segment-level hero update built on the same function, or a direct call through a unit-level fixture) where `d = Σ t̂ b ≠ 0` before correction; expected `b̂ = 2b − d / Σ_{own team} t̂` and the sum of ratings unchanged after the update
+- [ ] T055 [P] [US2] **Test: the player rating formula**
+  Write `tests/unit/test_marveldoss.py`: `F` is odd and bounded to (−0.5, 0.5); `μ = 0` when all ratings are equal; after conservation `Σ t̂·b̂ = 0` within 1e-9; with equal times and `F` odd, `d = 0` so the step is an identity; `K = γ·t̂`; with all players playing the full map, all five teammates get the same update (research R4 consequence)
 
 ### Implementation for User Story 2
 
-- [ ] T056 [P] [US2] Implement `src/owstudy/strength/rating/marveldoss.py`: `expected_pm(t_min, p_i, m_hat_i, m_opp, alpha)` (Formula "Expected +/- (`diff`)", thesis eq. 2.8), `F(x, beta)` (§2.2.4), `conserve(b, t_hat, team_of)` (Formula "Conservation", eq. 2.27, applied only when `marveldoss.conserve_points`), `k_factor(gamma, t_hat)` (eq. 2.10)
-- [ ] T057 [US2] Implement snapshot in `src/owstudy/strength/metrics/player.py`: per player `rating_pre` and `is_default` (new player initialized at `initial_rating.player`), `m_j = Σ_n t_jn p_jn / Σ_n t_jn` and `m̂_ji` (Formulas "Player team strength", "Team strength without `i`"), `p_player_a = expected(m_a, m_b)`, `n_default_players_a/b`; maintain `PlayerTeamHistory` as `(team_id, first_map_seq)` on each appearance
-- [ ] T058 [US2] Implement update in `src/owstudy/strength/metrics/player.py`: `diff` variant `p ← p + γ_player·t̂·b̂` with `S = D̃_map` (Formula "Player update (`diff`)"); `wl` variant `p ← p + γ_player,wl·t̂·(S_wl − Pr(m_j > m_k))` (Formula "Player update (`wl`)"); `t̂ = t / T_map`; all updates for a map computed from pre-map ratings and applied together; teams with `bad_roster` skip player metrics (team Elo still updates) and maps with `missing_score` skip only the `diff` update, each with an exclusion record
-- [ ] T059 [US2] Register the player metric in `src/owstudy/strength/engine.py` and emit `snapshots_player.csv` (`map_seq, map_id, patch_id, variant, team_id, player_id, rating_pre, rating_post, is_default`) and `map_features.csv` columns `m_a, m_b, p_player_a, n_default_players_a/b, player_metrics_ok_a/b` (empty values when skipped); register columns in `timing.py` as `pre_map`
-- [ ] T060 [US2] Add a report section in `src/owstudy/strength/evaluate/report.py`: `p_player_a` vs team Elo and baselines per split, `wl` vs `diff` (FR-012, FR-018)
+- [ ] T056 [P] [US2] **Player rating formula (Marveldoss)**
+  Implement `src/owstudy/strength/rating/marveldoss.py`: `expected_pm(t_min, p_i, m_hat_i, m_opp, alpha)` (Formula "Expected +/- (`diff`)", thesis eq. 2.8), `F(x, beta)` (§2.2.4), `conserve(b, t_hat, team_of)` (Formula "Conservation", eq. 2.27, applied only when `marveldoss.conserve_points`), `k_factor(gamma, t_hat)` (eq. 2.10)
+- [ ] T057 [US2] **Player ratings before each map**
+  Implement snapshot in `src/owstudy/strength/metrics/player.py`: per player `rating_pre` and `is_default` (new player initialized at `initial_rating.player`), `m_j = Σ_n t_jn p_jn / Σ_n t_jn` and `m̂_ji` (Formulas "Player team strength", "Team strength without `i`"), `p_player_a = expected(m_a, m_b)`, `n_default_players_a/b`; maintain `PlayerTeamHistory` as `(team_id, first_map_seq)` on each appearance
+- [ ] T058 [US2] **Update player ratings after each map**
+  Implement update in `src/owstudy/strength/metrics/player.py`: `diff` variant `p ← p + γ_player·t̂·b̂` with `S = D̃_map` (Formula "Player update (`diff`)"); `wl` variant `p ← p + γ_player,wl·t̂·(S_wl − Pr(m_j > m_k))` (Formula "Player update (`wl`)"); `t̂ = t / T_map`; all updates for a map computed from pre-map ratings and applied together; teams with `bad_roster` skip player metrics (team Elo still updates) and maps with `missing_score` skip only the `diff` update, each with an exclusion record
+- [ ] T059 [US2] **Hook player ratings into the engine and write their snapshots**
+  Register the player metric in `src/owstudy/strength/engine.py` and emit `snapshots_player.csv` (`map_seq, map_id, patch_id, variant, team_id, player_id, rating_pre, rating_post, is_default`) and `map_features.csv` columns `m_a, m_b, p_player_a, n_default_players_a/b, player_metrics_ok_a/b` (empty values when skipped); register columns in `timing.py` as `pre_map`
+- [ ] T060 [US2] **Report: player ratings vs team Elo and baselines**
+  Add a report section in `src/owstudy/strength/evaluate/report.py`: `p_player_a` vs team Elo and baselines per split, `wl` vs `diff` (FR-012, FR-018)
 
 **Checkpoint**: Player ratings in both variants; roster changes move `m_j`.
 
@@ -160,17 +242,25 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 3 ⚠️ (write first, must fail)
 
-- [ ] T061 [P] [US3] Create reference fixture `tests/fixtures/reference/hero_split_60_40/`: a player on hero A for 360 s and hero B for 240 s; expected `p_ji` weights A at 0.6 and B at 0.4; `seconds` per hero in `snapshots_player_hero.csv` (US3 scenario 1)
-- [ ] T062 [P] [US3] Create reference fixture `tests/fixtures/reference/hero_segment_only/`: a 600 s map where a player is on hero A for the first 300 s then swaps; expected hero A `delta` uses only segment 1's opponents' heroes (for `μ_g`), segment 1's `D̃_g` (diff variant), and `t̂_g = 300/600`; changing anything after the swap leaves hero A's `delta` unchanged; also a map with no segment kills (`no_segment_score`) where only the `wl` variant updates (US3 scenario 1a, edge case)
-- [ ] T063 [P] [US3] Write `tests/unit/test_player_hero.py`: two players with identical map histories but different heroes get different `h` (US3 scenario 2); `delta` equals the sum of that hero's per-segment updates; all segment updates use pre-map `h` and apply after the map; a player with `missing_hero_time` is skipped and flagged while team Elo still updates
+- [ ] T061 [P] [US3] **Hand example: a player split 60/40 between two heroes**
+  Create reference fixture `tests/fixtures/reference/hero_split_60_40/`: a player on hero A for 360 s and hero B for 240 s; expected `p_ji` weights A at 0.6 and B at 0.4; `seconds` per hero in `snapshots_player_hero.csv` (US3 scenario 1)
+- [ ] T062 [P] [US3] **Hand example: hero time counted per segment**
+  Create reference fixture `tests/fixtures/reference/hero_segment_only/`: a 600 s map where a player is on hero A for the first 300 s then swaps; expected hero A `delta` uses only segment 1's opponents' heroes (for `μ_g`), segment 1's `D̃_g` (diff variant), and `t̂_g = 300/600`; changing anything after the swap leaves hero A's `delta` unchanged; also a map with no segment kills (`no_segment_score`) where only the `wl` variant updates (US3 scenario 1a, edge case)
+- [ ] T063 [P] [US3] **Test: player-on-hero ratings**
+  Write `tests/unit/test_player_hero.py`: two players with identical map histories but different heroes get different `h` (US3 scenario 2); `delta` equals the sum of that hero's per-segment updates; all segment updates use pre-map `h` and apply after the map; a player with `missing_hero_time` is skipped and flagged while team Elo still updates
 
 ### Implementation for User Story 3
 
-- [ ] T064 [US3] Implement snapshot in `src/owstudy/strength/metrics/player_hero.py`: per `(variant, player_id, hero_id)` `rating_pre`, `career_seconds_pre`, `is_default` (initialized at `initial_rating.player_hero`); `p_ji` (Formula "Hero-weighted player strength", this map's times); per segment `h̄_j,g` (Formula "Segment strength (player-on-hero)") and `mu_g_a`; `ts_player_hero_j = (1/5) Σ_i p_ji` (`post_map`) and `ts_player_hero_career_j` with career times (`pre_map`) and their probabilities `p_ts_player_hero_a`, `p_ts_player_hero_career_a`
-- [ ] T065 [US3] Implement update in `src/owstudy/strength/metrics/player_hero.py`: for each segment `g` and each of the 10 entries in play, `μ_g,i = d_g (h_i,g + 4 ĥ_−i,g − 5 h̄_k,g)/α` (d_g in minutes), `S_g = D̃_g`, `b = F(S_g − μ_g)`, conservation over the 10 entries in `g`, `Δh_jik += γ_ph·t̂_g·b̂` (Formula "Player-on-hero update (`diff`)"); `wl` variant `b = S_wl − Pr(h̄_j,g > h̄_k,g)` (Formula "Player-on-hero update (`wl`)"); all from pre-map `h`, applied after the map; add segment seconds to `career_seconds` and increment `maps`; skip `missing_hero_time` players and `no_segment_score` maps (diff only) with exclusion records. Reuse `rating/marveldoss.py`
-- [ ] T066 [US3] Register the player-on-hero metric in `src/owstudy/strength/engine.py` and emit `snapshots_player_hero.csv` (`map_seq, map_id, patch_id, variant, player_id, hero_id, seconds, n_segments, rating_pre, delta, rating_post, career_seconds_pre, is_default`), the `segment_features.csv` columns `map_seq, map_id, segment_no, start_s, end_s, duration_s, variant, heroes_a, heroes_b` (sorted hero IDs joined with `|`), `hbar_a, hbar_b, mu_g_a, label_D_g, label_D_norm_g, label_S_g_a`, and `map_features.csv` columns `ts_player_hero_career_a/b, p_ts_player_hero_career_a, ts_player_hero_a/b, p_ts_player_hero_a, n_segments`; register timing classes
-- [ ] T067 [P] [US3] Implement player-hero win rate in `src/owstudy/strength/evaluate/naive.py`: cumulative wins/maps per `(player_id, hero_id)` using only maps before each map (pre-map), time-weighted by seconds on the hero
-- [ ] T068 [US3] Add report sections in `src/owstudy/strength/evaluate/report.py`: player-on-hero rating vs player-hero win rate (rank correlation and a table of the largest disagreements, US3 scenario 3); `p_ts_player_hero_career_a` vs team Elo, `wl` vs `diff`; `ts_player_hero` in the post-map section
+- [ ] T064 [US3] **Player-on-hero ratings before each map**
+  Implement snapshot in `src/owstudy/strength/metrics/player_hero.py`: per `(variant, player_id, hero_id)` `rating_pre`, `career_seconds_pre`, `is_default` (initialized at `initial_rating.player_hero`); `p_ji` (Formula "Hero-weighted player strength", this map's times); per segment `h̄_j,g` (Formula "Segment strength (player-on-hero)") and `mu_g_a`; `ts_player_hero_j = (1/5) Σ_i p_ji` (`post_map`) and `ts_player_hero_career_j` with career times (`pre_map`) and their probabilities `p_ts_player_hero_a`, `p_ts_player_hero_career_a`
+- [ ] T065 [US3] **Update player-on-hero ratings segment by segment**
+  Implement update in `src/owstudy/strength/metrics/player_hero.py`: for each segment `g` and each of the 10 entries in play, `μ_g,i = d_g (h_i,g + 4 ĥ_−i,g − 5 h̄_k,g)/α` (d_g in minutes), `S_g = D̃_g`, `b = F(S_g − μ_g)`, conservation over the 10 entries in `g`, `Δh_jik += γ_ph·t̂_g·b̂` (Formula "Player-on-hero update (`diff`)"); `wl` variant `b = S_wl − Pr(h̄_j,g > h̄_k,g)` (Formula "Player-on-hero update (`wl`)"); all from pre-map `h`, applied after the map; add segment seconds to `career_seconds` and increment `maps`; skip `missing_hero_time` players and `no_segment_score` maps (diff only) with exclusion records. Reuse `rating/marveldoss.py`
+- [ ] T066 [US3] **Hook player-on-hero ratings into the engine and write their snapshots**
+  Register the player-on-hero metric in `src/owstudy/strength/engine.py` and emit `snapshots_player_hero.csv` (`map_seq, map_id, patch_id, variant, player_id, hero_id, seconds, n_segments, rating_pre, delta, rating_post, career_seconds_pre, is_default`), the `segment_features.csv` columns `map_seq, map_id, segment_no, start_s, end_s, duration_s, variant, heroes_a, heroes_b` (sorted hero IDs joined with `|`), `hbar_a, hbar_b, mu_g_a, label_D_g, label_D_norm_g, label_S_g_a`, and `map_features.csv` columns `ts_player_hero_career_a/b, p_ts_player_hero_career_a, ts_player_hero_a/b, p_ts_player_hero_a, n_segments`; register timing classes
+- [ ] T067 [P] [US3] **Baseline: player-on-hero win rate**
+  Implement player-hero win rate in `src/owstudy/strength/evaluate/naive.py`: cumulative wins/maps per `(player_id, hero_id)` using only maps before each map (pre-map), time-weighted by seconds on the hero
+- [ ] T068 [US3] **Report: player-on-hero rating vs win rate**
+  Add report sections in `src/owstudy/strength/evaluate/report.py`: player-on-hero rating vs player-hero win rate (rank correlation and a table of the largest disagreements, US3 scenario 3); `p_ts_player_hero_career_a` vs team Elo, `wl` vs `diff`; `ts_player_hero` in the post-map section
 
 **Checkpoint**: Teammates who always play together can now be told apart through their heroes.
 
@@ -184,17 +274,25 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 4 ⚠️ (write first, must fail)
 
-- [ ] T069 [P] [US4] Create reference fixture `tests/fixtures/reference/hero_elo_weights/`: one hero played by three players for different career times; expected `H_k = Σ t h / Σ t`; a hero with no prior play uses the default 1500 and `no_history = true` (US4 scenarios 1–2)
-- [ ] T070 [P] [US4] Create reference fixture `tests/fixtures/reference/comp_vs_team_strength/`: a team starting {A, B, C, D, E} with one player swapping E → F after 240 s; expected segment 1 `comp = H_A + H_B + H_C + H_D + H_E`, segment 2 `comp = H_A + H_B + H_C + H_D + H_F` regardless of segment length; `ts_hero` weights E and F by that player's time shares (US4 scenarios 2a, 2b)
-- [ ] T071 [P] [US4] Write `tests/property/test_hero_aggregate_props.py` (hypothesis): the incremental `(W_k, Q_k)` update gives the same `H_k` as a full recompute from all player-on-hero entries within 1e-9, for random sequences of updates
+- [ ] T069 [P] [US4] **Hand example: hero rating weighted by play time**
+  Create reference fixture `tests/fixtures/reference/hero_elo_weights/`: one hero played by three players for different career times; expected `H_k = Σ t h / Σ t`; a hero with no prior play uses the default 1500 and `no_history = true` (US4 scenarios 1–2)
+- [ ] T070 [P] [US4] **Hand example: composition strength vs team strength**
+  Create reference fixture `tests/fixtures/reference/comp_vs_team_strength/`: a team starting {A, B, C, D, E} with one player swapping E → F after 240 s; expected segment 1 `comp = H_A + H_B + H_C + H_D + H_E`, segment 2 `comp = H_A + H_B + H_C + H_D + H_F` regardless of segment length; `ts_hero` weights E and F by that player's time shares (US4 scenarios 2a, 2b)
+- [ ] T071 [P] [US4] **Test: hero rating properties (random inputs)**
+  Write `tests/property/test_hero_aggregate_props.py` (hypothesis): the incremental `(W_k, Q_k)` update gives the same `H_k` as a full recompute from all player-on-hero entries within 1e-9, for random sequences of updates
 
 ### Implementation for User Story 4
 
-- [ ] T072 [US4] Implement `src/owstudy/strength/metrics/hero.py` (research R5): per `(variant, hero_id)` running sums `W_k = Σ t` and `Q_k = Σ t·h`, `H_k = Q_k / W_k`; after each player-on-hero update apply `Q_k += t_old·Δh + t_map·h_new` and `W_k += t_map`; `W_k = 0` → `initial_rating.hero` with `no_history = true`; snapshot `H_pre, W_pre, no_history` for every hero played or banned on the map; `ts_hero_j = Σ_i Σ_k (t_jik / T_ji) H_k` (Formula "Hero-weighted team strength", `post_map`) and `p_ts_hero_a` with `/5`
-- [ ] T073 [US4] Implement `src/owstudy/strength/metrics/composition.py` (research R6): per team per segment `comp_j,g = Σ_{i on j} H_{k(i,g)}` from pre-map `H` (no time weighting), `comp_mean = comp/5`, `p_comp_a = expected(comp_mean_a, comp_mean_b)`; map-level `comp_start_a/b`, `p_comp_start_a` from segment 1; `n_no_history_heroes_a/b`
-- [ ] T074 [US4] Register hero and composition metrics in `src/owstudy/strength/engine.py` (hero aggregates refresh last in `update`), emit `snapshots_hero.csv` (`map_seq, map_id, patch_id, variant, hero_id, H_pre, W_pre, no_history`), `segment_features.csv` columns `comp_a, comp_b, p_comp_a` (`segment`), and `map_features.csv` columns `comp_start_a/b, p_comp_start_a, n_no_history_heroes_a/b` (`map_start`) and `ts_hero_a/b, p_ts_hero_a` (`post_map`)
-- [ ] T075 [P] [US4] Add hero win rate to `src/owstudy/strength/evaluate/naive.py`: cumulative pre-map, time-weighted win rate per hero (and per patch)
-- [ ] T076 [US4] Add report sections in `src/owstudy/strength/evaluate/report.py`: hero Elo vs hero win rate overall and per `patch_id` (US4 scenario 3), `p_comp_start_a` vs team Elo, `wl` vs `diff`, `ts_hero` in the post-map section
+- [ ] T072 [US4] **Hero rating (time-weighted average of players on it)**
+  Implement `src/owstudy/strength/metrics/hero.py` (research R5): per `(variant, hero_id)` running sums `W_k = Σ t` and `Q_k = Σ t·h`, `H_k = Q_k / W_k`; after each player-on-hero update apply `Q_k += t_old·Δh + t_map·h_new` and `W_k += t_map`; `W_k = 0` → `initial_rating.hero` with `no_history = true`; snapshot `H_pre, W_pre, no_history` for every hero played or banned on the map; `ts_hero_j = Σ_i Σ_k (t_jik / T_ji) H_k` (Formula "Hero-weighted team strength", `post_map`) and `p_ts_hero_a` with `/5`
+- [ ] T073 [US4] **Team composition strength per segment**
+  Implement `src/owstudy/strength/metrics/composition.py` (research R6): per team per segment `comp_j,g = Σ_{i on j} H_{k(i,g)}` from pre-map `H` (no time weighting), `comp_mean = comp/5`, `p_comp_a = expected(comp_mean_a, comp_mean_b)`; map-level `comp_start_a/b`, `p_comp_start_a` from segment 1; `n_no_history_heroes_a/b`
+- [ ] T074 [US4] **Hook hero and composition metrics into the engine**
+  Register hero and composition metrics in `src/owstudy/strength/engine.py` (hero aggregates refresh last in `update`), emit `snapshots_hero.csv` (`map_seq, map_id, patch_id, variant, hero_id, H_pre, W_pre, no_history`), `segment_features.csv` columns `comp_a, comp_b, p_comp_a` (`segment`), and `map_features.csv` columns `comp_start_a/b, p_comp_start_a, n_no_history_heroes_a/b` (`map_start`) and `ts_hero_a/b, p_ts_hero_a` (`post_map`)
+- [ ] T075 [P] [US4] **Baseline: hero win rate**
+  Add hero win rate to `src/owstudy/strength/evaluate/naive.py`: cumulative pre-map, time-weighted win rate per hero (and per patch)
+- [ ] T076 [US4] **Report: hero rating vs win rate, per patch**
+  Add report sections in `src/owstudy/strength/evaluate/report.py`: hero Elo vs hero win rate overall and per `patch_id` (US4 scenario 3), `p_comp_start_a` vs team Elo, `wl` vs `diff`, `ts_hero` in the post-map section
 
 **Checkpoint**: Meta described independently of players; composition changes exactly at hero swaps.
 
@@ -208,14 +306,19 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 ### Tests for User Story 5 ⚠️ (write first, must fail)
 
-- [ ] T077 [P] [US5] Create reference fixture `tests/fixtures/reference/ban_never_played/`: ban on a hero an opposing player has never played; expected `loss = 0`, `status = zero_no_history` (US5 scenario 1); plus a player who mostly plays the banned hero with the hand-calculated drop in `p` and team `ban_loss`
-- [ ] T078 [P] [US5] Create reference fixture `tests/fixtures/reference/ban_only_hero/`: ban on the only hero a player has ever played; expected `loss` empty, `status = undefined_only_hero`, `ban_undefined_a = 1`, team loss averaged over the defined players only (US5 scenario 2)
+- [ ] T077 [P] [US5] **Hand example: banning a hero nobody on the other team plays**
+  Create reference fixture `tests/fixtures/reference/ban_never_played/`: ban on a hero an opposing player has never played; expected `loss = 0`, `status = zero_no_history` (US5 scenario 1); plus a player who mostly plays the banned hero with the hand-calculated drop in `p` and team `ban_loss`
+- [ ] T078 [P] [US5] **Hand example: banning a player's only hero**
+  Create reference fixture `tests/fixtures/reference/ban_only_hero/`: ban on the only hero a player has ever played; expected `loss` empty, `status = undefined_only_hero`, `ban_undefined_a = 1`, team loss averaged over the defined players only (US5 scenario 2)
 
 ### Implementation for User Story 5
 
-- [ ] T079 [US5] Implement `src/owstudy/strength/metrics/ban.py` (research R7): for banning team B with hero `x` and each player `i` on team A, from pre-map `h` and career seconds: `p_with = Σ_k t·h / Σ_k t`, `p_without = Σ_{k≠x} t·h / Σ_{k≠x} t`, `loss = p_with − p_without`; `status ∈ ok | zero_no_history | undefined_only_hero`; team `ban_loss` = mean of defined losses, `ban_undefined` = count of undefined players; both variants; never uses this map's hero times. Teams with `bad_roster` or players with `missing_hero_time` are skipped with `(ban, …)` exclusions
-- [ ] T080 [US5] Register the ban metric in `src/owstudy/strength/engine.py` and emit `ban_impact.csv` (`map_id, variant, banning_team_id, affected_team_id, hero_id, player_id, p_with, p_without, loss, status`) and `map_features.csv` columns `ban_loss_a/b, ban_undefined_a/b` (`map_start`)
-- [ ] T081 [US5] Add a report section in `src/owstudy/strength/evaluate/report.py`: ban loss difference (`ban_loss_a − ban_loss_b`) binned into quantiles against team A's win rate, and its log loss as a probability feature next to team Elo (US5 scenario 3)
+- [ ] T079 [US5] **Ban impact (how much a ban costs the other team)**
+  Implement `src/owstudy/strength/metrics/ban.py` (research R7): for banning team B with hero `x` and each player `i` on team A, from pre-map `h` and career seconds: `p_with = Σ_k t·h / Σ_k t`, `p_without = Σ_{k≠x} t·h / Σ_{k≠x} t`, `loss = p_with − p_without`; `status ∈ ok | zero_no_history | undefined_only_hero`; team `ban_loss` = mean of defined losses, `ban_undefined` = count of undefined players; both variants; never uses this map's hero times. Teams with `bad_roster` or players with `missing_hero_time` are skipped with `(ban, …)` exclusions
+- [ ] T080 [US5] **Hook ban impact into the engine and write its table**
+  Register the ban metric in `src/owstudy/strength/engine.py` and emit `ban_impact.csv` (`map_id, variant, banning_team_id, affected_team_id, hero_id, player_id, p_with, p_without, loss, status`) and `map_features.csv` columns `ban_loss_a/b, ban_undefined_a/b` (`map_start`)
+- [ ] T081 [US5] **Report: does ban impact predict results?**
+  Add a report section in `src/owstudy/strength/evaluate/report.py`: ban loss difference (`ban_loss_a − ban_loss_b`) binned into quantiles against team A's win rate, and its log loss as a probability feature next to team Elo (US5 scenario 3)
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -225,10 +328,14 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 **Purpose**: Choose `K_team`, `s`, `γ`, `α`, `β` on the validation period only, in stages per metric family, and report sensitivity. The scoring constants `a`, `X_n`, `C_n` and the defender curve stay fixed placeholders until real data exists (FR-017). Needs every metric above.
 
-- [ ] T082 Implement `src/owstudy/strength/evaluate/tune.py` (research R12): before running, count configs across all `tune.stages` and refuse (exit 2) if the total exceeds `tune.max_configs`, and reject any stage grid that names `score.a`, `score.def_curve` or a `modes.*` key (FR-017). Run the stages in order: each stage expands its `grid` with `RunConfig.with_overrides` on top of the base config plus every earlier stage's best values, runs `run_history` for each (optionally in a `ProcessPoolExecutor` with `--jobs`), scores every `p_*` column × variant on **validation-period maps only** (never read test-period labels), and picks the config with the lowest validation log loss on the stage's `target` column and variant. Write `grid_results.csv` (sorted by stage order then config key so output is identical for any `--jobs`), `best_config.yaml` (base config with every stage's best values), and `sensitivity.csv` (per stage, log loss vs each parameter with the others at that stage's best values)
-- [ ] T083 Implement the `tune` subcommand in `src/owstudy/strength/cli.py` per contracts/cli.md
-- [ ] T084 [P] Write `tests/integration/test_tune_no_test_access.py`: `grid_results.csv` contains only validation-period scores; scrambling every test-period label leaves `grid_results.csv` and `best_config.yaml` byte-identical; `--jobs 1` and `--jobs 4` give identical output; a later stage starts from the earlier stages' best values; a stage grid naming `score.a` or `modes.escort.C` is rejected; a search larger than `tune.max_configs` exits 2
-- [ ] T085 Add a report section in `src/owstudy/strength/evaluate/report.py` that, when the run's config came from `tune`, lists the chosen values of `K_team`, `s`, `γ`, `α`, `β` per stage and the sensitivity table, and states that `a`, `X_n`, `C_n` and the defender curve are untuned placeholders (FR-017)
+- [ ] T082 **Tune settings on the validation period**
+  Implement `src/owstudy/strength/evaluate/tune.py` (research R12): before running, count configs across all `tune.stages` and refuse (exit 2) if the total exceeds `tune.max_configs`, and reject any stage grid that names `score.a`, `score.def_curve` or a `modes.*` key (FR-017). Run the stages in order: each stage expands its `grid` with `RunConfig.with_overrides` on top of the base config plus every earlier stage's best values, runs `run_history` for each (optionally in a `ProcessPoolExecutor` with `--jobs`), scores every `p_*` column × variant on **validation-period maps only** (never read test-period labels), and picks the config with the lowest validation log loss on the stage's `target` column and variant. Write `grid_results.csv` (sorted by stage order then config key so output is identical for any `--jobs`), `best_config.yaml` (base config with every stage's best values), and `sensitivity.csv` (per stage, log loss vs each parameter with the others at that stage's best values)
+- [ ] T083 **Add the `tune` command**
+  Implement the `tune` subcommand in `src/owstudy/strength/cli.py` per contracts/cli.md
+- [ ] T084 [P] **Test: tuning never looks at the test period**
+  Write `tests/integration/test_tune_no_test_access.py`: `grid_results.csv` contains only validation-period scores; scrambling every test-period label leaves `grid_results.csv` and `best_config.yaml` byte-identical; `--jobs 1` and `--jobs 4` give identical output; a later stage starts from the earlier stages' best values; a stage grid naming `score.a` or `modes.escort.C` is rejected; a search larger than `tune.max_configs` exits 2
+- [ ] T085 **Report: which settings tuning chose**
+  Add a report section in `src/owstudy/strength/evaluate/report.py` that, when the run's config came from `tune`, lists the chosen values of `K_team`, `s`, `γ`, `α`, `β` per stage and the sensitivity table, and states that `a`, `X_n`, `C_n` and the defender curve are untuned placeholders (FR-017)
 
 ---
 
@@ -236,12 +343,18 @@ description: "Task list for the Strength Metrics feature (owstudy-strength)"
 
 **Purpose**: Performance, edge cases, report completeness, documentation
 
-- [ ] T086 [P] Write `tests/perf/test_perf.py` (marker `perf`): generate a synthetic 1,500-map history in a temp dir with `tests/fixtures/make_sample_season.py` scaled up, and assert `owstudy-strength run` finishes in under 300 s (SC-006; target < 10 s)
-- [ ] T087 [P] Write `tests/integration/test_edge_cases.py`: `include_unverified: true` and `false` both run and differ only in the unverified map (Constitution IV); a player rename via aliases keeps one rating history; a game mode missing from config exits 4; a same-date tie between series sharing a team exits 3
-- [ ] T088 [P] Write `tests/integration/test_report_completeness.py`: `report.md` on the sample season has a row for every metric (team Elo, player, player-on-hero, composition, hero-weighted, ban) vs team Elo and vs its naive counterpart, for both variants, and for each metric a statement of whether `wl` or `diff` has lower validation log loss (SC-004, SC-008)
-- [ ] T089 Review docstrings in `src/owstudy/strength/rating/` and `src/owstudy/strength/metrics/` so every formula cites its `data-model.md` §4 row and thesis equation number, and the documented deviations (time normalized by map duration rather than 48 minutes; no home advantage) are stated in `src/owstudy/strength/rating/marveldoss.py`
-- [ ] T090 [P] Add a "Strength metrics" section to `README.md` with the quickstart commands (validate → fit-normalization → run → report → check-leakage → tune) and a pointer to `specs/001-strength-metrics/`
-- [ ] T091 Run every command in `specs/001-strength-metrics/quickstart.md` §1–§6 end to end, commit the generated `configs/strength/sample.yaml`, and fix any mismatch between the docs and the behavior
+- [ ] T086 [P] **Test: speed on a 1,500-map history**
+  Write `tests/perf/test_perf.py` (marker `perf`): generate a synthetic 1,500-map history in a temp dir with `tests/fixtures/make_sample_season.py` scaled up, and assert `owstudy-strength run` finishes in under 300 s (SC-006; target < 10 s)
+- [ ] T087 [P] **Test: edge cases**
+  Write `tests/integration/test_edge_cases.py`: `include_unverified: true` and `false` both run and differ only in the unverified map (Constitution IV); a player rename via aliases keeps one rating history; a game mode missing from config exits 4; a same-date tie between series sharing a team exits 3
+- [ ] T088 [P] **Test: the report covers every metric**
+  Write `tests/integration/test_report_completeness.py`: `report.md` on the sample season has a row for every metric (team Elo, player, player-on-hero, composition, hero-weighted, ban) vs team Elo and vs its naive counterpart, for both variants, and for each metric a statement of whether `wl` or `diff` has lower validation log loss (SC-004, SC-008)
+- [ ] T089 **Check every formula cites its source**
+  Review docstrings in `src/owstudy/strength/rating/` and `src/owstudy/strength/metrics/` so every formula cites its `data-model.md` §4 row and thesis equation number, and the documented deviations (time normalized by map duration rather than 48 minutes; no home advantage) are stated in `src/owstudy/strength/rating/marveldoss.py`
+- [ ] T090 [P] **Add a strength metrics section to the main README**
+  Add a "Strength metrics" section to `README.md` with the quickstart commands (validate → fit-normalization → run → report → check-leakage → tune) and a pointer to `specs/001-strength-metrics/`
+- [ ] T091 **Walk through the quickstart end to end**
+  Run every command in `specs/001-strength-metrics/quickstart.md` §1–§6 end to end, commit the generated `configs/strength/sample.yaml`, and fix any mismatch between the docs and the behavior
 
 ---
 
