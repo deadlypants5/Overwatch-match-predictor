@@ -4,6 +4,19 @@
 
 **Input**: Feature specification from `/specs/001-strength-metrics/spec.md`
 
+## In short
+
+- **What gets built:** a Python package and command-line tool, `owstudy-strength`.
+- **How it works:** one pass through the maps in time order. For each map it records every
+  rating as it stood *before* the map, then scores the map, then updates the ratings. Only that
+  last step changes anything, so a map can never see its own result.
+- **Main output:** `map_features.csv`, one row of pre-map features per map, which the later
+  model-training feature reads.
+- **Other commands:** check the input (`validate`), tune settings on the validation period only
+  (`tune`), write a report on the hold-out period (`report`), and test for leakage of future
+  data (`check-leakage`).
+- **Speed:** a full season (~1,000 maps) in well under 5 minutes on a normal PC.
+
 ## Summary
 
 Build a Python package and command-line script, `owstudy-strength`, that reads a chronological
@@ -15,8 +28,8 @@ composition strength is a per-segment snapshot of the heroes in play. Player and
 updates follow Marveldoss (2018), research R4/R17: an expected +/- built from player, teammate,
 and opponent ratings; the normalized differential as the actual +/-; a bounded normalizing
 function `F`; a time-based K-factor `K = γ·t̂`; and point conservation. Differentials are
-normalized per mode by constants fitted on the training period only. It also produces comparison reports against team Elo and the naive
-win-rate counterparts.
+normalized per mode by constants fitted on the training period only. It also produces
+comparison reports against team Elo and the naive win-rate counterparts.
 
 **How the script works**: it makes one chronological pass. For every map it
 (1) **snapshots** the current ratings as that map's features, (2) **scores** the map (win/loss

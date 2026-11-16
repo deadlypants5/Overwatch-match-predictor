@@ -6,6 +6,18 @@
 
 **Note**: This template is filled in by the `/speckit-plan` command; its definition describes the execution workflow.
 
+## In short
+
+<!--
+  Plain-English overview for a non-expert reader: what gets built, how it works as a simple
+  pipeline (a one-line text diagram is good), what's checked before bulk work, expected run
+  time, and any open item. Detail goes in the sections below.
+-->
+
+- **What gets built:** [one sentence]
+- **How it works:** [the pipeline in one or two lines]
+- **Open items:** [anything the researcher must decide]
+
 ## Summary
 
 [Extract from feature spec: primary requirement + technical approach from research]

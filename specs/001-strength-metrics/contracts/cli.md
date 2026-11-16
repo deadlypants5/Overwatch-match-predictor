@@ -1,5 +1,18 @@
 # Contract: `owstudy-strength` command line
 
+## In short
+
+The usual order of commands:
+
+| Step | Command | What it does |
+|---|---|---|
+| 1 | `validate` | Checks the input folder and lists every problem; writes nothing |
+| 2 | `fit-normalization` | Fits the per-mode differential scales on the training period |
+| 3 | `run` | Computes every rating and writes the run folder |
+| 4 | `report` | Compares each metric with team Elo and simple win rates on the hold-out period |
+| 5 | `check-leakage` | Proves no feature used its own map or later ones |
+| – | `tune` | Searches for the best settings on the validation period only |
+
 Entry point: `owstudy-strength` (console script) ≡ `python -m owstudy.strength`.
 All commands are deterministic given the same inputs and config. Exit codes: `0` success,
 `1` validation/data error (message lists every problem), `2` usage error, `3` ordering conflict,

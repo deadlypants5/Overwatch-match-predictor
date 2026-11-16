@@ -2,6 +2,30 @@
 
 **Feature**: `001-strength-metrics` | **Date**: 2026-11-15 | **Plan**: [plan.md](./plan.md)
 
+## In short: every decision on one page
+
+| # | Question | Decision |
+|---|---|---|
+| R1 | What shape is the code? | An importable package plus a thin command-line tool |
+| R2 | How are maps processed? | One pass in time order: snapshot ratings → score the map → update ratings |
+| R3 | Can the rating system be swapped later? | Yes: every metric goes through one shared rating interface (Elo for now) |
+| R4 | Which Elo formulas? | Standard logistic Elo for win chances; player updates follow Marveldoss (2018) |
+| R5 | How is a hero's rating kept up to date? | Running time-weighted sums, updated as each player-on-hero rating changes |
+| R6 | Composition vs. hero-weighted strength? | Two separate metrics: lineup strength right now (per segment) vs. time-weighted over the map |
+| R7 | How is ban impact measured? | Each opposing player's strength with and without the banned hero, from their past play |
+| R8 | How is the score differential built and turned into `S`? | Kills plus objective points per mode; defenders score from attackers' unused time; a logistic curve maps it to 0–1 |
+| R9 | What does the input look like? | A folder of CSV files (maps, segments, heroes per segment, bans, attacks, aliases) |
+| R10 | Same input, same output? | Yes: fixed column order and number formats, no timestamps |
+| R11 | What if two maps can't be put in order? | Stop with an error, unless the order can't change any rating |
+| R12 | How are settings tuned and results judged? | Time-based train/validation/test split; staged grid search on validation only |
+| R13 | How is "no peeking at the future" proven? | Change later maps and confirm earlier snapshots don't move |
+| R14 | Is it fast enough? | ~40,000 updates per season: well under a second per run |
+| R16 | When is each feature known? | Every output column is labeled pre-map, map-start, segment or post-map; only the first two may be used to predict |
+| R17 | How closely does it follow Marveldoss? | Same expected +/-, bounded update and point conservation; time measured against each map's length |
+| R15 | Which libraries? | pandas, numpy, scikit-learn, PyYAML; pytest and hypothesis for tests |
+
+## How to read each entry
+
 Each section records one decision that was open in Technical Context, with rationale and the
 alternatives considered. No `NEEDS CLARIFICATION` items remain.
 

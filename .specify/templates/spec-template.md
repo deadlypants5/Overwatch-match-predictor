@@ -8,6 +8,24 @@
 
 **Input**: User description: "$ARGUMENTS"
 
+## In short
+
+<!--
+  Write this for a non-expert reader: 3–6 plain-English bullets (what the feature does, how we'll
+  know it works, where it starts, any known gap), then a glossary table of every term, symbol
+  or abbreviation the spec uses. Keep IDs (FR-xxx, SC-xxx) out of the bullets.
+-->
+
+- **What it does:** [one sentence]
+- **How it's checked:** [one sentence]
+- **Where it starts:** [scope of the first version]
+
+### Words used in this spec
+
+| Term | Meaning |
+|---|---|
+| [term] | [plain meaning] |
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--

@@ -1,5 +1,16 @@
 # Quickstart & Validation: Strength Metrics
 
+## In short
+
+| Step | What it proves |
+|---|---|
+| 1. Hand-calculated examples | Every formula matches a case worked out by hand |
+| 2. Leakage | No feature uses its own map or later ones |
+| 3. Full run on the sample season | All commands work end to end, and team Elo beats a coin flip |
+| 4. Determinism | Running twice gives byte-identical output |
+| 5. Tuning | Settings are chosen without touching the test period |
+| 6. Performance | A large history runs in under 5 minutes |
+
 **Feature**: `001-strength-metrics` | **Plan**: [plan.md](./plan.md)
 
 How to prove the strength script works end to end. Formats are defined in

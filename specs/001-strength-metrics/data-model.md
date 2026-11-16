@@ -1,5 +1,16 @@
 # Data Model: Strength Metrics
 
+## In short
+
+- **Input:** a folder of CSVs describing each map: who played, which heroes and for how long
+  (per segment), bans, kills, objective progress and, for Escort/Hybrid, each attack.
+- **Engine state:** the current ratings, kept in memory while the maps are processed in order.
+- **Output:** per-map feature tables, rating snapshots, map scores, ban impact, and a list of
+  maps or players left out of each metric, with the reason.
+- **Formulas:** §4 is the single source of truth for every formula. The tests check against it.
+
+Letters used throughout: team `j`, player `i`, hero `k`, banned hero `x`, time `t`.
+
 **Feature**: `001-strength-metrics` | **Date**: 2026-11-15 | **Plan**: [plan.md](./plan.md)
 
 Three layers: **input records** (what the script reads), **engine state** (in memory during the

@@ -1,5 +1,12 @@
 # Contract: run directory
 
+## In short
+
+What a run writes. The file that matters most is **`map_features.csv`**: one row of pre-map
+features per map, ready for the model. `feature_timing.csv` says when each column becomes known.
+Only `pre_map` and `map_start` columns may be used to predict a map. The rest are rating
+histories, scores, ban impact and a list of what was left out and why.
+
 Written by `owstudy-strength run`. Byte-for-byte reproducible (research R10): fixed column order,
 rows sorted, floats `%.10f`, LF line endings, no timestamps or absolute paths.
 

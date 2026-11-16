@@ -1,5 +1,11 @@
 # Contract: run configuration (YAML)
 
+## In short
+
+One YAML file holds every setting: starting ratings, how fast ratings move (K-factors), the
+scoring weights for each game mode, the train/validation/test dates, and the tuning grid. A
+copy with every default filled in is saved with each run, so any result can be repeated.
+
 Default file: `configs/strength/default.yaml`. Unknown keys are an error. The fully resolved
 config (defaults filled in) is written to every run directory as `config.resolved.yaml`.
 

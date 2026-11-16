@@ -1,5 +1,20 @@
 # Contract: input directory
 
+## In short
+
+The input is a folder of CSV files, one row per thing:
+
+| File | One row per |
+|---|---|
+| `maps.csv` | map: teams, date, patch, mode, winner, kills, objective |
+| `segments.csv` | stretch of a map with no hero swap: times, kills, objective |
+| `segment_heroes.csv` | player in a segment: which hero they were on |
+| `bans.csv` | ban: which team banned which hero |
+| `attacks.csv` | attack on an Escort or Hybrid map: who attacked, progress, time left |
+| `entities/aliases.csv` | old or alternate name of a team, player or hero |
+
+Feature 002 produces this folder.
+
 An input directory contains UTF-8 CSV files with a header row. Empty cell = missing.
 Entity semantics and validation rules: [data-model.md §1](../data-model.md).
 

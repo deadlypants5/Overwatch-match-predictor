@@ -13,11 +13,34 @@ description: "Task list template for feature implementation"
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
-## Format: `[ID] [P?] [Story] Description`
+## At a glance
 
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
-- Include exact file paths in descriptions
+<!--
+  A table with one row per phase: | Phase | What you get at the end | Tasks | Your steps |.
+  Then, if any task needs the researcher, a numbered "Your steps, in order" list.
+-->
+
+| Phase | What you get at the end | Tasks | Your steps |
+|---|---|---|---|
+| 1. Setup | [plain outcome] | T001–T00x | – |
+
+## How to read a task
+
+Each task is one checkbox. The **bold headline** says what it does in plain words. The indented
+text under it holds the exact files and rules an implementer needs.
+
+- **T###**: task ID, in rough build order
+- **[P]**: can be done at the same time as other [P] tasks (different files, no dependencies)
+- **[Story]**: which user story the task belongs to (e.g., US1, US2, US3)
+- **👤 You**: a step only the researcher can do
+- Include exact file paths in the indented details
+
+Task format:
+
+```text
+- [ ] T012 [P] [US1] **Plain-English headline**
+  Exact details: files, columns, rules, acceptance checks
+```
 
 ## Path Conventions
 

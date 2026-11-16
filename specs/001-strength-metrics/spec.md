@@ -11,6 +11,42 @@ features for the Overwatch map predictor, following the plan in `Math_plan.pdf` 
 Elo-style player ratings, time-weighted team strength, player-on-hero strength, hero Elo,
 composition strength, and ban impact). Glicko/Glicko-2 are out of scope for this feature.
 
+## In short
+
+Given a history of pro maps in time order, this feature works out how strong every team, player,
+player-on-a-hero and hero was **just before** each map, without looking at that map or any later
+one. Those values become the features for the prediction model (feature 003).
+
+| Metric | In plain words | Story |
+|---|---|---|
+| **Team Elo** | One rating per team; win and it goes up, lose and it goes down. Gives a win chance for each map | US1 (MVP) |
+| **Score differential** | How decisively a map was won (kills plus objective), on one scale across all modes | US2a |
+| **Player rating** | One rating per player, so a roster change changes the team's strength | US2 |
+| **Player-on-hero** | A separate rating for each player on each hero, updated only for the time spent on it | US3 |
+| **Hero rating and composition** | How strong each hero is overall, and how strong a team's current lineup of heroes is | US4 |
+| **Ban impact** | How much a ban weakens the other team, based on how much its players rely on the banned hero | US5 |
+
+Every metric is checked against hand-worked examples, against plain team Elo, and against a simple
+win rate. Each rating except team Elo is computed two ways: from win/loss only, and from the
+score differential. The report says which way predicts better.
+
+### Symbols used in this spec
+
+| Symbol | Meaning |
+|---|---|
+| `R`, `p`, `h`, `H` | Ratings: team, player, player-on-hero, hero |
+| `S` | What actually happened (1 = win, 0 = loss, 0.5 = draw, or a score-differential value) |
+| `μ` | What the ratings expected to happen |
+| `K`, `γ` | How big each rating update is (the "K-factor" and its scale per entity type) |
+| `D_AB` | Score differential of team A over team B on a map |
+| `a`, `X_n`, `C_n` | Weights in the differential: per kill, per attacker point, per defender point, for mode `n` |
+| `σ_n` | Per-mode scale that makes differentials comparable across modes (fitted on training maps only) |
+| `α`, `β` | Settings of the player-rating formula (rating scale, and the spread of `f`) |
+| `t`, `T` | Time played (on a hero, or on the map) |
+| **Segment** | A stretch of a map in which no player changes hero |
+| **Snapshot** | A rating's value just before a map, which is what the model is allowed to use |
+| **Marveldoss (2018)** | The thesis whose player-rating method this feature follows |
+
 ## User Scenarios & Testing *(mandatory)*
 
 The primary user is the project researcher, who feeds a chronological history of professional
