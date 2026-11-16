@@ -45,9 +45,13 @@ ratings were calculated by hand, and compare the output to the hand calculation.
 ### User Story 2 - Player ratings and team strength built from players (Priority: P2)
 
 The researcher gets an individual rating for every player, updated after each map they play
-using `p̂ = p + K·f(S − μ)`. A team's strength for a map is then the time-weighted average of
-its players' ratings, `m_j = Σ t·p / Σ t`, and this player-based strength can be used in place
-of team Elo to get a win probability.
+using `p̂ = p + K·f(S − μ)`, following Marveldoss (2018). In the score-differential variant,
+`S` is the actual +/- (the normalized differential while the player was in play), and `μ` is
+the expected +/- built from the player's, teammates', and opponents' ratings. `f` normalizes
+the difference to (−0.5, 0.5). The K-factor is proportional to normalized time played, and the
+updates conserve the total of all ratings. A team's strength for a map is then the
+time-weighted average of its players' ratings, `m_j = Σ t·p / Σ t`, and this player-based
+strength can be used in place of team Elo to get a win probability.
 
 **Why this priority**: This is the first metric that goes beyond team Elo and lets roster
 changes (substitutions, new signings) affect a team's predicted strength.
@@ -126,9 +130,14 @@ calculation.
 5. **Given** two maps with the same kill and objective differences but different game modes,
    **When** differentials are computed, **Then** they differ only by the mode constants `X_n`
    and `C_n`.
-6. **Given** the differential, **When** it is used as the outcome `S` in an Elo update, **Then**
-   it is converted to a value between 0 and 1 (0.5 = even) by a documented mapping, and the
-   winner of the map never gets `S` below 0.5.
+6. **Given** the differential, **When** it is used as the outcome `S` in a **team Elo** update,
+   **Then** it is converted to a value between 0 and 1 (0.5 = even) by a documented mapping,
+   and the winner of the map never gets `S` below 0.5. (Player and player-on-hero updates use
+   the normalized differential directly as the actual +/-, per Marveldoss.)
+7. **Given** maps from different game modes, **When** differentials are used in any update,
+   **Then** each is first divided by that mode's normalization constant, fitted on the
+   training period only, so that one unit of normalized differential per minute means the
+   same thing in every mode.
 
 ---
 
@@ -152,6 +161,11 @@ the player's combined strength matches a hand calculation.
 1. **Given** a player who plays hero A for 6 minutes and hero B for 4 minutes on a map,
    **When** that map is processed, **Then** the player's combined strength for the map weights
    hero A at 60% and hero B at 40%.
+1a. **Given** a player who plays hero A for the first 5 minutes of a map and then swaps,
+   **When** the hero A rating is updated, **Then** the update uses only those 5 minutes: the
+   opponents' heroes during those minutes (for the expected outcome), the score differential
+   earned during those minutes (differential variant), and a weight equal to those 5 minutes'
+   share of the map. Nothing that happened after the swap affects the hero A rating.
 2. **Given** two players who have played every map together, **When** they play different
    heroes, **Then** their player-on-hero ratings can differ.
 3. **Given** a finished run, **When** the researcher compares each player-on-hero rating to that
@@ -162,9 +176,16 @@ the player's combined strength matches a hand calculation.
 ### User Story 4 - Hero strength and composition strength (Priority: P4)
 
 The researcher gets a "hero Elo" for every hero, `H_k`: the time-weighted average of every
-player-on-hero rating for that hero across all teams. The strength of a team's composition (its
-heroes) on a map is built from its heroes' strengths. Both can be compared to raw hero win
-rates.
+player-on-hero rating for that hero across all teams. Two team-level metrics are built from it:
+
+- **Composition strength**: the heroes *currently in play* for a team, `comp = Σ_players H_k`
+  over each player's current hero. It is a snapshot with no time weighting. It changes whenever
+  a player swaps, so a map has one composition strength per segment.
+- **Hero-weighted team strength**: a team strength metric that accounts for hero swaps,
+  `Σ_i Σ_k (t_jik / T_ji)·H_k`, i.e., each player's heroes weighted by the share of the map
+  played on them.
+
+Both can be compared to raw hero win rates.
 
 **Why this priority**: Hero and composition strength are new features in their own right and
 let the project describe the meta independently of who is playing.
@@ -180,6 +201,12 @@ against hand calculations, and confirm a report compares hero Elo to hero win ra
 2. **Given** a hero with no recorded play before a map, **When** composition strength is
    computed for that map, **Then** the hero uses the documented default and is flagged as
    having no history.
+2a. **Given** a team that starts with heroes {A, B, C, D, E} and one player swaps E → F after
+   4 minutes, **When** composition strength is computed, **Then** the first segment's value is
+   `H_A + H_B + H_C + H_D + H_E`, the second's is `H_A + H_B + H_C + H_D + H_F`, and neither value
+   depends on how long the segment lasted.
+2b. **Given** the same map, **When** hero-weighted team strength is computed, **Then** E and F
+   are each weighted by their share of that player's time on the map.
 3. **Given** every map is tagged with a patch, **When** hero strengths are reported, **Then**
    they can be viewed per patch.
 
@@ -214,6 +241,9 @@ check that the drop in that player's and team's strength matches a hand calculat
   team.
 - Map data is missing hero time-played: player-on-hero and hero metrics skip that map for the
   affected player and flag it; team Elo still updates.
+- Map has hero-swap timing but no per-segment kills/objective: the differential variant of the
+  player-on-hero update skips that map (flagged `no_segment_score`) rather than falling back to
+  the whole-map differential; the win/loss variant still updates per segment.
 - Two maps share the same date: they are ordered by series and map number; if that's still
   unclear, the run stops and reports the conflict rather than guessing an order.
 - A map with fewer or more than five players recorded for a team: flagged as a data error;
@@ -238,7 +268,9 @@ check that the drop in that player's and team's strength matches a hand calculat
   number, date, patch, map name, game mode, the two teams, each team's players, each player's
   time played per hero, each team's ban, the outcome (win/loss/draw), each team's kill total,
   each team's objective progress, and for asymmetric modes which team attacked when and the
-  attackers' time remaining at the end of each attack.
+  attackers' time remaining at the end of each attack. Each map MUST also be divided into
+  **segments**, time intervals in which no player changes hero, each with its duration, every
+  player's hero, and each team's kills and objective progress during that segment.
 - **FR-002**: System MUST process maps strictly in chronological order and attach to each map
   the ratings from *before* that map's result is applied.
 - **FR-003**: System MUST compute team Elo and the expected win probability for each map using
@@ -246,19 +278,36 @@ check that the drop in that player's and team's strength matches a hand calculat
 - **FR-004**: System MUST compute player ratings, updated after each map the player plays.
 - **FR-005**: System MUST compute time-weighted team strength from player ratings and a win
   probability derived from it.
-- **FR-006**: System MUST compute player-on-hero ratings, updated in proportion to time played
-  on each hero, and combined player strength as the time-weighted average across heroes played.
+- **FR-006**: System MUST compute player-on-hero ratings, updated per segment: each segment's
+  update uses only that segment (its expected outcome from the heroes in play during it, its own
+  score differential in the differential variant, and a weight equal to its share of the map).
+  Combined player strength is the time-weighted average across heroes played.
 - **FR-007**: System MUST compute hero strength as the time-weighted average of all
-  player-on-hero ratings for that hero, and composition strength for each team on each map.
+  player-on-hero ratings for that hero; **composition strength** per team per segment as the sum
+  of `H_k` over the heroes currently in play (no time weighting); and **hero-weighted team
+  strength** per team per map as the time-weighted sum `Σ_i Σ_k (t_jik/T_ji)·H_k`.
+- **FR-019**: Every output feature MUST be labeled with when it becomes known: `pre_map`
+  (before the map starts), `map_start` (once bans and starting heroes are known), `segment`
+  (at the start of that segment), or `post_map` (only after the map ends, e.g., anything weighted
+  by this map's hero times). Only `pre_map` and `map_start` features may be used for pre-map
+  prediction (Constitution Principle II).
 - **FR-008**: System MUST compute ban impact for each player and team on each map, as the
   difference between strength with and without the banned hero.
 - **FR-009**: Player, player-on-hero, and hero ratings MUST be computed in two variants side by
-  side: one using map win/loss as the outcome `S`, and one using the map score differential
-  (FR-016) mapped to a value between 0 and 1. Team Elo MAY also be computed in both variants.
-- **FR-010**: Every tunable parameter (K, starting rating, the update scaling `f`, the kill
-  weight `a`, each mode's attacker constant `X_n` and defender constant `C_n`, the defender time-to-points function, and the
-  differential-to-`S` mapping) MUST come from a configuration that is saved alongside each
-  run's output.
+  side: one using map win/loss as the outcome `S`, and one using the normalized score
+  differential (FR-016, FR-020) as the actual +/- score in the Marveldoss update. Team Elo MAY
+  also be computed in both variants, in which case the differential is mapped to 0–1.
+- **FR-010**: Every tunable parameter MUST come from a configuration that is saved alongside
+  each run's output: K-factor scales `γ` per entity type, starting rating, the rating scale `α`,
+  the spread `β` of `f`, the kill weight `a`, each mode's attacker constant `X_n` and defender
+  constant `C_n`, the defender time-to-points function, the per-mode normalization constants
+  `σ_n`, and the team-Elo differential-to-`S` mapping.
+- **FR-020**: The player and player-on-hero updates MUST follow Marveldoss (2018):
+  expected +/- `μ = t·(p_i + 4·m̂_−i − 5·m_opp)/α`; `b = f(S − μ)` with `f` bounded to
+  (−0.5, 0.5); K-factor `K = γ·t̂`, with `t̂` the time in play divided by the map's duration;
+  and a point-conservation correction so the ratings of all entities in a map (or segment)
+  sum to the same total before and after the update. Score differentials MUST be normalized
+  per game mode by constants fitted on the training period only.
 - **FR-011**: System MUST keep each map's patch with its ratings so every metric can be
   reported per patch. The Elo update rule MUST be kept separate from the metric calculations so
   a different rating system could be added later without changing the input or output format
@@ -277,7 +326,9 @@ check that the drop in that player's and team's strength matches a hand calculat
   with a separate attacker constant `X_n` and defender constant `C_n` for each game mode. In
   symmetric modes `C_n = X_n`, so `D_AB = a·(Kills_A − Kills_B) + X_n·(Obj_A − Obj_B)`. In
   asymmetric modes where both teams attack, the formula MUST be applied to each attack and the
-  results added. Objective points MUST come from objective progress in symmetric modes and on
+  results added. The same formula MUST also be computed per segment from that segment's kills
+  and objective points, and segment differentials MUST sum to the map differential. Objective
+  points MUST come from objective progress in symmetric modes and on
   attack. On defense in asymmetric modes, they MUST come from the attackers' time remaining, so
   that less time remaining gives defenders more points. `D_AB = −D_BA` MUST always hold.
 - **FR-017**: The constants `a`, `X_n`, and `C_n` (asymmetric modes only; symmetric modes have
@@ -296,6 +347,9 @@ check that the drop in that player's and team's strength matches a hand calculat
   and its defender constant `C_n` (equal to `X_n` for symmetric modes).
 - **Map Score**: Per map: each team's kills, objective points (by attack and defense for
   asymmetric modes), the differential `D_AB`, and the derived outcome `S`.
+- **Segment**: A time interval of a map in which no player changes hero: start/end time, each
+  player's hero, each team's kills and objective points during it, its differential, its
+  composition strength per team.
 - **Team**: Stable ID, display-name history, and a team Elo history.
 - **Player**: Stable ID, alias history, team history, player rating history.
 - **Hero**: Stable ID, role, hero strength history per patch.
@@ -334,15 +388,24 @@ check that the drop in that player's and team's strength matches a hand calculat
   built and tested on hand-built and sample histories in the agreed input format.
 - Players play the whole map for their team (as stated in `Math_plan.pdf`); only heroes change
   mid-map, so time played is tracked per hero.
-- Default starting rating is 1500 for teams, players, player-on-hero, and heroes; default K and
-  the scaling function `f` are tuned on the validation period only (Constitution Principle II).
-- The player-based team strength update follows Marveldoss's approach as cited in
-  `Math_plan.pdf`; the exact paper is available to the researcher for reference.
+- Default starting rating is 1500 for teams, players, player-on-hero, and heroes. The thesis
+  uses 1000, but the starting level cancels in the expected +/-. `γ`, `α`, and `β` are tuned on
+  the validation period only (Constitution Principle II), as the thesis tuned its parameters on
+  a cross-validation set.
+- The player update follows Marveldoss, *An Elo-Based Approach to Model Team Players and
+  Predict the Outcome of Games* (Texas A&M, 2018). The thesis's time normalization divides
+  minutes by 48, a full NBA game. Here, time is divided by the map's own duration, because map
+  length varies by mode. Home-court advantage (thesis §1.4) is not modeled.
+- Because every player plays the full map, the player-level expected +/- is the same for all
+  five teammates, so player-level updates are identical within a team on any single map (the
+  issue `Math_plan.pdf` raises). Player-on-hero segments are the part of the model that
+  separates teammates.
 - Hero strength is computed by the time-weighted aggregation formula `H_k` in `Math_plan.pdf`.
   Treating each hero as a "team" that receives its own direct Elo updates is a possible later
   experiment, not part of this feature.
-- Composition strength is the sum of hero strengths, as written in `Math_plan.pdf`; a
-  time-weighted average may be compared as a variant.
+- Composition strength is the sum of the strengths of the heroes currently in play, as written
+  in `Math_plan.pdf`, with no time weighting. The time-weighted version is a separate team
+  strength metric (hero-weighted team strength), not a composition variant.
 - Ratings carry over across seasons and patches with no reset. Patches are recorded so their
   effects can be analyzed, but ratings don't adjust automatically when a patch lands.
 - Glicko and Glicko-2 (rating uncertainty, faster movement after patches) are out of scope for
@@ -351,10 +414,11 @@ check that the drop in that player's and team's strength matches a hand calculat
 - Game modes in scope: Control, Push, Flashpoint (symmetric) and Escort, Hybrid (asymmetric).
   Clash is no longer played and is out of scope; Clash maps in the input are excluded and
   flagged (FR-013).
-- Score differential is measured for the whole map. A player's (or player-on-hero) update uses
-  the team's map differential, split by the player's time on each hero. Splitting by the
-  differential earned *during* each hero's time would need time-stamped kill/objective events
-  and is a possible later refinement if the data collection feature provides them.
+- Team Elo and (hero-agnostic) player ratings use the whole-map outcome, because teams and
+  players are in for the whole map. Player-on-hero ratings use per-segment data, so the data
+  collection feature MUST provide time-stamped hero swaps, kills, and objective progress.
+  In the win/loss variant a segment has no result of its own, so it uses the map result, but
+  its expected outcome and weight still come from the segment.
 - Default defender time-to-points function is linear: defender points scale with the
   fraction of the attack clock the attackers used. Other shapes can be compared during tuning.
 - Default differential-to-`S` mapping is a logistic curve centered at 0, constrained so the map
