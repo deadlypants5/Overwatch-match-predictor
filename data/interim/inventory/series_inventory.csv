@@ -1,0 +1,614 @@
+series_key,event,part,date,team1,team2,maps_played,vod,n_pov,pov_hours,one_pov_h,two_pov_h,has_video
+Asia/Stage 1|Main/Playoffs|1,Asia/Stage 1,Main/Playoffs,2026-05-05 - 15:00,ZETA DIVISION,T1,3,https://youtu.be/YM8rqEuC2dE?t=2087,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|2,Asia/Stage 1,Main/Playoffs,2026-05-05 - 16:30,Team Falcons,Crazy Raccoon,2,https://youtu.be/YM8rqEuC2dE?t=7057,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|3,Asia/Stage 1,Main/Playoffs,2026-05-05 - 17:30,ENTER FORCE.36,The Gatos Guapos,2,https://youtu.be/YM8rqEuC2dE?t=10405,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|4,Asia/Stage 1,Main/Playoffs,2026-05-05 - 18:30,VARREL,Please Not Hero Ban,2,https://youtu.be/YM8rqEuC2dE?t=14321,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|5,Asia/Stage 1,Main/Playoffs,2026-05-05 - 19:20,ZETA DIVISION,ENTER FORCE.36,2,https://youtu.be/YM8rqEuC2dE?t=17136,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|6,Asia/Stage 1,Main/Playoffs,2026-05-05 - 20:10,Team Falcons,VARREL,3,https://youtu.be/YM8rqEuC2dE?t=19961,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|8,Asia/Stage 1,Main/Playoffs,2026-05-06 - 16:10,Crazy Raccoon,Please Not Hero Ban,2,https://www.youtube.com/live/KwzfCVUi5JM?si=-iS8CdFko8CCFtO7&t=6040,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|9,Asia/Stage 1,Main/Playoffs,2026-05-06 - 16:50,ZETA DIVISION,The Gatos Guapos,2,https://www.youtube.com/live/KwzfCVUi5JM?si=kxlNNZRBGSgeUQ95&t=8541,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|10,Asia/Stage 1,Main/Playoffs,2026-05-06 - 17:40,Team Falcons,Please Not Hero Ban,2,https://www.youtube.com/live/KwzfCVUi5JM?si=cgMVcQGdXRi4SeZe&t=11450,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|11,Asia/Stage 1,Main/Playoffs,2026-05-06 - 18:25,T1,ENTER FORCE.36,2,https://www.youtube.com/live/KwzfCVUi5JM?si=3RXJrQDLi6CQEiJI&t=14050,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|12,Asia/Stage 1,Main/Playoffs,2026-05-06 - 19:20,Crazy Raccoon,VARREL,3,https://www.youtube.com/live/KwzfCVUi5JM?si=V1WQDFbyWc-wlsvv&t=17485,5.0,2.5375,0.5075,1.015,True
+Asia/Stage 1|Main/Playoffs|13,Asia/Stage 1,Main/Playoffs,"May 9, 2026 - 15:20",zeta division,VARREL,5,https://www.youtube.com/live/l5BEUM6Inhg?si=kNRDldKrcPZDT0NU&t=2614,11.0,10.199722222222222,1.0194444444444444,2.0388888888888888,True
+Asia/Stage 1|Main/Playoffs|14,Asia/Stage 1,Main/Playoffs,"May 9, 2026 - 17:30",Crazy Raccoon,t1,5,https://www.youtube.com/live/l5BEUM6Inhg?si=OgEVbs0UuvpiYr3m&t=10345,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|15,Asia/Stage 1,Main/Playoffs,"May 9, 2026 - 19:45",zeta division,Crazy Raccoon,4,https://www.youtube.com/live/l5BEUM6Inhg?si=F7PkrIvwymXx3Y0d&t=18834,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|16,Asia/Stage 1,Main/Playoffs,"May 10, 2026 - 15:20",VARREL,t1,3,https://www.youtube.com/live/jW1qyTsfl-A?si=ZZSJE5aCBaURx9LD&t=2221,,,0.0,0.0,False
+Asia/Stage 1|Main/Playoffs|17,Asia/Stage 1,Main/Playoffs,"May 10, 2026 - 16:30",Crazy Raccoon,t1,3,https://www.youtube.com/live/jW1qyTsfl-A?si=WtSpITJiejCJWGar&t=6984,11.0,12.165277777777778,1.2161111111111111,2.4322222222222223,True
+Asia/Stage 1|Main/Playoffs|18,Asia/Stage 1,Main/Playoffs,"May 10, 2026 - 17:55",zeta division,crazy raccoon,7,https://www.youtube.com/live/jW1qyTsfl-A?si=L0NXRB4Ka_S6BJXk&t=12505,12.0,17.2225,1.7213888888888889,3.4427777777777777,True
+Asia/Stage 3|Main/Playoffs|1,Asia/Stage 3,Main/Playoffs,2026-11-11 - 17:20,T1,The Gatos Guapos,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|2,Asia/Stage 3,Main/Playoffs,2026-11-11 - 19:20,ZETA DIVISION,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|3,Asia/Stage 3,Main/Playoffs,2026-11-11 - 20:05,Team Falcons,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|4,Asia/Stage 3,Main/Playoffs,2026-11-11 - 21:15,Crazy Raccoon,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|5,Asia/Stage 3,Main/Playoffs,2026-11-12 - 17:00,Team Falcons,The Gatos Guapos,4,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|6,Asia/Stage 3,Main/Playoffs,2026-11-12 - 18:45,Crazy Raccoon,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|7,Asia/Stage 3,Main/Playoffs,2026-11-12 - 19:35,T1,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|8,Asia/Stage 3,Main/Playoffs,2026-11-12 - 20:35,ZETA DIVISION,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|9,Asia/Stage 3,Main/Playoffs,2026-11-13 - 17:15,MURASH GAMING,The Gatos Guapos,3,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|10,Asia/Stage 3,Main/Playoffs,2026-11-13 - 18:35,VARREL,ENTER FORCE.36,4,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|11,Asia/Stage 3,Main/Playoffs,2026-11-13 - 20:00,T1,Team Falcons,5,,,,0.0,0.0,False
+Asia/Stage 3|Main/Playoffs|12,Asia/Stage 3,Main/Playoffs,2026-11-13 - 22:20,ZETA DIVISION,Crazy Raccoon,3,,,,0.0,0.0,False
+Champions Clash|Main/Playoffs|1,Champions Clash,Main/Playoffs,"May 22, 2026 - 15:35",Twisted Minds,All Gamers,2,https://youtu.be/P2l1TN-QkOU,10.0,3.3194444444444446,0.33194444444444443,0.6638888888888889,True
+Champions Clash|Main/Playoffs|2,Champions Clash,Main/Playoffs,"May 22, 2026 - 14:30",Dallas Fuel,Crazy Raccoon,2,https://youtu.be/qEeRX0FYIMg,11.0,3.9169444444444443,0.3913888888888889,0.7827777777777778,True
+Champions Clash|Main/Playoffs|3,Champions Clash,Main/Playoffs,"May 22, 2026 - 12:00",Weibo Gaming,Virtus.Pro,3,https://youtu.be/zNYc-DwwgpM,10.0,5.894444444444445,0.5894444444444444,1.1788888888888889,True
+Champions Clash|Main/Playoffs|4,Champions Clash,Main/Playoffs,"May 22, 2026 - 13:30",ZETA DIVISION,Spacestation Gaming,2,https://youtu.be/YnRIen4ewz8,11.0,3.1302777777777777,0.31277777777777777,0.6255555555555555,True
+Champions Clash|Main/Playoffs|5,Champions Clash,Main/Playoffs,"May 23, 2026 - 12:00",Twisted Minds,Crazy Raccoon,3,https://youtu.be/2eaD-hKLacU?t=2296,,,0.0,0.0,False
+Champions Clash|Main/Playoffs|6,Champions Clash,Main/Playoffs,"May 23, 2026 - 13:20",Virtus.Pro,zeta division,4,https://youtu.be/2eaD-hKLacU?t=7348,11.0,8.822777777777778,0.8802777777777778,1.7605555555555557,True
+Champions Clash|Main/Playoffs|7,Champions Clash,Main/Playoffs,"May 24, 2026 - 12:00",Crazy Raccoon,ZETA DIVISION,4,https://youtu.be/jS8r0kqgoV4?t=1489,12.0,10.381666666666666,1.0372222222222223,2.0744444444444445,True
+Champions Clash|Main/Playoffs|8,Champions Clash,Main/Playoffs,"May 22, 2026 - 17:30",All Gamers,Dallas Fuel,2,https://youtu.be/L2WrLwElXdg,12.0,3.421666666666667,0.3416666666666667,0.6833333333333333,True
+Champions Clash|Main/Playoffs|9,Champions Clash,Main/Playoffs,"May 22, 2026 - 16:40",Weibo Gaming,Spacestation Gaming,2,https://youtu.be/14R80XJqdGA,5.0,1.5069444444444444,0.3013888888888889,0.6027777777777777,True
+Champions Clash|Main/Playoffs|10,Champions Clash,Main/Playoffs,"May 23, 2026 - 15:20",Virtus.pro,Dallas Fuel,4,https://youtu.be/2eaD-hKLacU?t=14551,10.0,9.997777777777777,0.9997222222222222,1.9994444444444444,True
+Champions Clash|Main/Playoffs|11,Champions Clash,Main/Playoffs,"May 23, 2026 - 17:15",Twisted Minds,Weibo Gaming,5,https://youtu.be/2eaD-hKLacU?t=21280,10.0,10.3725,1.0372222222222223,2.0744444444444445,True
+Champions Clash|Main/Playoffs|12,Champions Clash,Main/Playoffs,"May 23, 2026 - 19:35",Virtus.pro,Twisted Minds,4,https://youtu.be/2eaD-hKLacU?t=29964,10.0,6.758333333333334,0.6758333333333333,1.3516666666666666,True
+Champions Clash|Main/Playoffs|13,Champions Clash,Main/Playoffs,"May 24, 2026 - 15:00",ZETA DIVISION,Twisted Minds,4,https://youtu.be/jS8r0kqgoV4?t=12965,11.0,10.745833333333334,1.0741666666666667,2.1483333333333334,True
+Champions Clash|Main/Playoffs|14,Champions Clash,Main/Playoffs,"May 24, 2026 - 18:05",Crazy Raccoon,Twisted Minds,7,https://youtu.be/jS8r0kqgoV4?t=22990,23.0,20.868055555555557,0.5730555555555555,1.146111111111111,True
+Champions Clash|Main/Playoffs|15,Champions Clash,Main/Playoffs,"May 24, 2026 - 14:15",OWCS Japan,Team World,1,,,,0.0,0.0,False
+Champions Clash|Main/Playoffs|16,Champions Clash,Main/Playoffs,"May 24, 2026 - 17:20",Team Hashimoto,Team Shimada,1,,,,0.0,0.0,False
+China/Stage 1|Main/Playoffs|1,China/Stage 1,Main/Playoffs,2026-04-25 - 17:15,weibo gaming,solus victorem,3,,2.0,0.6066666666666667,0.30333333333333334,0.6066666666666667,True
+China/Stage 1|Main/Playoffs|2,China/Stage 1,Main/Playoffs,2026-04-25 - 18:35,ag,jdg,3,,,,0.0,0.0,False
+China/Stage 1|Main/Playoffs|3,China/Stage 1,Main/Playoffs,2026-04-25 - 20:20,weibo gaming,ag,4,,,,0.0,0.0,False
+China/Stage 1|Main/Playoffs|4,China/Stage 1,Main/Playoffs,2026-04-26 - 17:00,solus victorem,jdg,3,,2.0,1.1230555555555555,0.5615277777777777,1.1230555555555555,True
+China/Stage 1|Main/Playoffs|5,China/Stage 1,Main/Playoffs,2026-04-26 - 18:40,ag,jdg,5,,14.0,13.09,1.1258333333333332,2.2516666666666665,True
+China/Stage 1|Main/Playoffs|6,China/Stage 1,Main/Playoffs,2026-04-26 - 21:20,weibo gaming,ag,5,,9.0,7.514722222222222,0.9075,1.815,True
+China/Stage 1|Regular Season|1,China/Stage 1,Regular Season,"March 21, 2026 - 15:10",Milk Tea,Homie E,5,,,,0.0,0.0,False
+China/Stage 1|Regular Season|2,China/Stage 1,Regular Season,"March 21, 2026 - 17:30",All Gamers,DEG,3,,2.0,0.8583333333333333,0.42916666666666664,0.8583333333333333,True
+China/Stage 1|Regular Season|3,China/Stage 1,Regular Season,"March 21, 2026 - 18:30",Weibo Gaming,Naive Piggy,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|4,China/Stage 1,Regular Season,"March 21, 2026 - 19:40",JD Gaming,Solus Victorem,4,,1.0,0.25555555555555554,0.25555555555555554,0.25555555555555554,True
+China/Stage 1|Regular Season|5,China/Stage 1,Regular Season,"March 22, 2026 - 15:00",Milk Tea,Naive Piggy,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|6,China/Stage 1,Regular Season,"March 22, 2026 - 16:30",DEG,Solus Victorem,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|7,China/Stage 1,Regular Season,"March 22, 2026 - 17:50",JD Gaming,All Gamers,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|8,China/Stage 1,Regular Season,"March 22, 2026 - 19:35",Weibo Gaming,Homie E,3,,1.0,0.32305555555555554,0.32305555555555554,0.32305555555555554,True
+China/Stage 1|Regular Season|9,China/Stage 1,Regular Season,"March 28, 2026 - 15:00",All Gamers,Naive Piggy,3,,1.0,0.6936111111111111,0.6936111111111111,0.6936111111111111,True
+China/Stage 1|Regular Season|10,China/Stage 1,Regular Season,"March 28, 2026 - 16:40",Homie E,Solus Victorem,3,,3.0,1.3005555555555555,0.5597222222222222,1.1194444444444445,True
+China/Stage 1|Regular Season|11,China/Stage 1,Regular Season,"March 29, 2026 - 15:00",Homie E,Milk Tea,3,,1.0,0.6605555555555556,0.6605555555555556,0.6605555555555556,True
+China/Stage 1|Regular Season|12,China/Stage 1,Regular Season,"March 29, 2026 - 16:35",Naive Piggy,DEG,4,,4.0,2.7980555555555555,0.8438888888888889,1.6877777777777778,True
+China/Stage 1|Regular Season|13,China/Stage 1,Regular Season,"March 28, 2026 - 18:10",Weibo Gaming,JD Gaming,3,,10.0,7.255277777777778,0.7254166666666667,1.4508333333333334,True
+China/Stage 1|Regular Season|14,China/Stage 1,Regular Season,"March 29, 2026 - 18:40",All Gamers,Solus Victorem,3,,2.0,1.1355555555555557,0.5677777777777778,1.1355555555555557,True
+China/Stage 1|Regular Season|15,China/Stage 1,Regular Season,"March 29, 2026 - 20:00",Milk Tea,Naive Piggy,4,,,,0.0,0.0,False
+China/Stage 1|Regular Season|16,China/Stage 1,Regular Season,"April 4, 2026 - 17:00",Naive Piggy,Milk Tea,5,,3.0,2.2847222222222223,0.7602777777777778,1.5205555555555557,True
+China/Stage 1|Regular Season|17,China/Stage 1,Regular Season,"April 4, 2026 - 19:20",JD Gaming,All Gamers,5,,14.0,13.920277777777779,1.2344444444444445,2.468888888888889,True
+China/Stage 1|Regular Season|18,China/Stage 1,Regular Season,"April 4, 2026 - 21:45",Weibo Gaming,Solus Victorem,3,,1.0,0.6577777777777778,0.6577777777777778,0.6577777777777778,True
+China/Stage 1|Regular Season|19,China/Stage 1,Regular Season,"April 5, 2026 - 17:00",All Gamers,Milk Tea,4,,1.0,0.6511111111111111,0.6511111111111111,0.6511111111111111,True
+China/Stage 1|Regular Season|20,China/Stage 1,Regular Season,"April 5, 2026 - 19:05",Weibo Gaming,Naive Piggy,3,,1.0,0.1272222222222222,0.1272222222222222,0.1272222222222222,True
+China/Stage 1|Regular Season|21,China/Stage 1,Regular Season,"April 11, 2026 - 17:15",Solus Victorem,Naive Piggy,2,,,,0.0,0.0,False
+China/Stage 1|Regular Season|22,China/Stage 1,Regular Season,"April 11, 2026 - 18:30",Weibo Gaming,ag,5,,,,0.0,0.0,False
+China/Stage 1|Regular Season|23,China/Stage 1,Regular Season,"April 11, 2026 - 20:50",jdg,Milk Tea,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|24,China/Stage 1,Regular Season,"April 12, 2026 - 17:00",Solus Victorem,Milk Tea,4,,,,0.0,0.0,False
+China/Stage 1|Regular Season|25,China/Stage 1,Regular Season,"April 12, 2026 - 18:45",jdg,Naive Piggy,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|26,China/Stage 1,Regular Season,"April 18, 2026 - 17:00",ag,Naive Piggy,5,,1.0,1.0158333333333334,1.0158333333333334,1.0158333333333334,True
+China/Stage 1|Regular Season|27,China/Stage 1,Regular Season,"April 18, 2026 - 19:10",jdg,Solus Victorem,3,,,,0.0,0.0,False
+China/Stage 1|Regular Season|28,China/Stage 1,Regular Season,"April 18, 2026 - 20:25",Weibo Gaming,Milk Tea,3,,1.0,0.11027777777777778,0.11027777777777778,0.11027777777777778,True
+China/Stage 1|Regular Season|29,China/Stage 1,Regular Season,"April 19, 2026 - 17:10",ag,Solus Victorem,3,,2.0,0.8588888888888889,0.42944444444444446,0.8588888888888889,True
+China/Stage 1|Regular Season|30,China/Stage 1,Regular Season,"April 19, 2026 - 18:30",Weibo Gaming,jdg,4,,5.0,2.673611111111111,0.6594444444444445,1.318888888888889,True
+China/Stage 2|Main/Playoffs|1,China/Stage 2,Main/Playoffs,2026-07-04 - 17:00,Weibo Gaming,Solus Victorem,3,https://www.bilibili.com/video/BV1NvMw6iEAg,3.0,1.168611111111111,0.18222222222222223,0.36444444444444446,True
+China/Stage 2|Main/Playoffs|2,China/Stage 2,Main/Playoffs,2026-07-04 - 18:40,jdg,ag,3,https://www.bilibili.com/video/BV1juMw6WEdj,,,0.0,0.0,False
+China/Stage 2|Main/Playoffs|3,China/Stage 2,Main/Playoffs,2026-07-04 - 20:15,Weibo Gaming,jdg,5,https://www.bilibili.com/video/BV1WFMP6MECK,,,0.0,0.0,False
+China/Stage 2|Main/Playoffs|4,China/Stage 2,Main/Playoffs,2026-07-05 - 17:00,Solus Victorem,ag,3,https://www.bilibili.com/video/BV1EGTC6zEZz,1.0,0.5141666666666667,0.5141666666666667,0.5141666666666667,True
+China/Stage 2|Main/Playoffs|5,China/Stage 2,Main/Playoffs,2026-07-05 - 19:00,JDG,ag,5,https://www.bilibili.com/video/BV1qHT163EPJ,15.0,12.331111111111111,1.0844444444444445,2.168888888888889,True
+China/Stage 2|Main/Playoffs|6,China/Stage 2,Main/Playoffs,2026-07-05 - 21:30,Weibo Gaming,JDG,5,https://www.bilibili.com/video/BV11mTm6cEG2,20.0,17.419444444444444,1.0516666666666667,2.1033333333333335,True
+China/Stage 2|Regular Season|1,China/Stage 2,Regular Season,2026-06-06 - 15:00,Solus Victorem,Huneng Gaming,5,,,,0.0,0.0,False
+China/Stage 2|Regular Season|2,China/Stage 2,Regular Season,2026-06-06 - 17:30,JD Gaming,Four Angry Men,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|3,China/Stage 2,Regular Season,2026-06-06 - 18:45,Weibo Gaming,Kitsune Kage,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|4,China/Stage 2,Regular Season,2026-06-06 - 20:05,All Gamers,ReturnZ,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|5,China/Stage 2,Regular Season,2026-06-07 - 15:00,Solus Victorem,Kitsune Kage,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|6,China/Stage 2,Regular Season,2026-06-07 - 16:25,Four Angry Men,ReturnZ,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|7,China/Stage 2,Regular Season,2026-06-07 - 17:50,Weibo Gaming,Huneng Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|8,China/Stage 2,Regular Season,2026-06-07 - 19:10,All Gamers,JD Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|9,China/Stage 2,Regular Season,2026-06-13 - 17:10,Solus Victorem,Four Angry Men,4,,,,0.0,0.0,False
+China/Stage 2|Regular Season|10,China/Stage 2,Regular Season,2026-06-13 - 19:05,All Gamers,Huneng Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|11,China/Stage 2,Regular Season,2026-06-14 - 15:00,Four Angry Men,Kitsune Kage,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|12,China/Stage 2,Regular Season,2026-06-14 - 16:20,Huneng Gaming,ReturnZ,3,,1.0,0.485,0.485,0.485,True
+China/Stage 2|Regular Season|13,China/Stage 2,Regular Season,2026-06-13 - 15:00,Weibo Gaming,JD Gaming,4,,5.0,4.038055555555555,0.8075,1.615,True
+China/Stage 2|Regular Season|14,China/Stage 2,Regular Season,2026-06-14 - 17:40,All Gamers,Solus Victorem,5,,,,0.0,0.0,False
+China/Stage 2|Regular Season|15,China/Stage 2,Regular Season,2026-06-14 - 20:00,Huneng Gaming,Four Angry Men,5,,,,0.0,0.0,False
+China/Stage 2|Regular Season|16,China/Stage 2,Regular Season,2026-06-19 - 17:00,Four Angry Men,Huneng Gaming,4,,5.0,5.536111111111111,1.2977777777777777,2.5955555555555554,True
+China/Stage 2|Regular Season|17,China/Stage 2,Regular Season,2026-06-19 - 19:00,Weibo Gaming,Solus Victorem,4,,,,0.0,0.0,False
+China/Stage 2|Regular Season|18,China/Stage 2,Regular Season,2026-06-19 - 20:55,JD Gaming,All Gamers,5,,,,0.0,0.0,False
+China/Stage 2|Regular Season|19,China/Stage 2,Regular Season,2026-06-20 - 17:00,Solus Victorem,Four Angry Men,3,,3.0,0.7088888888888889,0.2363888888888889,0.4727777777777778,True
+China/Stage 2|Regular Season|20,China/Stage 2,Regular Season,2026-06-20 - 18:40,jdg,Huneng Gaming,3,,2.0,0.51,0.255,0.51,True
+China/Stage 2|Regular Season|21,China/Stage 2,Regular Season,2026-06-21 - 17:00,ag,Huneng Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|22,China/Stage 2,Regular Season,2026-06-21 - 18:30,jdg,Solus Victorem,3,,1.0,0.1661111111111111,0.1661111111111111,0.1661111111111111,True
+China/Stage 2|Regular Season|23,China/Stage 2,Regular Season,2026-06-21 - 19:45,Weibo Gaming,Four Angry Men,3,,2.0,0.6319444444444444,0.3159722222222222,0.6319444444444444,True
+China/Stage 2|Regular Season|24,China/Stage 2,Regular Season,2026-06-26 - 17:00,ag,Four Angry Men,3,,1.0,0.165,0.165,0.165,True
+China/Stage 2|Regular Season|25,China/Stage 2,Regular Season,2026-06-26 - 18:25,Weibo Gaming,Huneng Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|26,China/Stage 2,Regular Season,2026-06-27 - 17:00,Solus Victorem,Huneng Gaming,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|27,China/Stage 2,Regular Season,2026-06-27 - 18:25,Weibo Gaming,ag,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|28,China/Stage 2,Regular Season,2026-06-27 - 19:55,jdg,Four Angry Men,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|29,China/Stage 2,Regular Season,2026-06-28 - 17:00,Solus Victorem,ag,3,,,,0.0,0.0,False
+China/Stage 2|Regular Season|30,China/Stage 2,Regular Season,2026-06-28 - 18:30,jdg,Weibo Gaming,3,,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|1,China/Stage 3,Main/Playoffs,2026-11-07 - 17:00,OU Gaming,Huneng Gaming,4,https://www.bilibili.com/video/BV1sf4n6qE8u,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|2,China/Stage 3,Main/Playoffs,2026-11-07 - 18:50,All Gamers,Weibo Gaming,3,https://www.bilibili.com/video/BV1hU4n6LELb,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|3,China/Stage 3,Main/Playoffs,2026-11-07 - 20:30,Huneng Gaming,Weibo Gaming,4,https://www.bilibili.com/video/BV1F24J6oEJa,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|4,China/Stage 3,Main/Playoffs,2026-11-08 - 17:00,OU Gaming,All Gamers,4,https://www.bilibili.com/video/BV1x8WJ6oE3f,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|5,China/Stage 3,Main/Playoffs,2026-11-08 - 19:00,huneng Gaming,All Gamers,3,https://www.bilibili.com/video/BV1KmWE64EEs,,,0.0,0.0,False
+China/Stage 3|Main/Playoffs|6,China/Stage 3,Main/Playoffs,2026-11-08 - 20:40,Weibo Gaming,All Gamers,4,https://www.bilibili.com/video/BV1qQWH6nE8G,,,0.0,0.0,False
+China/Stage 3|Regular Season|1,China/Stage 3,Regular Season,2026-10-03 - 15:00,Solus Victorem,OU Gaming,5,,,,0.0,0.0,False
+China/Stage 3|Regular Season|2,China/Stage 3,Regular Season,2026-10-03 - 17:00,All Gamers,HUNENG Gaming,5,,1.0,0.935,0.935,0.935,True
+China/Stage 3|Regular Season|3,China/Stage 3,Regular Season,2026-10-03 - 19:10,Weibo Gaming,shengshi esports,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|4,China/Stage 3,Regular Season,2026-10-03 - 20:40,JD Gaming,Black Flag,3,,1.0,0.5097222222222222,0.5097222222222222,0.5097222222222222,True
+China/Stage 3|Regular Season|5,China/Stage 3,Regular Season,2026-10-04 - 15:00,OU Gaming,shengshi esports,5,,3.0,2.736388888888889,0.9119444444444444,1.823888888888889,True
+China/Stage 3|Regular Season|6,China/Stage 3,Regular Season,2026-10-04 - 17:00,HUNENG Gaming,Black Flag,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|7,China/Stage 3,Regular Season,2026-10-04 - 18:15,Weibo Gaming,Solus Victorem,4,,,,0.0,0.0,False
+China/Stage 3|Regular Season|8,China/Stage 3,Regular Season,2026-10-04 - 20:20,JD Gaming,All Gamers,5,,1.0,0.8977777777777778,0.8977777777777778,0.8977777777777778,True
+China/Stage 3|Regular Season|9,China/Stage 3,Regular Season,2026-10-10 - 15:00,All Gamers,OU Gaming,5,,1.0,0.9658333333333333,0.9658333333333333,0.9658333333333333,True
+China/Stage 3|Regular Season|10,China/Stage 3,Regular Season,2026-10-10 - 17:25,Solus Victorem,HUNENG Gaming,4,,1.0,0.9716666666666667,0.9716666666666667,0.9716666666666667,True
+China/Stage 3|Regular Season|11,China/Stage 3,Regular Season,2026-10-11 - 15:00,OU Gaming,Black Flag,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|12,China/Stage 3,Regular Season,2026-10-11 - 16:25,HUNENG Gaming,shengshi esports,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|13,China/Stage 3,Regular Season,2026-10-10 - 19:15,Weibo Gaming,JD Gaming,4,,2.0,1.1969444444444444,0.5984722222222222,1.1969444444444444,True
+China/Stage 3|Regular Season|14,China/Stage 3,Regular Season,2026-10-11 - 17:45,All Gamers,Solus Victorem,5,,,,0.0,0.0,False
+China/Stage 3|Regular Season|15,China/Stage 3,Regular Season,2026-10-11 - 20:00,OU Gaming,HUNENG Gaming,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|16,China/Stage 3,Regular Season,2026-10-17 - 17:00,OU Gaming,HUNENG Gaming,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|17,China/Stage 3,Regular Season,2026-10-17 - 18:45,JD Gaming,All Gamers,4,,,,0.0,0.0,False
+China/Stage 3|Regular Season|18,China/Stage 3,Regular Season,2026-10-17 - 20:45,Weibo Gaming,Solus Victorem,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|19,China/Stage 3,Regular Season,2026-10-18 - 17:00,All Gamers,OU Gaming,4,,2.0,1.6694444444444445,0.8347222222222223,1.6694444444444445,True
+China/Stage 3|Regular Season|20,China/Stage 3,Regular Season,2026-10-18 - 19:00,Weibo Gaming,HUNENG Gaming,5,,4.0,3.6194444444444445,1.1693055555555556,2.338611111111111,True
+China/Stage 3|Regular Season|21,China/Stage 3,Regular Season,2026-10-24 - 17:00,Solus Victorem,HUNENG Gaming,4,,1.0,0.8025,0.8025,0.8025,True
+China/Stage 3|Regular Season|22,China/Stage 3,Regular Season,2026-10-24 - 18:50,Weibo Gaming,All Gamers,5,,3.0,2.5972222222222223,1.2127777777777777,2.4255555555555555,True
+China/Stage 3|Regular Season|23,China/Stage 3,Regular Season,2026-10-24 - 21:15,JD Gaming,OU Gaming,4,,,,0.0,0.0,False
+China/Stage 3|Regular Season|24,China/Stage 3,Regular Season,2026-10-25 - 17:00,Solus Victorem,OU Gaming,4,,,,0.0,0.0,False
+China/Stage 3|Regular Season|25,China/Stage 3,Regular Season,2026-10-25 - 18:50,JD Gaming,HUNENG Gaming,5,,,,0.0,0.0,False
+China/Stage 3|Regular Season|26,China/Stage 3,Regular Season,2026-10-31 - 17:00,All Gamers,HUNENG Gaming,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|27,China/Stage 3,Regular Season,2026-10-31 - 18:50,JD Gaming,Solus Victorem,4,,,,0.0,0.0,False
+China/Stage 3|Regular Season|28,China/Stage 3,Regular Season,2026-10-31 - 20:45,Weibo Gaming,OU Gaming,5,,3.0,3.596388888888889,1.198611111111111,2.397222222222222,True
+China/Stage 3|Regular Season|29,China/Stage 3,Regular Season,2026-11-01 - 17:00,All Gamers,Solus Victorem,3,,,,0.0,0.0,False
+China/Stage 3|Regular Season|30,China/Stage 3,Regular Season,2026-11-01 - 18:30,Weibo Gaming,JD Gaming,3,,,,0.0,0.0,False
+EMEA/Stage 1|Main/Playoffs|1,EMEA/Stage 1,Main/Playoffs,2026-04-10 - 19:00,Twisted Minds,Al Qadsiah,3,https://www.youtube.com/live/E0xzLwD9sS0?si=tx5C6VDPkcarlo0U&t=1806,5.0,3.138888888888889,0.7177777777777777,1.4355555555555555,True
+EMEA/Stage 1|Main/Playoffs|2,EMEA/Stage 1,Main/Playoffs,2026-04-10 - 20:00,Virtus.Pro,Geekay Esports,5,https://www.youtube.com/live/E0xzLwD9sS0?si=8NNyU8_zXNq0WPAU&t=5600,,,0.0,0.0,False
+EMEA/Stage 1|Main/Playoffs|3,EMEA/Stage 1,Main/Playoffs,2026-04-11 - 20:15,Twisted Minds,Geekay Esports,3,https://www.youtube.com/live/HnFJBXRmXLk?si=xvJda_f1ibHfLe6I&t=6323,4.0,1.9552777777777777,0.5775,1.155,True
+EMEA/Stage 1|Main/Playoffs|4,EMEA/Stage 1,Main/Playoffs,2026-04-11 - 19:00,Al Qadsiah,Virtus.Pro,3,https://www.youtube.com/live/HnFJBXRmXLk?si=PFm_-f5jpqgR4nKG&t=2281,1.0,0.6188888888888889,0.6188888888888889,0.6188888888888889,True
+EMEA/Stage 1|Main/Playoffs|5,EMEA/Stage 1,Main/Playoffs,2026-04-12 - 19:00,Geekay Esports,Virtus.Pro,4,https://www.youtube.com/live/Q998tVE7B-w?si=lQmAaTIq7VpHYzv1&t=1745,6.0,5.526666666666666,1.058888888888889,2.117777777777778,True
+EMEA/Stage 1|Main/Playoffs|6,EMEA/Stage 1,Main/Playoffs,2026-04-12 - 20:35,Twisted Minds,Virtus.Pro,5,https://www.youtube.com/live/Q998tVE7B-w?si=sIf1ulDjgVDNKEyQ&t=7240,10.0,11.165555555555555,1.1191666666666666,2.2383333333333333,True
+EMEA/Stage 1|Regular Season|1,EMEA/Stage 1,Regular Season,2026-03-21 - 19:00,virtus.pro,al qadsiah,4,https://www.youtube.com/live/tObGLXuxF34?si=Ng26fkCs4gtbzvBp&t=1685,2.0,2.1616666666666666,1.0808333333333333,2.1616666666666666,True
+EMEA/Stage 1|Regular Season|2,EMEA/Stage 1,Regular Season,2026-03-21 - 20:55,twisted minds,team peps,3,https://www.youtube.com/live/tObGLXuxF34?si=xjqTF9gJNCTphwy0&t=8573,1.0,0.5727777777777778,0.5727777777777778,0.5727777777777778,True
+EMEA/Stage 1|Regular Season|3,EMEA/Stage 1,Regular Season,2026-03-22 - 19:00,twisted minds,geekay esports,3,https://www.youtube.com/live/KCoiZ7xO1ao?si=ivO3Gj-w4A_fd6oz&t=1665,1.0,0.5605555555555556,0.5605555555555556,0.5605555555555556,True
+EMEA/Stage 1|Regular Season|4,EMEA/Stage 1,Regular Season,2026-03-22 - 20:00,virtus.pro,anyone's legend,3,https://www.youtube.com/live/KCoiZ7xO1ao?si=MRN-zWhMtnq-T6YA&t=5271,1.0,0.5072222222222222,0.5072222222222222,0.5072222222222222,True
+EMEA/Stage 1|Regular Season|5,EMEA/Stage 1,Regular Season,2026-03-22 - 21:05,al qadsiah,team peps,5,https://www.youtube.com/live/KCoiZ7xO1ao?si=I15hFpXPsYUGEz5Q&t=9109,2.0,0.69,0.345,0.69,True
+EMEA/Stage 1|Regular Season|6,EMEA/Stage 1,Regular Season,2026-03-28 - 19:00,al qadsiah,geekay esports,5,https://www.youtube.com/live/8hgnhV9lqCA?si=1c9DtBqLkVfYDVrU&t=1771,3.0,3.0741666666666667,1.0247222222222223,2.0494444444444446,True
+EMEA/Stage 1|Regular Season|7,EMEA/Stage 1,Regular Season,2026-03-28 - 20:55,twisted minds,anyone's legend,3,https://www.youtube.com/live/8hgnhV9lqCA?si=7utCKOSziithkPj5&t=8635,2.0,1.0672222222222223,0.5336111111111111,1.0672222222222223,True
+EMEA/Stage 1|Regular Season|8,EMEA/Stage 1,Regular Season,2026-03-28 - 22:00,virtus.pro,team peps,3,https://www.youtube.com/live/8hgnhV9lqCA?si=uUPyYzmoXWIpSrD2&t=12539,2.0,1.1991666666666667,0.5995833333333334,1.1991666666666667,True
+EMEA/Stage 1|Regular Season|9,EMEA/Stage 1,Regular Season,2026-03-29 - 19:00,team peps,geekay esports,3,https://www.youtube.com/live/WBv1DiynaOQ?si=2XzY_zmKJ-MZeLVm&t=1760,,,0.0,0.0,False
+EMEA/Stage 1|Regular Season|10,EMEA/Stage 1,Regular Season,2026-03-29 - 20:15,al qadsiah,anyone's legend,3,https://www.youtube.com/live/WBv1DiynaOQ?si=TKY3A6BcvFF56oiP&t=5920,2.0,1.0416666666666667,0.5208333333333334,1.0416666666666667,True
+EMEA/Stage 1|Regular Season|11,EMEA/Stage 1,Regular Season,2026-04-04 - 19:00,al qadsiah,twisted minds,3,https://www.youtube.com/live/NkhPh-56KFI?si=LvoycJUEBIJhkhb1&t=1798,,,0.0,0.0,False
+EMEA/Stage 1|Regular Season|12,EMEA/Stage 1,Regular Season,2026-04-04 - 20:20,anyone's legend,team peps,5,https://www.youtube.com/live/NkhPh-56KFI?si=_FP0_JUKKeb5DEsj&t=6662,2.0,2.0216666666666665,1.0108333333333333,2.0216666666666665,True
+EMEA/Stage 1|Regular Season|13,EMEA/Stage 1,Regular Season,2026-04-04 - 22:30,virtus.pro,geekay esports,4,https://www.youtube.com/live/NkhPh-56KFI?si=aiSU4zOZSQhyCFEB&t=13271,,,0.0,0.0,False
+EMEA/Stage 1|Regular Season|14,EMEA/Stage 1,Regular Season,2026-04-05 - 19:00,virtus.pro,twisted minds,3,https://www.youtube.com/live/4UUdEv86ky8?si=H9oyHaMGCITS2yMt&t=1891,,,0.0,0.0,False
+EMEA/Stage 1|Regular Season|15,EMEA/Stage 1,Regular Season,2026-04-05 - 20:15,anyone's legend,geekay esports,5,https://www.youtube.com/live/4UUdEv86ky8?si=xHMhzUGX37BTI492&t=5782,1.0,1.1202777777777777,1.1202777777777777,1.1202777777777777,True
+EMEA/Stage 2|Main/Playoffs|1,EMEA/Stage 2,Main/Playoffs,"July 3rd, 2026 - 19:00",Virtus.Pro,Al Qadsiah,3,,5.0,5.847222222222222,1.1694444444444445,2.338888888888889,True
+EMEA/Stage 2|Main/Playoffs|2,EMEA/Stage 2,Main/Playoffs,"July 3rd, 2026 - 20:10",Twisted Minds,Geekay Esports,5,,,,0.0,0.0,False
+EMEA/Stage 2|Main/Playoffs|3,EMEA/Stage 2,Main/Playoffs,"July 4th, 2026 - 20:30",Virtus.Pro,Geekay Esports,5,,,,0.0,0.0,False
+EMEA/Stage 2|Main/Playoffs|4,EMEA/Stage 2,Main/Playoffs,"July 4th, 2026 - 19:00",Al Qadsiah,Twisted Minds,3,,2.0,1.9816666666666667,0.9908333333333333,1.9816666666666667,True
+EMEA/Stage 2|Main/Playoffs|5,EMEA/Stage 2,Main/Playoffs,"July 5th, 2026 - 19:00",Geekay Esports,Twisted Minds,5,,22.0,18.364444444444445,1.048888888888889,2.097777777777778,True
+EMEA/Stage 2|Main/Playoffs|6,EMEA/Stage 2,Main/Playoffs,"July 5th, 2026 - 21:25",Virtus.Pro,Geekay Esports,7,,23.0,26.468888888888888,1.1086111111111112,2.2172222222222224,True
+EMEA/Stage 2|Regular Season|1,EMEA/Stage 2,Regular Season,2026-06-13 - 19:00,Geekay Esports,Al Qadsiah,3,https://www.youtube.com/live/uEtw5nhdk_Q?si=SZSyzEpzQqlDBwyW&t=1843,2.0,1.3194444444444444,0.6597222222222222,1.3194444444444444,True
+EMEA/Stage 2|Regular Season|2,EMEA/Stage 2,Regular Season,2026-06-13 - 20:25,Twisted Minds,Virtus.Pro,3,https://www.youtube.com/live/uEtw5nhdk_Q?si=2Nkhkh8HOzquVKTH&t=6655,2.0,1.106111111111111,0.5530555555555555,1.106111111111111,True
+EMEA/Stage 2|Regular Season|3,EMEA/Stage 2,Regular Season,2026-06-14 - 19:05,Al Qadsiah,1234,5,https://www.youtube.com/live/Z2hQctC7Jzw?t=1799s,5.0,5.4991666666666665,1.0997222222222223,2.1994444444444445,True
+EMEA/Stage 2|Regular Season|4,EMEA/Stage 2,Regular Season,2026-06-14 - 21:00,Twisted Minds,Telacy,4,https://www.youtube.com/live/Z2hQctC7Jzw?si=jjYn1RA0lurIy8JG&t=8468,,,0.0,0.0,False
+EMEA/Stage 2|Regular Season|5,EMEA/Stage 2,Regular Season,2026-06-14 - 22:25,Virtus.Pro,Geekay Esports,3,https://www.youtube.com/live/Z2hQctC7Jzw?si=oeybtHRJFKE1_g-A&t=13892,,,0.0,0.0,False
+EMEA/Stage 2|Regular Season|6,EMEA/Stage 2,Regular Season,2026-06-20 - 19:10,Geekay Esports,Telacy,3,https://www.youtube.com/live/nHLa2dANVVE?si=mYT9VjbPcyAlSDEV&t=1952,2.0,1.1283333333333334,0.5641666666666667,1.1283333333333334,True
+EMEA/Stage 2|Regular Season|7,EMEA/Stage 2,Regular Season,2026-06-20 - 20:15,Twisted Minds,1234,5,https://www.youtube.com/live/nHLa2dANVVE?si=zR0U9O628JSeZF3z&t=5805,4.0,0.8213888888888888,0.1986111111111111,0.3972222222222222,True
+EMEA/Stage 2|Regular Season|8,EMEA/Stage 2,Regular Season,2026-06-20 - 21:55,Virtus.Pro,Al Qadsiah,5,https://www.youtube.com/live/nHLa2dANVVE?si=1xIF8rnkD3V7qPg7&t=11938,,,0.0,0.0,False
+EMEA/Stage 2|Regular Season|9,EMEA/Stage 2,Regular Season,2026-06-21 - 19:00,Geekay Esports,1234,5,https://www.youtube.com/live/SA72IfyTpkE?si=bhyYRIBSDis8zjCQ&t=1610,6.0,6.902222222222222,1.1502777777777777,2.3005555555555555,True
+EMEA/Stage 2|Regular Season|10,EMEA/Stage 2,Regular Season,2026-06-21 - 20:55,Virtus.Pro,Telacy,3,https://www.youtube.com/live/SA72IfyTpkE?si=cKXeJNpyOqgVgYUF&t=8344,,,0.0,0.0,False
+EMEA/Stage 2|Regular Season|11,EMEA/Stage 2,Regular Season,2026-06-27 - 19:00,Al Qadsiah,Telacy,4,https://www.youtube.com/live/d9uylXw_-dE?si=RDxCTA1WkHcIKB6A&t=1434,2.0,2.0316666666666667,1.0158333333333334,2.0316666666666667,True
+EMEA/Stage 2|Regular Season|12,EMEA/Stage 2,Regular Season,2026-06-27 - 20:40,Virtus.Pro,1234,3,https://www.youtube.com/live/d9uylXw_-dE?si=U1LmN1duuHDQ2IdP&t=7335,1.0,0.41333333333333333,0.41333333333333333,0.41333333333333333,True
+EMEA/Stage 2|Regular Season|13,EMEA/Stage 2,Regular Season,2026-06-27 - 21:30,Twisted Minds,Geekay Esports,5,https://www.youtube.com/live/d9uylXw_-dE?si=akOxWxt4xd_hVpAc&t=10546,,,0.0,0.0,False
+EMEA/Stage 2|Regular Season|14,EMEA/Stage 2,Regular Season,2026-06-28 - 19:00,1234,Telacy,4,https://www.youtube.com/live/tm8tcr2UUJM?si=zIeWniKwoZgWkeni&t=1512,2.0,1.2772222222222223,0.6386111111111111,1.2772222222222223,True
+EMEA/Stage 2|Regular Season|15,EMEA/Stage 2,Regular Season,2026-06-28 - 20:40,Twisted Minds,Al Qadsiah,5,https://www.youtube.com/live/tm8tcr2UUJM?si=2FEYa4wDCkXGFo-Q&t=7483,,,0.0,0.0,False
+EMEA/Stage 3|Main/Playoffs|1,EMEA/Stage 3,Main/Playoffs,2026-10-30 - 19:05,Twisted Minds,Team Risk,3,,1.0,0.5152777777777777,0.5152777777777777,0.5152777777777777,True
+EMEA/Stage 3|Main/Playoffs|2,EMEA/Stage 3,Main/Playoffs,2026-10-30 - 20:10,Team Peps,1234,4,,1.0,0.5533333333333333,0.5533333333333333,0.5533333333333333,True
+EMEA/Stage 3|Main/Playoffs|3,EMEA/Stage 3,Main/Playoffs,2026-10-31 - 20:30,Twisted Minds,Team Peps,6,,,,0.0,0.0,False
+EMEA/Stage 3|Main/Playoffs|4,EMEA/Stage 3,Main/Playoffs,2026-10-31 - 19:05,Team Risk,1234,3,,,,0.0,0.0,False
+EMEA/Stage 3|Main/Playoffs|5,EMEA/Stage 3,Main/Playoffs,2026-11-01 - 20:05,Twisted Minds,1234,4,,,,0.0,0.0,False
+EMEA/Stage 3|Main/Playoffs|6,EMEA/Stage 3,Main/Playoffs,2026-11-01 - 21:35,Team Peps,Twisted Minds,5,,10.0,9.682777777777778,0.9043055555555556,1.8086111111111112,True
+EMEA/Stage 3|Regular Season|1,EMEA/Stage 3,Regular Season,2026-10-10 - 19:20,Twisted Minds,Team Peps,4,,1.0,0.8519444444444444,0.8519444444444444,0.8519444444444444,True
+EMEA/Stage 3|Regular Season|2,EMEA/Stage 3,Regular Season,2026-10-10 - 21:00,Virtus.Pro,Geekay Esports,5,,1.0,0.9272222222222222,0.9272222222222222,0.9272222222222222,True
+EMEA/Stage 3|Regular Season|3,EMEA/Stage 3,Regular Season,2026-10-11 - 19:00,Geekay Esports,Twisted Minds,5,,2.0,2.0175,1.00875,2.0175,True
+EMEA/Stage 3|Regular Season|4,EMEA/Stage 3,Regular Season,2026-10-11 - 21:05,1234,Team Risk,3,,1.0,0.5933333333333334,0.5933333333333334,0.5933333333333334,True
+EMEA/Stage 3|Regular Season|5,EMEA/Stage 3,Regular Season,2026-10-11 - 22:15,Virtus.Pro,Team Peps,5,,2.0,2.1605555555555553,1.0802777777777777,2.1605555555555553,True
+EMEA/Stage 3|Regular Season|6,EMEA/Stage 3,Regular Season,2026-10-17 - 19:00,Twisted Minds,Team Risk,3,,,,0.0,0.0,False
+EMEA/Stage 3|Regular Season|7,EMEA/Stage 3,Regular Season,2026-10-17 - 20:20,Virtus.Pro,1234,4,,5.0,4.668055555555555,0.9336111111111111,1.8672222222222221,True
+EMEA/Stage 3|Regular Season|8,EMEA/Stage 3,Regular Season,2026-10-17 - 22:00,Geekay Esports,Team Peps,4,,1.0,0.7055555555555556,0.7055555555555556,0.7055555555555556,True
+EMEA/Stage 3|Regular Season|9,EMEA/Stage 3,Regular Season,2026-10-18 - 19:05,Virtus.Pro,Team Risk,4,,3.0,2.82,0.9397222222222222,1.8794444444444445,True
+EMEA/Stage 3|Regular Season|10,EMEA/Stage 3,Regular Season,2026-10-18 - 20:50,Twisted Minds,1234,4,,,,0.0,0.0,False
+EMEA/Stage 3|Regular Season|11,EMEA/Stage 3,Regular Season,2026-10-24 - 19:00,Team Risk,Team Peps,5,,2.0,1.9694444444444446,0.9847222222222223,1.9694444444444446,True
+EMEA/Stage 3|Regular Season|12,EMEA/Stage 3,Regular Season,2026-10-24 - 21:05,Geekay Esports,1234,4,,3.0,2.3244444444444445,0.7747222222222222,1.5494444444444444,True
+EMEA/Stage 3|Regular Season|13,EMEA/Stage 3,Regular Season,2026-10-24 - 22:55,Virtus.Pro,Twisted Minds,5,,1.0,0.3111111111111111,0.3111111111111111,0.3111111111111111,True
+EMEA/Stage 3|Regular Season|14,EMEA/Stage 3,Regular Season,2026-10-25 - 19:00,1234,Team Peps,3,,,,0.0,0.0,False
+EMEA/Stage 3|Regular Season|15,EMEA/Stage 3,Regular Season,2026-10-25 - 20:10,Geekay Esports,Team Risk,4,,,,0.0,0.0,False
+Midseason Championship|Main/Playoffs|1,Midseason Championship,Main/Playoffs,"August 1st, 2026 - 16:50",Twisted Minds,Geekay Esports,4,https://youtu.be/CgBpRPMrot0?si=Stmcr7w0U68Uc1GN,10.0,7.656944444444444,0.7655555555555555,1.531111111111111,True
+Midseason Championship|Main/Playoffs|2,Midseason Championship,Main/Playoffs,"August 1st, 2026 - 15:00",Weibo Gaming,Spacestation Gaming,4,https://youtu.be/XMip9mruy1o?si=ucxVNZPxISBfdaG1,11.0,7.556388888888889,0.755,1.51,True
+Midseason Championship|Main/Playoffs|3,Midseason Championship,Main/Playoffs,"August 1st, 2026 - 13:40",ZETA Division,Dallas Fuel,3,https://youtu.be/HUyxk0-5ev0?si=ykUPBTxo8RW6qQSC,10.0,5.026388888888889,0.5025,1.005,True
+Midseason Championship|Main/Playoffs|4,Midseason Championship,Main/Playoffs,"August 1st, 2026 - 12:00",Crazy Raccoon,T1,3,https://youtu.be/GLE1w0yfjp8?si=FdGhUwRyVjASbeW5,11.0,6.429722222222222,0.6422222222222222,1.2844444444444445,True
+Midseason Championship|Main/Playoffs|5,Midseason Championship,Main/Playoffs,"August 2nd, 2026 - 13:20",Twisted Minds,Weibo Gaming,5,https://youtu.be/Dw5sh_ejYg4?si=fSRJKUgkOXhxNgux,11.0,10.658888888888889,1.0652777777777778,2.1305555555555555,True
+Midseason Championship|Main/Playoffs|6,Midseason Championship,Main/Playoffs,"August 2nd, 2026 - 12:00",ZETA Division,T1,3,https://youtu.be/pupRaC0Bw2Y?si=mTlsPJTmZ5JIaccA,10.0,4.71,0.4708333333333333,0.9416666666666667,True
+Midseason Championship|Main/Playoffs|7,Midseason Championship,Main/Playoffs,"August 2nd, 2026 - 17:30",Twisted Minds,Zeta Division,6,https://youtu.be/NPez7HwVcLU?si=l3BiMuHDLpdrgR2b,,,0.0,0.0,False
+Midseason Championship|Main/Playoffs|8,Midseason Championship,Main/Playoffs,"August 2nd, 2026 - 15:45",Weibo Gaming,T1,3,https://youtu.be/YJYGCaOZvVk?si=xmTviQ3Pl8WcqvLu,11.0,5.515833333333333,0.5511111111111111,1.1022222222222222,True
+Midseason Championship|Regular Season|1,Midseason Championship,Regular Season,"July 29, 2026 - 20:50",Virtus.Pro,9z Team,2,https://youtu.be/S_lPHiNTBSg?si=l4V1LmMa1Pyi6im1,,,0.0,0.0,False
+Midseason Championship|Regular Season|2,Midseason Championship,Regular Season,"July 29, 2026 - 17:30",T1,Twisted Minds,3,https://youtu.be/xj4XZPW3HY8?si=Lkg28ba6bHzSoCLd,10.0,7.043888888888889,0.7044444444444444,1.4088888888888889,True
+Midseason Championship|Regular Season|3,Midseason Championship,Regular Season,"July 29, 2026 - 19:20",Weibo Gaming,Team Liquid,3,https://youtu.be/oWKKojpQDQs?si=5D32RV_Ak3spiCrL,11.0,6.208055555555555,0.6202777777777778,1.2405555555555556,True
+Midseason Championship|Regular Season|4,Midseason Championship,Regular Season,"July 29, 2026 - 21:45",Dallas Fuel,Team Falcons,2,https://youtu.be/fDPf1oTXYr0?si=45hMwgcQhdSREQGx,11.0,3.6783333333333332,0.3675,0.735,True
+Midseason Championship|Regular Season|5,Midseason Championship,Regular Season,"July 31, 2026 - 12:10",Virtus.Pro,Twisted Minds,2,https://youtu.be/GACo2l4coY8?si=w1xuhkXdKvpVFV06,10.0,3.6172222222222223,0.3616666666666667,0.7233333333333334,True
+Midseason Championship|Regular Season|6,Midseason Championship,Regular Season,"July 30, 2026 - 12:55",Weibo Gaming,Team Falcons,3,https://youtu.be/_dKTdqR9I3E?si=-d2U70kPzw-Q1G0U,11.0,6.1130555555555555,0.6108333333333333,1.2216666666666667,True
+Midseason Championship|Regular Season|7,Midseason Championship,Regular Season,"July 30, 2026 - 16:35",9z Team,T1,2,https://youtu.be/j0HoxrgG4Ec?si=egu7i_uUSinqKQQh,,,0.0,0.0,False
+Midseason Championship|Regular Season|8,Midseason Championship,Regular Season,"July 30, 2026 - 17:25",Team Liquid,Dallas Fuel,2,https://youtu.be/BHy0q7QsLsQ?si=RlfX2vY48ta4utDz,10.0,5.0725,0.5072222222222222,1.0144444444444445,True
+Midseason Championship|Regular Season|9,Midseason Championship,Regular Season,"July 31, 2026 - 14:15",Team Falcons,T1,2,https://youtu.be/Mvm44DZhRJo?si=BtrEYl07DAXmTxZr,11.0,3.4266666666666667,0.3422222222222222,0.6844444444444444,True
+Midseason Championship|Regular Season|10,Midseason Championship,Regular Season,"July 31, 2026 - 16:25",Virtus.Pro,Dallas Fuel,2,https://youtu.be/0KiWmkAYpbM?si=T90G9cRRuyOifbJ4,10.0,3.8472222222222223,0.38472222222222224,0.7694444444444445,True
+Midseason Championship|Regular Season|11,Midseason Championship,Regular Season,"July 29, 2026 - 13:15",Crazy Raccoon,Team Secret,2,https://youtu.be/j0AsBGfeG00?si=W_BijHWBUxyZCr6H,12.0,3.7516666666666665,0.37416666666666665,0.7483333333333333,True
+Midseason Championship|Regular Season|12,Midseason Championship,Regular Season,"July 29, 2026 - 16:00",Spacestation Gaming,JD Gaming,3,https://youtu.be/912u5m8Cedw?si=eS1hioew4zZuabvP,11.0,6.700277777777778,0.6694444444444444,1.3388888888888888,True
+Midseason Championship|Regular Season|13,Midseason Championship,Regular Season,"July 29, 2026 - 14:45",Geekay Esports,All Gamers,2,https://youtu.be/jaMZsUYiaww?si=HGtaYJ9UMAco14BL,10.0,3.823611111111111,0.38222222222222224,0.7644444444444445,True
+Midseason Championship|Regular Season|14,Midseason Championship,Regular Season,"July 29, 2026 - 12:15",ZETA Division,VARREL,2,https://youtu.be/mtmrnijWdQg?si=1hwI641oSHDNCPfw,10.0,3.132222222222222,0.31305555555555553,0.6261111111111111,True
+Midseason Championship|Regular Season|15,Midseason Championship,Regular Season,"July 30, 2026 - 12:05",Crazy Raccoon,Spacestation Gaming,2,https://youtu.be/DMQB5c70Tho?si=La0KZsOGf_juUAkN,,,0.0,0.0,False
+Midseason Championship|Regular Season|16,Midseason Championship,Regular Season,"July 31, 2026 - 13:00",Geekay Esports,ZETA Division,3,https://youtu.be/6hFc4B6JhK4?si=3A2Q3xTWqQ2WhOnO,10.0,5.2572222222222225,0.5255555555555556,1.051111111111111,True
+Midseason Championship|Regular Season|17,Midseason Championship,Regular Season,"July 30, 2026 - 15:45",Team Secret,JD Gaming,2,https://youtu.be/hk6o-q4PMcQ?si=KGp9D_SNkt907eeq,,,0.0,0.0,False
+Midseason Championship|Regular Season|18,Midseason Championship,Regular Season,"July 30, 2026 - 14:25",All Gamers,VARREL,3,https://youtu.be/0ChJKLBRo-U?si=YVP6Y9TkI5oJoWnb,10.0,5.900833333333333,0.59,1.18,True
+Midseason Championship|Regular Season|19,Midseason Championship,Regular Season,"July 31, 2026 - 17:15",Geekay Esports,JD Gaming,2,https://youtu.be/6b67U1pBbXU?si=eWi9KMPlC-Kx9sdO,,,0.0,0.0,False
+Midseason Championship|Regular Season|20,Midseason Championship,Regular Season,"July 31, 2026 - 15:10",Spacestation Gaming,VARREL,3,https://youtu.be/btHs3F6wiGw?si=_Vx3Ozb5XeWqaGGZ,10.0,5.7747222222222225,0.5775,1.155,True
+NA/Stage 1|Main/Playoffs|1,NA/Stage 1,Main/Playoffs,2026-04-10 - 13:00,Dallas Fuel,LuneX Gaming,3,,1.0,0.9433333333333334,0.9433333333333334,0.9433333333333334,True
+NA/Stage 1|Main/Playoffs|2,NA/Stage 1,Main/Playoffs,2026-04-10 - 14:25,spacestation gaming,Team Liquid,5,,,,0.0,0.0,False
+NA/Stage 1|Main/Playoffs|3,NA/Stage 1,Main/Playoffs,2026-04-11 - 14:00,Dallas Fuel,Spacestation Gaming,5,,,,0.0,0.0,False
+NA/Stage 1|Main/Playoffs|4,NA/Stage 1,Main/Playoffs,2026-04-11 - 12:50,LuneX Gaming,Team Liquid,3,,6.0,4.2908333333333335,0.7095833333333333,1.4191666666666667,True
+NA/Stage 1|Main/Playoffs|5,NA/Stage 1,Main/Playoffs,2026-04-12 - 13:30,Spacestation Gaming,Team Liquid,3,,5.0,3.9075,1.1411111111111112,2.2822222222222224,True
+NA/Stage 1|Main/Playoffs|6,NA/Stage 1,Main/Playoffs,2026-04-12 - 14:45,Dallas Fuel,Spacestation Gaming,5,,30.0,30.891944444444444,0.9761111111111112,1.9522222222222223,True
+NA/Stage 1|Regular Season|1,NA/Stage 1,Regular Season,2026-03-21 - 15:15,dallas fuel,disguised,4,https://www.youtube.com/live/tObGLXuxF34?si=6VqNbOLk7BC0Xb6d&t=13561,2.0,2.203333333333333,1.1016666666666666,2.203333333333333,True
+NA/Stage 1|Regular Season|2,NA/Stage 1,Regular Season,2026-03-21 - 16:45,spacestation gaming,LuneX Gaming,3,https://www.youtube.com/live/tObGLXuxF34?si=6VqNbOLk7BC0Xb6d&t=19916,1.0,0.5066666666666667,0.5066666666666667,0.5066666666666667,True
+NA/Stage 1|Regular Season|3,NA/Stage 1,Regular Season,2026-03-21 - 18:05,team liquid,Extinction,5,https://www.youtube.com/live/tObGLXuxF34?si=6VqNbOLk7BC0Xb6d&t=23558,2.0,1.2175,0.60875,1.2175,True
+NA/Stage 1|Regular Season|4,NA/Stage 1,Regular Season,2026-03-22 - 16:30,spacestation gaming,disguised,5,https://www.youtube.com/live/KCoiZ7xO1ao?si=ehp_dIImli76RAIA&t=16204,5.0,1.011388888888889,0.19194444444444445,0.3838888888888889,True
+NA/Stage 1|Regular Season|5,NA/Stage 1,Regular Season,2026-03-22 - 17:50,lunex gaming,Extinction,3,https://www.youtube.com/live/KCoiZ7xO1ao?si=ehp_dIImli76RAIA&t=22626,1.0,0.6425,0.6425,0.6425,True
+NA/Stage 1|Regular Season|6,NA/Stage 1,Regular Season,2026-03-28 - 16:30,team liquid,dallas fuel,3,https://www.youtube.com/live/8hgnhV9lqCA?si=ReRRGKqcFwxi1o7i&t=17431,4.0,2.7172222222222224,0.7888888888888889,1.5777777777777777,True
+NA/Stage 1|Regular Season|7,NA/Stage 1,Regular Season,2026-03-28 - 17:40,disguised,Extinction,3,https://www.youtube.com/live/8hgnhV9lqCA?si=ReRRGKqcFwxi1o7i&t=22144,3.0,2.1825,0.7275,1.455,True
+NA/Stage 1|Regular Season|8,NA/Stage 1,Regular Season,2026-03-29 - 14:30,dallas fuel,lunex gaming,5,https://www.youtube.com/live/WBv1DiynaOQ?si=OUHpoqGY9L1azzFV&t=10634,2.0,1.8866666666666667,0.9433333333333334,1.8866666666666667,True
+NA/Stage 1|Regular Season|9,NA/Stage 1,Regular Season,2026-03-29 - 16:30,spacestation gaming,Extinction,3,https://www.youtube.com/live/WBv1DiynaOQ?si=OUHpoqGY9L1azzFV&t=16942,2.0,0.7872222222222223,0.39361111111111113,0.7872222222222223,True
+NA/Stage 1|Regular Season|10,NA/Stage 1,Regular Season,2026-03-29 - 17:15,disguised,team liquid,4,https://www.youtube.com/live/WBv1DiynaOQ?si=OUHpoqGY9L1azzFV&t=20681,2.0,2.01,1.005,2.01,True
+NA/Stage 1|Regular Season|11,NA/Stage 1,Regular Season,2026-04-04 - 16:40,spacestation gaming,dallas fuel,5,https://www.youtube.com/live/NkhPh-56KFI?si=Tz4yagAB8oHvrrp5&t=18440,,,0.0,0.0,False
+NA/Stage 1|Regular Season|12,NA/Stage 1,Regular Season,2026-04-04 - 18:20,team liquid,lunex gaming,4,https://www.youtube.com/live/NkhPh-56KFI?si=Tz4yagAB8oHvrrp5&t=24614,,,0.0,0.0,False
+NA/Stage 1|Regular Season|13,NA/Stage 1,Regular Season,2026-04-05 - 15:15,disguised,lunex gaming,4,https://www.youtube.com/live/4UUdEv86ky8?si=qWAwZRkpcjTo3pQK&t=13281,3.0,2.67,0.89,1.78,True
+NA/Stage 1|Regular Season|14,NA/Stage 1,Regular Season,2026-04-05 - 16:50,dallas fuel,Extinction,3,https://www.youtube.com/live/4UUdEv86ky8?si=qWAwZRkpcjTo3pQK&t=19309,1.0,0.08166666666666667,0.08166666666666667,0.08166666666666667,True
+NA/Stage 1|Regular Season|15,NA/Stage 1,Regular Season,2026-04-05 - 18:00,spacestation gaming,team liquid,4,https://www.youtube.com/live/4UUdEv86ky8?si=qWAwZRkpcjTo3pQK&t=23326,,,0.0,0.0,False
+NA/Stage 2|Main/Playoffs|1,NA/Stage 2,Main/Playoffs,"July 3rd, 2026 - 12:55",Spacestation Gaming,Lunex Gaming,3,,,,0.0,0.0,False
+NA/Stage 2|Main/Playoffs|2,NA/Stage 2,Main/Playoffs,"July 3rd, 2026 - 13:55",Dallas Fuel,Team Liquid,3,,,,0.0,0.0,False
+NA/Stage 2|Main/Playoffs|3,NA/Stage 2,Main/Playoffs,"July 4th, 2026 - 14:30",Spacestation Gaming,Team Liquid,4,,,,0.0,0.0,False
+NA/Stage 2|Main/Playoffs|4,NA/Stage 2,Main/Playoffs,"July 4th, 2026 - 13:15",Lunex Gaming,Dallas Fuel,3,,3.0,0.6577777777777778,0.23194444444444445,0.4638888888888889,True
+NA/Stage 2|Main/Playoffs|5,NA/Stage 2,Main/Playoffs,"July 5th, 2026 - 15:15",Team Liquid,Dallas Fuel,4,,6.0,3.069166666666667,0.51875,1.0375,True
+NA/Stage 2|Main/Playoffs|6,NA/Stage 2,Main/Playoffs,"July 5th, 2026 - 16:45",Spacestation Gaming,Dallas Fuel,6,,12.0,15.277777777777779,1.4058333333333333,2.8116666666666665,True
+NA/Stage 2|Regular Season|1,NA/Stage 2,Regular Season,2026-06-13 - 14:50,Dallas Fuel,Spacestation Gaming,3,https://www.youtube.com/live/uEtw5nhdk_Q?si=TFWHKLjd9W1OkInz&t=11811,,,0.0,0.0,False
+NA/Stage 2|Regular Season|2,NA/Stage 2,Regular Season,2026-06-13 - 16:00,Team Liquid,Disguised,4,https://www.youtube.com/live/uEtw5nhdk_Q?si=j3B_bGxwSzonN201&t=15993,3.0,1.9169444444444443,0.8191666666666667,1.6383333333333334,True
+NA/Stage 2|Regular Season|3,NA/Stage 2,Regular Season,2026-06-13 - 17:30,Lunex Gaming,The Kafe,3,https://www.youtube.com/live/uEtw5nhdk_Q?si=ddxT_F2jzlbdVkGO&t=21445,2.0,1.396111111111111,0.6980555555555555,1.396111111111111,True
+NA/Stage 2|Regular Season|4,NA/Stage 2,Regular Season,2026-06-14 - 16:40,Dallas Fuel,The Kafe,3,https://www.youtube.com/live/Z2hQctC7Jzw?si=IaBcSADGFtCLCPpM&t=18263,,,0.0,0.0,False
+NA/Stage 2|Regular Season|5,NA/Stage 2,Regular Season,2026-06-14 - 17:50,Team Liquid,Lunex Gaming,4,https://www.youtube.com/live/Z2hQctC7Jzw?si=EvYOTEGGaGDqA0Ru&t=22530,,,0.0,0.0,False
+NA/Stage 2|Regular Season|6,NA/Stage 2,Regular Season,2026-06-20 - 17:05,Lunex Gaming,Disguised,3,https://www.youtube.com/live/nHLa2dANVVE?si=xGSGqJLbNn-hFFnc&t=19695,,,0.0,0.0,False
+NA/Stage 2|Regular Season|7,NA/Stage 2,Regular Season,2026-06-20 - 18:10,Spacestation Gaming,The Kafe,4,https://www.youtube.com/live/nHLa2dANVVE?si=51ta-BxB7hkF87FB&t=23638,1.0,0.9011111111111111,0.9011111111111111,0.9011111111111111,True
+NA/Stage 2|Regular Season|8,NA/Stage 2,Regular Season,2026-06-21 - 15:00,Spacestation Gaming,Lunex Gaming,3,https://www.youtube.com/live/SA72IfyTpkE?si=L12wWHiWPgF9wSR5&t=12359,,,0.0,0.0,False
+NA/Stage 2|Regular Season|9,NA/Stage 2,Regular Season,2026-06-21 - 16:20,The Kafe,Disguised,4,https://www.youtube.com/live/SA72IfyTpkE?si=_LjUsrISTPWVcP1j&t=17134,1.0,0.9686111111111111,0.9686111111111111,0.9686111111111111,True
+NA/Stage 2|Regular Season|10,NA/Stage 2,Regular Season,2026-06-21 - 17:55,Dallas Fuel,Team Liquid,4,https://www.youtube.com/live/SA72IfyTpkE?si=OjYzu_Tcd1mmmSaA&t=22804,,,0.0,0.0,False
+NA/Stage 2|Regular Season|11,NA/Stage 2,Regular Season,2026-06-27 - 16:35,Spacestation Gaming,Team Liquid,3,https://www.youtube.com/live/d9uylXw_-dE?si=MEqrcBrOx-Ki1-aw&t=17988,,,0.0,0.0,False
+NA/Stage 2|Regular Season|12,NA/Stage 2,Regular Season,2026-06-27 - 17:50,Dallas Fuel,Disguised,3,https://www.youtube.com/live/d9uylXw_-dE?si=W08Jtw8MhhDGtwos&t=22357,,,0.0,0.0,False
+NA/Stage 2|Regular Season|13,NA/Stage 2,Regular Season,2026-06-28 - 15:40,Team Liquid,The Kafe,3,https://www.youtube.com/live/tm8tcr2UUJM?si=8NV2NYSTVdDiWu1x&t=14756,2.0,1.0625,0.53125,1.0625,True
+NA/Stage 2|Regular Season|14,NA/Stage 2,Regular Season,2026-06-28 - 16:45,Spacestation Gaming,Disguised,4,https://www.youtube.com/live/tm8tcr2UUJM?si=qVwYsRKZ9tfv2nJI&t=18686,2.0,0.5538888888888889,0.27694444444444444,0.5538888888888889,True
+NA/Stage 2|Regular Season|15,NA/Stage 2,Regular Season,2026-06-28 - 18:30,Dallas Fuel,Lunex Gaming,4,https://www.youtube.com/live/tm8tcr2UUJM?si=x89rW0fySM8L7Lqu&t=24064,,,0.0,0.0,False
+NA/Stage 3|Main/Playoffs|1,NA/Stage 3,Main/Playoffs,2026-10-30 - 14:50,Team Liquid,The Kafe,4,,2.0,0.5163888888888889,0.25819444444444445,0.5163888888888889,True
+NA/Stage 3|Main/Playoffs|2,NA/Stage 3,Main/Playoffs,2026-10-30 - 16:20,Dallas Fuel,Spacestation Gaming,3,,1.0,0.4913888888888889,0.4913888888888889,0.4913888888888889,True
+NA/Stage 3|Main/Playoffs|3,NA/Stage 3,Main/Playoffs,2026-10-31 - 18:15,Team Liquid,Dallas Fuel,4,,,,0.0,0.0,False
+NA/Stage 3|Main/Playoffs|4,NA/Stage 3,Main/Playoffs,2026-10-31 - 16:15,The Kafe,Spacestation Gaming,5,,10.0,12.358055555555556,1.2358333333333333,2.4716666666666667,True
+NA/Stage 3|Main/Playoffs|5,NA/Stage 3,Main/Playoffs,2026-11-01 - 16:30,Team Liquid,Spacestation Gaming,3,,,,0.0,0.0,False
+NA/Stage 3|Main/Playoffs|6,NA/Stage 3,Main/Playoffs,2026-11-01 - 18:00,Dallas Fuel,Team Liquid,4,,5.0,4.243055555555555,0.8483333333333334,1.6966666666666668,True
+NA/Stage 3|Regular Season|1,NA/Stage 3,Regular Season,2026-10-10 - 15:50,Spacestation Gaming,Team Liquid,4,,2.0,1.7619444444444445,0.8809722222222223,1.7619444444444445,True
+NA/Stage 3|Regular Season|2,NA/Stage 3,Regular Season,2026-10-10 - 17:20,The Kafe,Disguised,4,,2.0,2.0283333333333333,1.0141666666666667,2.0283333333333333,True
+NA/Stage 3|Regular Season|3,NA/Stage 3,Regular Season,2026-10-10 - 19:00,Dallas Fuel,NTMR,3,,,,0.0,0.0,False
+NA/Stage 3|Regular Season|4,NA/Stage 3,Regular Season,2026-10-11 - 17:20,Dallas Fuel,Disguised,3,,1.0,0.6113888888888889,0.6113888888888889,0.6113888888888889,True
+NA/Stage 3|Regular Season|5,NA/Stage 3,Regular Season,2026-10-11 - 18:25,Spacestation Gaming,The Kafe,5,,4.0,3.0841666666666665,0.9559722222222222,1.9119444444444444,True
+NA/Stage 3|Regular Season|6,NA/Stage 3,Regular Season,2026-10-17 - 16:40,Team Liquid,The Kafe,4,,1.0,0.24444444444444444,0.24444444444444444,0.24444444444444444,True
+NA/Stage 3|Regular Season|7,NA/Stage 3,Regular Season,2026-10-17 - 18:15,NTMR,Disguised,3,,2.0,1.39,0.695,1.39,True
+NA/Stage 3|Regular Season|8,NA/Stage 3,Regular Season,2026-10-18 - 15:30,Dallas Fuel,Team Liquid,5,,10.0,12.131666666666666,1.2130555555555556,2.426111111111111,True
+NA/Stage 3|Regular Season|9,NA/Stage 3,Regular Season,2026-10-18 - 17:30,Spacestation Gaming,Disguised,3,,,,0.0,0.0,False
+NA/Stage 3|Regular Season|10,NA/Stage 3,Regular Season,2026-10-18 - 18:35,The Kafe,NTMR,3,,,,0.0,0.0,False
+NA/Stage 3|Regular Season|11,NA/Stage 3,Regular Season,2026-10-24 - 18:05,Dallas Fuel,Spacestation Gaming,3,,,,0.0,0.0,False
+NA/Stage 3|Regular Season|12,NA/Stage 3,Regular Season,2026-10-24 - 19:05,Team Liquid,NTMR,3,,1.0,0.56,0.56,0.56,True
+NA/Stage 3|Regular Season|13,NA/Stage 3,Regular Season,2026-10-25 - 14:45,Dallas Fuel,The Kafe,3,,1.0,0.15361111111111111,0.15361111111111111,0.15361111111111111,True
+NA/Stage 3|Regular Season|14,NA/Stage 3,Regular Season,2026-10-25 - 15:50,Spacestation Gaming,NTMR,3,,,,0.0,0.0,False
+NA/Stage 3|Regular Season|15,NA/Stage 3,Regular Season,2026-10-25 - 17:00,Team Liquid,Disguised,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Main/Playoffs|1,Asia/Stage 1/Japan,Main/Playoffs,2026-04-13 - 18:10,ENTER FORCE.36,Please not Hero Ban,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Main/Playoffs|2,Asia/Stage 1/Japan,Main/Playoffs,2026-04-13 - 19:40,Varrel,99DIVINE,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Main/Playoffs|3,Asia/Stage 1/Japan,Main/Playoffs,2026-04-14 - 19:30,ENTER FORCE.36,Varrel,5,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Main/Playoffs|4,Asia/Stage 1/Japan,Main/Playoffs,2026-04-14 - 18:10,Please not Hero Ban,99DIVINE,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|1,Asia/Stage 1/Japan,Regular Season,2026-03-16 - 18:10,Please Not Hero Ban,Telomere,4,,1.0,0.2238888888888889,0.2238888888888889,0.2238888888888889,True
+Asia/Stage 1/Japan|Regular Season|2,Asia/Stage 1/Japan,Regular Season,2026-03-16 - 20:00,Enter Force.36,Nyam Gaming,3,,1.0,0.5666666666666667,0.5666666666666667,0.5666666666666667,True
+Asia/Stage 1/Japan|Regular Season|3,Asia/Stage 1/Japan,Regular Season,2026-03-16 - 21:30,Tokyo Ta1yo's,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|4,Asia/Stage 1/Japan,Regular Season,2026-03-17 - 18:10,Lazuli,99DIVINE,3,,2.0,0.9072222222222223,0.45361111111111113,0.9072222222222223,True
+Asia/Stage 1/Japan|Regular Season|5,Asia/Stage 1/Japan,Regular Season,2026-03-17 - 19:20,Please Not Hero Ban,VARREL,3,,1.0,0.6502777777777777,0.6502777777777777,0.6502777777777777,True
+Asia/Stage 1/Japan|Regular Season|6,Asia/Stage 1/Japan,Regular Season,2026-03-17 - 20:35,Tokyo Ta1yo's,Nyam Gaming,4,,2.0,1.4772222222222222,0.7386111111111111,1.4772222222222222,True
+Asia/Stage 1/Japan|Regular Season|7,Asia/Stage 1/Japan,Regular Season,2026-03-23 - 18:10,Please Not Hero Ban,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|8,Asia/Stage 1/Japan,Regular Season,2026-03-23 - 19:25,Tokyo Ta1yo's,99DIVINE,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|9,Asia/Stage 1/Japan,Regular Season,2026-03-23 - 21:00,VARREL,Enter Force.36,4,,3.0,2.9694444444444446,0.9897222222222222,1.9794444444444443,True
+Asia/Stage 1/Japan|Regular Season|10,Asia/Stage 1/Japan,Regular Season,2026-03-24 - 18:10,Telomere,Lazuli,3,,2.0,0.8352777777777778,0.4176388888888889,0.8352777777777778,True
+Asia/Stage 1/Japan|Regular Season|11,Asia/Stage 1/Japan,Regular Season,2026-03-24 - 19:30,Tokyo Ta1yo's,Please Not Hero Ban,5,,4.0,4.179166666666666,1.0447222222222223,2.0894444444444447,True
+Asia/Stage 1/Japan|Regular Season|12,Asia/Stage 1/Japan,Regular Season,2026-03-24 - 21:30,99DIVINE,Enter Force.36,3,,2.0,1.2944444444444445,0.6472222222222223,1.2944444444444445,True
+Asia/Stage 1/Japan|Regular Season|13,Asia/Stage 1/Japan,Regular Season,2026-03-30 - 18:40,99DIVINE,Please Not Hero Ban,4,,2.0,0.9855555555555555,0.49277777777777776,0.9855555555555555,True
+Asia/Stage 1/Japan|Regular Season|14,Asia/Stage 1/Japan,Regular Season,2026-03-30 - 19:45,Telomere,Enter Force.36,3,,1.0,0.49666666666666665,0.49666666666666665,0.49666666666666665,True
+Asia/Stage 1/Japan|Regular Season|15,Asia/Stage 1/Japan,Regular Season,2026-03-30 - 20:55,VARREL,Nyam Gaming,3,,2.0,0.9544444444444444,0.4772222222222222,0.9544444444444444,True
+Asia/Stage 1/Japan|Regular Season|16,Asia/Stage 1/Japan,Regular Season,2026-03-31 - 18:10,VARREL,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|17,Asia/Stage 1/Japan,Regular Season,2026-03-31 - 19:30,Telomere,Nyam Gaming,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|18,Asia/Stage 1/Japan,Regular Season,2026-03-31 - 21:00,Enter Force.36,Tokyo Ta1yo's,5,,4.0,3.276666666666667,1.011111111111111,2.022222222222222,True
+Asia/Stage 1/Japan|Regular Season|19,Asia/Stage 1/Japan,Regular Season,2026-04-06 - 18:10,99DIVINE,Nyam Gaming,4,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|20,Asia/Stage 1/Japan,Regular Season,2026-04-06 - 19:45,VARREL,Telomere,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|21,Asia/Stage 1/Japan,Regular Season,2026-04-06 - 20:55,Lazuli,Enter Force.36,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|22,Asia/Stage 1/Japan,Regular Season,2026-04-07 - 18:10,Please Not Hero Ban,Nyam Gaming,3,,1.0,0.5786111111111111,0.5786111111111111,0.5786111111111111,True
+Asia/Stage 1/Japan|Regular Season|23,Asia/Stage 1/Japan,Regular Season,2026-04-07 - 19:30,Lazuli,Tokyo Ta1yo's,4,,3.0,2.4605555555555556,0.82,1.64,True
+Asia/Stage 1/Japan|Regular Season|24,Asia/Stage 1/Japan,Regular Season,2026-04-07 - 21:10,99DIVINE,Telomere,4,,2.0,1.6694444444444445,0.8347222222222223,1.6694444444444445,True
+Asia/Stage 1/Japan|Regular Season|25,Asia/Stage 1/Japan,Regular Season,2026-04-08 - 18:10,Please Not Hero Ban,Enter Force.36,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|26,Asia/Stage 1/Japan,Regular Season,2026-04-08 - 19:40,Lazuli,Nyam Gaming,5,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|27,Asia/Stage 1/Japan,Regular Season,2026-04-08 - 21:55,VARREL,99DIVINE,3,,,,0.0,0.0,False
+Asia/Stage 1/Japan|Regular Season|28,Asia/Stage 1/Japan,Regular Season,2026-04-08 - 23:15,Tokyo Ta1yo's,Telomere,3,,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|1,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 18:50,zeta division,onside gaming,4,https://youtu.be/yGLnRRa0VgQ?t=8225,11.0,8.75388888888889,0.9725,1.945,True
+Asia/Stage 1/Korea|Main/Playoffs|2,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 20:50,crazy raccoon,team falcons,3,https://youtu.be/yGLnRRa0VgQ?t=15434,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|3,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 17:30,zeta division,team falcons,4,https://youtu.be/OxIkKIG98u0?t=10424,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|4,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 19:30,crazy raccoon,onside gaming,3,https://youtu.be/OxIkKIG98u0?t=17777,2.0,1.103888888888889,0.5519444444444445,1.103888888888889,True
+Asia/Stage 1/Korea|Main/Playoffs|5,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 16:30,zeta division,crazy raccoon,3,https://youtu.be/ndzMu-V4Rgc?t=6610,3.0,1.4227777777777777,0.5461111111111111,1.0922222222222222,True
+Asia/Stage 1/Korea|Main/Playoffs|6,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 17:55,team falcons,onside gaming,3,https://youtu.be/ndzMu-V4Rgc?t=11836,5.0,3.9758333333333336,0.9030555555555555,1.806111111111111,True
+Asia/Stage 1/Korea|Main/Playoffs|7,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 17:35,t1,zan esports,3,https://youtu.be/yGLnRRa0VgQ?t=2563,1.0,0.47888888888888886,0.47888888888888886,0.47888888888888886,True
+Asia/Stage 1/Korea|Main/Playoffs|8,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 15:10,poker face,Cheeseburger,5,https://youtu.be/OxIkKIG98u0?t=2402,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|9,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 15:10,ZAN Esports,Cheeseburger,3,https://youtu.be/ndzMu-V4Rgc?t=2227,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|10,Asia/Stage 1/Korea,Main/Playoffs,2026-05-01 - 19:05,onside gaming,t1,4,https://www.youtube.com/live/lEsMTDkhLB8?si=rcRdPTAAz0MZbMTg&t=9005,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|11,Asia/Stage 1/Korea,Main/Playoffs,2026-05-01 - 17:10,team falcons,zan esports,4,https://www.youtube.com/live/lEsMTDkhLB8?si=yhTunYlejY5DQV0q&t=2392,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|12,Asia/Stage 1/Korea,Main/Playoffs,2026-05-02 - 15:00,zeta division,t1,6,https://www.youtube.com/live/JcuUVHh21QA?si=Ie3rOlk7-trO3XXe&t=2286,16.0,16.426388888888887,1.2675,2.535,True
+Asia/Stage 1/Korea|Main/Playoffs|13,Asia/Stage 1/Korea,Main/Playoffs,2026-05-02 - 17:15,crazy raccoon,team falcons,5,https://www.youtube.com/live/JcuUVHh21QA?si=gvb6fyBMGIJ6urKA&t=11509,16.0,14.483611111111111,1.1533333333333333,2.3066666666666666,True
+Asia/Stage 1/Korea|Main/Playoffs|14,Asia/Stage 1/Korea,Main/Playoffs,2026-05-03 - 17:40,zeta division,team falcons,5,https://www.youtube.com/live/hn5QTd-Nmzw?si=uEx1BV_EjNgexl8H&t=10805,15.0,14.233611111111111,1.1980555555555557,2.3961111111111113,True
+Asia/Stage 1/Korea|Main/Playoffs|15,Asia/Stage 1/Korea,Main/Playoffs,2026-05-03 - 15:10,t1,Crazy Raccoon,5,https://www.youtube.com/live/hn5QTd-Nmzw?si=gaTl_UuVScLeKdoc&t=2535,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|1,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 17:30,Cheeseburger,Poker Face,3,https://youtu.be/QpNMWmqcZMI?t=2281,1.0,0.55,0.55,0.55,True
+Asia/Stage 1/Korea|Regular Season|2,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 18:55,Crazy Raccoon,ZETA Division,4,https://youtu.be/QpNMWmqcZMI?t=8375,7.0,6.04,1.0061111111111112,2.0122222222222224,True
+Asia/Stage 1/Korea|Regular Season|3,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 21:10,ZAN Esports,ONSIDE Gaming,5,https://youtu.be/QpNMWmqcZMI?t=16166,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|4,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 15:10,New Era,T1,3,https://youtu.be/CHo9VBokvi0?t=2101,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|5,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 16:25,Cheeseburger,Team Falcons,3,https://youtu.be/CHo9VBokvi0?t=6677,1.0,0.4375,0.4375,0.4375,True
+Asia/Stage 1/Korea|Regular Season|6,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 17:45,ZAN Esports,Crazy Raccoon,4,https://youtu.be/CHo9VBokvi0?t=11277,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|7,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 15:00,Poker Face,New Era,3,https://youtu.be/bpXIG-p-4hA?t=2317,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|8,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 16:40,ONSIDE Gaming,T1,5,https://youtu.be/bpXIG-p-4hA?t=7477,2.0,2.005,1.0025,2.005,True
+Asia/Stage 1/Korea|Regular Season|9,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 18:45,ZETA Division,Team Falcons,5,https://youtu.be/bpXIG-p-4hA?t=14999,11.0,12.680277777777778,1.2677777777777777,2.5355555555555553,True
+Asia/Stage 1/Korea|Regular Season|10,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 17:10,Cheeseburger,ZAN Esports,3,https://youtu.be/m1w6n04b72M?t=2212,2.0,0.965,0.4825,0.965,True
+Asia/Stage 1/Korea|Regular Season|11,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 18:30,Poker Face,ZETA Division,3,https://youtu.be/m1w6n04b72M?t=6828,2.0,1.0808333333333333,0.5404166666666667,1.0808333333333333,True
+Asia/Stage 1/Korea|Regular Season|12,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 19:55,Crazy Raccoon,ONSIDE Gaming,5,https://youtu.be/m1w6n04b72M?t=11974,10.0,10.606666666666667,1.0605555555555555,2.121111111111111,True
+Asia/Stage 1/Korea|Regular Season|13,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 15:10,New Era,Team Falcons,3,https://youtu.be/ToHuxCD0Bn4?t=2232,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|14,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 16:25,T1,Poker Face,3,https://youtu.be/ToHuxCD0Bn4?t=6674,2.0,1.1288888888888888,0.5644444444444444,1.1288888888888888,True
+Asia/Stage 1/Korea|Regular Season|15,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 17:45,Crazy Raccoon,Cheeseburger,3,https://youtu.be/ToHuxCD0Bn4?t=11490,2.0,0.9186111111111112,0.4593055555555556,0.9186111111111112,True
+Asia/Stage 1/Korea|Regular Season|16,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 15:10,ONSIDE Gaming,New Era,3,https://youtu.be/oBtOpaNCZg4?t=2149,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|17,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 16:30,ZAN Esports,ZETA Division,3,https://youtu.be/oBtOpaNCZg4?t=6727,2.0,0.8911111111111111,0.44555555555555554,0.8911111111111111,True
+Asia/Stage 1/Korea|Regular Season|18,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 18:00,Team Falcons,T1,4,https://youtu.be/oBtOpaNCZg4?t=12238,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|19,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 17:10,ONSIDE Gaming,Cheeseburger,3,https://youtu.be/hCwQvbHEbAk?t=2073,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|20,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 18:35,Team Falcons,Poker Face,3,https://youtu.be/hCwQvbHEbAk?t=7168,3.0,2.2555555555555555,0.7519444444444444,1.5038888888888888,True
+Asia/Stage 1/Korea|Regular Season|21,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 20:15,T1,Crazy Raccoon,5,https://youtu.be/hCwQvbHEbAk?t=12806,3.0,2.6466666666666665,0.7405555555555555,1.481111111111111,True
+Asia/Stage 1/Korea|Regular Season|22,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 15:10,New Era,ZAN Esports,3,https://youtu.be/T6yRsKNvrnw?t=1799,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|23,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 16:25,ZETA Division,ONSIDE Gaming,5,https://youtu.be/T6yRsKNvrnw?t=6393,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|24,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 18:40,Cheeseburger,T1,3,https://youtu.be/T6yRsKNvrnw?t=14338,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|25,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 15:10,Team Falcons,ZAN Esports,3,https://youtu.be/atb7QLG9VZo?t=2272,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|26,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 16:45,Poker Face,Crazy Raccoon,3,https://youtu.be/atb7QLG9VZo?t=7701https://youtu.be/atb7QLG9VZo?t=13000,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|27,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 18:10,ZETA Division,New Era,3,https://youtu.be/atb7QLG9VZo?t=13000,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|28,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 17:15,Poker Face,ONSIDE Gaming,3,https://youtu.be/OUd_hoQzJLk?t=2455,2.0,1.1127777777777779,0.5563888888888889,1.1127777777777779,True
+Asia/Stage 1/Korea|Regular Season|29,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 18:45,T1,ZETA Division,4,https://youtu.be/OUd_hoQzJLk?t=7804,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|30,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 20:35,Crazy Raccoon,New Era,3,https://youtu.be/OUd_hoQzJLk?t=14406,2.0,1.0341666666666667,0.5170833333333333,1.0341666666666667,True
+Asia/Stage 1/Korea|Regular Season|31,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 15:10,T1,ZAN Esports,3,https://youtu.be/mHZNS0OtqZ8?t=2318,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|32,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 16:40,ZETA Division,Cheeseburger,3,https://youtu.be/mHZNS0OtqZ8?t=7734,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|33,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 18:10,Team Falcons,Crazy Raccoon,3,https://youtu.be/mHZNS0OtqZ8?t=12809,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|34,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 15:10,ZAN Esports,Poker Face,3,https://youtu.be/iwxxXdPBkb4?t=2718,1.0,0.5047222222222222,0.5047222222222222,0.5047222222222222,True
+Asia/Stage 1/Korea|Regular Season|35,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 16:35,ONSIDE Gaming,Team Falcons,5,https://youtu.be/iwxxXdPBkb4?t=7523,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|36,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 18:30,New Era,Cheeseburger,3,https://youtu.be/iwxxXdPBkb4?t=14582,3.0,1.446388888888889,0.43416666666666665,0.8683333333333333,True
+Asia/Stage 1/Pacific|Main/Playoffs|1,Asia/Stage 1/Pacific,Main/Playoffs,2026-04-30 - 18:10,the gatos guapos,Quasar esports,4,https://www.youtube.com/live/tTAppcXyzM0?si=NG4CLImxZO1zApXE&t=1709,1.0,0.4241666666666667,0.4241666666666667,0.4241666666666667,True
+Asia/Stage 1/Pacific|Main/Playoffs|2,Asia/Stage 1/Pacific,Main/Playoffs,2026-04-30 - 19:35,team secret,Rankers,3,https://www.youtube.com/live/tTAppcXyzM0?si=K0F5V_xkItMdnvRu&t=6871,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Main/Playoffs|3,Asia/Stage 1/Pacific,Main/Playoffs,2026-04-30 - 22:00,the gatos guapos,team secret,5,https://www.youtube.com/live/tTAppcXyzM0?si=vxBDeEVbH6Xha62H&t=15500,5.0,4.145277777777777,0.8291666666666667,1.6583333333333334,True
+Asia/Stage 1/Pacific|Main/Playoffs|4,Asia/Stage 1/Pacific,Main/Playoffs,2026-04-30 - 20:45,Quasar esports,Rankers,3,https://www.youtube.com/live/tTAppcXyzM0?si=HbkJXjoZsvooHUwi&t=10783,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Regular Season|1,Asia/Stage 1/Pacific,Regular Season,2026-03-26 - 18:30,Team Secret,Rankers,3,https://www.youtube.com/live/HQqErytmZGs?si=RliujuHY96Zn06AM&t=790,3.0,1.3294444444444444,0.5425,1.085,True
+Asia/Stage 1/Pacific|Regular Season|2,Asia/Stage 1/Pacific,Regular Season,2026-03-26 - 19:40,MMY,The Gatos Guapos,3,https://www.youtube.com/live/HQqErytmZGs?si=wnu71ybq0_D-Ubw_&t=5132,3.0,0.6513888888888889,0.21722222222222223,0.43444444444444447,True
+Asia/Stage 1/Pacific|Regular Season|3,Asia/Stage 1/Pacific,Regular Season,2026-03-26 - 20:50,FURY,Quasar Esports,4,https://www.youtube.com/live/HQqErytmZGs?si=z2qTMWsZIuBPnM6n&t=9109,2.0,1.0052777777777777,0.5026388888888889,1.0052777777777777,True
+Asia/Stage 1/Pacific|Regular Season|4,Asia/Stage 1/Pacific,Regular Season,2026-04-02 - 18:05,fury,The Gatos Guapos,3,https://www.youtube.com/live/0NCCR2xvaj0?si=HA_oMbUuzMqWsbkv&t=1655,2.0,1.0672222222222223,0.5336111111111111,1.0672222222222223,True
+Asia/Stage 1/Pacific|Regular Season|5,Asia/Stage 1/Pacific,Regular Season,2026-04-02 - 19:15,Team Secret,mmy,3,https://www.youtube.com/live/0NCCR2xvaj0?si=UyOufkLk2XsHwOZH&t=5724,2.0,0.9913888888888889,0.49569444444444444,0.9913888888888889,True
+Asia/Stage 1/Pacific|Regular Season|6,Asia/Stage 1/Pacific,Regular Season,2026-04-02 - 20:20,quasar esports,rankers,5,https://www.youtube.com/live/0NCCR2xvaj0?si=uDyn_yUiwOHFQ_de&t=9770,11.0,9.780277777777778,0.9777777777777777,1.9555555555555555,True
+Asia/Stage 1/Pacific|Regular Season|7,Asia/Stage 1/Pacific,Regular Season,2026-04-09 - 18:05,fury,rankers,3,https://www.youtube.com/live/99ItwmDxXbQ?si=HIcab-jOgN0X5Hw-&t=955,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Regular Season|8,Asia/Stage 1/Pacific,Regular Season,2026-04-09 - 19:20,The Gatos Guapos,Team Secret,3,https://www.youtube.com/live/99ItwmDxXbQ?si=ZETgOFVCbETypaHA&t=4719,3.0,1.1675,0.2797222222222222,0.5594444444444444,True
+Asia/Stage 1/Pacific|Regular Season|9,Asia/Stage 1/Pacific,Regular Season,2026-04-09 - 20:30,mmy,quasar esports,4,https://www.youtube.com/live/99ItwmDxXbQ?si=Ar8sGWOJIG3sIYg9&t=8979,2.0,1.6130555555555555,0.8065277777777777,1.6130555555555555,True
+Asia/Stage 1/Pacific|Regular Season|10,Asia/Stage 1/Pacific,Regular Season,2026-04-16 - 18:05,Team Secret,fury,3,https://www.youtube.com/live/unkdfOkX8Do?si=1wBuWVIc1rtFO_UF&t=1591,2.0,0.9238888888888889,0.46194444444444444,0.9238888888888889,True
+Asia/Stage 1/Pacific|Regular Season|11,Asia/Stage 1/Pacific,Regular Season,2026-04-16 - 19:05,quasar esports,The Gatos Guapos,3,https://www.youtube.com/live/unkdfOkX8Do?si=7imsXZssDMxbM9kZ&t=5036,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Regular Season|12,Asia/Stage 1/Pacific,Regular Season,2026-04-16 - 20:05,mmy,rankers,5,https://www.youtube.com/live/unkdfOkX8Do?si=Vf6IbaTnQVR5W0X6&t=8582,4.0,4.091111111111111,1.0227777777777778,2.0455555555555556,True
+Asia/Stage 1/Pacific|Regular Season|13,Asia/Stage 1/Pacific,Regular Season,2026-04-23 - 18:05,Team Secret,quasar esports,3,https://www.youtube.com/live/ncGClqFjkuw?si=GBJ3Jjn2vGEJBRBX&t=1243,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Regular Season|14,Asia/Stage 1/Pacific,Regular Season,2026-04-23 - 19:10,fury,mmy,3,https://www.youtube.com/live/ncGClqFjkuw?si=5QJqyLYLJzoP2Jw2&t=5056,,,0.0,0.0,False
+Asia/Stage 1/Pacific|Regular Season|15,Asia/Stage 1/Pacific,Regular Season,2026-04-23 - 20:30,The Gatos Guapos,rankers,3,https://www.youtube.com/live/ncGClqFjkuw?si=9xtXN7JgSP3bN4qD&t=9988,5.0,3.3577777777777778,0.6713888888888889,1.3427777777777778,True
+Asia/Stage 2/Japan|Main/Playoffs|1,Asia/Stage 2/Japan,Main/Playoffs,2026-06-29 - 18:10,Enter Force.36,Murash Gaming,6,https://youtu.be/oWyYDTq4ulQ?t=2345,12.0,16.838333333333335,1.553611111111111,3.107222222222222,True
+Asia/Stage 2/Japan|Main/Playoffs|2,Asia/Stage 2/Japan,Main/Playoffs,2026-06-29 - 21:25,Varrel,Please Not Hero Ban,5,https://youtu.be/oWyYDTq4ulQ?t=13528,1.0,0.6311111111111111,0.6311111111111111,0.6311111111111111,True
+Asia/Stage 2/Japan|Main/Playoffs|3,Asia/Stage 2/Japan,Main/Playoffs,2026-06-30 - 19:55,Murash Gaming,Varrel,4,https://youtu.be/ktNPXIdmCtE?t=8720,5.0,3.4,0.68,1.36,True
+Asia/Stage 2/Japan|Main/Playoffs|4,Asia/Stage 2/Japan,Main/Playoffs,2026-06-30 - 18:10,Enter Force.36,Please Not Hero Ban,4,https://youtu.be/ktNPXIdmCtE?t=2275,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|1,Asia/Stage 2/Japan,Regular Season,2026-06-01 - 18:10,MURASH GAMING,REVATI,4,,2.0,0.4236111111111111,0.21180555555555555,0.4236111111111111,True
+Asia/Stage 2/Japan|Regular Season|2,Asia/Stage 2/Japan,Regular Season,2026-06-01 - 19:45,ENTER FORCE.36,Uwinks,5,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|3,Asia/Stage 2/Japan,Regular Season,2026-06-01 - 21:55,Please Not Hero Ban,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|4,Asia/Stage 2/Japan,Regular Season,2026-06-02 - 18:10,Lazuli,99DIVINE,5,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|5,Asia/Stage 2/Japan,Regular Season,2026-06-02 - 20:00,Please Not Hero Ban,Uwinks,5,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|6,Asia/Stage 2/Japan,Regular Season,2026-06-02 - 22:10,MURASH GAMING,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|7,Asia/Stage 2/Japan,Regular Season,2026-06-08 - 18:10,Please Not Hero Ban,99DIVINE,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|8,Asia/Stage 2/Japan,Regular Season,2026-06-08 19:30,MURASH GAMING,Lazuli,5,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|9,Asia/Stage 2/Japan,Regular Season,2026-06-08 21:40,VARREL,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|10,Asia/Stage 2/Japan,Regular Season,2026-06-09 - 18:10,REVATI,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|11,Asia/Stage 2/Japan,Regular Season,2026-06-09 - 19:10,Please Not Hero Ban,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|12,Asia/Stage 2/Japan,Regular Season,2026-06-09 - 20:20,99DIVINE,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|13,Asia/Stage 2/Japan,Regular Season,2026-06-15 - 18:10,99DIVINE,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|14,Asia/Stage 2/Japan,Regular Season,2026-06-15 19:20,REVATI,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|15,Asia/Stage 2/Japan,Regular Season,2026-06-15 20:50,VARREL,Uwinks,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|16,Asia/Stage 2/Japan,Regular Season,2026-06-16 - 18:10,VARREL,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|17,Asia/Stage 2/Japan,Regular Season,2026-06-16 - 19:20,REVATI,Uwinks,3,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|18,Asia/Stage 2/Japan,Regular Season,2026-06-16 - 20:50,ENTER FORCE.36,Please Not Hero Ban,4,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|19,Asia/Stage 2/Japan,Regular Season,2026-06-22 - 18:10,99DIVINE,Uwinks,4,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|20,Asia/Stage 2/Japan,Regular Season,2026-06-22 - 19:45,VARREL,REVATI,3,,1.0,0.13305555555555557,0.13305555555555557,0.13305555555555557,True
+Asia/Stage 2/Japan|Regular Season|21,Asia/Stage 2/Japan,Regular Season,2026-06-22 - 20:50,Lazuli,ENTER FORCE.36,3,,1.0,0.11333333333333333,0.11333333333333333,0.11333333333333333,True
+Asia/Stage 2/Japan|Regular Season|22,Asia/Stage 2/Japan,Regular Season,2026-06-23 - 18:10,MURASH GAMING,Uwinks,4,,2.0,1.0127777777777778,0.5063888888888889,1.0127777777777778,True
+Asia/Stage 2/Japan|Regular Season|23,Asia/Stage 2/Japan,Regular Season,2026-06-23 - 19:55,Lazuli,Please Not Hero Ban,4,,1.0,0.7847222222222222,0.7847222222222222,0.7847222222222222,True
+Asia/Stage 2/Japan|Regular Season|24,Asia/Stage 2/Japan,Regular Season,2026-06-23 - 20:45,99DIVINE,REVATI,4,,4.0,1.4972222222222222,0.2515277777777778,0.5030555555555556,True
+Asia/Stage 2/Japan|Regular Season|25,Asia/Stage 2/Japan,Regular Season,2026-06-24 - 18:10,MURASH GAMING,ENTER FORCE.36,4,,,,0.0,0.0,False
+Asia/Stage 2/Japan|Regular Season|26,Asia/Stage 2/Japan,Regular Season,2026-06-24 19:35,Lazuli,Uwinks,5,,1.0,0.24888888888888888,0.24888888888888888,0.24888888888888888,True
+Asia/Stage 2/Japan|Regular Season|27,Asia/Stage 2/Japan,Regular Season,2026-06-24 21:55,VARREL,99DIVINE,3,,1.0,0.5061111111111111,0.5061111111111111,0.5061111111111111,True
+Asia/Stage 2/Japan|Regular Season|28,Asia/Stage 2/Japan,Regular Season,2026-06-24 - 23:00,Please Not Hero Ban,REVATI,3,,2.0,0.37277777777777776,0.18638888888888888,0.37277777777777776,True
+Asia/Stage 2/Korea|Main/Playoffs|1,Asia/Stage 2/Korea,Main/Playoffs,2026-07-03 - 18:50,Crazy Raccoon,Team Falcons,4,https://youtu.be/eq2bapxWWxM?t=7998,,,0.0,0.0,False
+Asia/Stage 2/Korea|Main/Playoffs|2,Asia/Stage 2/Korea,Main/Playoffs,2026-07-03 - 20:50,ZETA DIVISION,T1,3,https://youtu.be/eq2bapxWWxM?t=14742,,,0.0,0.0,False
+Asia/Stage 2/Korea|Main/Playoffs|3,Asia/Stage 2/Korea,Main/Playoffs,2026-07-04 - 16:45,Crazy Raccoon,T1,4,https://youtu.be/68gV9LaROk4?t=7836,2.0,1.5877777777777777,0.7938888888888889,1.5877777777777777,True
+Asia/Stage 2/Korea|Main/Playoffs|4,Asia/Stage 2/Korea,Main/Playoffs,2026-07-04 - 18:50,ZETA DIVISION,Team Falcons,5,https://youtu.be/68gV9LaROk4?t=15235,1.0,0.6425,0.6425,0.6425,True
+Asia/Stage 2/Korea|Main/Playoffs|5,Asia/Stage 2/Korea,Main/Playoffs,2026-07-05 - 16:55,Crazy Raccoon,ZETA DIVISION,4,https://youtu.be/aM3Dd5W0HrY?t=8692,,,0.0,0.0,False
+Asia/Stage 2/Korea|Main/Playoffs|6,Asia/Stage 2/Korea,Main/Playoffs,2026-07-05 - 18:55,T1,Team Falcons,3,https://youtu.be/aM3Dd5W0HrY?t=15516,,,0.0,0.0,False
+Asia/Stage 2/Korea|Main/Playoffs|7,Asia/Stage 2/Korea,Main/Playoffs,2026-07-03 - 17:15,O2 Blast,Zanside Gaming,3,https://youtu.be/eq2bapxWWxM?t=2311,,,0.0,0.0,False
+Asia/Stage 2/Korea|Main/Playoffs|8,Asia/Stage 2/Korea,Main/Playoffs,2026-07-04 - 15:10,Cheeseburger,SuperBad,3,https://youtu.be/68gV9LaROk4?t=2245,3.0,1.5825,0.6630555555555555,1.326111111111111,True
+Asia/Stage 2/Korea|Main/Playoffs|9,Asia/Stage 2/Korea,Main/Playoffs,2026-07-05 - 15:10,O2 Blast,Cheeseburger,4,https://youtu.be/aM3Dd5W0HrY?t=2159,12.0,8.115277777777777,0.7997222222222222,1.5994444444444444,True
+Asia/Stage 2/Korea|Main/Playoffs|10,Asia/Stage 2/Korea,Main/Playoffs,2026-07-10 - 19:05,Team Falcons,ZANSIDE GAMING,6,https://youtu.be/zPXiMFKDt6I?t=8927,5.0,3.3266666666666667,0.5161111111111111,1.0322222222222222,True
+Asia/Stage 2/Korea|Main/Playoffs|11,Asia/Stage 2/Korea,Main/Playoffs,2026-07-10 - 17:10,ZETA DIVISION,O2 Blast,4,https://youtu.be/zPXiMFKDt6I?t=2157,1.0,0.8447222222222223,0.8447222222222223,0.8447222222222223,True
+Asia/Stage 2/Korea|Main/Playoffs|12,Asia/Stage 2/Korea,Main/Playoffs,2026-07-11 - 15:05,Crazy Raccoon,ZANSIDE GAMING,5,https://youtu.be/BMKAjI20tnU?t=2380,5.0,2.913611111111111,0.5922222222222222,1.1844444444444444,True
+Asia/Stage 2/Korea|Main/Playoffs|13,Asia/Stage 2/Korea,Main/Playoffs,2026-07-11 - 17:25,T1,ZETA DIVISION,5,https://youtu.be/BMKAjI20tnU?t=10318,5.0,4.934722222222222,0.9869444444444444,1.9738888888888888,True
+Asia/Stage 2/Korea|Main/Playoffs|14,Asia/Stage 2/Korea,Main/Playoffs,2026-07-12 - 17:20,Crazy Raccoon,ZETA DIVISION,6,https://youtu.be/68qX5_OK8fs?t=9624,21.0,29.398333333333333,1.5252777777777777,3.0505555555555555,True
+Asia/Stage 2/Korea|Main/Playoffs|15,Asia/Stage 2/Korea,Main/Playoffs,2026-07-12 - 15:05,ZANSIDE GAMING,T1,5,https://youtu.be/68qX5_OK8fs?t=2312,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|1,Asia/Stage 2/Korea,Regular Season,2026-06-05 - 17:10,O2 Blast,ZANSIDE GAMING,3,,2.0,0.8052777777777778,0.4026388888888889,0.8052777777777778,True
+Asia/Stage 2/Korea|Regular Season|2,Asia/Stage 2/Korea,Regular Season,2026-06-05 - 18:40,Team Falcons,Crazy Raccoon,3,,2.0,1.7069444444444444,0.8534722222222222,1.7069444444444444,True
+Asia/Stage 2/Korea|Regular Season|3,Asia/Stage 2/Korea,Regular Season,2026-06-05 - 20:10,T1,ZETA DIVISION,5,,5.0,3.5277777777777777,0.7391666666666666,1.4783333333333333,True
+Asia/Stage 2/Korea|Regular Season|4,Asia/Stage 2/Korea,Regular Season,2026-06-06 - 15:10,Poker Face,CHEESEBURGER,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|5,Asia/Stage 2/Korea,Regular Season,2026-06-06 - 16:35,T1,SuperBad,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|6,Asia/Stage 2/Korea,Regular Season,2026-06-06 - 17:50,ZANSIDE GAMING,Team Falcons,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|7,Asia/Stage 2/Korea,Regular Season,2026-06-07 - 15:00,SuperBad,O2 Blast,3,,6.0,3.35,0.6691666666666667,1.3383333333333334,True
+Asia/Stage 2/Korea|Regular Season|8,Asia/Stage 2/Korea,Regular Season,2026-06-07 - 16:30,ZETA DIVISION,CHEESEBURGER,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|9,Asia/Stage 2/Korea,Regular Season,2026-06-07 - 18:00,Crazy Raccoon,Poker Face,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|10,Asia/Stage 2/Korea,Regular Season,2026-06-12 - 17:10,CHEESEBURGER,SuperBad,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|11,Asia/Stage 2/Korea,Regular Season,2026-06-12 - 18:35,O2 Blast,ZETA DIVISION,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|12,Asia/Stage 2/Korea,Regular Season,2026-06-12 - 19:50,Crazy Raccoon,ZANSIDE GAMING,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|13,Asia/Stage 2/Korea,Regular Season,2026-06-13 - 15:10,Poker Face,Team Falcons,3,,1.0,0.16194444444444445,0.16194444444444445,0.16194444444444445,True
+Asia/Stage 2/Korea|Regular Season|14,Asia/Stage 2/Korea,Regular Season,2026-06-13 - 16:25,T1,O2 Blast,3,,2.0,0.7133333333333334,0.3566666666666667,0.7133333333333334,True
+Asia/Stage 2/Korea|Regular Season|15,Asia/Stage 2/Korea,Regular Season,2026-06-13 - 17:45,SuperBad,ZETA DIVISION,3,,3.0,0.875,0.2916666666666667,0.5833333333333334,True
+Asia/Stage 2/Korea|Regular Season|16,Asia/Stage 2/Korea,Regular Season,2026-06-14 - 15:10,ZANSIDE GAMING,Poker Face,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|17,Asia/Stage 2/Korea,Regular Season,2026-06-14 - 16:30,Crazy Raccoon,CHEESEBURGER,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|18,Asia/Stage 2/Korea,Regular Season,2026-06-14 - 17:45,Team Falcons,T1,5,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|19,Asia/Stage 2/Korea,Regular Season,2026-06-19 - 17:20,ZANSIDE GAMING,CHEESEBURGER,4,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|20,Asia/Stage 2/Korea,Regular Season,2026-06-19 - 19:15,Team Falcons,O2 Blast,3,,3.0,0.895,0.36083333333333334,0.7216666666666667,True
+Asia/Stage 2/Korea|Regular Season|21,Asia/Stage 2/Korea,Regular Season,2026-06-19 - 21:00,T1,Crazy Raccoon,4,,2.0,1.9297222222222221,0.9648611111111111,1.9297222222222221,True
+Asia/Stage 2/Korea|Regular Season|22,Asia/Stage 2/Korea,Regular Season,2026-06-20 - 15:15,Poker Face,SuperBad,5,,1.0,0.28444444444444444,0.28444444444444444,0.28444444444444444,True
+Asia/Stage 2/Korea|Regular Season|23,Asia/Stage 2/Korea,Regular Season,2026-06-20 - 17:20,ZETA DIVISION,ZANSIDE GAMING,5,,3.0,2.4616666666666664,1.0705555555555555,2.141111111111111,True
+Asia/Stage 2/Korea|Regular Season|24,Asia/Stage 2/Korea,Regular Season,2026-06-20 - 19:40,CHEESEBURGER,T1,3,,1.0,0.18166666666666667,0.18166666666666667,0.18166666666666667,True
+Asia/Stage 2/Korea|Regular Season|25,Asia/Stage 2/Korea,Regular Season,2026-06-21 - 15:15,Team Falcons,SuperBad,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|26,Asia/Stage 2/Korea,Regular Season,2026-06-21 - 16:40,O2 Blast,Crazy Raccoon,4,,6.0,1.156388888888889,0.1486111111111111,0.2972222222222222,True
+Asia/Stage 2/Korea|Regular Season|27,Asia/Stage 2/Korea,Regular Season,2026-06-21 - 18:15,ZETA DIVISION,Poker Face,3,,2.0,0.335,0.1675,0.335,True
+Asia/Stage 2/Korea|Regular Season|28,Asia/Stage 2/Korea,Regular Season,2026-06-26 - 17:15,CHEESEBURGER,O2 Blast,4,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|29,Asia/Stage 2/Korea,Regular Season,2026-06-26 - 19:05,ZETA DIVISION,Team Falcons,3,,5.0,4.859166666666667,1.0422222222222222,2.0844444444444443,True
+Asia/Stage 2/Korea|Regular Season|30,Asia/Stage 2/Korea,Regular Season,2026-06-26 - 20:40,SuperBad,ZANSIDE GAMING,4,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|31,Asia/Stage 2/Korea,Regular Season,2026-06-27 - 15:15,Poker Face,T1,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|32,Asia/Stage 2/Korea,Regular Season,2026-06-27 - 16:20,CHEESEBURGER,Team Falcons,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|33,Asia/Stage 2/Korea,Regular Season,2026-06-27 - 17:30,SuperBad,Crazy Raccoon,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|34,Asia/Stage 2/Korea,Regular Season,2026-06-28 - 15:15,O2 Blast,Poker Face,4,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|35,Asia/Stage 2/Korea,Regular Season,2026-06-28 - 17:10,ZANSIDE GAMING,T1,3,,,,0.0,0.0,False
+Asia/Stage 2/Korea|Regular Season|36,Asia/Stage 2/Korea,Regular Season,2026-06-28 - 18:35,Crazy Raccoon,ZETA DIVISION,5,,4.0,3.7330555555555556,0.93375,1.8675,True
+Asia/Stage 2/Pacific|Main/Playoffs|1,Asia/Stage 2/Pacific,Main/Playoffs,2026-07-09 - 18:10,Shengshi Esports,Trap12,3,,1.0,0.8372222222222222,0.8372222222222222,0.8372222222222222,True
+Asia/Stage 2/Pacific|Main/Playoffs|2,Asia/Stage 2/Pacific,Main/Playoffs,2026-07-09 - 19:20,Najdorf Esports,Team Secret,4,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Main/Playoffs|3,Asia/Stage 2/Pacific,Main/Playoffs,2026-07-09 - 21:40,Shengshi Esports,Team Secret,7,,11.0,15.310833333333333,1.5105555555555557,3.0211111111111113,True
+Asia/Stage 2/Pacific|Main/Playoffs|4,Asia/Stage 2/Pacific,Main/Playoffs,2026-07-09 - 20:35,Trap12,Najdorf Esports,4,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|1,Asia/Stage 2/Pacific,Regular Season,2026-06-04 - 18:15,ELMT,SHENGSHI Esports,3,,1.0,0.175,0.175,0.175,True
+Asia/Stage 2/Pacific|Regular Season|2,Asia/Stage 2/Pacific,Regular Season,2026-06-04 - 19:25,MENG GONG 3,Trap12,3,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|3,Asia/Stage 2/Pacific,Regular Season,2026-06-04 - 20:35,Team Secret,Najdorf Esports,4,,1.0,0.9158333333333334,0.9158333333333334,0.9158333333333334,True
+Asia/Stage 2/Pacific|Regular Season|4,Asia/Stage 2/Pacific,Regular Season,2026-06-11 - 18:10,Trap12,Najdorf Esports,5,,1.0,1.1730555555555555,1.1730555555555555,1.1730555555555555,True
+Asia/Stage 2/Pacific|Regular Season|5,Asia/Stage 2/Pacific,Regular Season,2026-06-11 - 20:05,Team Secret,ELMT,3,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|6,Asia/Stage 2/Pacific,Regular Season,2026-06-11 - 21:00,MENG GONG 3,SHENGSHI Esports,4,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|7,Asia/Stage 2/Pacific,Regular Season,2026-06-18 - 18:00,ELMT,Trap12,4,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|8,Asia/Stage 2/Pacific,Regular Season,2026-06-18 - 19:45,SHENGSHI Esports,Team Secret,4,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|9,Asia/Stage 2/Pacific,Regular Season,2026-06-18 - 21:30,MENG GONG 3,Najdorf Esports,4,,4.0,1.6058333333333332,0.26694444444444443,0.5338888888888889,True
+Asia/Stage 2/Pacific|Regular Season|10,Asia/Stage 2/Pacific,Regular Season,2026-06-25 - 18:10,Trap12,SHENGSHI Esports,3,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|11,Asia/Stage 2/Pacific,Regular Season,2026-06-25 - 19:40,ELMT,Najdorf Esports,4,,2.0,0.715,0.3575,0.715,True
+Asia/Stage 2/Pacific|Regular Season|12,Asia/Stage 2/Pacific,Regular Season,2026-06-25 - 21:15,Team Secret,MENG GONG 3,3,,2.0,0.7875,0.39375,0.7875,True
+Asia/Stage 2/Pacific|Regular Season|13,Asia/Stage 2/Pacific,Regular Season,2026-07-02 - 18:10,MENG GONG 3,ELMT,3,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|14,Asia/Stage 2/Pacific,Regular Season,2026-07-02 - 19:15,Team Secret,Trap12,3,,,,0.0,0.0,False
+Asia/Stage 2/Pacific|Regular Season|15,Asia/Stage 2/Pacific,Regular Season,2026-07-02 - 20:50,SHENGSHI Esports,Najdorf Esports,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Main/Playoffs|1,Asia/Stage 3/Japan,Main/Playoffs,2026-10-19 - 18:45,99DIVINE,MURASH Gaming,7,https://youtu.be/pKHw7tl_4Jc?t=4440,,,0.0,0.0,False
+Asia/Stage 3/Japan|Main/Playoffs|2,Asia/Stage 3/Japan,Main/Playoffs,2026-10-19 - 21:45,Varrel,Enter Force.36,4,https://youtu.be/pKHw7tl_4Jc?t=15246,,,0.0,0.0,False
+Asia/Stage 3/Japan|Main/Playoffs|3,Asia/Stage 3/Japan,Main/Playoffs,2026-10-20 - 21:10,MURASH Gaming,VARREL,5,https://youtu.be/CEbGW1zAJIo?t=12699,,,0.0,0.0,False
+Asia/Stage 3/Japan|Main/Playoffs|4,Asia/Stage 3/Japan,Main/Playoffs,2026-10-20 - 18:15,99DIVINE,ENTER FORCE.36,6,https://youtu.be/CEbGW1zAJIo?t=2468,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|1,Asia/Stage 3/Japan,Regular Season,2026-09-21 - 18:10,ENTER FORCE.36,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|2,Asia/Stage 3/Japan,Regular Season,2026-09-21 - 19:30,REVATI,Please Not Hero Ban,5,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|3,Asia/Stage 3/Japan,Regular Season,2026-09-21 - 21:50,99DIVINE,VARREL,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|4,Asia/Stage 3/Japan,Regular Season,2026-09-22 - 18:10,Please Not Hero Ban,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|5,Asia/Stage 3/Japan,Regular Season,2026-09-22 - 19:20,ENTER FORCE.36,Uwinks,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|6,Asia/Stage 3/Japan,Regular Season,2026-09-22 - 20:40,VARREL,REVATI,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|7,Asia/Stage 3/Japan,Regular Season,2026-09-28 - 18:10,Please Not Hero Ban,Lazuli,5,,2.0,2.0394444444444444,1.0197222222222222,2.0394444444444444,True
+Asia/Stage 3/Japan|Regular Season|8,Asia/Stage 3/Japan,Regular Season,2026-09-28 - 20:15,REVATI,99DIVINE,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|9,Asia/Stage 3/Japan,Regular Season,2026-09-28 - 21:30,MURASH GAMING,ENTER FORCE.36,4,,2.0,1.99,0.995,1.99,True
+Asia/Stage 3/Japan|Regular Season|10,Asia/Stage 3/Japan,Regular Season,2026-09-29 - 18:10,Please Not Hero Ban,Uwinks,5,,2.0,1.3125,0.65625,1.3125,True
+Asia/Stage 3/Japan|Regular Season|11,Asia/Stage 3/Japan,Regular Season,2026-09-29 - 20:25,MURASH GAMING,99DIVINE,3,,2.0,1.595,0.7975,1.595,True
+Asia/Stage 3/Japan|Regular Season|12,Asia/Stage 3/Japan,Regular Season,2026-09-29 - 22:00,Lazuli,VARREL,3,,2.0,0.4963888888888889,0.24819444444444444,0.4963888888888889,True
+Asia/Stage 3/Japan|Regular Season|13,Asia/Stage 3/Japan,Regular Season,2026-10-05 - 18:00,Uwinks,VARREL,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|14,Asia/Stage 3/Japan,Regular Season,2026-10-05 - 19:15,Please Not Hero Ban,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|15,Asia/Stage 3/Japan,Regular Season,2026-10-05 - 20:20,REVATI,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|16,Asia/Stage 3/Japan,Regular Season,2026-10-06 - 18:10,ENTER FORCE.36,VARREL,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|17,Asia/Stage 3/Japan,Regular Season,2026-10-06 - 19:50,Uwinks,99DIVINE,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|18,Asia/Stage 3/Japan,Regular Season,2026-10-06 - 21:00,MURASH GAMING,Lazuli,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|19,Asia/Stage 3/Japan,Regular Season,2026-10-12 - 18:10,Uwinks,REVATI,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|20,Asia/Stage 3/Japan,Regular Season,2026-10-12 - 20:05,Lazuli,99DIVINE,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|21,Asia/Stage 3/Japan,Regular Season,2026-10-12 - 21:50,VARREL,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|22,Asia/Stage 3/Japan,Regular Season,2026-10-13 - 18:00,ENTER FORCE.36,REVATI,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|23,Asia/Stage 3/Japan,Regular Season,2026-10-13 - 19:30,MURASH GAMING,Uwinks,4,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|24,Asia/Stage 3/Japan,Regular Season,2026-10-13 - 21:10,99DIVINE,Please Not Hero Ban,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|25,Asia/Stage 3/Japan,Regular Season,2026-10-14 - 18:00,VARREL,Please Not Hero Ban,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|26,Asia/Stage 3/Japan,Regular Season,2026-10-14 - 19:10,REVATI,MURASH GAMING,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|27,Asia/Stage 3/Japan,Regular Season,2026-10-14 - 20:25,99DIVINE,ENTER FORCE.36,3,,,,0.0,0.0,False
+Asia/Stage 3/Japan|Regular Season|28,Asia/Stage 3/Japan,Regular Season,2026-10-14 - 21:50,Lazuli,Uwinks,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|1,Asia/Stage 3/Korea,Main/Playoffs,2026-10-30 -  18:35,ZETA DIVISION,Cheeseburger,3,,3.0,3.135,1.045,2.09,True
+Asia/Stage 3/Korea|Main/Playoffs|2,Asia/Stage 3/Korea,Main/Playoffs,2026-10-30 - 19:50,Crazy Raccoon,T1,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|3,Asia/Stage 3/Korea,Main/Playoffs,2026-10-31 - 16:30,ZETA DIVISION,T1,3,,4.0,1.7586111111111111,0.5194444444444445,1.038888888888889,True
+Asia/Stage 3/Korea|Main/Playoffs|4,Asia/Stage 3/Korea,Main/Playoffs,2026-10-31 - 18:00,Crazy Raccoon,Cheeseburger,3,,1.0,0.4627777777777778,0.4627777777777778,0.4627777777777778,True
+Asia/Stage 3/Korea|Main/Playoffs|5,Asia/Stage 3/Korea,Main/Playoffs,2026-11-01 - 17:30,ZETA DIVISION,Crazy Raccoon,5,,13.0,12.903611111111111,1.1597222222222223,2.3194444444444446,True
+Asia/Stage 3/Korea|Main/Playoffs|6,Asia/Stage 3/Korea,Main/Playoffs,2026-11-01 - 19:00,T1,Cheeseburger,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|7,Asia/Stage 3/Korea,Main/Playoffs,2026-10-30 - 17:10,Team Falcons,SEIJI ESPORTS,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|8,Asia/Stage 3/Korea,Main/Playoffs,2026-10-31 - 15:00,Zanside Gaming,O2 Blast,4,,1.0,0.22833333333333333,0.22833333333333333,0.22833333333333333,True
+Asia/Stage 3/Korea|Main/Playoffs|9,Asia/Stage 3/Korea,Main/Playoffs,2026-11-01 - 15:00,SEIJI ESPORTS,Zanside Gaming,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|10,Asia/Stage 3/Korea,Main/Playoffs,"November 6, 2026 - 19:40",Cheeseburger,Team Falcons,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|11,Asia/Stage 3/Korea,Main/Playoffs,"November 6, 2026 - 17:15",T1,Zanside Gaming,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|12,Asia/Stage 3/Korea,Main/Playoffs,"November 7, 2026 - 15:15",ZETA Division,Team Falcons,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Main/Playoffs|13,Asia/Stage 3/Korea,Main/Playoffs,"November 7, 2026 - 17:25",Crazy Raccoon,T1,7,,11.0,15.447777777777778,1.5441666666666667,3.0883333333333334,True
+Asia/Stage 3/Korea|Main/Playoffs|14,Asia/Stage 3/Korea,Main/Playoffs,"November 8, 2026 - 18:10",ZETA Division,T1,5,,5.0,3.5919444444444446,0.7183333333333334,1.4366666666666668,True
+Asia/Stage 3/Korea|Main/Playoffs|15,Asia/Stage 3/Korea,Main/Playoffs,"November 8, 2026 - 15:00",Team Falcons,Crazy Raccoon,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|1,Asia/Stage 3/Korea,Regular Season,2026-10-02 - 17:15,Cheeseburger,Poker Face,3,,2.0,1.2091666666666667,0.6045833333333334,1.2091666666666667,True
+Asia/Stage 3/Korea|Regular Season|2,Asia/Stage 3/Korea,Regular Season,2026-10-02 - 18:45,Team Falcons,ZETA DIVISION,3,,3.0,1.7269444444444444,0.7227777777777777,1.4455555555555555,True
+Asia/Stage 3/Korea|Regular Season|3,Asia/Stage 3/Korea,Regular Season,2026-10-02 - 20:30,SEIJI ESPORTS,T1,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|4,Asia/Stage 3/Korea,Regular Season,2026-10-03 - 15:15,Cheeseburger,ZANSIDE Gaming,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|5,Asia/Stage 3/Korea,Regular Season,2026-10-03 - 16:35,T1,ZETA DIVISION,4,,1.0,0.9913888888888889,0.9913888888888889,0.9913888888888889,True
+Asia/Stage 3/Korea|Regular Season|6,Asia/Stage 3/Korea,Regular Season,2026-10-03 - 18:35,Crazy Raccoon,O2 Blast,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|7,Asia/Stage 3/Korea,Regular Season,2026-10-04 - 15:15,O2 Blast,SEIJI ESPORTS,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|8,Asia/Stage 3/Korea,Regular Season,2026-10-04 - 17:05,Crazy Raccoon,ZANSIDE Gaming,4,,2.0,1.1747222222222222,0.5873611111111111,1.1747222222222222,True
+Asia/Stage 3/Korea|Regular Season|9,Asia/Stage 3/Korea,Regular Season,2026-10-04 - 19:05,Team Falcons,Poker Face,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|10,Asia/Stage 3/Korea,Regular Season,2026-10-09 - 17:20,Team Falcons,O2 Blast,3,,1.0,0.43444444444444447,0.43444444444444447,0.43444444444444447,True
+Asia/Stage 3/Korea|Regular Season|11,Asia/Stage 3/Korea,Regular Season,2026-10-09 - 18:35,Poker Face,T1,3,,3.0,1.4755555555555555,0.49194444444444446,0.9838888888888889,True
+Asia/Stage 3/Korea|Regular Season|12,Asia/Stage 3/Korea,Regular Season,2026-10-09 - 20:05,SEIJI ESPORTS,ZETA DIVISION,3,,2.0,1.188611111111111,0.5943055555555555,1.188611111111111,True
+Asia/Stage 3/Korea|Regular Season|13,Asia/Stage 3/Korea,Regular Season,2026-10-10 - 15:15,SEIJI ESPORTS,ZANSIDE Gaming,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|14,Asia/Stage 3/Korea,Regular Season,2026-10-10 - 17:15,Crazy Raccoon,T1,4,,2.0,1.6991666666666667,0.8495833333333334,1.6991666666666667,True
+Asia/Stage 3/Korea|Regular Season|15,Asia/Stage 3/Korea,Regular Season,2026-10-10 - 19:10,Cheeseburger,Team Falcons,4,,2.0,1.4655555555555555,0.7327777777777778,1.4655555555555555,True
+Asia/Stage 3/Korea|Regular Season|16,Asia/Stage 3/Korea,Regular Season,2026-10-11 - 15:15,O2 Blast,ZANSIDE Gaming,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|17,Asia/Stage 3/Korea,Regular Season,2026-10-11 - 17:40,Cheeseburger,Crazy Raccoon,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|18,Asia/Stage 3/Korea,Regular Season,2026-10-11 - 19:40,Poker Face,ZETA DIVISION,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|19,Asia/Stage 3/Korea,Regular Season,2026-10-16 - 17:15,Team Falcons,SEIJI ESPORTS,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|20,Asia/Stage 3/Korea,Regular Season,2026-10-16 - 18:45,Cheeseburger,T1,3,,1.0,0.7438888888888889,0.7438888888888889,0.7438888888888889,True
+Asia/Stage 3/Korea|Regular Season|21,Asia/Stage 3/Korea,Regular Season,2026-10-16 - 20:15,O2 Blast,ZETA DIVISION,3,,1.0,0.4722222222222222,0.4722222222222222,0.4722222222222222,True
+Asia/Stage 3/Korea|Regular Season|22,Asia/Stage 3/Korea,Regular Season,2026-10-17 - 15:15,O2 Blast,Poker Face,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|23,Asia/Stage 3/Korea,Regular Season,2026-10-17 - 17:40,Crazy Raccoon,Team Falcons,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|24,Asia/Stage 3/Korea,Regular Season,2026-10-17 - 19:10,T1,ZANSIDE Gaming,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|25,Asia/Stage 3/Korea,Regular Season,2026-10-18 - 15:15,Cheeseburger,SEIJI ESPORTS,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|26,Asia/Stage 3/Korea,Regular Season,2026-10-18 - 16:35,Crazy Raccoon,Poker Face,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|27,Asia/Stage 3/Korea,Regular Season,2026-10-18 - 18:10,ZANSIDE Gaming,ZETA DIVISION,3,,2.0,0.6947222222222222,0.3473611111111111,0.6947222222222222,True
+Asia/Stage 3/Korea|Regular Season|28,Asia/Stage 3/Korea,Regular Season,2026-10-23 - 17:10,Cheeseburger,O2 Blast,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|29,Asia/Stage 3/Korea,Regular Season,2026-10-23 - 18:35,Team Falcons,ZANSIDE Gaming,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|30,Asia/Stage 3/Korea,Regular Season,2026-10-23 - 19:50,Crazy Raccoon,SEIJI ESPORTS,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|31,Asia/Stage 3/Korea,Regular Season,2026-10-24 - 15:00,Cheeseburger,ZETA DIVISION,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|32,Asia/Stage 3/Korea,Regular Season,2026-10-24 - 17:20,Team Falcons,T1,4,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|33,Asia/Stage 3/Korea,Regular Season,2026-10-24 - 19:15,Poker Face,SEIJI ESPORTS,5,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|34,Asia/Stage 3/Korea,Regular Season,2026-10-25 - 15:00,Poker Face,ZANSIDE Gaming,5,,1.0,1.1972222222222222,1.1972222222222222,1.1972222222222222,True
+Asia/Stage 3/Korea|Regular Season|35,Asia/Stage 3/Korea,Regular Season,2026-10-25 - 17:30,O2 Blast,T1,3,,,,0.0,0.0,False
+Asia/Stage 3/Korea|Regular Season|36,Asia/Stage 3/Korea,Regular Season,2026-10-25 - 19:10,ZETA DIVISION,Crazy Raccoon,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Main/Playoffs|1,Asia/Stage 3/Pacific,Main/Playoffs,2026-11-09 - 18:00,The Gatos Guapos,Stronghold,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Main/Playoffs|2,Asia/Stage 3/Pacific,Main/Playoffs,2026-11-09 - 19:30,SeijiKING,Team Benxxn,5,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Main/Playoffs|3,Asia/Stage 3/Pacific,Main/Playoffs,2026-11-09 - 23:10,The Gatos Guapos,SeijiKING,4,,5.0,3.193888888888889,0.6386111111111111,1.2772222222222223,True
+Asia/Stage 3/Pacific|Main/Playoffs|4,Asia/Stage 3/Pacific,Main/Playoffs,2026-11-09 - 21:35,Stronghold,Team Benxxn,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|1,Asia/Stage 3/Pacific,Regular Season,"November 4, 2026 - 18:00",junjilopzfx0764,Stronghold,5,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|2,Asia/Stage 3/Pacific,Regular Season,"November 4, 2026 - 20:10",CantHear,The Gatos Guapos,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|3,Asia/Stage 3/Pacific,Regular Season,"November 4, 2026 - 21:15",SeijiKING,Team Benxxn,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|4,Asia/Stage 3/Pacific,Regular Season,"November 5, 2026 - 18:10",The Gatos Guapos,Team Benxxn,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|5,Asia/Stage 3/Pacific,Regular Season,"November 5, 2026 - 19:05",SeijiKING,junjilopzfx0764,5,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|6,Asia/Stage 3/Pacific,Regular Season,"November 5, 2026 - 21:00",CantHear,Stronghold,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|7,Asia/Stage 3/Pacific,Regular Season,"November 6, 2026 - 18:10",junjilopzfx0764,The Gatos Guapos,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|8,Asia/Stage 3/Pacific,Regular Season,"November 6, 2026 - 19:30",Stronghold,SeijiKING,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|9,Asia/Stage 3/Pacific,Regular Season,"November 6, 2026 - 21:00",CantHear,Team Benxxn,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|10,Asia/Stage 3/Pacific,Regular Season,"November 7, 2026 - 18:00",The Gatos Guapos,Stronghold,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|11,Asia/Stage 3/Pacific,Regular Season,"November 7, 2026 - 19:50",junjilopzfx0764,Team Benxxn,5,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|12,Asia/Stage 3/Pacific,Regular Season,"November 7, 2026 - 21:45",SeijiKING,CantHear,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|13,Asia/Stage 3/Pacific,Regular Season,"November 8, 2026 - 18:00",CantHear,junjilopzfx0764,3,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|14,Asia/Stage 3/Pacific,Regular Season,"November 8, 2026 - 20:10",SeijiKING,The Gatos Guapos,4,,,,0.0,0.0,False
+Asia/Stage 3/Pacific|Regular Season|15,Asia/Stage 3/Pacific,Regular Season,"November 8, 2026 - 22:00",Stronghold,Team Benxxn,3,,,,0.0,0.0,False

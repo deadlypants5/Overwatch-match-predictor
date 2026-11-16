@@ -1,0 +1,25 @@
+scope,series,obs_video,missing_obs,missing_obs_but_official_vod,no_video_at_all,maps_no_video_at_all
+PILOT Korea S1,51,25,26,26,0,0
+Asia/Stage 1,17,4,13,13,0,0
+Asia/Stage 1/Japan,32,16,16,0,16,58
+Asia/Stage 1/Korea,51,25,26,26,0,0
+Asia/Stage 1/Pacific,19,13,6,6,0,0
+Asia/Stage 2/Japan,32,12,20,1,19,68
+Asia/Stage 2/Korea,51,25,26,6,20,66
+Asia/Stage 2/Pacific,19,8,11,0,11,39
+Asia/Stage 3,12,0,12,0,12,40
+Asia/Stage 3/Japan,32,5,27,4,23,76
+Asia/Stage 3/Korea,51,20,31,0,31,116
+Asia/Stage 3/Pacific,19,1,18,0,18,68
+Champions Clash,16,13,3,1,2,2
+China/Stage 1,36,22,14,0,14,48
+China/Stage 2,36,12,24,2,22,76
+China/Stage 3,36,12,24,6,18,65
+EMEA/Stage 1,21,16,5,5,0,0
+EMEA/Stage 2,21,13,8,6,2,10
+EMEA/Stage 3,21,14,7,0,7,27
+Midseason Championship,28,22,6,6,0,0
+NA/Stage 1,21,16,5,3,2,10
+NA/Stage 2,21,9,12,9,3,10
+NA/Stage 3,21,13,8,0,8,25
+ALL 2026,613,291,322,94,228,804

@@ -1,0 +1,23 @@
+event,lp_series,lp_maps,sheet_series,sheet_maps,series_diff,maps_diff
+Asia/Stage 1,17,52,18,54,-1,-2
+Asia/Stage 1/Japan,32,116,32,116,0,0
+Asia/Stage 1/Korea,51,186,51,186,0,0
+Asia/Stage 1/Pacific,19,66,19,66,0,0
+Asia/Stage 2/Japan,32,120,32,120,0,0
+Asia/Stage 2/Korea,51,188,51,188,0,0
+Asia/Stage 2/Pacific,19,72,19,72,0,0
+Asia/Stage 3,12,40,12,40,0,0
+Asia/Stage 3/Japan,32,118,32,118,0,0
+Asia/Stage 3/Korea,51,191,51,191,0,0
+Asia/Stage 3/Pacific,19,72,19,57,0,15
+Champions Clash,16,50,14,48,2,2
+China/Stage 1,36,128,36,129,0,-1
+China/Stage 2,36,126,36,126,0,0
+China/Stage 3,36,141,36,139,0,2
+EMEA/Stage 1,21,78,21,78,0,0
+EMEA/Stage 2,21,88,16,66,5,22
+EMEA/Stage 3,21,87,13,58,8,29
+Midseason Championship,28,78,28,78,0,0
+NA/Stage 1,21,82,21,82,0,0
+NA/Stage 2,21,75,21,75,0,0
+NA/Stage 3,21,75,21,75,0,0

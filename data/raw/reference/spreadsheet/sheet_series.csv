@@ -1,0 +1,600 @@
+series_key,sheet,row,phase,label,team1,team2,abbr1,abbr2,score1,score2,n_maps
+Japan - Stage 1|7,Japan - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Please Not Hero Ban,Telomere,PNHB,TLM,3,1,4
+Japan - Stage 1|33,Japan - Stage 1,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,ENTER FORCE.36,Nyam Gaming,E36,NG,3,0,3
+Japan - Stage 1|59,Japan - Stage 1,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,TOKYO TAIYOs,VARREL,TT,VL,0,3,3
+Japan - Stage 1|85,Japan - Stage 1,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Lazuli,99DIVINE,LZ,99D,0,3,3
+Japan - Stage 1|111,Japan - Stage 1,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Please Not Hero Ban,VARREL,PNHB,VL,0,3,3
+Japan - Stage 1|137,Japan - Stage 1,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,TOKYO TAIYOs,Nyam Gaming,TT,NG,1,3,4
+Japan - Stage 1|163,Japan - Stage 1,163,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Please Not Hero Ban,Lazuli,PNHB,LZ,3,0,3
+Japan - Stage 1|189,Japan - Stage 1,189,Round Robin [Bo5],Week 2 | Day 1 | Game 2,TOKYO TAIYOs,99DIVINE,TT,99D,1,3,4
+Japan - Stage 1|215,Japan - Stage 1,215,Round Robin [Bo5],Week 2 | Day 1 | Game 3,VARREL,ENTER FORCE.36,VL,E36,3,1,4
+Japan - Stage 1|241,Japan - Stage 1,241,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Telomere,Lazuli,TLM,LZ,0,3,3
+Japan - Stage 1|267,Japan - Stage 1,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,TOKYO TAIYOs,Please Not Hero Ban,TT,PNHB,2,3,5
+Japan - Stage 1|293,Japan - Stage 1,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,99DIVINE,ENTER FORCE.36,99D,E36,0,3,3
+Japan - Stage 1|319,Japan - Stage 1,319,Round Robin [Bo5],Week 3 | Day 1 | Game 1,99DIVINE,Please Not Hero Ban,99D,PNHB,1,3,4
+Japan - Stage 1|345,Japan - Stage 1,345,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Telomere,ENTER FORCE.36,TLM,E36,0,3,3
+Japan - Stage 1|371,Japan - Stage 1,371,Round Robin [Bo5],Week 3 | Day 1 | Game 3,VARREL,Nyam Gaming,VL,NG,3,0,3
+Japan - Stage 1|397,Japan - Stage 1,397,Round Robin [Bo5],Week 3 | Day 2 | Game 1,VARREL,Lazuli,VL,LZ,3,0,3
+Japan - Stage 1|423,Japan - Stage 1,423,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Telomere,Nyam Gaming,TLM,NG,1,3,4
+Japan - Stage 1|449,Japan - Stage 1,449,Round Robin [Bo5],Week 3 | Day 2 | Game 3,ENTER FORCE.36,TOKYO TAIYOs,E36,TT,2,3,5
+Japan - Stage 1|475,Japan - Stage 1,475,Round Robin [Bo5],Week 4 | Day 1 | Game 1,99DIVINE,Nyam Gaming,99D,NG,3,1,4
+Japan - Stage 1|501,Japan - Stage 1,501,Round Robin [Bo5],Week 4 | Day 1 | Game 2,VARREL,Telomere,VL,TLM,3,0,3
+Japan - Stage 1|527,Japan - Stage 1,527,Round Robin [Bo5],Week 4 | Day 1 | Game 3,Lazuli,ENTER FORCE.36,LZ,E36,0,3,3
+Japan - Stage 1|553,Japan - Stage 1,553,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Please Not Hero Ban,Nyam Gaming,PNHB,NG,3,0,3
+Japan - Stage 1|579,Japan - Stage 1,579,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Lazuli,TOKYO TAIYOs,LZ,TT,1,3,4
+Japan - Stage 1|605,Japan - Stage 1,605,Round Robin [Bo5],Week 4 | Day 2 | Game 3,99DIVINE,Telomere,99D,TLM,3,1,4
+Japan - Stage 1|631,Japan - Stage 1,631,Round Robin [Bo5],Week 4 | Day 3 | Game 1,Please Not Hero Ban,ENTER FORCE.36,PNHB,E36,0,3,3
+Japan - Stage 1|657,Japan - Stage 1,657,Round Robin [Bo5],Week 4 | Day 3 | Game 2,Lazuli,Nyam Gaming,LZ,NG,3,2,5
+Japan - Stage 1|683,Japan - Stage 1,683,Round Robin [Bo5],Week 4 | Day 3 | Game 3,VARREL,99DIVINE,VL,99D,3,0,3
+Japan - Stage 1|709,Japan - Stage 1,709,Round Robin [Bo5],Week 4 | Day 3 | Game 4,TOKYO TAIYOs,Telomere,TT,TLM,3,0,3
+Japan - Stage 1|735,Japan - Stage 1,735,Semifinals [Bo7],Week 5 | Day 1 | Game 1,ENTER FORCE.36,Please Not Hero Ban,E36,PNHB,4,0,4
+Japan - Stage 1|761,Japan - Stage 1,761,Semifinals [Bo7],Week 5 | Day 1 | Game 2,VARREL,99DIVINE,VL,99D,4,0,4
+Japan - Stage 1|787,Japan - Stage 1,787,Third Place Match [Bo7],Week 5 | Day 2 | Game 1,Please Not Hero Ban,99DIVINE,PNHB,99D,4,0,4
+Japan - Stage 1|813,Japan - Stage 1,813,Grand Finals [Bo7],Week 5 | Day 2 | Game 2,VARREL,ENTER FORCE.36,VL,E36,4,0,5
+Japan - Stage 2|7,Japan - Stage 2,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,MURASH GAMING,REVATI,MRG,REV,3,1,4
+Japan - Stage 2|33,Japan - Stage 2,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,ENTER FORCE.36,Uwinks,E36,UW,2,3,5
+Japan - Stage 2|59,Japan - Stage 2,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,Please Not Hero Ban,VARREL,PNHB,VL,0,3,3
+Japan - Stage 2|85,Japan - Stage 2,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Lazuli,99DIVINE,LZ,99D,2,3,5
+Japan - Stage 2|111,Japan - Stage 2,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Please Not Hero Ban,Uwinks,PNHB,UW,3,2,5
+Japan - Stage 2|137,Japan - Stage 2,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,MURASH GAMING,VARREL,MRG,VL,0,3,3
+Japan - Stage 2|163,Japan - Stage 2,163,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Please Not Hero Ban,99DIVINE,PNHB,99D,3,0,3
+Japan - Stage 2|189,Japan - Stage 2,189,Round Robin [Bo5],Week 2 | Day 1 | Game 2,MURASH GAMING,Lazuli,MRG,LZ,3,2,5
+Japan - Stage 2|215,Japan - Stage 2,215,Round Robin [Bo5],Week 2 | Day 1 | Game 3,VARREL,ENTER FORCE.36,VL,E36,3,0,3
+Japan - Stage 2|241,Japan - Stage 2,241,Round Robin [Bo5],Week 2 | Day 2 | Game 1,REVATI,Lazuli,REV,LZ,0,3,3
+Japan - Stage 2|267,Japan - Stage 2,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Please Not Hero Ban,MURASH GAMING,PNHB,MRG,0,3,3
+Japan - Stage 2|293,Japan - Stage 2,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,99DIVINE,ENTER FORCE.36,99D,E36,0,3,3
+Japan - Stage 2|319,Japan - Stage 2,319,Round Robin [Bo5],Week 3 | Day 1 | Game 1,99DIVINE,MURASH GAMING,99D,MRG,0,3,3
+Japan - Stage 2|345,Japan - Stage 2,345,Round Robin [Bo5],Week 3 | Day 1 | Game 2,REVATI,ENTER FORCE.36,REV,E36,0,3,3
+Japan - Stage 2|371,Japan - Stage 2,371,Round Robin [Bo5],Week 3 | Day 1 | Game 3,VARREL,Uwinks,VL,UW,3,0,3
+Japan - Stage 2|397,Japan - Stage 2,397,Round Robin [Bo5],Week 3 | Day 2 | Game 1,VARREL,Lazuli,VL,LZ,3,0,3
+Japan - Stage 2|423,Japan - Stage 2,423,Round Robin [Bo5],Week 3 | Day 2 | Game 2,REVATI,Uwinks,REV,UW,0,3,3
+Japan - Stage 2|449,Japan - Stage 2,449,Round Robin [Bo5],Week 3 | Day 2 | Game 3,ENTER FORCE.36,Please Not Hero Ban,E36,PNHB,3,1,4
+Japan - Stage 2|475,Japan - Stage 2,475,Round Robin [Bo5],Week 4 | Day 1 | Game 1,99DIVINE,Uwinks,99D,UW,1,3,4
+Japan - Stage 2|501,Japan - Stage 2,501,Round Robin [Bo5],Week 4 | Day 1 | Game 2,VARREL,REVATI,VL,REV,3,0,3
+Japan - Stage 2|527,Japan - Stage 2,527,Round Robin [Bo5],Week 4 | Day 1 | Game 3,Lazuli,ENTER FORCE.36,LZ,E36,0,3,3
+Japan - Stage 2|553,Japan - Stage 2,553,Round Robin [Bo5],Week 4 | Day 2 | Game 1,MURASH GAMING,Uwinks,MRG,UW,3,1,4
+Japan - Stage 2|579,Japan - Stage 2,579,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Lazuli,Please Not Hero Ban,LZ,PNHB,1,3,4
+Japan - Stage 2|605,Japan - Stage 2,605,Round Robin [Bo5],Week 4 | Day 2 | Game 3,99DIVINE,REVATI,99D,REV,3,1,4
+Japan - Stage 2|631,Japan - Stage 2,631,Round Robin [Bo5],Week 4 | Day 3 | Game 1,MURASH GAMING,ENTER FORCE.36,MRG,E36,1,3,4
+Japan - Stage 2|657,Japan - Stage 2,657,Round Robin [Bo5],Week 4 | Day 3 | Game 2,Lazuli,Uwinks,LZ,UW,3,2,5
+Japan - Stage 2|683,Japan - Stage 2,683,Round Robin [Bo5],Week 4 | Day 3 | Game 3,VARREL,99DIVINE,VL,99D,3,0,3
+Japan - Stage 2|709,Japan - Stage 2,709,Round Robin [Bo5],Week 4 | Day 3 | Game 4,Please Not Hero Ban,REVATI,PNHB,REV,3,0,3
+Japan - Stage 2|735,Japan - Stage 2,735,Semifinals [Bo7],Week 5 | Day 1 | Game 1,ENTER FORCE.36,MURASH GAMING,E36,MRG,2,4,6
+Japan - Stage 2|761,Japan - Stage 2,761,Semifinals [Bo7],Week 5 | Day 1 | Game 2,VARREL,Please Not Hero Ban,VL,PNHB,4,1,5
+Japan - Stage 2|787,Japan - Stage 2,787,Third Place Match [Bo7],Week 5 | Day 2 | Game 1,ENTER FORCE.36,Please Not Hero Ban,E36,PNHB,4,0,4
+Japan - Stage 2|813,Japan - Stage 2,813,Grand Finals [Bo7],Week 5 | Day 2 | Game 2,VARREL,MURASH GAMING,VL,MRG,4,0,4
+Japan - Stage 3|7,Japan - Stage 3,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,ENTER FORCE.36,Lazuli,E36,LZ,3,0,3
+Japan - Stage 3|33,Japan - Stage 3,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,REVATI,Please Not Hero Ban,REV,PNHB,2,3,5
+Japan - Stage 3|59,Japan - Stage 3,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,99DIVINE,VARREL,99D,VL,1,3,4
+Japan - Stage 3|85,Japan - Stage 3,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Please Not Hero Ban,MURASH GAMING,PNHB,MRG,0,3,3
+Japan - Stage 3|111,Japan - Stage 3,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,ENTER FORCE.36,Uwinks,E36,UW,3,0,3
+Japan - Stage 3|137,Japan - Stage 3,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,VARREL,REVATI,VL,REV,3,0,3
+Japan - Stage 3|163,Japan - Stage 3,163,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Please Not Hero Ban,Lazuli,PNHB,LZ,2,3,5
+Japan - Stage 3|189,Japan - Stage 3,189,Round Robin [Bo5],Week 2 | Day 1 | Game 2,REVATI,99DIVINE,REV,99D,0,3,3
+Japan - Stage 3|215,Japan - Stage 3,215,Round Robin [Bo5],Week 2 | Day 1 | Game 3,MURASH GAMING,ENTER FORCE.36,MRG,E36,3,1,4
+Japan - Stage 3|241,Japan - Stage 3,241,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Please Not Hero Ban,Uwinks,PNHB,UW,2,3,5
+Japan - Stage 3|267,Japan - Stage 3,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,MURASH GAMING,99DIVINE,MRG,99D,0,3,3
+Japan - Stage 3|293,Japan - Stage 3,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Lazuli,VARREL,LZ,VL,0,3,3
+Japan - Stage 3|319,Japan - Stage 3,319,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Uwinks,VARREL,UW,VL,0,3,3
+Japan - Stage 3|345,Japan - Stage 3,345,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Please Not Hero Ban,ENTER FORCE.36,PNHB,E36,0,3,3
+Japan - Stage 3|371,Japan - Stage 3,371,Round Robin [Bo5],Week 3 | Day 1 | Game 3,REVATI,Lazuli,REV,LZ,0,3,3
+Japan - Stage 3|397,Japan - Stage 3,397,Round Robin [Bo5],Week 3 | Day 2 | Game 1,ENTER FORCE.36,VARREL,E36,VL,1,3,4
+Japan - Stage 3|423,Japan - Stage 3,423,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Uwinks,99DIVINE,UW,99D,0,3,3
+Japan - Stage 3|449,Japan - Stage 3,449,Round Robin [Bo5],Week 3 | Day 2 | Game 3,MURASH GAMING,Lazuli,MRG,LZ,3,0,3
+Japan - Stage 3|475,Japan - Stage 3,475,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Uwinks,REVATI,UW,REV,3,1,4
+Japan - Stage 3|501,Japan - Stage 3,501,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Lazuli,99DIVINE,LZ,99D,1,3,4
+Japan - Stage 3|527,Japan - Stage 3,527,Round Robin [Bo5],Week 4 | Day 1 | Game 3,VARREL,MURASH GAMING,VL,MRG,3,0,3
+Japan - Stage 3|553,Japan - Stage 3,553,Round Robin [Bo5],Week 4 | Day 2 | Game 1,ENTER FORCE.36,REVATI,E36,REV,3,0,3
+Japan - Stage 3|579,Japan - Stage 3,579,Round Robin [Bo5],Week 4 | Day 2 | Game 2,MURASH GAMING,Uwinks,MRG,UW,3,1,4
+Japan - Stage 3|605,Japan - Stage 3,605,Round Robin [Bo5],Week 4 | Day 2 | Game 3,99DIVINE,Please Not Hero Ban,99D,PNHB,3,0,3
+Japan - Stage 3|631,Japan - Stage 3,631,Round Robin [Bo5],Week 4 | Day 3 | Game 1,VARREL,Please Not Hero Ban,VL,PNHB,3,0,3
+Japan - Stage 3|657,Japan - Stage 3,657,Round Robin [Bo5],Week 4 | Day 3 | Game 2,REVATI,MURASH GAMING,REV,MRG,0,3,3
+Japan - Stage 3|683,Japan - Stage 3,683,Round Robin [Bo5],Week 4 | Day 3 | Game 3,99DIVINE,ENTER FORCE.36,99D,E36,3,0,3
+Japan - Stage 3|709,Japan - Stage 3,709,Round Robin [Bo5],Week 4 | Day 3 | Game 4,Lazuli,Uwinks,LZ,UW,3,0,3
+Japan - Stage 3|735,Japan - Stage 3,735,Semifinals [Bo7],Week 5 | Day 1 | Game 1,99DIVINE,MURASH GAMING,99D,MRG,3,4,7
+Japan - Stage 3|761,Japan - Stage 3,761,Semifinals [Bo7],Week 5 | Day 1 | Game 2,VARREL,ENTER FORCE.36,VL,E36,4,0,4
+Japan - Stage 3|787,Japan - Stage 3,787,Third Place Match [Bo7],Week 5 | Day 2 | Game 1,99DIVINE,ENTER FORCE.36,99D,E36,2,4,6
+Japan - Stage 3|813,Japan - Stage 3,813,Grand Finals [Bo7],Week 5 | Day 2 | Game 2,VARREL,MURASH GAMING,VL,MRG,4,1,5
+Korea - Stage 1|7,Korea - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Cheeseburger,Poker Face,CB,PF,0,3,3
+Korea - Stage 1|33,Korea - Stage 1,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Crazy Raccoon,ZETA DIVISION,CR,ZETA,1,3,4
+Korea - Stage 1|59,Korea - Stage 1,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,ZAN Esports,RØDE ONSIDE GAMING,ZAN,RONG,2,3,5
+Korea - Stage 1|85,Korea - Stage 1,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,New Era,T1,NE,T1,0,3,3
+Korea - Stage 1|111,Korea - Stage 1,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Cheeseburger,Team Falcons,CB,FLC,0,3,3
+Korea - Stage 1|137,Korea - Stage 1,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,ZAN Esports,Crazy Raccoon,ZAN,CR,1,3,4
+Korea - Stage 1|163,Korea - Stage 1,163,Round Robin [Bo5],Week 1 | Day 3 | Game 1,Poker Face,New Era,PF,NE,3,0,3
+Korea - Stage 1|189,Korea - Stage 1,189,Round Robin [Bo5],Week 1 | Day 3 | Game 2,RØDE ONSIDE GAMING,T1,RONG,T1,3,2,5
+Korea - Stage 1|215,Korea - Stage 1,215,Round Robin [Bo5],Week 1 | Day 3 | Game 3,ZETA DIVISION,Team Falcons,ZETA,FLC,3,2,5
+Korea - Stage 1|241,Korea - Stage 1,241,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Cheeseburger,ZAN Esports,CB,ZAN,0,3,3
+Korea - Stage 1|267,Korea - Stage 1,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Poker Face,ZETA DIVISION,PF,ZETA,0,3,3
+Korea - Stage 1|293,Korea - Stage 1,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Crazy Raccoon,RØDE ONSIDE GAMING,CR,RONG,3,2,5
+Korea - Stage 1|319,Korea - Stage 1,319,Round Robin [Bo5],Week 2 | Day 2 | Game 1,New Era,Team Falcons,NE,FLC,0,3,3
+Korea - Stage 1|345,Korea - Stage 1,345,Round Robin [Bo5],Week 2 | Day 2 | Game 2,T1,Poker Face,T1,PF,3,0,3
+Korea - Stage 1|371,Korea - Stage 1,371,Round Robin [Bo5],Week 2 | Day 2 | Game 3,Crazy Raccoon,Cheeseburger,CR,CB,3,0,3
+Korea - Stage 1|397,Korea - Stage 1,397,Round Robin [Bo5],Week 2 | Day 3 | Game 1,RØDE ONSIDE GAMING,New Era,RONG,NE,3,0,3
+Korea - Stage 1|423,Korea - Stage 1,423,Round Robin [Bo5],Week 2 | Day 3 | Game 2,ZAN Esports,ZETA DIVISION,ZAN,ZETA,0,3,3
+Korea - Stage 1|449,Korea - Stage 1,449,Round Robin [Bo5],Week 2 | Day 3 | Game 3,Team Falcons,T1,FLC,T1,3,1,4
+Korea - Stage 1|475,Korea - Stage 1,475,Round Robin [Bo5],Week 3 | Day 1 | Game 1,RØDE ONSIDE GAMING,Cheeseburger,RONG,CB,3,0,3
+Korea - Stage 1|501,Korea - Stage 1,501,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Team Falcons,Poker Face,FLC,PF,3,0,3
+Korea - Stage 1|527,Korea - Stage 1,527,Round Robin [Bo5],Week 3 | Day 1 | Game 3,T1,Crazy Raccoon,T1,CR,3,2,5
+Korea - Stage 1|553,Korea - Stage 1,553,Round Robin [Bo5],Week 3 | Day 2 | Game 1,New Era,ZAN Esports,NE,ZAN,0,3,3
+Korea - Stage 1|579,Korea - Stage 1,579,Round Robin [Bo5],Week 3 | Day 2 | Game 2,ZETA DIVISION,RØDE ONSIDE GAMING,ZETA,RONG,3,2,5
+Korea - Stage 1|605,Korea - Stage 1,605,Round Robin [Bo5],Week 3 | Day 2 | Game 3,Cheeseburger,T1,CB,T1,0,3,3
+Korea - Stage 1|631,Korea - Stage 1,631,Round Robin [Bo5],Week 3 | Day 3 | Game 1,Team Falcons,ZAN Esports,FLC,ZAN,3,0,3
+Korea - Stage 1|657,Korea - Stage 1,657,Round Robin [Bo5],Week 3 | Day 3 | Game 2,Poker Face,Crazy Raccoon,PF,CR,0,3,3
+Korea - Stage 1|683,Korea - Stage 1,683,Round Robin [Bo5],Week 3 | Day 3 | Game 3,ZETA DIVISION,New Era,ZETA,NE,3,0,3
+Korea - Stage 1|709,Korea - Stage 1,709,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Poker Face,RØDE ONSIDE GAMING,PF,RONG,0,3,3
+Korea - Stage 1|735,Korea - Stage 1,735,Round Robin [Bo5],Week 4 | Day 1 | Game 2,T1,ZETA DIVISION,T1,ZETA,1,3,4
+Korea - Stage 1|761,Korea - Stage 1,761,Round Robin [Bo5],Week 4 | Day 1 | Game 3,Crazy Raccoon,New Era,CR,NE,3,0,3
+Korea - Stage 1|787,Korea - Stage 1,787,Round Robin [Bo5],Week 4 | Day 2 | Game 1,T1,ZAN Esports,T1,ZAN,3,0,3
+Korea - Stage 1|813,Korea - Stage 1,813,Round Robin [Bo5],Week 4 | Day 2 | Game 2,ZETA DIVISION,Cheeseburger,ZETA,CB,3,0,3
+Korea - Stage 1|839,Korea - Stage 1,839,Round Robin [Bo5],Week 4 | Day 2 | Game 3,Team Falcons,Crazy Raccoon,FLC,CR,0,3,3
+Korea - Stage 1|865,Korea - Stage 1,865,Round Robin [Bo5],Week 4 | Day 3 | Game 1,ZAN Esports,Poker Face,ZAN,PF,3,0,3
+Korea - Stage 1|891,Korea - Stage 1,891,Round Robin [Bo5],Week 4 | Day 3 | Game 2,RØDE ONSIDE GAMING,Team Falcons,RONG,FLC,2,3,5
+Korea - Stage 1|917,Korea - Stage 1,917,Round Robin [Bo5],Week 4 | Day 3 | Game 3,New Era,Cheeseburger,NE,CB,0,3,3
+Korea - Stage 1|943,Korea - Stage 1,943,Last Chance Qualifier [Bo5],Week 5 | Day 1 | Game 1,T1,ZAN Esports,T1,ZAN,3,0,3
+Korea - Stage 1|969,Korea - Stage 1,969,Seeding Decider [Bo5],Week 5 | Day 1 | Game 2,ZETA DIVISION,RØDE ONSIDE GAMING,ZETA,RONG,3,1,4
+Korea - Stage 1|995,Korea - Stage 1,995,Seeding Decider [Bo5],Week 5 | Day 1 | Game 3,Crazy Raccoon,Team Falcons,CR,FLC,3,0,3
+Korea - Stage 1|1021,Korea - Stage 1,1021,Last Chance Qualifier [Bo5],Week 5 | Day 2 | Game 1,Poker Face,Cheeseburger,PF,CB,2,3,5
+Korea - Stage 1|1047,Korea - Stage 1,1047,Seeding Decider [Bo5],Week 5 | Day 2 | Game 2,ZETA DIVISION,Team Falcons,ZETA,FLC,3,1,4
+Korea - Stage 1|1073,Korea - Stage 1,1073,Seeding Decider [Bo5],Week 5 | Day 2 | Game 3,Crazy Raccoon,RØDE ONSIDE GAMING,CR,RONG,3,0,3
+Korea - Stage 1|1099,Korea - Stage 1,1099,Last Chance Qualifier [Bo5],Week 5 | Day 3 | Game 1,ZAN Esports,Cheeseburger,ZAN,CB,3,0,3
+Korea - Stage 1|1125,Korea - Stage 1,1125,Seeding Decider [Bo5],Week 5 | Day 3 | Game 2,ZETA DIVISION,Crazy Raccoon,ZETA,CR,3,0,3
+Korea - Stage 1|1151,Korea - Stage 1,1151,Seeding Decider [Bo5],Week 5 | Day 3 | Game 3,Team Falcons,RØDE ONSIDE GAMING,FLC,RONG,3,0,3
+Korea - Stage 1|1177,Korea - Stage 1,1177,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,Team Falcons,ZAN Esports,FLC,ZAN,4,0,4
+Korea - Stage 1|1203,Korea - Stage 1,1203,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,RØDE ONSIDE GAMING,T1,OSG,T1,0,4,4
+Korea - Stage 1|1229,Korea - Stage 1,1229,Semifinals [Bo7],Week 6 | Day 2 | Game 1,ZETA DIVISION,T1,ZETA,T1,4,2,6
+Korea - Stage 1|1255,Korea - Stage 1,1255,Semifinals [Bo7],Week 6 | Day 2 | Game 2,Crazy Raccoon,Team Falcons,CR,FLC,1,4,5
+Korea - Stage 1|1281,Korea - Stage 1,1281,Third Place Match [Bo7],Week 6 | Day 3 | Game 1,Crazy Raccoon,T1,CR,T1,4,1,5
+Korea - Stage 1|1307,Korea - Stage 1,1307,Grand Finals [Bo7],Week 6 | Day 3 | Game 2,ZETA DIVISION,Team Falcons,ZETA,FLC,4,1,5
+Korea - Stage 2|7,Korea - Stage 2,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,O2 Blast,RØDE ZANSIDE GAMING,O2,ROZE,3,0,3
+Korea - Stage 2|33,Korea - Stage 2,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Team Falcons,Crazy Raccoon,FLC,CR,0,3,3
+Korea - Stage 2|59,Korea - Stage 2,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,T1,ZETA DIVISION,T1,ZETA,3,2,5
+Korea - Stage 2|85,Korea - Stage 2,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Poker Face,Cheeseburger,PF,CB,0,3,3
+Korea - Stage 2|111,Korea - Stage 2,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,T1,SuperBad,T1,SB,3,0,3
+Korea - Stage 2|137,Korea - Stage 2,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,RØDE ZANSIDE GAMING,Team Falcons,ROZE,FLC,0,3,3
+Korea - Stage 2|163,Korea - Stage 2,163,Round Robin [Bo5],Week 1 | Day 3 | Game 1,SuperBad,O2 Blast,SB,O2B,0,3,3
+Korea - Stage 2|189,Korea - Stage 2,189,Round Robin [Bo5],Week 1 | Day 3 | Game 2,ZETA DIVISION,Cheeseburger,ZETA,CB,3,0,3
+Korea - Stage 2|215,Korea - Stage 2,215,Round Robin [Bo5],Week 1 | Day 3 | Game 3,Crazy Raccoon,Poker Face,CR,PF,3,0,3
+Korea - Stage 2|241,Korea - Stage 2,241,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Cheeseburger,SuperBad,CB,SB,3,0,3
+Korea - Stage 2|267,Korea - Stage 2,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,O2 Blast,ZETA DIVISION,O2,ZETA,0,3,3
+Korea - Stage 2|293,Korea - Stage 2,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Crazy Raccoon,RØDE ZANSIDE GAMING,CR,ROZE,3,0,3
+Korea - Stage 2|319,Korea - Stage 2,319,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Poker Face,Team Falcons,PF,FLC,0,3,3
+Korea - Stage 2|345,Korea - Stage 2,345,Round Robin [Bo5],Week 2 | Day 2 | Game 2,T1,O2 Blast,T1,O2B,3,0,3
+Korea - Stage 2|371,Korea - Stage 2,371,Round Robin [Bo5],Week 2 | Day 2 | Game 3,SuperBad,ZETA DIVISION,SB,ZETA,0,3,3
+Korea - Stage 2|397,Korea - Stage 2,397,Round Robin [Bo5],Week 2 | Day 3 | Game 1,RØDE ZANSIDE GAMING,Poker Face,ROZE,PF,3,0,3
+Korea - Stage 2|423,Korea - Stage 2,423,Round Robin [Bo5],Week 2 | Day 3 | Game 2,Crazy Raccoon,Cheeseburger,CR,CB,3,0,3
+Korea - Stage 2|449,Korea - Stage 2,449,Round Robin [Bo5],Week 2 | Day 3 | Game 3,Team Falcons,T1,FLC,T1,3,2,5
+Korea - Stage 2|475,Korea - Stage 2,475,Round Robin [Bo5],Week 3 | Day 1 | Game 1,RØDE ZANSIDE GAMING,Cheeseburger,ROZE,CB,3,1,4
+Korea - Stage 2|501,Korea - Stage 2,501,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Team Falcons,O2 Blast,FLC,O2B,3,0,3
+Korea - Stage 2|527,Korea - Stage 2,527,Round Robin [Bo5],Week 3 | Day 1 | Game 3,T1,Crazy Raccoon,T1,CR,1,3,4
+Korea - Stage 2|553,Korea - Stage 2,553,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Poker Face,SuperBad,PF,SB,2,3,5
+Korea - Stage 2|579,Korea - Stage 2,579,Round Robin [Bo5],Week 3 | Day 2 | Game 2,ZETA DIVISION,RØDE ZANSIDE GAMING,ZETA,ROZE,3,2,5
+Korea - Stage 2|605,Korea - Stage 2,605,Round Robin [Bo5],Week 3 | Day 2 | Game 3,Cheeseburger,T1,CB,T1,0,3,3
+Korea - Stage 2|631,Korea - Stage 2,631,Round Robin [Bo5],Week 3 | Day 3 | Game 1,Team Falcons,SuperBad,FLC,SB,3,0,3
+Korea - Stage 2|657,Korea - Stage 2,657,Round Robin [Bo5],Week 3 | Day 3 | Game 2,O2 Blast,Crazy Raccoon,O2B,CR,1,3,4
+Korea - Stage 2|683,Korea - Stage 2,683,Round Robin [Bo5],Week 3 | Day 3 | Game 3,ZETA DIVISION,Poker Face,ZETA,PF,3,0,3
+Korea - Stage 2|709,Korea - Stage 2,709,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Cheeseburger,O2 Blast,CB,O2B,1,3,4
+Korea - Stage 2|735,Korea - Stage 2,735,Round Robin [Bo5],Week 4 | Day 1 | Game 2,ZETA DIVISION,Team Falcons,ZETA,FLC,3,0,3
+Korea - Stage 2|761,Korea - Stage 2,761,Round Robin [Bo5],Week 4 | Day 1 | Game 3,SuperBad,RØDE ZANSIDE GAMING,SB,ROZE,1,3,4
+Korea - Stage 2|787,Korea - Stage 2,787,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Poker Face,T1,PF,T1,0,3,3
+Korea - Stage 2|813,Korea - Stage 2,813,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Cheeseburger,Team Falcons,CB,FLC,0,3,3
+Korea - Stage 2|839,Korea - Stage 2,839,Round Robin [Bo5],Week 4 | Day 2 | Game 3,SuperBad,Crazy Raccoon,SB,CR,0,3,3
+Korea - Stage 2|865,Korea - Stage 2,865,Round Robin [Bo5],Week 4 | Day 3 | Game 1,O2 Blast,Poker Face,O2B,PF,3,1,4
+Korea - Stage 2|891,Korea - Stage 2,891,Round Robin [Bo5],Week 4 | Day 3 | Game 2,RØDE ZANSIDE GAMING,T1,ROZE,T1,0,3,3
+Korea - Stage 2|917,Korea - Stage 2,917,Round Robin [Bo5],Week 4 | Day 3 | Game 3,Crazy Raccoon,ZETA DIVISION,CR,ZETA,2,3,5
+Korea - Stage 2|943,Korea - Stage 2,943,Last Chance Qualifier [Bo5],Week 5 | Day 1 | Game 1,O2 Blast,RØDE ZANSIDE GAMING,O2B,ROZE,0,3,3
+Korea - Stage 2|969,Korea - Stage 2,969,Seeding Decider [Bo5],Week 5 | Day 1 | Game 2,Crazy Raccoon,Team Falcons,CR,FLC,3,1,4
+Korea - Stage 2|995,Korea - Stage 2,995,Seeding Decider [Bo5],Week 5 | Day 1 | Game 3,ZETA DIVISION,T1,ZETA,T1,0,3,3
+Korea - Stage 2|1021,Korea - Stage 2,1021,Last Chance Qualifier [Bo5],Week 5 | Day 2 | Game 1,Cheeseburger,SuperBad,CB,SB,3,0,3
+Korea - Stage 2|1047,Korea - Stage 2,1047,Seeding Decider [Bo5],Week 5 | Day 2 | Game 2,Crazy Raccoon,T1,CR,T1,3,1,4
+Korea - Stage 2|1073,Korea - Stage 2,1073,Seeding Decider [Bo5],Week 5 | Day 2 | Game 3,ZETA DIVISION,Team Falcons,ZETA,FLC,3,2,5
+Korea - Stage 2|1099,Korea - Stage 2,1099,Last Chance Qualifier [Bo5],Week 5 | Day 3 | Game 1,O2 Blast,Cheeseburger,O2B,CB,3,1,4
+Korea - Stage 2|1125,Korea - Stage 2,1125,Seeding Decider [Bo5],Week 5 | Day 3 | Game 2,Crazy Raccoon,ZETA DIVISION,CR,ZETA,3,1,4
+Korea - Stage 2|1151,Korea - Stage 2,1151,Seeding Decider [Bo5],Week 5 | Day 3 | Game 3,T1,Team Falcons,T1,FLC,3,0,3
+Korea - Stage 2|1177,Korea - Stage 2,1177,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,ZETA DIVISION,O2 Blast,ZETA,O2B,4,0,4
+Korea - Stage 2|1203,Korea - Stage 2,1203,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,Team Falcons,RØDE ZANSIDE GAMING,FLC,ROZE,2,4,6
+Korea - Stage 2|1229,Korea - Stage 2,1229,Semifinals [Bo7],Week 6 | Day 2 | Game 1,Crazy Raccoon,RØDE ZANSIDE GAMING,CR,ROZE,4,1,5
+Korea - Stage 2|1255,Korea - Stage 2,1255,Semifinals [Bo7],Week 6 | Day 2 | Game 2,T1,ZETA DIVISION,T1,ZETA,1,4,5
+Korea - Stage 2|1281,Korea - Stage 2,1281,Third Place Match [Bo7],Week 6 | Day 3 | Game 1,T1,RØDE ZANSIDE GAMING,T1,ROZE,4,1,5
+Korea - Stage 2|1307,Korea - Stage 2,1307,Grand Finals [Bo7],Week 6 | Day 3 | Game 2,Crazy Raccoon,ZETA DIVISION,CR,ZETA,2,4,6
+Korea - Stage 3|7,Korea - Stage 3,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Cheeseburger,Poker Face,CB,PF,3,0,3
+Korea - Stage 3|33,Korea - Stage 3,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Team Falcons,ZETA DIVISION,FLC,ZETA,0,3,3
+Korea - Stage 3|59,Korea - Stage 3,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,SEIJI ESPORTS,T1,SEJ,T1,0,3,3
+Korea - Stage 3|85,Korea - Stage 3,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Cheeseburger,RØDE ZANSIDE GAMING,CB,ROZE,3,0,3
+Korea - Stage 3|111,Korea - Stage 3,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,T1,ZETA DIVISION,T1,ZETA,1,3,4
+Korea - Stage 3|137,Korea - Stage 3,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,Crazy Raccoon,O2 Blast,CR,O2,3,0,3
+Korea - Stage 3|163,Korea - Stage 3,163,Round Robin [Bo5],Week 1 | Day 3 | Game 1,O2 Blast,SEIJI ESPORTS,O2B,SEJ,3,1,4
+Korea - Stage 3|189,Korea - Stage 3,189,Round Robin [Bo5],Week 1 | Day 3 | Game 2,Crazy Raccoon,RØDE ZANSIDE GAMING,CR,ROZE,3,1,4
+Korea - Stage 3|215,Korea - Stage 3,215,Round Robin [Bo5],Week 1 | Day 3 | Game 3,Team Falcons,Poker Face,FLC,PF,3,0,3
+Korea - Stage 3|241,Korea - Stage 3,241,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Team Falcons,O2 Blast,FLC,O2B,3,0,3
+Korea - Stage 3|267,Korea - Stage 3,267,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Poker Face,T1,PF,T1,0,3,3
+Korea - Stage 3|293,Korea - Stage 3,293,Round Robin [Bo5],Week 2 | Day 1 | Game 3,SEIJI ESPORTS,ZETA DIVISION,SEJ,ZETA,0,3,3
+Korea - Stage 3|319,Korea - Stage 3,319,Round Robin [Bo5],Week 2 | Day 2 | Game 1,SEIJI ESPORTS,RØDE ZANSIDE GAMING,SEJ,ROZE,3,1,4
+Korea - Stage 3|345,Korea - Stage 3,345,Round Robin [Bo5],Week 2 | Day 2 | Game 2,Crazy Raccoon,T1,CR,T1,3,1,4
+Korea - Stage 3|371,Korea - Stage 3,371,Round Robin [Bo5],Week 2 | Day 2 | Game 3,Cheeseburger,Team Falcons,CB,FLC,3,1,4
+Korea - Stage 3|397,Korea - Stage 3,397,Round Robin [Bo5],Week 2 | Day 3 | Game 1,O2 Blast,RØDE ZANSIDE GAMING,O2B,ROZE,2,3,5
+Korea - Stage 3|423,Korea - Stage 3,423,Round Robin [Bo5],Week 2 | Day 3 | Game 2,Cheeseburger,Crazy Raccoon,CB,CR,1,3,4
+Korea - Stage 3|449,Korea - Stage 3,449,Round Robin [Bo5],Week 2 | Day 3 | Game 3,Poker Face,ZETA DIVISION,PF,ZETA,0,3,3
+Korea - Stage 3|475,Korea - Stage 3,475,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Team Falcons,SEIJI ESPORTS,FLC,SEJ,3,0,3
+Korea - Stage 3|501,Korea - Stage 3,501,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Cheeseburger,T1,CB,T1,0,3,3
+Korea - Stage 3|527,Korea - Stage 3,527,Round Robin [Bo5],Week 3 | Day 1 | Game 3,O2 Blast,ZETA DIVISION,O2B,ZETA,0,3,3
+Korea - Stage 3|553,Korea - Stage 3,553,Round Robin [Bo5],Week 3 | Day 2 | Game 1,O2 Blast,Poker Face,O2,PF,2,3,5
+Korea - Stage 3|579,Korea - Stage 3,579,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Crazy Raccoon,Team Falcons,CR,FLC,3,0,3
+Korea - Stage 3|605,Korea - Stage 3,605,Round Robin [Bo5],Week 3 | Day 2 | Game 3,T1,RØDE ZANSIDE GAMING,T1,ROZE,3,0,3
+Korea - Stage 3|631,Korea - Stage 3,631,Round Robin [Bo5],Week 3 | Day 3 | Game 1,Cheeseburger,SEIJI ESPORTS,CB,SEJ,3,0,3
+Korea - Stage 3|657,Korea - Stage 3,657,Round Robin [Bo5],Week 3 | Day 3 | Game 2,Crazy Raccoon,Poker Face,CR,PF,3,0,3
+Korea - Stage 3|683,Korea - Stage 3,683,Round Robin [Bo5],Week 3 | Day 3 | Game 3,RØDE ZANSIDE GAMING,ZETA DIVISION,ROZE,ZETA,0,3,3
+Korea - Stage 3|709,Korea - Stage 3,709,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Cheeseburger,O2 Blast,CB,O2,3,0,3
+Korea - Stage 3|735,Korea - Stage 3,735,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Team Falcons,RØDE ZANSIDE GAMING,FLC,ROZE,3,0,3
+Korea - Stage 3|761,Korea - Stage 3,761,Round Robin [Bo5],Week 4 | Day 1 | Game 3,Crazy Raccoon,SEIJI ESPORTS,CR,SEJ,3,0,3
+Korea - Stage 3|787,Korea - Stage 3,787,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Cheeseburger,ZETA DIVISION,CB,ZETA,2,3,5
+Korea - Stage 3|813,Korea - Stage 3,813,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Team Falcons,T1,FLC,T1,1,3,4
+Korea - Stage 3|839,Korea - Stage 3,839,Round Robin [Bo5],Week 4 | Day 2 | Game 3,Poker Face,SEIJI ESPORTS,PF,SEJ,2,3,5
+Korea - Stage 3|865,Korea - Stage 3,865,Round Robin [Bo5],Week 4 | Day 3 | Game 1,Poker Face,RØDE ZANSIDE GAMING,PF,ROZE,2,3,5
+Korea - Stage 3|891,Korea - Stage 3,891,Round Robin [Bo5],Week 4 | Day 3 | Game 2,O2 Blast,T1,O2,T1,0,3,3
+Korea - Stage 3|917,Korea - Stage 3,917,Round Robin [Bo5],Week 4 | Day 3 | Game 3,ZETA DIVISION,Crazy Raccoon,ZETA,CR,3,1,4
+Korea - Stage 3|943,Korea - Stage 3,943,Last Chance Qualifier [Bo5],Week 5 | Day 1 | Game 1,Team Falcons,SEIJI ESPORTS,FLC,SEJ,3,0,3
+Korea - Stage 3|969,Korea - Stage 3,969,Seeding Decider [Bo5],Week 5 | Day 1 | Game 2,ZETA DIVISION,Cheeseburger,ZETA,CB,3,0,3
+Korea - Stage 3|995,Korea - Stage 3,995,Seeding Decider [Bo5],Week 5 | Day 1 | Game 3,Crazy Raccoon,T1,CR,T1,3,1,4
+Korea - Stage 3|1021,Korea - Stage 3,1021,Last Chance Qualifier [Bo5],Week 5 | Day 2 | Game 1,RØDE ZANSIDE GAMING,O2 Blast,ROZE,O2,3,1,4
+Korea - Stage 3|1047,Korea - Stage 3,1047,Seeding Decider [Bo5],Week 5 | Day 2 | Game 2,ZETA DIVISION,T1,ZETA,T1,3,0,3
+Korea - Stage 3|1073,Korea - Stage 3,1073,Seeding Decider [Bo5],Week 5 | Day 2 | Game 3,Crazy Raccoon,Cheeseburger,CR,CB,3,0,3
+Korea - Stage 3|1099,Korea - Stage 3,1099,Last Chance Qualifier [Bo5],Week 5 | Day 3 | Game 1,SEIJI ESPORTS,RØDE ZANSIDE GAMING,SEJ,ROZE,2,3,5
+Korea - Stage 3|1125,Korea - Stage 3,1125,Seeding Decider [Bo5],Week 5 | Day 3 | Game 2,ZETA DIVISION,Crazy Raccoon,ZETA,CR,3,2,5
+Korea - Stage 3|1151,Korea - Stage 3,1151,Seeding Decider [Bo5],Week 5 | Day 3 | Game 3,T1,Cheeseburger,T1,CB,3,0,3
+Korea - Stage 3|1177,Korea - Stage 3,1177,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,T1,RØDE ZANSIDE GAMING,T1,ROZE,4,1,5
+Korea - Stage 3|1203,Korea - Stage 3,1203,Quarterfinal [Bo7],Week 6 | Day 1 | Game 1,Cheeseburger,Team Falcons,CB,FLC,0,4,4
+Korea - Stage 3|1229,Korea - Stage 3,1229,Semifinals [Bo7],Week 6 | Day 2 | Game 1,ZETA DIVISION,Team Falcons,ZETA,FLC,4,1,5
+Korea - Stage 3|1255,Korea - Stage 3,1255,Semifinals [Bo7],Week 6 | Day 2 | Game 2,Crazy Raccoon,T1,CR,T1,3,4,7
+Korea - Stage 3|1281,Korea - Stage 3,1281,Third Place Match [Bo7],Week 6 | Day 3 | Game 1,Crazy Raccoon,Team Falcons,CR,FLC,4,1,5
+Korea - Stage 3|1307,Korea - Stage 3,1307,Grand Finals [Bo7],Week 6 | Day 3 | Game 2,ZETA DIVISION,T1,ZETA,T1,1,4,5
+China - Stage 1|7,China - Stage 1,7,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 1,Milk Tea,Homie E,MT,HE,2,3,5
+China - Stage 1|33,China - Stage 1,33,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 2,All Gamers,DEG,AG,DEG,3,0,3
+China - Stage 1|59,China - Stage 1,59,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 3,Weibo Gaming,Naive Piggy,WBG,NP,3,0,3
+China - Stage 1|85,China - Stage 1,85,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 4,JD Gaming,Solus Victorem,JDG,SV,3,1,4
+China - Stage 1|111,China - Stage 1,111,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 1,Milk Tea,Naive Piggy,MT,NP,0,3,3
+China - Stage 1|137,China - Stage 1,137,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 2,DEG,Solus Victorem,DEG,SV,0,3,3
+China - Stage 1|163,China - Stage 1,163,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 3,JD Gaming,All Gamers,JDG,AG,3,0,3
+China - Stage 1|189,China - Stage 1,189,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 4,Weibo Gaming,Homie E,WBG,HE,3,0,3
+China - Stage 1|215,China - Stage 1,215,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 1,All Gamers,Naive Piggy,AG,NP,3,0,3
+China - Stage 1|241,China - Stage 1,241,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 2,Homie E,Solus Victorem,HE,SV,0,3,3
+China - Stage 1|267,China - Stage 1,267,Seeding Decider [Bo5] ,Week 2 | Day 1 | Game 3,Weibo Gaming,JD Gaming,WBG,JDG,3,0,3
+China - Stage 1|293,China - Stage 1,293,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 1,Homie E,Milk Tea,HE,MT,0,3,3
+China - Stage 1|319,China - Stage 1,319,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 2,Naive Piggy,DEG,NP,DEG,3,1,4
+China - Stage 1|345,China - Stage 1,345,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 3,All Gamers,Solus Victorem,AG,SV,3,0,3
+China - Stage 1|371,China - Stage 1,371,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 4,Milk Tea,Naive Piggy,MT,NP,1,3,4
+China - Stage 1|397,China - Stage 1,397,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Naive Piggy,Milk Tea,NP,MT,3,2,5
+China - Stage 1|423,China - Stage 1,423,Round Robin [Bo5],Week 3 | Day 1 | Game 2,JD Gaming,All Gamers,JDG,AG,2,3,5
+China - Stage 1|449,China - Stage 1,449,Round Robin [Bo5],Week 3 | Day 1 | Game 3,Weibo Gaming,Solus Victorem,WBG,SV,3,0,3
+China - Stage 1|475,China - Stage 1,475,Round Robin [Bo5],Week 3 | Day 2 | Game 1,All Gamers,Milk Tea,AG,MT,3,1,4
+China - Stage 1|501,China - Stage 1,501,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Weibo Gaming,Naive Piggy,WBG,NP,3,0,3
+China - Stage 1|527,China - Stage 1,527,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Solus Victorem,Naive Piggy,SV,NP,3,0,3
+China - Stage 1|553,China - Stage 1,553,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Weibo Gaming,All Gamers,WBG,AG,3,2,5
+China - Stage 1|579,China - Stage 1,579,Round Robin [Bo5],Week 4 | Day 1 | Game 3,JD Gaming,Milk Tea,JDG,MT,3,0,3
+China - Stage 1|605,China - Stage 1,605,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Solus Victorem,Milk Tea,SV,MT,3,1,4
+China - Stage 1|631,China - Stage 1,631,Round Robin [Bo5],Week 4 | Day 2 | Game 2,JD Gaming,Naive Piggy,JDG,NP,3,0,3
+China - Stage 1|657,China - Stage 1,657,Round Robin [Bo5],Week 5 | Day 1 | Game 1,All Gamers,Naive Piggy,AG,NP,3,2,5
+China - Stage 1|683,China - Stage 1,683,Round Robin [Bo5],Week 5 | Day 1 | Game 2,JD Gaming,Solus Victorem,JDG,SV,3,0,3
+China - Stage 1|709,China - Stage 1,709,Round Robin [Bo5],Week 5 | Day 1 | Game 3,Weibo Gaming,Milk Tea,WBG,MT,3,0,3
+China - Stage 1|735,China - Stage 1,735,Round Robin [Bo5],Week 5 | Day 2 | Game 1,All Gamers,Solus Victorem,AG,SV,3,0,3
+China - Stage 1|761,China - Stage 1,761,Round Robin [Bo5],Week 5 | Day 2 | Game 2,Weibo Gaming,JD Gaming,WBG,JDG,3,1,4
+China - Stage 1|787,China - Stage 1,787,Upper Semifinals [Bo5],Week 6 | Day 1 | Game 1,Weibo Gaming,Solus Victorem,WBG,SV,3,0,3
+China - Stage 1|813,China - Stage 1,813,Upper Semifinals [Bo5],Week 6 | Day 1 | Game 2,All Gamers,JD Gaming,AG,JDG,3,0,3
+China - Stage 1|839,China - Stage 1,839,Upper Finals [Bo5],Week 6 | Day 1 | Game 3,Weibo Gaming,All Gamers,WBG,AG,3,1,4
+China - Stage 1|865,China - Stage 1,865,Lower Semifinals [Bo5],Week 6 | Day 2 | Game 1,JD Gaming,Solus Victorem,JDG,SV,3,0,3
+China - Stage 1|891,China - Stage 1,891,Lower Finals [Bo5],Week 6 | Day 2 | Game 2,All Gamers,JD Gaming,AG,JDG,3,2,5
+China - Stage 1|917,China - Stage 1,917,Grand Finals [Bo5],Week 6 | Day 2 | Game 3,Weibo Gaming,All Gamers,WBG,AG,4,1,5
+China - Stage 2|7,China - Stage 2,7,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 1,Solus Victorem,HUNENG Gaming,SV,HNG,2,3,5
+China - Stage 2|33,China - Stage 2,33,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 2,JD Gaming,Four Angry Men,JDG,4AM,3,0,3
+China - Stage 2|59,China - Stage 2,59,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 3,Weibo Gaming,Kitsune Kage,WB,KK,3,0,3
+China - Stage 2|85,China - Stage 2,85,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 4,All Gamers,ReturnZ,AG,RTZ,3,0,3
+China - Stage 2|111,China - Stage 2,111,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 1,Solus Victorem,Kitsune Kage,SV,KK,3,0,3
+China - Stage 2|137,China - Stage 2,137,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 2,Four Angry Men,ReturnZ,4AM,RTZ,3,0,3
+China - Stage 2|163,China - Stage 2,163,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 3,Weibo Gaming,HUNENG Gaming,WBG,HNG,3,0,3
+China - Stage 2|189,China - Stage 2,189,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 4,All Gamers,JD Gaming,AG,JDG,0,3,3
+China - Stage 2|215,China - Stage 2,215,Seeding Decider [Bo5] ,Week 2 | Day 1 | Game 1,Weibo Gaming,JD Gaming,WBG,JDG,1,3,4
+China - Stage 2|241,China - Stage 2,241,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 2,Solus Victorem,Four Angry Men,SV,4AM,3,1,4
+China - Stage 2|267,China - Stage 2,267,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 3,All Gamers,HUNENG Gaming,AG,HNG,3,0,3
+China - Stage 2|293,China - Stage 2,293,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 1,Four Angry Men,Kitsune Kage,4AM,KK,3,0,3
+China - Stage 2|319,China - Stage 2,319,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 2,HUNENG Gaming,ReturnZ,HNG,RTZ,3,0,3
+China - Stage 2|345,China - Stage 2,345,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 3,All Gamers,Solus Victorem,AG,SV,2,3,5
+China - Stage 2|371,China - Stage 2,371,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 4,Four Angry Men,HUNENG Gaming,4AM,HNG,3,2,5
+China - Stage 2|397,China - Stage 2,397,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Four Angry Men,HUNENG Gaming,4AM,HNG,1,3,4
+China - Stage 2|423,China - Stage 2,423,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Weibo Gaming,Solus Victorem,WBG,SV,3,1,4
+China - Stage 2|449,China - Stage 2,449,Round Robin [Bo5],Week 3 | Day 1 | Game 3,JD Gaming,All Gamers,JDG,AG,3,2,5
+China - Stage 2|475,China - Stage 2,475,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Solus Victorem,Four Angry Men,SV,4AM,3,0,3
+China - Stage 2|501,China - Stage 2,501,Round Robin [Bo5],Week 3 | Day 2 | Game 2,JD Gaming,HUNENG Gaming,JDG,HNG,3,0,3
+China - Stage 2|527,China - Stage 2,527,Round Robin [Bo5],Week 3 | Day 3 | Game 1,All Gamers,HUNENG Gaming,AG,HNG,3,0,3
+China - Stage 2|553,China - Stage 2,553,Round Robin [Bo5],Week 3 | Day 3 | Game 2,Weibo Gaming,Four Angry Men,WBG,4AM,3,0,3
+China - Stage 2|579,China - Stage 2,579,Round Robin [Bo5],Week 3 | Day 3 | Game 3,JD Gaming,Solus Victorem,JDG,SV,3,0,3
+China - Stage 2|605,China - Stage 2,605,Round Robin [Bo5],Week 4 | Day 1 | Game 1,All Gamers,Four Angry Men,AG,4AM,3,0,3
+China - Stage 2|631,China - Stage 2,631,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Weibo Gaming,HUNENG Gaming,WBG,HNG,3,0,3
+China - Stage 2|657,China - Stage 2,657,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Solus Victorem,HUNENG Gaming,SV,HNG,3,0,3
+China - Stage 2|683,China - Stage 2,683,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Weibo Gaming,All Gamers,WBG,AG,3,0,3
+China - Stage 2|709,China - Stage 2,709,Round Robin [Bo5],Week 4 | Day 2 | Game 3,JD Gaming,Four Angry Men,JDG,4AM,3,0,3
+China - Stage 2|735,China - Stage 2,735,Round Robin [Bo5],Week 4 | Day 3 | Game 1,Solus Victorem,All Gamers,SV,AG,0,3,3
+China - Stage 2|761,China - Stage 2,761,Round Robin [Bo5],Week 4 | Day 3 | Game 2,JD Gaming,Weibo Gaming,JDG,WBG,0,3,3
+China - Stage 2|787,China - Stage 2,787,Upper Semifinals [Bo5],Week 5 | Day 1 | Game 1,Weibo Gaming,Solus Victorem,WBG,SV,3,0,3
+China - Stage 2|813,China - Stage 2,813,Upper Semifinals [Bo5],Week 5 | Day 1 | Game 2,JD Gaming,All Gamers,JDG,AG,3,0,3
+China - Stage 2|839,China - Stage 2,839,Upper Finals [Bo5],Week 5 | Day 1 | Game 3,Weibo Gaming,JD Gaming,WBG,JDG,3,2,5
+China - Stage 2|865,China - Stage 2,865,Lower Semifinals [Bo5],Week 5 | Day 2 | Game 1,Solus Victorem,All Gamers,SV,AG,0,3,3
+China - Stage 2|891,China - Stage 2,891,Lower Finals [Bo5],Week 5 | Day 2 | Game 2,JD Gaming,All Gamers,JDG,AG,3,2,5
+China - Stage 2|917,China - Stage 2,917,Grand Finals [Bo5],Week 5 | Day 2 | Game 3,Weibo Gaming,JD Gaming,WBG,JDG,4,1,5
+China - Stage 3|7,China - Stage 3,7,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 1,Solus Victorem Crush,OU Gaming,SVC,OUG,3,2,5
+China - Stage 3|33,China - Stage 3,33,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 2,All Gamers,HUNENG Gaming,AG,HNG,3,2,5
+China - Stage 3|59,China - Stage 3,59,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 3,Weibo Gaming,SHENGSHI Esports,WBG,SSE,3,0,3
+China - Stage 3|85,China - Stage 3,85,Swiss Stage (Round 1) [Bo5] ,Week 1 | Day 1 | Game 4,JD Gaming,Black Flag,JDG,BF,3,0,3
+China - Stage 3|111,China - Stage 3,111,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 1,OU Gaming,SHENGSHI Esports,OUG,SSE,3,0,3
+China - Stage 3|137,China - Stage 3,137,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 2,HUNENG Gaming,Black Flag,HNG,BF,3,0,3
+China - Stage 3|163,China - Stage 3,163,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 3,Weibo Gaming,Solus Victorem Crush,WBG,SVC,3,1,4
+China - Stage 3|189,China - Stage 3,189,Swiss Stage (Round 2) [Bo5] ,Week 1 | Day 2 | Game 4,JD Gaming,All Gamers,JDG,AG,3,2,5
+China - Stage 3|215,China - Stage 3,215,Seeding Decider [Bo5] ,Week 2 | Day 1 | Game 1,All Gamers,OU Gaming,AG,OUG,3,2,5
+China - Stage 3|241,China - Stage 3,241,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 2,Solus Victorem Crush,HUNENG Gaming,SVC,HNG,3,1,4
+China - Stage 3|267,China - Stage 3,267,Swiss Stage (Round 3) [Bo5] ,Week 2 | Day 1 | Game 3,Weibo Gaming,JD Gaming,WBG,JDG,3,1,4
+China - Stage 3|293,China - Stage 3,293,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 1,OU Gaming,Black Flag,OUG,BF,3,0,3
+China - Stage 3|319,China - Stage 3,319,Swiss Stage (Round 4) [Bo5] ,Week 2 | Day 2 | Game 2,HUNENG Gaming,SHENGSHI Esports,HNG,SSE,3,0,3
+China - Stage 3|345,China - Stage 3,345,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 3,All Gamers,Solus Victorem Crush,AG,SVC,3,2,5
+China - Stage 3|371,China - Stage 3,371,Seeding Decider [Bo5] ,Week 2 | Day 2 | Game 4,OU Gaming,HUNENG Gaming,OU,HNG,3,0,3
+China - Stage 3|397,China - Stage 3,397,Round Robin [Bo5],Week 3 | Day 1 | Game 1,OU Gaming,HUNENG Gaming,OU,HNG,3,0,3
+China - Stage 3|423,China - Stage 3,423,Round Robin [Bo5],Week 3 | Day 1 | Game 2,JD Gaming,All Gamers,JDG,AG,1,3,4
+China - Stage 3|449,China - Stage 3,449,Round Robin [Bo5],Week 3 | Day 1 | Game 3,Weibo Gaming,Solus Victorem Crush,WBG,SVC,3,0,3
+China - Stage 3|475,China - Stage 3,475,Round Robin [Bo5],Week 3 | Day 2 | Game 1,All Gamers,OU Gaming,AG,OU,1,3,4
+China - Stage 3|501,China - Stage 3,501,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Weibo Gaming,HUNENG Gaming,WBG,HNG,3,2,5
+China - Stage 3|527,China - Stage 3,527,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Solus Victorem Crush,HUNENG Gaming,SVC,HNG,1,3,4
+China - Stage 3|553,China - Stage 3,553,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Weibo Gaming,All Gamers,WBG,AG,2,3,5
+China - Stage 3|579,China - Stage 3,579,Round Robin [Bo5],Week 4 | Day 1 | Game 3,JD Gaming,OU Gaming,JDG,OU,1,3,4
+China - Stage 3|605,China - Stage 3,605,Round Robin [Bo5],Week 4 | Day 2 | Game 1,Solus Victorem Crush,OU Gaming,SVC,OU,1,3,4
+China - Stage 3|631,China - Stage 3,631,Round Robin [Bo5],Week 4 | Day 2 | Game 2,JD Gaming,HUNENG Gaming,JDG,HNG,3,2,5
+China - Stage 3|657,China - Stage 3,657,Round Robin [Bo5],Week 5 | Day 1 | Game 1,All Gamers,HUNENG Gaming,AG,HNG,3,0,3
+China - Stage 3|683,China - Stage 3,683,Round Robin [Bo5],Week 5 | Day 1 | Game 2,JD Gaming,Solus Victorem Crush,JDG,SVC,1,3,4
+China - Stage 3|709,China - Stage 3,709,Round Robin [Bo5],Week 5 | Day 1 | Game 3,Weibo Gaming,OU Gaming,WBG,OU,2,3,5
+China - Stage 3|735,China - Stage 3,735,Round Robin [Bo5],Week 4 | Day 2 | Game 1,All Gamers,Solus Victorem Crush,AG,SVC,3,0,3
+China - Stage 3|761,China - Stage 3,761,Round Robin [Bo5],Week 4 | Day 2 | Game 2,Weibo Gaming,JD Gaming,WBG,JDG,3,0,3
+China - Stage 3|787,China - Stage 3,787,Upper Semifinals [Bo5],Week 5 | Day 1 | Game 1,OU Gaming,HUNENG Gaming,OU,HNG,1,3,4
+China - Stage 3|813,China - Stage 3,813,Upper Semifinals [Bo5],Week 5 | Day 1 | Game 2,All Gamers,Weibo Gaming,AG,WBG,0,3,3
+China - Stage 3|839,China - Stage 3,839,Upper Finals [Bo5],Week 5 | Day 1 | Game 3,Weibo Gaming,HUNENG Gaming,WBG,HNG,3,1,4
+China - Stage 3|865,China - Stage 3,865,Lower Semifinals [Bo5],Week 5 | Day 2 | Game 1,OU Gaming,All Gamers,OUG,AG,1,3,4
+China - Stage 3|891,China - Stage 3,891,Lower Finals [Bo5],Week 5 | Day 2 | Game 2,HUNENG Gaming,All Gamers,HNG,AG,0,3,3
+China - Stage 3|917,China - Stage 3,917,Grand Finals [Bo5],Week 5 | Day 2 | Game 3,Weibo Gaming,All Gamers,WBG,AG,4,0,4
+EMEA - Stage 1|7,EMEA - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Virtus.pro,Al Qadsiah,VP,QAD,3,1,4
+EMEA - Stage 1|33,EMEA - Stage 1,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Twisted Minds,Team Peps,TM,PEPS,3,0,3
+EMEA - Stage 1|59,EMEA - Stage 1,59,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Twisted Minds,Geekay Esports,TM,GK,3,0,3
+EMEA - Stage 1|85,EMEA - Stage 1,85,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Virtus.pro,Anyone's Legend,VP,AL,3,0,3
+EMEA - Stage 1|111,EMEA - Stage 1,111,Round Robin [Bo5],Week 1 | Day 2 | Game 3,Al Qadsiah,Team Peps,QAD,PEPS,3,2,5
+EMEA - Stage 1|137,EMEA - Stage 1,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Al Qadsiah,Geekay Esports,QAD,GK,2,3,5
+EMEA - Stage 1|163,EMEA - Stage 1,163,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Twisted Minds,Anyone's Legend,TM,AL,3,0,3
+EMEA - Stage 1|189,EMEA - Stage 1,189,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Virtus.pro,Team Peps,VP,PEPS,3,0,3
+EMEA - Stage 1|215,EMEA - Stage 1,215,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Team Peps,Geekay Esports,PEPS,GK,0,3,3
+EMEA - Stage 1|241,EMEA - Stage 1,241,Round Robin [Bo5],Week 2 | Day 2 | Game 2,Al Qadsiah,Anyone's Legend,QAD,AL,3,0,3
+EMEA - Stage 1|267,EMEA - Stage 1,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Al Qadsiah,Twisted Minds,QAD,TM,0,3,3
+EMEA - Stage 1|293,EMEA - Stage 1,293,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Anyone's Legend,Team Peps,AL,PEPS,3,2,5
+EMEA - Stage 1|319,EMEA - Stage 1,319,Round Robin [Bo5],Week 3 | Day 1 | Game 3,Virtus.pro,Geekay Esports,VP,GK,3,1,4
+EMEA - Stage 1|345,EMEA - Stage 1,345,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Virtus.pro,Twisted Minds,VP,TM,0,3,3
+EMEA - Stage 1|371,EMEA - Stage 1,371,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Anyone's Legend,Geekay Esports,AL,GK,2,3,5
+EMEA - Stage 1|397,EMEA - Stage 1,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Twisted Minds,Al Qadsiah,TM,QAD,3,0,3
+EMEA - Stage 1|423,EMEA - Stage 1,423,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 2,Virtus.pro,Geekay Esports,VP,GK,2,3,5
+EMEA - Stage 1|449,EMEA - Stage 1,449,Lower Semifinals [Bo5],Week 4 | Day 2 | Game 1,Al Qadsiah,Virtus.pro,QAD,VP,0,3,3
+EMEA - Stage 1|475,EMEA - Stage 1,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Twisted Minds,Geekay Esports,TM,GK,3,0,3
+EMEA - Stage 1|501,EMEA - Stage 1,501,Lower Finals [Bo5],Week 4 | Day 3 | Game 1,Geekay Esports,Virtus.pro,GK,VP,1,3,4
+EMEA - Stage 1|527,EMEA - Stage 1,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Twisted Minds,Virtus.pro,TM,VP,4,1,5
+EMEA - Stage 2|7,EMEA - Stage 2,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Geekay Esports,Al Qadsiah,GK,QAD,0,3,3
+EMEA - Stage 2|33,EMEA - Stage 2,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Twisted Minds,Virtus.pro,TM,VP,0,3,3
+EMEA - Stage 2|85,EMEA - Stage 2,85,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Twisted Minds,Telacy,TM,TEL,3,1,4
+EMEA - Stage 2|111,EMEA - Stage 2,111,Round Robin [Bo5],Week 1 | Day 2 | Game 3,Virtus.pro,Geekay Esports,VP,GK,3,0,3
+EMEA - Stage 2|137,EMEA - Stage 2,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Geekay Esports,Telacy,GK,TEL,3,0,3
+EMEA - Stage 2|189,EMEA - Stage 2,189,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Virtus.pro,Al Qadsiah,VP,QAD,3,2,5
+EMEA - Stage 2|241,EMEA - Stage 2,241,Round Robin [Bo5],Week 2 | Day 2 | Game 2,Virtus.pro,Telacy,VP,TEL,3,0,3
+EMEA - Stage 2|267,EMEA - Stage 2,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Al Qadsiah,Telacy,QAD,TEL,3,1,4
+EMEA - Stage 2|319,EMEA - Stage 2,319,Round Robin [Bo5],Week 3 | Day 1 | Game 3,Twisted Minds,Geekay Esports,TM,GK,3,2,5
+EMEA - Stage 2|371,EMEA - Stage 2,371,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Twisted Minds,Al Qadsiah,TM,QAD,3,2,5
+EMEA - Stage 2|397,EMEA - Stage 2,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Virtus.pro,Al Qadsiah,VP,QAD,3,0,3
+EMEA - Stage 2|423,EMEA - Stage 2,423,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 2,Twisted Minds,Geekay Esports,TM,GK,2,3,5
+EMEA - Stage 2|449,EMEA - Stage 2,449,Lower Semifinals [Bo5],Week 4 | Day 2 | Game 1,Al Qadsiah,Twisted Minds,QAD,TM,0,3,3
+EMEA - Stage 2|475,EMEA - Stage 2,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Virtus.pro,Geekay Esports,VP,GK,3,2,5
+EMEA - Stage 2|501,EMEA - Stage 2,501,Lower Finals [Bo5],Week 4 | Day 3 | Game 1,Geekay Esports,Twisted Minds,GK,TM,3,2,5
+EMEA - Stage 2|527,EMEA - Stage 2,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Virtus.pro,Geekay Esports,VP,GK,4,3,7
+EMEA - Stage 3|7,EMEA - Stage 3,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Twisted Minds,Team Peps,TM,PEPS,3,1,4
+EMEA - Stage 3|33,EMEA - Stage 3,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Virtus.pro,Geekay Esports,VP,GK,3,2,5
+EMEA - Stage 3|59,EMEA - Stage 3,59,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Geekay Esports,Twisted Minds,GK,TM,2,3,5
+EMEA - Stage 3|111,EMEA - Stage 3,111,Round Robin [Bo5],Week 1 | Day 2 | Game 3,Virtus.pro,Team Peps,VP,PEPS,2,3,5
+EMEA - Stage 3|137,EMEA - Stage 3,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Twisted Minds,Team Risk,TM,RSK,3,0,3
+EMEA - Stage 3|189,EMEA - Stage 3,189,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Geekay Esports,Team Peps,GK,PEPS,3,1,4
+EMEA - Stage 3|215,EMEA - Stage 3,215,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Virtus.pro,Team Risk,VP,RSK,1,3,4
+EMEA - Stage 3|267,EMEA - Stage 3,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Team Risk,Team Peps,RSK,PEPS,2,3,5
+EMEA - Stage 3|319,EMEA - Stage 3,319,Round Robin [Bo5],Week 3 | Day 1 | Game 3,Virtus.pro,Twisted Minds,VP,TM,3,2,5
+EMEA - Stage 3|371,EMEA - Stage 3,371,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Geekay Esports,Team Risk,GK,RSK,3,1,4
+EMEA - Stage 3|397,EMEA - Stage 3,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Twisted Minds,Team Risk,TM,RSK,3,0,3
+EMEA - Stage 3|475,EMEA - Stage 3,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Twisted Minds,Team Peps,TM,PEPS,2,3,6
+EMEA - Stage 3|527,EMEA - Stage 3,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Team Peps,Twisted Minds,PEPS,TM,1,4,5
+North America - Stage 1|7,North America - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Dallas Fuel,Disguised,DAL,DSG,3,1,4
+North America - Stage 1|33,North America - Stage 1,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Spacestation Gaming,LuneX Gaming,SSG,LNX,3,0,3
+North America - Stage 1|59,North America - Stage 1,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,Team Liquid,Extinction,TL,EXN,3,2,5
+North America - Stage 1|85,North America - Stage 1,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Spacestation Gaming,Disguised,SSG,DSG,3,2,5
+North America - Stage 1|111,North America - Stage 1,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,LuneX Gaming,Extinction,LNX,EXN,3,0,3
+North America - Stage 1|137,North America - Stage 1,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Team Liquid,Dallas Fuel,TL,DAL,0,3,3
+North America - Stage 1|163,North America - Stage 1,163,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Disguised,Extinction,DSG,EXN,0,3,3
+North America - Stage 1|189,North America - Stage 1,189,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Dallas Fuel,LuneX Gaming,DAL,LNX,3,2,5
+North America - Stage 1|215,North America - Stage 1,215,Round Robin [Bo5],Week 2 | Day 2 | Game 2,Spacestation Gaming,Extinction,SSG,EXN,3,0,3
+North America - Stage 1|241,North America - Stage 1,241,Round Robin [Bo5],Week 2 | Day 2 | Game 3,Disguised,Team Liquid,DSG,TL,3,0,4
+North America - Stage 1|267,North America - Stage 1,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Spacestation Gaming,Dallas Fuel,SSG,DAL,2,3,5
+North America - Stage 1|293,North America - Stage 1,293,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Team Liquid,LuneX Gaming,TL,LNX,3,1,4
+North America - Stage 1|319,North America - Stage 1,319,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Disguised,LuneX Gaming,DSG,LNX,1,3,4
+North America - Stage 1|345,North America - Stage 1,345,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Dallas Fuel,Extinction,DAL,EXN,3,0,3
+North America - Stage 1|371,North America - Stage 1,371,Round Robin [Bo5],Week 3 | Day 2 | Game 3,Spacestation Gaming,Team Liquid,SSG,TL,3,1,4
+North America - Stage 1|397,North America - Stage 1,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Dallas Fuel,LuneX Gaming,DAL,LNX,3,0,3
+North America - Stage 1|423,North America - Stage 1,423,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 2,Spacestation Gaming,Team Liquid,SSG,TL,3,2,5
+North America - Stage 1|449,North America - Stage 1,449,Lower Semifinals [Bo5],Week 4 | Day 2 | Game 1,LuneX Gaming,Team Liquid,LNX,TL,0,3,3
+North America - Stage 1|475,North America - Stage 1,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Dallas Fuel,Spacestation Gaming,DAL,SSG,3,1,5
+North America - Stage 1|501,North America - Stage 1,501,Lower Finals [Bo5],Week 4 | Day 3 | Game 1,Spacestation Gaming,Team Liquid,SSG,TL,3,0,3
+North America - Stage 1|527,North America - Stage 1,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Dallas Fuel,Spacestation Gaming,DAL,SSG,4,1,5
+North America - Stage 2|7,North America - Stage 2,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Dallas Fuel,Spacestation Gaming,DAL,SSG,0,3,3
+North America - Stage 2|33,North America - Stage 2,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,Team Liquid,Disguised,TL,DSG,3,1,4
+North America - Stage 2|59,North America - Stage 2,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,LuneX Gaming,The Kafe,LNX,KAFE,3,0,3
+North America - Stage 2|85,North America - Stage 2,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Dallas Fuel,The Kafe,DAL,KAFE,3,0,3
+North America - Stage 2|111,North America - Stage 2,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Team Liquid,LuneX Gaming,TL,LNX,3,1,4
+North America - Stage 2|137,North America - Stage 2,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,LuneX Gaming,Disguised,LNX,DSG,3,0,3
+North America - Stage 2|163,North America - Stage 2,163,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Spacestation Gaming,The Kafe,SSG,KAFE,3,1,4
+North America - Stage 2|189,North America - Stage 2,189,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Spacestation Gaming,LuneX Gaming,SSG,LNX,3,0,3
+North America - Stage 2|215,North America - Stage 2,215,Round Robin [Bo5],Week 2 | Day 2 | Game 2,The Kafe,Disguised,KAFE,DSG,3,1,4
+North America - Stage 2|241,North America - Stage 2,241,Round Robin [Bo5],Week 2 | Day 2 | Game 3,Dallas Fuel,Team Liquid,DAL,TL,3,1,4
+North America - Stage 2|267,North America - Stage 2,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Spacestation Gaming,Team Liquid,SSG,TL,3,0,3
+North America - Stage 2|293,North America - Stage 2,293,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Dallas Fuel,Disguised,DAL,DSG,3,0,3
+North America - Stage 2|319,North America - Stage 2,319,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Team Liquid,The Kafe,TL,KAFE,3,0,3
+North America - Stage 2|345,North America - Stage 2,345,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Spacestation Gaming,Disguised,SSG,DSG,3,1,4
+North America - Stage 2|371,North America - Stage 2,371,Round Robin [Bo5],Week 3 | Day 2 | Game 3,Dallas Fuel,LuneX Gaming,DAL,LNX,3,1,4
+North America - Stage 2|397,North America - Stage 2,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Spacestation Gaming,LuneX Gaming,SSG,LNX,3,0,3
+North America - Stage 2|423,North America - Stage 2,423,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 2,Dallas Fuel,Team Liquid,DAL,TL,0,3,3
+North America - Stage 2|449,North America - Stage 2,449,Lower Semifinals [Bo5],Week 4 | Day 2 | Game 1,LuneX Gaming,Dallas Fuel,LNX,DAL,0,3,3
+North America - Stage 2|475,North America - Stage 2,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Spacestation Gaming,Team Liquid,SSG,TL,3,1,4
+North America - Stage 2|501,North America - Stage 2,501,Lower Finals [Bo5],Week 4 | Day 3 | Game 1,Team Liquid,Dallas Fuel,TL,DAL,1,3,4
+North America - Stage 2|527,North America - Stage 2,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Spacestation Gaming,Dallas Fuel,SSG,DAL,2,4,6
+North America - Stage 3|7,North America - Stage 3,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Spacestation Gaming 0-0],Team Liquid,SSG,TL,3,1,4
+North America - Stage 3|33,North America - Stage 3,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,The Kafe,Disguised,KAFE,DSG,1,3,4
+North America - Stage 3|59,North America - Stage 3,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,Dallas Fuel,NTMR,DAL,NTMR,3,0,3
+North America - Stage 3|85,North America - Stage 3,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Dallas Fuel,Disguised,DAL,DSG,3,0,3
+North America - Stage 3|111,North America - Stage 3,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,Spacestation Gaming,The Kafe,SSG,KAFE,2,3,5
+North America - Stage 3|137,North America - Stage 3,137,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Team Liquid,The Kafe,TL,KAFE,3,1,4
+North America - Stage 3|163,North America - Stage 3,163,Round Robin [Bo5],Week 2 | Day 1 | Game 2,NTMR,Disguised,NTMR,DSG,3,0,3
+North America - Stage 3|189,North America - Stage 3,189,Round Robin [Bo5],Week 2 | Day 2 | Game 1,Dallas Fuel,Team Liquid,DAL,TL,2,3,5
+North America - Stage 3|215,North America - Stage 3,215,Round Robin [Bo5],Week 2 | Day 2 | Game 2,Spacestation Gaming,Disguised,SSG,DSG,3,0,3
+North America - Stage 3|241,North America - Stage 3,241,Round Robin [Bo5],Week 2 | Day 2 | Game 3,The Kafe,NTMR,KAFE,NTMR,3,0,3
+North America - Stage 3|267,North America - Stage 3,267,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Dallas Fuel,Spacestation Gaming,DAL,SSG,3,0,3
+North America - Stage 3|293,North America - Stage 3,293,Round Robin [Bo5],Week 3 | Day 1 | Game 2,Team Liquid,NTMR,TL,NTMR,3,0,3
+North America - Stage 3|319,North America - Stage 3,319,Round Robin [Bo5],Week 3 | Day 2 | Game 1,Dallas Fuel,The Kafe,DAL,KAFE,3,0,3
+North America - Stage 3|345,North America - Stage 3,345,Round Robin [Bo5],Week 3 | Day 2 | Game 2,Spacestation Gaming,NTMR,SSG,NTMR,3,0,3
+North America - Stage 3|371,North America - Stage 3,371,Round Robin [Bo5],Week 3 | Day 2 | Game 3,Team Liquid,Disguised,TL,DSG,3,0,3
+North America - Stage 3|397,North America - Stage 3,397,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 1,Team Liquid,The Kafe,TL,KAFE,3,1,4
+North America - Stage 3|423,North America - Stage 3,423,Upper Semifinals [Bo5],Week 4 | Day 1 | Game 2,Dallas Fuel,Spacestation Gaming,DAL,SSG,3,0,3
+North America - Stage 3|449,North America - Stage 3,449,Lower Semifinals [Bo5],Week 4 | Day 2 | Game 1,The Kafe,Spacestation Gaming,KAFE,SSG,2,3,5
+North America - Stage 3|475,North America - Stage 3,475,Upper Finals [Bo5],Week 4 | Day 2 | Game 2,Team Liquid,Dallas Fuel,TL,DAL,1,3,4
+North America - Stage 3|501,North America - Stage 3,501,Lower Finals [Bo5],Week 4 | Day 3 | Game 1,Team Liquid,Spacestation Gaming,TL,SSG,3,0,3
+North America - Stage 3|527,North America - Stage 3,527,Grand Finals [Bo7],Week 4 | Day 3 | Game 2,Dallas Fuel,Team Liquid,DF,TL,4,0,4
+Pacific - Stage 1|7,Pacific - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Team Secret,Rankers,TS,RK,3,0,3
+Pacific - Stage 1|33,Pacific - Stage 1,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,MieMieYang,The Gatos Guapos,MMY,TGG,0,3,3
+Pacific - Stage 1|59,Pacific - Stage 1,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,FURY,Quasar Esports,FURY,QE,1,3,4
+Pacific - Stage 1|85,Pacific - Stage 1,85,Round Robin [Bo5],Week 2 | Day 1 | Game 1,FURY,The Gatos Guapos,FURY,TGG,0,3,3
+Pacific - Stage 1|111,Pacific - Stage 1,111,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Team Secret,MieMieYang,TS,MMY,3,0,3
+Pacific - Stage 1|137,Pacific - Stage 1,137,Round Robin [Bo5],Week 2 | Day 1 | Game 3,Quasar Esports,Rankers,QE,RK,2,3,5
+Pacific - Stage 1|163,Pacific - Stage 1,163,Round Robin [Bo5],Week 3 | Day 1 | Game 1,FURY,Rankers,FURY,RK,0,3,3
+Pacific - Stage 1|189,Pacific - Stage 1,189,Round Robin [Bo5],Week 3 | Day 1 | Game 2,The Gatos Guapos,Team Secret,TGG,TS,3,0,3
+Pacific - Stage 1|215,Pacific - Stage 1,215,Round Robin [Bo5],Week 3 | Day 1 | Game 3,MieMieYang,Quasar Esports,MMY,QE,1,3,4
+Pacific - Stage 1|241,Pacific - Stage 1,241,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Team Secret,FURY,TS,FURY,3,0,3
+Pacific - Stage 1|267,Pacific - Stage 1,267,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Quasar Esports,The Gatos Guapos,QE,TGG,0,3,3
+Pacific - Stage 1|293,Pacific - Stage 1,293,Round Robin [Bo5],Week 4 | Day 1 | Game 3,MieMieYang,Rankers,MMY,RK,2,3,5
+Pacific - Stage 1|319,Pacific - Stage 1,319,Round Robin [Bo5],Week 5 | Day 1 | Game 1,Team Secret,Quasar Esports,TS,QE,3,0,3
+Pacific - Stage 1|345,Pacific - Stage 1,345,Round Robin [Bo5],Week 5 | Day 1 | Game 2,FURY,MieMieYang,FURY,MMY,0,0,3
+Pacific - Stage 1|371,Pacific - Stage 1,371,Round Robin [Bo5],Week 5 | Day 1 | Game 3,The Gatos Guapos,Rankers,TGG,RK,0,3,3
+Pacific - Stage 1|397,Pacific - Stage 1,397,Semifinals [Bo5],Week 6 | Day 1 | Game 1,The Gatos Guapos,Quasar Esports,TGG,QE,3,1,4
+Pacific - Stage 1|423,Pacific - Stage 1,423,Semifinals [Bo5],Week 6 | Day 1 | Game 2,Team Secret,Rankers,TS,RK,3,0,3
+Pacific - Stage 1|449,Pacific - Stage 1,449,Third Place Match [Bo5],Week 6 | Day 1 | Game 3,Rankers,Quasar Esports,RK,QE,3,0,3
+Pacific - Stage 1|475,Pacific - Stage 1,475,Grand Finals [Bo7],Week 6 | Day 1 | Game 4,The Gatos Guapos,Team Secret,TGG,TS,4,1,5
+Pacific - Stage 2|7,Pacific - Stage 2,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Elemental,SHENGSHI Esports,ELMT,SSE,0,3,3
+Pacific - Stage 2|33,Pacific - Stage 2,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,MENG GONG 3,Trap12,MG3,T12,0,3,3
+Pacific - Stage 2|59,Pacific - Stage 2,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,Team Secret,Najdorf Esports,TS,NDE,1,3,4
+Pacific - Stage 2|85,Pacific - Stage 2,85,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Trap12,Najdorf Esports,T12,NDE,2,3,5
+Pacific - Stage 2|111,Pacific - Stage 2,111,Round Robin [Bo5],Week 2 | Day 1 | Game 2,Team Secret,Elemental,TS,ELMT,3,0,3
+Pacific - Stage 2|137,Pacific - Stage 2,137,Round Robin [Bo5],Week 2 | Day 1 | Game 3,MENG GONG 3,SHENGSHI Esports,MG3,SSE,0,3,4
+Pacific - Stage 2|163,Pacific - Stage 2,163,Round Robin [Bo5],Week 3 | Day 1 | Game 1,Elemental,Trap12,ELMT,T12,1,3,4
+Pacific - Stage 2|189,Pacific - Stage 2,189,Round Robin [Bo5],Week 3 | Day 1 | Game 2,SHENGSHI Esports,Team Secret,SSE,TS,3,1,4
+Pacific - Stage 2|215,Pacific - Stage 2,215,Round Robin [Bo5],Week 3 | Day 1 | Game 3,MENG GONG 3,Najdorf Esports,MG3,NDE,1,3,4
+Pacific - Stage 2|241,Pacific - Stage 2,241,Round Robin [Bo5],Week 4 | Day 1 | Game 1,Trap12,SHENGSHI Esports,T12,SSE,0,3,3
+Pacific - Stage 2|267,Pacific - Stage 2,267,Round Robin [Bo5],Week 4 | Day 1 | Game 2,Elemental,Najdorf Esports,ELMT,NDE,1,3,4
+Pacific - Stage 2|293,Pacific - Stage 2,293,Round Robin [Bo5],Week 4 | Day 1 | Game 3,Team Secret,MENG GONG 3,TS,MG3,3,0,3
+Pacific - Stage 2|319,Pacific - Stage 2,319,Round Robin [Bo5],Week 5 | Day 1 | Game 1,MENG GONG 3,Elemental,MG3,ELMT,0,3,3
+Pacific - Stage 2|345,Pacific - Stage 2,345,Round Robin [Bo5],Week 5 | Day 1 | Game 2,Team Secret,Trap12,TS,T12,3,0,3
+Pacific - Stage 2|371,Pacific - Stage 2,371,Round Robin [Bo5],Week 5 | Day 1 | Game 3,SHENGSHI Esports,Najdorf Esports,SSE,NDE,3,1,4
+Pacific - Stage 2|397,Pacific - Stage 2,397,Semifinals [Bo5],Week 6 | Day 1 | Game 1,SHENGSHI Esports,Trap12,SSE,T12,3,0,3
+Pacific - Stage 2|423,Pacific - Stage 2,423,Semifinals [Bo5],Week 6 | Day 1 | Game 2,Najdorf Esports,Team Secret,NDE,TS,1,3,4
+Pacific - Stage 2|449,Pacific - Stage 2,449,Third Place Match [Bo5],Week 6 | Day 1 | Game 3,Trap12,Najdorf Esports,T12,NDE,1,3,4
+Pacific - Stage 2|475,Pacific - Stage 2,475,Grand Finals [Bo7],Week 6 | Day 1 | Game 4,SHENGSHI Esports,Team Secret,SSE,TS,3,4,7
+Pacific - Stage 3|7,Pacific - Stage 3,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,junjilopzfx0764,Stronghold,JUN,STH,2,3,5
+Pacific - Stage 3|33,Pacific - Stage 3,33,Round Robin [Bo5],Week 1 | Day 1 | Game 2,CantHear,The Gatos Guapos,CTH,TGG,0,3,3
+Pacific - Stage 3|59,Pacific - Stage 3,59,Round Robin [Bo5],Week 1 | Day 1 | Game 3,SeijiKING,Team Benxxn,SJK,BXN,3,0,3
+Pacific - Stage 3|85,Pacific - Stage 3,85,Round Robin [Bo5],Week 1 | Day 2 | Game 1,The Gatos Guapos,Team Benxxn,TGG,BXN,3,0,3
+Pacific - Stage 3|111,Pacific - Stage 3,111,Round Robin [Bo5],Week 1 | Day 2 | Game 2,SeijiKING,junjilopzfx0764,SJK,JUN,3,2,5
+Pacific - Stage 3|137,Pacific - Stage 3,137,Round Robin [Bo5],Week 1 | Day 2 | Game 3,CantHear,Stronghold,CTH,STH,0,3,3
+Pacific - Stage 3|163,Pacific - Stage 3,163,Round Robin [Bo5],Week 1 | Day 3 | Game 1,junjilopzfx0764,The Gatos Guapos,JUN,TGG,1,3,3
+Pacific - Stage 3|189,Pacific - Stage 3,189,Round Robin [Bo5],Week 1 | Day 3 | Game 2,Stronghold,SeijiKING,STH,SJK,1,3,2
+Pacific - Stage 3|215,Pacific - Stage 3,215,Round Robin [Bo5],Week 1 | Day 3 | Game 3,CantHear,Team Benxxn,CTH,BXN,0,3,3
+Pacific - Stage 3|241,Pacific - Stage 3,241,Round Robin [Bo5],Week 1 | Day 4 | Game 1,The Gatos Guapos,Stronghold,TGG,STH,3,0,3
+Pacific - Stage 3|267,Pacific - Stage 3,267,Round Robin [Bo5],Week 1 | Day 4 | Game 2,junjilopzfx0764,Team Benxxn,JUN,BXN,2,3,5
+Pacific - Stage 3|293,Pacific - Stage 3,293,Round Robin [Bo5],Week 1 | Day 4 | Game 3,SeijiKING,CantHear,SJK,CTH,3,1,3
+Pacific - Stage 3|319,Pacific - Stage 3,319,Round Robin [Bo5],Week 1 | Day 5 | Game 1,CantHear,junjilopzfx0764,CTH,JUN,0,3,3
+Pacific - Stage 3|345,Pacific - Stage 3,345,Round Robin [Bo5],Week 1 | Day 5 | Game 2,SeijiKING,The Gatos Guapos,SJK,TGG,1,3,3
+Pacific - Stage 3|371,Pacific - Stage 3,371,Round Robin [Bo5],Week 1 | Day 5 | Game 3,Stronghold,Team Benxxn,STH,BXN,0,3,1
+Pacific - Stage 3|397,Pacific - Stage 3,397,Semifinals [Bo5],Week 2 | Day 1 | Game 1,The Gatos Guapos,Stronghold,TGG,STH,3,0,3
+Pacific - Stage 3|423,Pacific - Stage 3,423,Semifinals [Bo5],Week 2 | Day 1 | Game 2,SeijiKING,Team Benxxn,SJK,BXN,3,2,5
+Pacific - Stage 3|449,Pacific - Stage 3,449,Third Place Match [Bo5],Week 2 | Day 1 | Game 3,Stronghold,Team Benxxn,STH,BXN,1,3,1
+Pacific - Stage 3|475,Pacific - Stage 3,475,Grand Finals [Bo7],Week 2 | Day 1 | Game 4,The Gatos Guapos,Stronghold,TGG,SJK,4,0,0
+Asia - Stage 1|7,Asia - Stage 1,7,Group Stage [Bo3],Week 1 | Day 1 | Game 1,ZETA DIVISION,T1,ZETA,T1,2,1,3
+Asia - Stage 1|33,Asia - Stage 1,33,Group Stage [Bo3],Week 1 | Day 1 | Game 2,Team Falcons,Crazy Raccoon,FLC,CR,0,2,2
+Asia - Stage 1|59,Asia - Stage 1,59,Group Stage [Bo3],Week 1 | Day 1 | Game 3,ENTER FORCE.36,The Gatos Guapos,E36,TGG,2,0,2
+Asia - Stage 1|85,Asia - Stage 1,85,Group Stage [Bo3],Week 1 | Day 1 | Game 4,VARREL,Please Not Hero Ban,VL,PNHB,2,0,2
+Asia - Stage 1|111,Asia - Stage 1,111,Group Stage [Bo3],Week 1 | Day 1 | Game 5,ZETA DIVISION,ENTER FORCE.36,ZETA,E36,2,0,2
+Asia - Stage 1|137,Asia - Stage 1,137,Group Stage [Bo3],Week 1 | Day 1 | Game 6,Team Falcons,VARREL,FLC,VL,2,1,3
+Asia - Stage 1|163,Asia - Stage 1,163,Group Stage [Bo3],Week 1 | Day 2 | Game 1,T1,The Gatos Guapos,T1,TGG,2,0,2
+Asia - Stage 1|189,Asia - Stage 1,189,Group Stage [Bo3],Week 1 | Day 2 | Game 2,Crazy Raccoon,Please Not Hero Ban,CR,PNHB,2,0,2
+Asia - Stage 1|215,Asia - Stage 1,215,Group Stage [Bo3],Week 1 | Day 2 | Game 3,ZETA DIVISION,The Gatos Guapos,ZETA,TGG,2,0,2
+Asia - Stage 1|241,Asia - Stage 1,241,Group Stage [Bo3],Week 1 | Day 2 | Game 4,Team Falcons,Please Not Hero Ban,FLC,PNHB,2,0,2
+Asia - Stage 1|267,Asia - Stage 1,267,Group Stage [Bo3],Week 1 | Day 2 | Game 5,T1,ENTER FORCE.36,T1,E36,2,0,2
+Asia - Stage 1|293,Asia - Stage 1,293,Group Stage [Bo3],Week 1 | Day 2 | Game 6,Crazy Raccoon,VARREL,CR,VL,1,2,3
+Asia - Stage 1|319,Asia - Stage 1,319,Upper Semifinals [Bo5],Week 1 | Day 3 | Game 1,ZETA DIVISION,VARREL,ZETA,VL,3,2,5
+Asia - Stage 1|345,Asia - Stage 1,345,Upper Semifinals [Bo5],Week 1 | Day 3 | Game 2,Crazy Raccoon,T1,CR,T1,3,2,5
+Asia - Stage 1|371,Asia - Stage 1,371,Upper Finals [Bo5],Week 1 | Day 3 | Game 3,ZETA DIVISION,Crazy Raccoon,ZETA,CR,3,1,4
+Asia - Stage 1|397,Asia - Stage 1,397,Lower Semifinals [Bo5],Week 1 | Day 4 | Game 1,VARREL,T1,VL,T1,0,3,3
+Asia - Stage 1|423,Asia - Stage 1,423,Lower Finals [Bo5],Week 1 | Day 4 | Game 2,Crazy Raccoon,T1,CR,T1,3,0,3
+Asia - Stage 1|449,Asia - Stage 1,449,Grand Finals [Bo7],Week 1 | Day 4 | Game 3,ZETA DIVISION,Crazy Raccoon,ZETA,CR,4,3,7
+Asia - Stage 3|7,Asia - Stage 3,7,Group Stage [Bo5],Week 1 | Day 1 | Game 1,T1,The Gatos Guapos,T1,TGG,3,0,3
+Asia - Stage 3|33,Asia - Stage 3,33,Group Stage [Bo5],Week 1 | Day 1 | Game 2,ZETA DIVISION,ENTER FORCE.36,ZETA,E36,3,0,3
+Asia - Stage 3|59,Asia - Stage 3,59,Group Stage [Bo5],Week 1 | Day 1 | Game 3,Team Falcons,MURASH GAMING,FLC,MRG,3,0,3
+Asia - Stage 3|85,Asia - Stage 3,85,Group Stage [Bo5],Week 1 | Day 1 | Game 4,Crazy Raccoon,VARREL,CR,VL,3,0,3
+Asia - Stage 3|111,Asia - Stage 3,111,Group Stage [Bo5],Week 1 | Day 2 | Game 1,Team Falcons,The Gatos Guapos,FLC,TGG,3,1,4
+Asia - Stage 3|137,Asia - Stage 3,137,Group Stage [Bo5],Week 1 | Day 2 | Game 2,Crazy Raccoon,ENTER FORCE.36,CR,E36,3,0,3
+Asia - Stage 3|163,Asia - Stage 3,163,Group Stage [Bo5],Week 1 | Day 2 | Game 3,T1,MURASH GAMING,T1,MRG,3,0,3
+Asia - Stage 3|189,Asia - Stage 3,189,Group Stage [Bo5],Week 1 | Day 2 | Game 4,ZETA DIVISION,VARREL,ZETA,VL,3,0,3
+Asia - Stage 3|215,Asia - Stage 3,215,Group Stage [Bo5],Week 1 | Day 3 | Game 1,MURASH GAMING,The Gatos Guapos,MRG,TGG,0,3,3
+Asia - Stage 3|241,Asia - Stage 3,241,Group Stage [Bo5],Week 1 | Day 3 | Game 2,VARREL,ENTER FORCE.36,VL,E36,3,1,4
+Asia - Stage 3|267,Asia - Stage 3,267,Group Stage [Bo5],Week 1 | Day 3 | Game 3,T1,Team Falcons,T1,FLC,2,3,5
+Asia - Stage 3|293,Asia - Stage 3,293,Group Stage [Bo5],Week 1 | Day 3 | Game 4,ZETA DIVISION,Crazy Raccoon,ZETA,CR,3,0,3
+Champions Clash Tokyo|7,Champions Clash Tokyo,7,Upper Quarterfinals [Bo3],Day 1 | Game 1,Weibo Gaming,Virtus.pro,WBG,VP,1,2,3
+Champions Clash Tokyo|33,Champions Clash Tokyo,33,Upper Quarterfinals [Bo3],Day 1 | Game 2,ZETA DIVISION,Spacestation Gaming,ZETA,SSG,2,0,2
+Champions Clash Tokyo|59,Champions Clash Tokyo,59,Upper Quarterfinals [Bo3],Day 1 | Game 3,Dallas Fuel,Crazy Raccoon,DAL,CR,0,2,2
+Champions Clash Tokyo|85,Champions Clash Tokyo,85,Upper Quarterfinals [Bo3],Day 1 | Game 4,Twisted Minds,All Gamers,TM,AG,2,0,2
+Champions Clash Tokyo|111,Champions Clash Tokyo,111,Lower Round 1 [Bo3],Day 1 | Game 5,Weibo Gaming,Spacestation Gaming,WBG,SSG,2,0,2
+Champions Clash Tokyo|137,Champions Clash Tokyo,137,Lower Round 1 [Bo3],Day 1 | Game 6,All Gamers,Dallas Fuel,AG,DAL,0,2,2
+Champions Clash Tokyo|163,Champions Clash Tokyo,163,Upper Semifinals [Bo5],Day 2 | Game 1,Twisted Minds,Crazy Raccoon,TM,CR,0,3,3
+Champions Clash Tokyo|189,Champions Clash Tokyo,189,Upper Semifinals [Bo5],Day 2 | Game 2,ZETA DIVISION,Virtus.pro,ZETA,VP,3,1,4
+Champions Clash Tokyo|215,Champions Clash Tokyo,215,Lower Quarterfinals [Bo5],Day 2 | Game 3,Virtus.pro,Dallas Fuel,VP,DAL,3,1,4
+Champions Clash Tokyo|241,Champions Clash Tokyo,241,Lower Quarterfinals [Bo5],Day 2 | Game 4,Twisted Minds,Weibo Gaming,TM,WBG,3,1,5
+Champions Clash Tokyo|267,Champions Clash Tokyo,267,Lower Semifinals [Bo5],Day 2 | Game 5,Virtus.pro,Twisted Minds,VP,TM,1,3,4
+Champions Clash Tokyo|293,Champions Clash Tokyo,293,Upper Finals [Bo5],Day 3 | Game 1,Crazy Raccoon,ZETA DIVISION,CR,ZETA,3,1,4
+Champions Clash Tokyo|319,Champions Clash Tokyo,319,Lower Finals [Bo5],Day 3 | Game 2,ZETA DIVISION,Twisted Minds,ZETA,TM,1,3,4
+Champions Clash Tokyo|345,Champions Clash Tokyo,345,Grand Finals [Bo7],Day 3 | Game 3,Crazy Raccoon,Twisted Minds,CR,TM,4,3,7
+Midseason Championship Paris|7,Midseason Championship Paris,7,Group B Upper Quarterfinals [Bo3],Day 1 | Game 1,ZETA DIVISION,VARREL,ZETA,VL,2,0,2
+Midseason Championship Paris|33,Midseason Championship Paris,33,Group B Upper Quarterfinals [Bo3],Day 1 | Game 2,Crazy Raccoon,Team Secret,CR,TS,2,0,2
+Midseason Championship Paris|59,Midseason Championship Paris,59,Group B Upper Quarterfinals [Bo3],Day 1 | Game 3,Geekay Esports,AG.AL,GK,AG.AL,2,0,2
+Midseason Championship Paris|85,Midseason Championship Paris,85,Group B Upper Quarterfinals [Bo3],Day 1 | Game 4,Spacestation Gaming,JD Gaming,SSG,JDG,2,1,3
+Midseason Championship Paris|111,Midseason Championship Paris,111,Group A Upper Quarterfinals [Bo3],Day 1 | Game 5,T1,Twisted Minds,T1,TM,1,2,3
+Midseason Championship Paris|137,Midseason Championship Paris,137,Group A Upper Quarterfinals [Bo3],Day 1 | Game 6,Weibo Gaming,Team Liquid,WBG,TL,2,1,3
+Midseason Championship Paris|163,Midseason Championship Paris,163,Group A Upper Quarterfinals [Bo3],Day 1 | Game 7,Virtus.pro,9z Globant,VP,9ZG,2,0,2
+Midseason Championship Paris|189,Midseason Championship Paris,189,Group A Upper Quarterfinals [Bo3],Day 1 | Game 8,Dallas Fuel,Team Falcons,DAL,FLC,0,2,2
+Midseason Championship Paris|215,Midseason Championship Paris,215,Group B Upper Semifinals [Bo3],Day 2 | Game 1,Crazy Raccoon,Spacestation Gaming,CR,SSG,2,0,2
+Midseason Championship Paris|241,Midseason Championship Paris,241,Group A Upper Semifinals [Bo3],Day 2 | Game 2,Weibo Gaming,Team Falcons,WBG,FLC,2,1,3
+Midseason Championship Paris|267,Midseason Championship Paris,267,Group A Lower Quarterfinals [Bo3],Day 2 | Game 3,AG.AL,VARREL,AG.AL,VL,1,2,3
+Midseason Championship Paris|293,Midseason Championship Paris,293,Group A Lower Quarterfinals [Bo3],Day 2 | Game 4,Team Secret,JD Gaming,TS,JDG,0,2,2
+Midseason Championship Paris|319,Midseason Championship Paris,319,Group B Lower Quarterfinals [Bo3],Day 2 | Game 5,9z Globant,T1,9ZG,T1,0,2,2
+Midseason Championship Paris|345,Midseason Championship Paris,345,Group B Lower Quarterfinals [Bo3],Day 2 | Game 6,Team Liquid,Dallas Fuel,TL,DAL,0,2,2
+Midseason Championship Paris|371,Midseason Championship Paris,371,Group A Upper Semifinals [Bo3],Day 3 | Game 1,Virtus.pro,Twisted Minds,VP,TM,0,2,2
+Midseason Championship Paris|397,Midseason Championship Paris,397,Group B Upper Semifinals [Bo3],Day 3 | Game 2,Geekay Esports,ZETA DIVISION,GK,ZETA,1,2,3
+Midseason Championship Paris|423,Midseason Championship Paris,423,Group B Lower Semifinals [Bo3],Day 3 | Game 3,Team Falcons,T1,FLC,T1,0,2,2
+Midseason Championship Paris|449,Midseason Championship Paris,449,Group B Lower Semifinals [Bo3],Day 3 | Game 4,Spacestation Gaming,VARREL,SSG,VL,2,1,3
+Midseason Championship Paris|475,Midseason Championship Paris,475,Group A Lower Semifinals [Bo3],Day 3 | Game 5,Virtus.pro,Dallas Fuel,VP,DAL,0,2,2
+Midseason Championship Paris|501,Midseason Championship Paris,501,Group A Lower Semifinals [Bo3],Day 3 | Game 6,Geekay Esports,JD Gaming,GK,JDG,2,0,2
+Midseason Championship Paris|527,Midseason Championship Paris,527,Playoff Quarterfinals [Bo5],Day 4 | Game 1,Crazy Raccoon,T1,CR,T1,0,3,3
+Midseason Championship Paris|553,Midseason Championship Paris,553,Playoff Quarterfinals [Bo5],Day 4 | Game 2,ZETA DIVISION,Dallas Fuel,ZETA,DAL,3,0,3
+Midseason Championship Paris|579,Midseason Championship Paris,579,Playoff Quarterfinals [Bo5],Day 4 | Game 3,Weibo Gaming,Spacestation Gaming,WBG,SSG,3,1,4
+Midseason Championship Paris|605,Midseason Championship Paris,605,Playoff Quarterfinals [Bo5],Day 4 | Game 4,Twisted Minds,Geekay Esports,TM,GK,3,1,4
+Midseason Championship Paris|631,Midseason Championship Paris,631,Playoff Semifinals [Bo5],Day 5 | Game 1,ZETA DIVISION,T1,ZETA,T1,3,0,3
+Midseason Championship Paris|657,Midseason Championship Paris,657,Playoff Semifinals [Bo5],Day 5 | Game 2,Twisted Minds,Weibo Gaming,TM,WBG,3,2,5
+Midseason Championship Paris|683,Midseason Championship Paris,683,Third Place Match [Bo5],Day 5 | Game 3,Weibo Gaming,T1,WBG,T1,0,3,3
+Midseason Championship Paris|709,Midseason Championship Paris,709,Grand Finals [Bo7],Day 5 | Game 4,Twisted Minds,ZETA DIVISION,TM,ZETA,2,4,6

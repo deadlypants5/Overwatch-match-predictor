@@ -1,0 +1,52 @@
+series_key,event,part,date,team1,team2,maps_played,vod,n_pov,pov_hours,one_pov_h,two_pov_h,has_video
+Asia/Stage 1/Korea|Main/Playoffs|1,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 18:50,zeta division,onside gaming,4,https://youtu.be/yGLnRRa0VgQ?t=8225,11.0,8.75388888888889,0.9725,1.945,True
+Asia/Stage 1/Korea|Main/Playoffs|2,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 20:50,crazy raccoon,team falcons,3,https://youtu.be/yGLnRRa0VgQ?t=15434,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|3,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 17:30,zeta division,team falcons,4,https://youtu.be/OxIkKIG98u0?t=10424,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|4,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 19:30,crazy raccoon,onside gaming,3,https://youtu.be/OxIkKIG98u0?t=17777,2.0,1.103888888888889,0.5519444444444445,1.103888888888889,True
+Asia/Stage 1/Korea|Main/Playoffs|5,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 16:30,zeta division,crazy raccoon,3,https://youtu.be/ndzMu-V4Rgc?t=6610,3.0,1.4227777777777777,0.5461111111111111,1.0922222222222222,True
+Asia/Stage 1/Korea|Main/Playoffs|6,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 17:55,team falcons,onside gaming,3,https://youtu.be/ndzMu-V4Rgc?t=11836,5.0,3.9758333333333336,0.9030555555555556,1.806111111111111,True
+Asia/Stage 1/Korea|Main/Playoffs|7,Asia/Stage 1/Korea,Main/Playoffs,2026-04-24 - 17:35,t1,zan esports,3,https://youtu.be/yGLnRRa0VgQ?t=2563,1.0,0.4788888888888888,0.4788888888888888,0.4788888888888888,True
+Asia/Stage 1/Korea|Main/Playoffs|8,Asia/Stage 1/Korea,Main/Playoffs,2026-04-25 - 15:10,poker face,Cheeseburger,5,https://youtu.be/OxIkKIG98u0?t=2402,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|9,Asia/Stage 1/Korea,Main/Playoffs,2026-04-26 - 15:10,ZAN Esports,Cheeseburger,3,https://youtu.be/ndzMu-V4Rgc?t=2227,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|10,Asia/Stage 1/Korea,Main/Playoffs,2026-05-01 - 19:05,onside gaming,t1,4,https://www.youtube.com/live/lEsMTDkhLB8?si=rcRdPTAAz0MZbMTg&t=9005,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|11,Asia/Stage 1/Korea,Main/Playoffs,2026-05-01 - 17:10,team falcons,zan esports,4,https://www.youtube.com/live/lEsMTDkhLB8?si=yhTunYlejY5DQV0q&t=2392,,,0.0,0.0,False
+Asia/Stage 1/Korea|Main/Playoffs|12,Asia/Stage 1/Korea,Main/Playoffs,2026-05-02 - 15:00,zeta division,t1,6,https://www.youtube.com/live/JcuUVHh21QA?si=Ie3rOlk7-trO3XXe&t=2286,16.0,16.426388888888887,1.2675,2.535,True
+Asia/Stage 1/Korea|Main/Playoffs|13,Asia/Stage 1/Korea,Main/Playoffs,2026-05-02 - 17:15,crazy raccoon,team falcons,5,https://www.youtube.com/live/JcuUVHh21QA?si=gvb6fyBMGIJ6urKA&t=11509,16.0,14.483611111111111,1.153333333333333,2.306666666666666,True
+Asia/Stage 1/Korea|Main/Playoffs|14,Asia/Stage 1/Korea,Main/Playoffs,2026-05-03 - 17:40,zeta division,team falcons,5,https://www.youtube.com/live/hn5QTd-Nmzw?si=uEx1BV_EjNgexl8H&t=10805,15.0,14.233611111111111,1.1980555555555557,2.3961111111111117,True
+Asia/Stage 1/Korea|Main/Playoffs|15,Asia/Stage 1/Korea,Main/Playoffs,2026-05-03 - 15:10,t1,Crazy Raccoon,5,https://www.youtube.com/live/hn5QTd-Nmzw?si=gaTl_UuVScLeKdoc&t=2535,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|1,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 17:30,Cheeseburger,Poker Face,3,https://youtu.be/QpNMWmqcZMI?t=2281,1.0,0.55,0.55,0.55,True
+Asia/Stage 1/Korea|Regular Season|2,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 18:55,Crazy Raccoon,ZETA Division,4,https://youtu.be/QpNMWmqcZMI?t=8375,7.0,6.04,1.0061111111111112,2.0122222222222224,True
+Asia/Stage 1/Korea|Regular Season|3,Asia/Stage 1/Korea,Regular Season,2026-03-20 - 21:10,ZAN Esports,ONSIDE Gaming,5,https://youtu.be/QpNMWmqcZMI?t=16166,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|4,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 15:10,New Era,T1,3,https://youtu.be/CHo9VBokvi0?t=2101,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|5,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 16:25,Cheeseburger,Team Falcons,3,https://youtu.be/CHo9VBokvi0?t=6677,1.0,0.4375,0.4375,0.4375,True
+Asia/Stage 1/Korea|Regular Season|6,Asia/Stage 1/Korea,Regular Season,2026-03-21 - 17:45,ZAN Esports,Crazy Raccoon,4,https://youtu.be/CHo9VBokvi0?t=11277,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|7,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 15:00,Poker Face,New Era,3,https://youtu.be/bpXIG-p-4hA?t=2317,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|8,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 16:40,ONSIDE Gaming,T1,5,https://youtu.be/bpXIG-p-4hA?t=7477,2.0,2.005,1.0025,2.005,True
+Asia/Stage 1/Korea|Regular Season|9,Asia/Stage 1/Korea,Regular Season,2026-03-22 - 18:45,ZETA Division,Team Falcons,5,https://youtu.be/bpXIG-p-4hA?t=14999,11.0,12.680277777777778,1.2677777777777777,2.535555555555556,True
+Asia/Stage 1/Korea|Regular Season|10,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 17:10,Cheeseburger,ZAN Esports,3,https://youtu.be/m1w6n04b72M?t=2212,2.0,0.965,0.4825,0.965,True
+Asia/Stage 1/Korea|Regular Season|11,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 18:30,Poker Face,ZETA Division,3,https://youtu.be/m1w6n04b72M?t=6828,2.0,1.080833333333333,0.5404166666666667,1.080833333333333,True
+Asia/Stage 1/Korea|Regular Season|12,Asia/Stage 1/Korea,Regular Season,2026-04-03 - 19:55,Crazy Raccoon,ONSIDE Gaming,5,https://youtu.be/m1w6n04b72M?t=11974,10.0,10.606666666666667,1.0605555555555557,2.121111111111111,True
+Asia/Stage 1/Korea|Regular Season|13,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 15:10,New Era,Team Falcons,3,https://youtu.be/ToHuxCD0Bn4?t=2232,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|14,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 16:25,T1,Poker Face,3,https://youtu.be/ToHuxCD0Bn4?t=6674,2.0,1.1288888888888888,0.5644444444444444,1.1288888888888888,True
+Asia/Stage 1/Korea|Regular Season|15,Asia/Stage 1/Korea,Regular Season,2026-04-04 - 17:45,Crazy Raccoon,Cheeseburger,3,https://youtu.be/ToHuxCD0Bn4?t=11490,2.0,0.9186111111111112,0.4593055555555556,0.9186111111111112,True
+Asia/Stage 1/Korea|Regular Season|16,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 15:10,ONSIDE Gaming,New Era,3,https://youtu.be/oBtOpaNCZg4?t=2149,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|17,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 16:30,ZAN Esports,ZETA Division,3,https://youtu.be/oBtOpaNCZg4?t=6727,2.0,0.8911111111111111,0.4455555555555555,0.8911111111111111,True
+Asia/Stage 1/Korea|Regular Season|18,Asia/Stage 1/Korea,Regular Season,2026-04-05 - 18:00,Team Falcons,T1,4,https://youtu.be/oBtOpaNCZg4?t=12238,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|19,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 17:10,ONSIDE Gaming,Cheeseburger,3,https://youtu.be/hCwQvbHEbAk?t=2073,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|20,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 18:35,Team Falcons,Poker Face,3,https://youtu.be/hCwQvbHEbAk?t=7168,3.0,2.2555555555555555,0.7519444444444444,1.5038888888888888,True
+Asia/Stage 1/Korea|Regular Season|21,Asia/Stage 1/Korea,Regular Season,2026-04-10 - 20:15,T1,Crazy Raccoon,5,https://youtu.be/hCwQvbHEbAk?t=12806,3.0,2.6466666666666665,0.7405555555555555,1.481111111111111,True
+Asia/Stage 1/Korea|Regular Season|22,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 15:10,New Era,ZAN Esports,3,https://youtu.be/T6yRsKNvrnw?t=1799,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|23,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 16:25,ZETA Division,ONSIDE Gaming,5,https://youtu.be/T6yRsKNvrnw?t=6393,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|24,Asia/Stage 1/Korea,Regular Season,2026-04-11 - 18:40,Cheeseburger,T1,3,https://youtu.be/T6yRsKNvrnw?t=14338,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|25,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 15:10,Team Falcons,ZAN Esports,3,https://youtu.be/atb7QLG9VZo?t=2272,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|26,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 16:45,Poker Face,Crazy Raccoon,3,https://youtu.be/atb7QLG9VZo?t=7701https://youtu.be/atb7QLG9VZo?t=13000,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|27,Asia/Stage 1/Korea,Regular Season,2026-04-12 - 18:10,ZETA Division,New Era,3,https://youtu.be/atb7QLG9VZo?t=13000,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|28,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 17:15,Poker Face,ONSIDE Gaming,3,https://youtu.be/OUd_hoQzJLk?t=2455,2.0,1.112777777777778,0.5563888888888889,1.112777777777778,True
+Asia/Stage 1/Korea|Regular Season|29,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 18:45,T1,ZETA Division,4,https://youtu.be/OUd_hoQzJLk?t=7804,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|30,Asia/Stage 1/Korea,Regular Season,2026-04-17 - 20:35,Crazy Raccoon,New Era,3,https://youtu.be/OUd_hoQzJLk?t=14406,2.0,1.034166666666667,0.5170833333333333,1.034166666666667,True
+Asia/Stage 1/Korea|Regular Season|31,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 15:10,T1,ZAN Esports,3,https://youtu.be/mHZNS0OtqZ8?t=2318,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|32,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 16:40,ZETA Division,Cheeseburger,3,https://youtu.be/mHZNS0OtqZ8?t=7734,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|33,Asia/Stage 1/Korea,Regular Season,2026-04-18 - 18:10,Team Falcons,Crazy Raccoon,3,https://youtu.be/mHZNS0OtqZ8?t=12809,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|34,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 15:10,ZAN Esports,Poker Face,3,https://youtu.be/iwxxXdPBkb4?t=2718,1.0,0.5047222222222222,0.5047222222222222,0.5047222222222222,True
+Asia/Stage 1/Korea|Regular Season|35,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 16:35,ONSIDE Gaming,Team Falcons,5,https://youtu.be/iwxxXdPBkb4?t=7523,,,0.0,0.0,False
+Asia/Stage 1/Korea|Regular Season|36,Asia/Stage 1/Korea,Regular Season,2026-04-19 - 18:30,New Era,Cheeseburger,3,https://youtu.be/iwxxXdPBkb4?t=14582,3.0,1.446388888888889,0.4341666666666666,0.8683333333333333,True
