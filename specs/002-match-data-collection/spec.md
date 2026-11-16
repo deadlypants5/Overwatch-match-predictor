@@ -339,6 +339,13 @@ errors.
 - **FR-024**: System MUST export the reconciled dataset in feature 001's input format, with an
   option to include or exclude non-`verified` maps, and a coverage and quality summary per
   region and stage.
+- **FR-024a**: Alongside the feature 001 input, the export MUST include (a) a kill events
+  table, one row per kill with game time, segment, killer and victim (team, player, hero) and
+  whether it was an environmental or self death; (b) a per-map table with one row per player ×
+  hero, giving time on the hero, team kills and deaths, the player's own kills and deaths, and
+  objective progress for and against during that time; and (c) a summary over all exported
+  maps per player × hero × mode, with totals and per-10-minute rates. The summary is
+  descriptive and MUST NOT be used as a pre-map feature (Constitution II).
 - **FR-025**: Every map in the catalog that is not exported MUST appear in the summary with its
   reason (no replay, forfeit, Clash, open conflict, unverified and excluded by setting).
 
