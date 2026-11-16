@@ -81,6 +81,7 @@ platform_terms_acknowledged: false      # must be true before any download (FR-0
 video_cache_dir: "C:/Users/<you>/AppData/Local/owstudy/videos"
 user_agent_contact: "<contact for Liquipedia API User-Agent>"
 reviewer: "<name or initials recorded in decisions>"
+owtv_api_key: ""                         # personal OWTV API key; keep secret, never commit
 ```
 
 ## `patches.yaml`

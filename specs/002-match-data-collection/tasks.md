@@ -39,7 +39,7 @@ the researcher (watching video, naming icons, approving).
 4. **T060** Name the hero icons (about 15 minutes)
 5. **T062** Label 6 gold maps and tune until the viewer is accurate
 6. **T063** Run extraction on the whole pilot (~18 h of footage; can run overnight)
-7. **T065** Check OWTV's terms and run the OWTV probe
+7. **T065** Get the OWTV owner's permission for the current scope, then run the OWTV probe
 8. **T081** Review every discrepancy
 9. **T089** Export the pilot and check it
 10. **T092** Run the broadcast test and decide on gap fill
@@ -81,7 +81,7 @@ text under it holds the exact files, columns and rules an implementer needs.
 - [ ] T004 [P] **Write the default settings file**
   Create `configs/collect/default.yaml` with exactly the keys and values in contracts/config-schema.md §default.yaml (scope, video, sampling, recognition, interpret, retrieval, verify incl. `source_priority`, export incl. `analysis_tables: true`, `summary_min_time_s: 60`)
 - [ ] T005 [P] **Write the local-settings example and an empty patch list**
-  Create `configs/collect/local.example.yaml` (keys `platform_terms_acknowledged: false`, `video_cache_dir`, `user_agent_contact`, `reviewer`) and `configs/collect/patches.yaml` (list of `{patch_id, live_from_utc, note}`; empty list plus a comment until the researcher fills it in T030)
+  Create `configs/collect/local.example.yaml` (keys `platform_terms_acknowledged: false`, `video_cache_dir`, `user_agent_contact`, `reviewer`, `owtv_api_key` (empty; never committed)) and `configs/collect/patches.yaml` (list of `{patch_id, live_from_utc, note}`; empty list plus a comment until the researcher fills it in T030)
 - [ ] T006 **Keep videos and local settings out of git**
   Add to `.gitignore`: `configs/collect/local.yaml`, `data/interim/probes/**/*.png` (probe frame dumps), `*.mp4`, `*.webm`, `*.mkv`, `.cache/`. Video files must never enter the repo (FR-007)
 - [ ] T007 **Move the existing reference downloads into dated folders**
@@ -272,9 +272,9 @@ text under it holds the exact files, columns and rules an implementer needs.
 ### OWTV probe (research R10)
 
 - [ ] T064 [US3] **OWTV probe command**
-  Implement `refs probe-owtv` in `src/owstudy/collect/refs/owtv.py` (probe mode only): for given series, fetch the OWTV pages through `HttpClient` (≥5 s interval), save them to `data/interim/probes/owtv/`, and print which stats appear and at what level
-- [ ] T065 [US3] **👤 You: check OWTV's terms and run the OWTV probe**
-  check OWTV's terms, run the probe on 3 pilot series, and write the real field list, granularity (per map or per series) and access method into contracts/reference-sources.md §OWTV and research.md R10
+  Implement `refs probe-owtv` in `src/owstudy/collect/refs/owtv.py` (probe mode only): for given series, call OWTV's **official API** (`owtv.gg/dapi-docs`) with the key from `local.yaml` through `HttpClient` (≥5 s interval). Never fetch OWTV's web pages: their terms forbid scripts and scrapers (see contracts/reference-sources.md §OWTV), save them to `data/interim/probes/owtv/`, and print which stats appear and at what level
+- [ ] T065 [US3] **👤 You: get the OWTV owner's permission for the current scope, then run the OWTV probe**
+  the OWTV owner requires permission to use their data, and the permission given in Oct 2026 was for an earlier scope. Ask again, describing the fields wanted, the series covered, the request rate (≤1 per 5 s, cached), the purpose and how results will be shared; record the answer (date, what was allowed) in contracts/reference-sources.md §OWTV. Do not run `refs fetch owtv` (T066/T081) without it. Also check OWTV's terms, then run the probe on 3 pilot series, and write the real field list, granularity (per map or per series) and access method into contracts/reference-sources.md §OWTV and research.md R10
 - [ ] T066 [US3] **OWTV reader, built from the probe result**
   Implement the OWTV adapter in `src/owstudy/collect/refs/owtv.py` per the probe result: `fetch(series, client) -> snapshot` writing `owtv_map_player_stats.csv` (`series_key_text,map_number,player_text,team_text,deaths,eliminations,final_blows,locator`; `map_number` empty if per series) to `data/raw/reference/owtv/<date>/`; wire `refs fetch owtv`
 
@@ -400,7 +400,7 @@ T001–T019 → T022–T025 → T028–T035 → T036–T040 (probe) → T046–T
 
 ### Human steps on the critical path
 
-T030 patches · T035 alias + link check · T039 terms + HUD probe · T060 icon naming · T062 gold labels · T063 bulk run · T065 OWTV probe · T081 review · T089 export check · T092 broadcast decision · T093 gate
+T030 patches · T035 alias + link check · T039 terms + HUD probe · T060 icon naming · T062 gold labels · T063 bulk run · T065 OWTV permission + probe · T081 review · T089 export check · T092 broadcast decision · T093 gate
 
 ---
 

@@ -45,6 +45,28 @@ The probe writes the real field list, granularity and access method here before 
 built. If the data is only per series, comparisons run at series level (spec assumption).
 ≤1 request per 5 s, only if the site's terms allow it.
 
+### What OWTV's terms allow (checked 2026-11-16, terms dated 2026-11-11)
+
+In short: **no scripts on the website; use their official API, which needs a key and their approval.**
+
+- **The website can't be read by a program.** The terms forbid bots, scripts, scrapers and
+  "data mining" tools, and forbid systematically pulling data into a database without written
+  permission. So the probe must not fetch OWTV's web pages.
+- **There is an official API.** Documentation is at `owtv.gg/dapi-docs`. Keys go only to
+  approved supporters and contributors, one key per person or per named project.
+- **Research use is allowed with a key.** Rules that apply to us:
+  - at most 60 requests per minute (our limit of 1 per 5 s is well inside this); stop when told to slow down
+  - cache answers and don't re-ask for unchanged data
+  - credit OWTV.gg, with a link, wherever their data is shown publicly
+  - no publishing bulk exports or dumps of their data, and no building a competing database
+  - no making money from it without written approval
+  - keep the key secret: it goes in `local.yaml` only, never in git
+- **Questions and approval:** the contact email is on the terms page.
+- There is no `robots.txt`.
+
+**Permission:** the owner gave permission in Oct 2026 for an earlier scope. Not yet re-confirmed for
+the current scope (see task T065). Record the date and what was allowed here when they answer.
+
 ## YouTube channel list
 
 Video ID, title, duration, approximate upload date, from `yt-dlp --flat-playlist` (no video
