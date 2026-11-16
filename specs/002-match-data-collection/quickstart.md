@@ -2,8 +2,23 @@
 
 **Feature**: `002-match-data-collection` | **Plan**: [plan.md](./plan.md)
 
-How to prove each story works, in the order it will be built. Commands:
-[contracts/cli.md](./contracts/cli.md). Files: [contracts/storage-layout.md](./contracts/storage-layout.md).
+How to check that each part works, in the order it will be built. Every command is listed in
+[contracts/cli.md](./contracts/cli.md), and every file in
+[contracts/storage-layout.md](./contracts/storage-layout.md).
+
+## In short
+
+| Step | What it checks | Hand check by you? |
+|---|---|---|
+| 1. Offline tests | All the logic, on small fake data | – |
+| 2. Inventory and catalog | Every pilot series and map is listed and linked to a video | Open 30 random links |
+| 3. Probes | The POV HUD shows what the viewer needs; what OWTV provides | Answer the HUD checklist |
+| 4. Viewer on one video | One video turns into readings and events, the same way twice | Name the hero icons |
+| 5. Gold set | The viewer is accurate enough | Label 6 maps while watching |
+| 6. Pilot run and review | The whole pilot is processed, checked and reviewed | Settle each disagreement |
+| 7. Broadcast test | Broadcasts can fill the coverage gap (or not) | Decide whether to use them |
+| 8. Export | Feature 001 accepts the data, and the export is repeatable | Spot-check one player |
+| Expansion gate | The pilot is good enough to add the next region | Approve |
 
 ## 0. Prerequisites
 
@@ -19,7 +34,7 @@ How to prove each story works, in the order it will be built. Commands:
 uv run pytest tests/collect -q
 ```
 
-Expected: unit tests (run-length encoding round-trip, interpretation rules, segment tiling,
+**You should see:** unit tests (run-length encoding round-trip, interpretation rules, segment tiling,
 objective normalization per mode, comparison outcomes and tolerances, discrepancy ID stability,
 stale decisions, status rules) and fixture tests on a small synthetic set of readings and
 references all pass. This includes the planted-error test: every planted error in
@@ -33,7 +48,7 @@ uv run owstudy-collect catalog build --scope pilot
 uv run owstudy-collect status --scope pilot
 ```
 
-Expected: inventory matches the current `data/interim/inventory/` counts (51 series, 186 maps,
+**You should see:** inventory matches the current `data/interim/inventory/` counts (51 series, 186 maps,
 25 series with a POV). In `catalog/video_links.csv` every pilot video is `linked`, `unmatched`
 or `duplicate`, and `low` links are listed for review. **Manual check**: 30 random links
 opened in the browser, each showing the right series (SC-001 link check). Series with no video
@@ -46,7 +61,7 @@ uv run owstudy-collect hud probe <3 pilot video ids, one Control, one Escort/Hyb
 uv run owstudy-collect refs probe-owtv <3 pilot series>
 ```
 
-Expected: `data/interim/probes/hud/checklist.md` answers each R5 item. The OWTV probe fills in
+**You should see:** `data/interim/probes/hud/checklist.md` answers each R5 item. The OWTV probe fills in
 the OWTV section of [reference-sources.md](./contracts/reference-sources.md). Any "no" answer
 follows the fallback in research R5/R10 before continuing.
 
@@ -58,7 +73,7 @@ uv run owstudy-collect extract --videos <id> --keep-video --check-determinism
 uv run owstudy-collect build --scope pilot
 ```
 
-Expected: `data/raw/observations/<id>/<key>/` holds `run.json` (outcome `ok`), readings, kills
+**You should see:** `data/raw/observations/<id>/<key>/` holds `run.json` (outcome `ok`), readings, kills
 and the manifest. The determinism check reports identical readings for both passes (FR-013).
 `interim/events/` has hero intervals, kills and attacks for each map span. Gaps appear where
 the video shows no HUD.
@@ -71,8 +86,8 @@ uv run owstudy-collect gold init <6 map ids covering every mode>
 uv run owstudy-collect gold score
 ```
 
-Expected: `interim/reports/gold_accuracy.csv` shows 100% winners, map numbers, modes and bans; ≥98%
-heroes per segment; ≥95% swaps within 3 s; ≥95% maps with team kills within ±1.
+**You should see:** `interim/reports/gold_accuracy.csv` shows 100% winners, map numbers,
+modes and bans; ≥98% heroes per segment; ≥95% swaps within 3 s; ≥95% maps with team kills within ±1.
 
 ## 6. Pilot run, verification and review (US2, US3)
 
@@ -84,7 +99,7 @@ uv run owstudy-collect review --scope pilot
 uv run owstudy-collect audit && uv run owstudy-collect validate
 ```
 
-Expected: interrupting `extract` and rerunning it doesn't redo `extracted` videos (FR-012).
+**You should see:** interrupting `extract` and rerunning it doesn't redo `extracted` videos (FR-012).
 Videos are gone from the cache after success (FR-007c). `verify/discrepancies.csv` lists each
 disagreement with both values and a time range. `review` resolves one in under 2 minutes on
 average (SC-009). After a decision, `build` again gives a resolved discrepancy, and the raw
@@ -97,7 +112,7 @@ reading is unchanged. `audit` exits 0 (SC-004). `status` shows ≥85% of process
 uv run owstudy-collect broadcast-test <3 pilot series with both a POV and a broadcast VOD>
 ```
 
-Expected: `interim/reports/broadcast_test.md` shows 0 replayed kills accepted, downtime
+**You should see:** `interim/reports/broadcast_test.md` shows 0 replayed kills accepted, downtime
 skipped, and per-field agreement with the POV. The researcher then decides whether to add
 `broadcast` to `video.source_kinds` (needed for SC-001 on the pilot, research R17).
 
@@ -109,12 +124,12 @@ uv run owstudy-strength validate data/processed/collection/<export_id>/input
 uv run owstudy-collect export --scope pilot --include verified   # again, then diff
 ```
 
-Expected: 001 validation exits 0 (SC-007). `tables/` has `kill_events.csv`,
+**You should see:** 001 validation exits 0 (SC-007). `tables/` has `kill_events.csv`,
 `player_hero_map.csv` and `player_hero_summary.csv`, and the export's consistency checks pass:
 kill events add up to the map kill totals, each player's hero times add up to the map length,
 and the summary equals the sum of the per-map rows. **Manual check**: on one gold map, pick a
-player who swapped heroes and compare their `player_hero_map` rows with the hand labels. The two exports are byte-identical apart from
-`manifest.json` timestamps (SC-008). `summary/excluded_maps.csv` lists every non-exported pilot
+player who swapped heroes and compare their `player_hero_map` rows with the hand labels. The
+two exports are byte-identical apart from `manifest.json` timestamps (SC-008). `summary/excluded_maps.csv` lists every non-exported pilot
 map with a reason (FR-025). Each exported map's provenance row gives video, span, extraction
 key and confirming sources (SC-003).
 

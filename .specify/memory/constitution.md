@@ -1,5 +1,19 @@
 # OW Study (Overwatch Map Predictor) Constitution
 
+## In short
+
+The rules every feature in this project has to follow. Each principle below says the rule, then
+why it exists.
+
+| # | Principle | In plain words |
+|---|---|---|
+| I | Map is the unit of prediction | We predict one map at a time, not a whole series |
+| II | Temporal integrity (non-negotiable) | Nothing used to predict a map may come from that map or later ones |
+| III | Documented, verifiable rating math | Every formula is written down first, tested by hand, and compared with a simple win rate |
+| IV | Data provenance and cross-checking | Every number traces back to its video and timestamp; raw data is never edited; sources that disagree are logged, not silently overwritten |
+| V | Baselines before complexity | A new idea counts only if it beats plain team Elo |
+| VI | Reproducibility | One command rebuilds every result, with settings in config files |
+
 ## Core Principles
 
 ### I. Map Is the Unit of Prediction

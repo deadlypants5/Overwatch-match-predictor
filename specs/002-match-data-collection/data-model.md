@@ -2,7 +2,28 @@
 
 **Feature**: `002-match-data-collection` | **Date**: 2026-11-15 | **Plan**: [plan.md](./plan.md)
 
-This covers entities, relationships, rules and state transitions. Column-level file schemas are
+## In short
+
+Data moves through three layers, left to right in the diagram below:
+
+1. **Raw** (`data/raw/`): what was collected, exactly as collected, and never edited. That means
+   source downloads (dated snapshots), the viewer's readings from each video, your gold-set
+   labels, and your review decisions.
+2. **Interim** (`data/interim/`): everything the tools work out from the raw layer, and can
+   rebuild at any time: the catalog of series and maps, which video shows which map, the
+   interpreted events (swaps, kills, attacks), the cleaned map records, and the list of
+   disagreements between sources.
+3. **Processed** (`data/processed/`): the finished export for feature 001.
+
+Key rules:
+
+- A map's ID is `<series_id>-m<n>` (for example, map 2 of a series is `…-m2`).
+- Disagreements are never settled automatically. Each one waits for your decision, and a map
+  is `verified` only when nothing is left open.
+- Each video moves through `pending → downloaded → extracted → deleted`. Restarting skips
+  videos already done.
+
+The sections below give the full detail. This covers entities, relationships, rules and state transitions. Column-level file schemas are
 in [contracts/storage-layout.md](./contracts/storage-layout.md). The export format is feature 001's
 [input-schema.md](../001-strength-metrics/contracts/input-schema.md), mapped in
 [contracts/export.md](./contracts/export.md).

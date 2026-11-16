@@ -1,5 +1,15 @@
 # Contract: configuration files
 
+## In short
+
+Every setting the tool reads, with its default. There are four files:
+
+- **`default.yaml`**: thresholds, tolerances, scope, download limits. Shared and committed.
+- **`local.yaml`**: your machine's settings (cache folder, contact for the User-Agent, terms
+  acknowledgement). Not committed.
+- **`patches.yaml`**: 2026 patch go-live times, filled in by you (task T030).
+- **`hud/*.yaml`**: where each HUD element sits on screen, one file per HUD layout.
+
 All under `configs/collect/`, version-controlled (Constitution VI). Unknown keys are an error
 (exit 2). Local secrets and machine-specific values (User-Agent contact, cache path, terms
 acknowledgement) go in `configs/collect/local.yaml`, which is gitignored and merged on top.

@@ -1,5 +1,18 @@
 # Contract: `owstudy-collect` command line
 
+## In short
+
+Every `owstudy-collect` command, grouped by stage. The ones you'll use most during the pilot:
+
+| You want to… | Run |
+|---|---|
+| See coverage so far | `owstudy-collect status` |
+| Process the pilot's videos | `owstudy-collect extract --scope pilot` (safe to stop and restart) |
+| Rebuild everything from the stored data | `owstudy-collect build` |
+| Settle disagreements between sources | `owstudy-collect review` |
+| Prove nothing changed without a decision | `owstudy-collect audit` |
+| Hand the data to feature 001 | `owstudy-collect export --include verified` |
+
 Console script from the shared `owstudy` package (`python -m owstudy.collect` also works).
 Global options: `--config PATH` (default `configs/collect/default.yaml`), `--scope SCOPE`
 (`pilot` = Korea Stage 1, a region-stage key like `Asia/Stage 1/Korea`, or `all`), `--data-dir`

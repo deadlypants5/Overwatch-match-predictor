@@ -2,9 +2,34 @@
 
 **Feature**: `002-match-data-collection` | **Date**: 2026-11-15 | **Plan**: [plan.md](./plan.md)
 
-Each entry: **Decision**, **Rationale**, **Alternatives considered**. Entries marked
-**Probe** depend on a small check that must run first in implementation (it's the first task
-group). Each one has a stated fallback, so nothing here is left open.
+## In short: every decision on one page
+
+| # | Question | Decision |
+|---|---|---|
+| R1 | How is data stored? | Plain CSV/YAML/JSON files in git; raw data never edited; videos kept outside the repo and deleted after use |
+| R2 | How are videos downloaded? | `yt-dlp`, 1080p H.264, one at a time, rate-limited, only after you confirm the platform terms |
+| R3 | How often are frames read? | 2 frames per second; frames without the game HUD (caster desk, ads) are skipped |
+| R4 | How does the viewer recognize things? | Classic image matching on fixed HUD areas: hero icons by template matching, text by local OCR, bars by pixel measurement. No AI model, no GPU |
+| R5 | Does the POV HUD show everything? | **Probe first** on 3 videos, with a fallback for each missing element |
+| R6 | What is a "raw observation"? | Compressed per-frame readings; interpretation (swaps, kills) is a separate, rebuildable step |
+| R7 | How are videos linked to series? | Parse the title, match teams and dates, confirm with the player names on screen; one POV per series |
+| R8 | How is each map found in a video? | By the banner's map number, with the mode as a check; map names come from the references |
+| R9 | How are references downloaded? | Spreadsheet from the file; Liquipedia through its API at ≤1 request per 2 s; each download kept as a dated snapshot |
+| R10 | What does OWTV provide? | **Probe first** on 3 series; fallbacks decided for per-series-only or missing data |
+| R11 | How are names kept consistent? | Stable IDs plus a hand-curated alias table; times stored in UTC |
+| R12 | How long will it take? | Pilot ~5–10 h unattended; whole set ~3–5 days |
+| R13 | Same input, same output? | Yes: fixed frame choice and settings fingerprint; restarts skip finished videos |
+| R14 | How are readings turned into events? | Swap after ≥1 s on a new hero; replays rejected when the game clock runs backwards; gaps marked |
+| R15 | How are disagreements handled? | Each becomes a discrepancy you settle in a `review` command; decisions are re-applied on every rebuild |
+| R16 | How is accuracy measured? | 6 hand-labeled "gold" maps, at least one per mode |
+| R17 | Can broadcasts fill the coverage gap? | Tested on 3 series against the POVs; used only if it passes and you approve |
+| R18 | Which libraries, and why? | Listed in a table at the end |
+
+## How to read each entry
+
+Each entry gives the **Decision**, the **Rationale** (why), and the **Alternatives considered**.
+Entries marked **Probe** depend on a small check that runs first during implementation. Each
+one has a stated fallback, so nothing here is left open.
 
 ---
 
@@ -68,8 +93,8 @@ group). Each one has a stated fallback, so nothing here is left open.
 - **Decision**: **Classical computer vision on fixed HUD regions**, all local and CPU-only:
   - **HUD layout config** (`configs/collect/hud/<layout_id>.yaml`): regions of interest in
     normalized coordinates for the 10 hero portraits, 10 name plates, kill-feed area, game
-    clock, attack clock, objective widget per mode, team names/score, map-number banner ("MAP n"), and ban
-    display. A layout is recognized automatically by its anchor templates, so a HUD change mid-season
+    clock, attack clock, objective widget per mode, team names/score, map-number banner ("MAP n"),
+    and ban display. A layout is recognized automatically by its anchor templates, so a HUD change mid-season
     (e.g., at a LAN) becomes a new layout file, not a code change.
   - **Hero portraits and kill-feed hero icons**: nearest-neighbor match against an **icon
     library** (`data/interim/entities/icons/<hero_id>/*.png`). Crops are compared by normalized
@@ -315,7 +340,7 @@ group). Each one has a stated fallback, so nothing here is left open.
 ## R16. Gold set and accuracy measurement (FR-022, SC-002)
 
 - **Decision**: `gold init <map_id>` writes empty label templates for a map from its readings
-  (players, expected segments) into `data/raw/gold/<map_id>/`: map winner, name, bans, the
+  (players, expected segments) into `data/raw/gold/<map_id>/`: map winner, map number, mode, bans, the
   hero per player per segment with swap times, team kills, and attack results. The researcher
   fills them in while watching. `gold score` compares interpreted events to the labels and
   writes an accuracy table per field with the SC-002 thresholds. Gold set: 6 pilot maps, at

@@ -15,6 +15,39 @@ expertise in storing and using data so i will listen to your recommendations. 2n
 data will be collected, i want to use a virtual player that can watch these videos. 3rd how the
 data will be verified against the sources i provided"
 
+## In short
+
+- **What it does:** watches ObsSojourn's POV replays of OWCS 2026 matches with a "virtual
+  viewer" that runs on your own computer, records what's on screen (heroes, kills, objective,
+  clocks, bans, results), and turns that into the map history the strength metrics need.
+- **How it's checked:** every map is compared with Liquipedia, the OWCS Hero Bans & Metas
+  spreadsheet and OWTV fantasy results. Disagreements go to you for a decision; nothing is
+  silently overwritten.
+- **What's kept:** raw readings and source downloads are never edited; corrections are stored as
+  your decisions, so everything can be rebuilt with one command.
+- **Where it starts:** a pilot on Korea Stage 1 (51 series, 186 maps, ~18 h of footage). Other
+  regions are added one at a time after the pilot passes.
+- **Known gap:** only about half the pilot's maps have a POV video, so a test decides whether
+  official broadcast VODs can fill the rest (FR-007b).
+
+### Words used in this spec
+
+| Term | Meaning |
+|---|---|
+| **POV video** | An ObsSojourn upload filmed from one player's point of view. Up to 10 per series |
+| **Broadcast VOD** | The official stream recording, with casters, replays and breaks |
+| **HUD** | The in-game overlay: player portraits and names, kill feed, clocks, objective widget |
+| **Virtual viewer** | The program that reads the HUD from video frames, with no human watching |
+| **Observation / reading** | One thing the viewer saw at one moment, with its video time and a confidence |
+| **Segment** | A stretch of a map where no player swaps hero and no round or attack changes |
+| **Catalog** | The list of every series and map in scope, built from the reference sources |
+| **Reference sources** | The spreadsheet, Liquipedia and OWTV fantasy results |
+| **Reconciled map** | The final, cleaned record for one map, built from the video and the references |
+| **Discrepancy** | A field where two sources disagree, waiting for your decision |
+| **Gold set** | A few maps you label by hand while watching, used to measure the viewer's accuracy |
+| **Pilot** | The first region-stage processed end to end: Korea Stage 1 |
+| **FR / SC** | Functional requirement / success criterion, numbered so other documents can refer to them |
+
 ## Overview
 
 This feature turns OWCS 2026 match replays into the map-level dataset that the strength metrics
@@ -32,8 +65,8 @@ the request:
      exact input format feature 001 expects, with a verification status and a log of every
      disagreement and how it was settled.
 2. **How it is collected**: a "virtual viewer" processes each ObsSojourn replay and records
-   what is on screen over time: which map (by its number in the series) and mode, the two teams and ten players, every hero
-   swap, every kill, objective progress, the game clock, round/attack boundaries, bans and the
+   what is on screen over time: which map (by its number in the series) and mode, the two
+   teams and ten players, every hero swap, every kill, objective progress, the game clock, round/attack boundaries, bans and the
    final result.
 3. **How it is verified**: every reconciled map is checked field by field against the outside
    sources. Agreement raises confidence; disagreement is logged with both values and sent for
@@ -264,8 +297,8 @@ errors.
   (when visible), observation type, value, confidence, extraction method and version, and
   extraction date.
 - **FR-003**: The virtual viewer MUST record at least these observation types: map number
-  (from the banner) and mode (from the objective widget); team names and side; the ten player names; each player's hero over time; kill feed
-  entries (killer, victim, their heroes, and whether it was a self-inflicted/environmental
+  (from the banner) and mode (from the objective widget); team names and side; the ten player
+  names; each player's hero over time; kill feed entries (killer, victim, their heroes, and whether it was a self-inflicted/environmental
   death); objective progress readings; game clock and attack clock; round and attack
   boundaries; the ban phase result; the final map result; and gaps where gameplay is not
   visible.
@@ -335,8 +368,8 @@ errors.
   rebuild. Every discrepancy MUST be reviewed by the researcher; no discrepancy is closed
   automatically, and a map cannot be `verified` while any of its discrepancies is open.
 - **FR-021**: Until the researcher decides, a default source priority MUST supply a provisional
-  value (shown as provisional, and the discrepancy stays open): Liquipedia for dates, teams, rosters and series results; the
-  spreadsheet for bans and map names (Liquipedia as the cross-check; the video does not read
+  value (shown as provisional, and the discrepancy stays open): Liquipedia for dates, teams,
+  rosters and series results; the spreadsheet for bans and map names (Liquipedia as the cross-check; the video does not read
   map names); OWTV fantasy for scoreboard figures; the video for hero swaps, segment
   timing and objective progress (the only source that has them).
 - **FR-022**: System MUST measure the virtual viewer's accuracy against a hand-labeled gold set

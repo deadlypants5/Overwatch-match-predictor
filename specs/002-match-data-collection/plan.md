@@ -4,6 +4,28 @@
 
 **Input**: Feature specification from `/specs/002-match-data-collection/spec.md`
 
+## In short
+
+- **What gets built:** one command-line tool, `owstudy-collect`, that runs on your PC (no cloud,
+  no GPU needed).
+- **The pipeline:**
+
+  ```text
+  list matches and videos → download a POV video → read the HUD every half second → delete the video
+      → turn readings into swaps, kills, attacks → compare with the reference sources
+      → you review disagreements → export for feature 001
+  ```
+
+- **Storage:** plain CSV, YAML and JSON files. Raw readings and source downloads are never
+  edited; everything else can be rebuilt from them in one command.
+- **Checks before bulk work:** two probes. Does the POV HUD show everything the viewer needs?
+  What does OWTV actually provide? Each has a fallback decided in advance.
+- **Time:** the pilot (~18 h of footage) should take about 5–10 hours unattended.
+- **Open item:** POVs alone can't reach 95% pilot coverage, so the broadcast test decides
+  (see "Open item for the researcher" below).
+
+The step-by-step order is in [Pipeline walk-through](#pipeline-walk-through-pilot) at the end.
+
 ## Summary
 
 Build `owstudy-collect`, a local, CPU-only command-line pipeline (part of the shared `owstudy`

@@ -1,5 +1,17 @@
 # Contract: reference source adapters
 
+## In short
+
+| Source | What we take from it | How it's read |
+|---|---|---|
+| OWCS Hero Bans & Metas spreadsheet | Bans, map list and names, map scores, team abbreviations | From the fixed `.xlsx` file |
+| Liquipedia | Dates and time zones, teams, lineups, map winners, VOD links | Its official API, at most 1 request every 2 s |
+| OWTV fantasy results | Scoreboard figures (deaths, kills) | To be confirmed by the OWTV probe (task T065) |
+| YouTube (ObsSojourn channel) | The list of POV videos: IDs, titles, lengths | Video list only, no download |
+
+Each download is saved as a dated snapshot with values exactly as the source gives them.
+Names are matched to stable IDs later, in `catalog build`.
+
 Each adapter turns one retrieval into a snapshot folder (storage-layout.md) of **values as given**,
 with a `locator` per record. Adapters never resolve names. That happens in `catalog build`.
 

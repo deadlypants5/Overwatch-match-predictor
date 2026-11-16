@@ -1,7 +1,16 @@
 # Footage inventory (2026-11-15)
 
-Exploratory output for spec 002, User Story 0 / FR-007a. It answers: how many 2026 OWCS series and
-maps were played, which ones have an ObsSojourn POV video, and how many hours of footage that is.
+**In short:** how much 2026 OWCS play exists, and how much of it has an ObsSojourn POV video.
+
+| | Series | Maps | Series with a POV | Maps with a POV | Hours (one POV per series) |
+|---|---|---|---|---|---|
+| **Pilot: Korea Stage 1** | 51 | 186 | 25 (49%) | 92 (49%) | 18.4 h |
+| **All of 2026** | 613 | 2,229 | 291 (47%) | 1,096 (49%) | 199.9 h |
+
+About half of all maps have a POV. That's why the broadcast VOD test (spec FR-007b) matters for
+coverage. Per-event numbers are in `inventory_summary.csv`.
+
+This is exploratory output for spec 002, User Story 0 / FR-007a.
 
 ## Sources (snapshots in `data/raw/reference/`)
 

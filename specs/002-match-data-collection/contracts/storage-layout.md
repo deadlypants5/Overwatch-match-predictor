@@ -1,5 +1,11 @@
 # Contract: storage layout and file schemas
 
+## In short
+
+Where every file lives and what columns it has. `data/raw/` is never edited.
+`data/interim/` can be deleted and rebuilt with `owstudy-collect build`, except the hand-curated
+files marked below. `data/processed/` holds exports. Videos never go in the repo.
+
 All tables are UTF-8 CSV with a header, `,` separator, `\n` line endings, empty cell = missing,
 rows sorted by the listed key, floats written with fixed decimals (times 0.01 s, confidences
 0.001, progress 0.0001). Entity semantics: [data-model.md](../data-model.md).

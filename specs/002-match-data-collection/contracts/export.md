@@ -1,5 +1,15 @@
 # Contract: export to feature 001 (plus analysis tables)
 
+## In short
+
+What an export contains:
+
+- **`input/`**: exactly the files feature 001 reads.
+- **`tables/`**: extra analysis tables (every kill; time, kills and deaths per player per hero).
+  These are descriptive only and must not be used as pre-map features.
+- **`summary/`**: coverage, quality, and every map that wasn't exported, with the reason.
+- **`provenance/`**: for each map, which video, timestamps and sources it came from.
+
 ```text
 data/processed/collection/<export_id>/          # export_id = <YYYYMMDD>-<short hash of inputs>
 ├── input/                                      # exactly feature 001's input directory

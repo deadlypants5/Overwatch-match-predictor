@@ -37,6 +37,8 @@
   - FR-015 budget: everything runs locally; no paid or cloud processing.
   - FR-007b source: ObsSojourn POVs only for the pilot; broadcast VODs tested on 2–3 overlapping
     series before any use (option C).
+- Clarification 2026-11-16: map names come from the spreadsheet (Liquipedia cross-check); the
+  viewer reads only the map number and mode (spec Clarifications).
 - Added after the footage inventory: User Story 0 / FR-007a (inventory first), FR-007c (delete
   videos after use), replay and downtime edge cases. Inventory results:
   `data/interim/inventory/` (pilot ~18 h, whole set ~200 h, one POV per series).
