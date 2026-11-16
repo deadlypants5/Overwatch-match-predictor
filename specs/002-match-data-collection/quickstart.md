@@ -71,7 +71,7 @@ uv run owstudy-collect gold init <6 map ids covering every mode>
 uv run owstudy-collect gold score
 ```
 
-Expected: `interim/reports/gold_accuracy.csv` shows 100% winners, map names and bans; ≥98%
+Expected: `interim/reports/gold_accuracy.csv` shows 100% winners, map numbers, modes and bans; ≥98%
 heroes per segment; ≥95% swaps within 3 s; ≥95% maps with team kills within ±1.
 
 ## 6. Pilot run, verification and review (US2, US3)

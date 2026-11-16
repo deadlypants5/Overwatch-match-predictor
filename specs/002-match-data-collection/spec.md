@@ -32,12 +32,23 @@ the request:
      exact input format feature 001 expects, with a verification status and a log of every
      disagreement and how it was settled.
 2. **How it is collected**: a "virtual viewer" processes each ObsSojourn replay and records
-   what is on screen over time: which map and mode, the two teams and ten players, every hero
+   what is on screen over time: which map (by its number in the series) and mode, the two teams and ten players, every hero
    swap, every kill, objective progress, the game clock, round/attack boundaries, bans and the
    final result.
 3. **How it is verified**: every reconciled map is checked field by field against the outside
    sources. Agreement raises confidence; disagreement is logged with both values and sent for
    review instead of being silently overwritten (Constitution Principle IV).
+
+## Clarifications
+
+### Session 2026-11-16
+
+- Q: Where does each map's name come from, given the ObsSojourn POV banner shows "MAP 1" and
+  the event but not the map name? → A: From the reference sources: the spreadsheet first,
+  cross-checked against Liquipedia (OWTV if its probe shows map names). The viewer reads the
+  **map number** from the banner and the **mode** from the objective widget. Map spans are
+  aligned to catalog maps by map number, with mode as a sanity check. The video is no longer a
+  source for map names.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -252,8 +263,8 @@ errors.
 - **FR-002**: Every raw observation MUST record: video ID, video timestamp, game clock reading
   (when visible), observation type, value, confidence, extraction method and version, and
   extraction date.
-- **FR-003**: The virtual viewer MUST record at least these observation types: map name and
-  mode; team names and side; the ten player names; each player's hero over time; kill feed
+- **FR-003**: The virtual viewer MUST record at least these observation types: map number
+  (from the banner) and mode (from the objective widget); team names and side; the ten player names; each player's hero over time; kill feed
   entries (killer, victim, their heroes, and whether it was a self-inflicted/environmental
   death); objective progress readings; game clock and attack clock; round and attack
   boundaries; the ban phase result; the final map result; and gaps where gameplay is not
@@ -325,7 +336,8 @@ errors.
   automatically, and a map cannot be `verified` while any of its discrepancies is open.
 - **FR-021**: Until the researcher decides, a default source priority MUST supply a provisional
   value (shown as provisional, and the discrepancy stays open): Liquipedia for dates, teams, rosters and series results; the
-  spreadsheet for bans; OWTV fantasy for scoreboard figures; the video for hero swaps, segment
+  spreadsheet for bans and map names (Liquipedia as the cross-check; the video does not read
+  map names); OWTV fantasy for scoreboard figures; the video for hero swaps, segment
   timing and objective progress (the only source that has them).
 - **FR-022**: System MUST measure the virtual viewer's accuracy against a hand-labeled gold set
   of maps (at least one map per game mode) and report it per field.
@@ -379,7 +391,7 @@ errors.
 - **SC-001**: At least 95% of maps in scope are linked to a replay, and 100% of linked maps were
   confirmed against the catalog (no map linked to the wrong series in a hand check of 30 random
   links).
-- **SC-002**: On the gold set, the viewer gets 100% of map winners, map names and bans right;
+- **SC-002**: On the gold set, the viewer gets 100% of map winners, map numbers, modes and bans right;
   at least 98% of players' heroes right per segment; hero swap times within 3 seconds for at
   least 95% of swaps; and team kill totals within ±1 for at least 95% of maps.
 - **SC-003**: 100% of exported maps can be traced to their video, timestamps, extraction

@@ -78,7 +78,7 @@ Two runs with the same `extraction_key` on the same file must produce identical 
 
 ### 1.5 GoldLabel (FR-022)
 
-Hand labels per gold map: `map_id`, `field` (`winner`, `map_name`, `ban`, `hero_segment`,
+Hand labels per gold map: `map_id`, `field` (`winner`, `map_number`, `mode`, `ban`, `hero_segment`,
 `swap_time`, `team_kills`, `attack`), `subject` (player/team/attack), `value`, `ts_video`,
 `labeled_by`, `labeled_at`. Written once by the researcher, never by tools after `gold init`.
 
@@ -192,7 +192,7 @@ Low-confidence values in required fields (below `low_conf_threshold`) produce a
 (FR-011).
 
 **FR-021 provisional priority**: Liquipedia (dates, teams, rosters, series result, map winners)
-→ spreadsheet (bans) → OWTV (scoreboard) → video (heroes, segment timing, objective, attacks).
+→ spreadsheet (bans, map names; Liquipedia cross-check) → OWTV (scoreboard) → video (heroes, segment timing, objective, attacks).
 
 ---
 

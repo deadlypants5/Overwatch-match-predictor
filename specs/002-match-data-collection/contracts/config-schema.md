@@ -93,7 +93,7 @@ regions:
   game_clock:      [x, y, w, h]
   attack_clock:    [x, y, w, h]
   team_name:       {left: [...], right: [...]}
-  map_banner:      [x, y, w, h]
+  map_banner:      [x, y, w, h]        # reads the map number ("MAP n"); map names come from references
   ban_display:     {left: [...], right: [...]}
   kill_feed:       {box: [x, y, w, h], row_height: 0.028, max_rows: 6}
   objective:

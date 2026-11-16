@@ -68,7 +68,7 @@ group). Each one has a stated fallback, so nothing here is left open.
 - **Decision**: **Classical computer vision on fixed HUD regions**, all local and CPU-only:
   - **HUD layout config** (`configs/collect/hud/<layout_id>.yaml`): regions of interest in
     normalized coordinates for the 10 hero portraits, 10 name plates, kill-feed area, game
-    clock, attack clock, objective widget per mode, team names/score, map-name banner, and ban
+    clock, attack clock, objective widget per mode, team names/score, map-number banner ("MAP n"), and ban
     display. A layout is recognized automatically by its anchor templates, so a HUD change mid-season
     (e.g., at a LAN) becomes a new layout file, not a code change.
   - **Hero portraits and kill-feed hero icons**: nearest-neighbor match against an **icon
@@ -77,7 +77,7 @@ group). Each one has a stated fallback, so nothing here is left open.
     best and second-best hero. The library is built once with a harvest tool. It groups
     portrait crops from 2–3 pilot videos and the researcher names each group (about 45 heroes,
     roughly 15 minutes).
-  - **Text** (player names, clock digits, map banner, team names): **RapidOCR** (PaddleOCR
+  - **Text** (player names, clock digits, map number on the banner, team names): **RapidOCR** (PaddleOCR
     models on `onnxruntime`, CPU, thread count fixed in config). Raw OCR strings are kept,
     and names are resolved to IDs afterwards through the alias table with fuzzy matching
     (`rapidfuzz`), limited to that series' rosters.
@@ -104,8 +104,10 @@ group). Each one has a stated fallback, so nothing here is left open.
 
 - **Decision**: The first implementation step runs a **HUD probe** on 3 pilot videos (one per
   mode family). It saves sample frames and a checklist: are all 10 portraits visible, all 10
-  names, both teams' kill-feed entries, the clock, attack clock, objective widget, ban display
-  and map banner. Every element that's missing is handled in one of these ways:
+  names, both teams' kill-feed entries, the clock, attack clock, objective widget, ban display,
+  map number on the banner, and mode (from the objective widget). The map **name** is not on
+  the POV banner and is not needed from the video: it comes from the spreadsheet/Liquipedia
+  (spec Clarifications 2026-11-16). Every element that's missing is handled in one of these ways:
   - **Ban display missing** → bans come from Liquipedia/spreadsheet only (`single_source` for
     the video), which is already allowed by FR-021.
   - **Enemy names missing** (portraits only) → enemy players are mapped from that team's
@@ -162,11 +164,13 @@ group). Each one has a stated fallback, so nothing here is left open.
 
 - **Decision**: The viewer reads the whole video. Map spans come from the readings: a map
   starts at the first HUD frame after a map-banner or loading screen, or after a change in the
-  map name/mode reading, and ends at the final-result reading or the last HUD frame before the
-  next map. Spans are matched to catalog maps **in order**, by map name. A mismatch in count or
-  names is a `map_order` discrepancy. A remade map (two spans with the same name, the first
-  without a result) keeps the completed span and records the abandoned one as `excluded_remake`.
-- **Rationale**: POV videos cover a whole series. Order plus map name is enough to align them,
+  map number/mode reading, and ends at the final-result reading or the last HUD frame before the
+  next map. Spans are matched to catalog maps **by map number** (the banner's "MAP n"), and the
+  mode read from the objective widget must match the catalog map's mode. A mismatch in count,
+  map number or mode is a `map_order` discrepancy. Map names come from the catalog (spreadsheet,
+  cross-checked against Liquipedia), not from the video. A remade map (two spans with the same
+  map number, the first without a result) keeps the completed span and records the abandoned one as `excluded_remake`.
+- **Rationale**: POV videos cover a whole series. Map number plus mode is enough to align them,
   and a mismatch is itself useful information.
 - **Alternatives considered**: Reading chapter markers from the video description (not
   reliably present).
