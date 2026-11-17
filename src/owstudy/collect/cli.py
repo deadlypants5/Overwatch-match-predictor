@@ -108,8 +108,121 @@ def cmd_inventory(args: argparse.Namespace, cfg: Config) -> int:
     return 0
 
 
+def _today() -> str:
+    import datetime as dt
+
+    return dt.date.today().isoformat()
+
+
+def _diff_summary(diff) -> str:
+    counts = diff.change.value_counts()
+    return ", ".join(f"{counts.get(k, 0)} {k}" for k in ("added", "removed", "changed"))
+
+
+def cmd_refs_fetch(args: argparse.Namespace, cfg: Config) -> int:
+    """Liquipedia downloads wait for the API key (T028); OWTV waits for its probe (T064-T066)."""
+    from owstudy.collect.errors import RetrievalBlocked
+    from owstudy.collect.refs.ratelimit import build_user_agent
+
+    if args.source == "owtv":
+        raise UsageError("the OWTV reader isn't built yet (task T066, after the OWTV probe and permission)")
+    if not cfg.local.liquipedia_api_key or cfg.local.liquipedia_api_key.startswith("<"):
+        raise RetrievalBlocked(
+            "no Liquipedia API key yet: set liquipedia_api_key in configs/collect/local.yaml when Liquipedia "
+            "sends it (requested 2026-11-16). Nothing was downloaded."
+        )
+    build_user_agent(cfg.local.user_agent_contact)  # refuses without a contact
+    raise UsageError("downloading Liquipedia pages isn't built yet: task T028 finishes it now that the key is set")
+
+
+def cmd_refs_import_sheet(args: argparse.Namespace, cfg: Config) -> int:
+    """Parse the spreadsheet into a new dated snapshot and report what changed since the last one."""
+    import shutil
+
+    from owstudy.collect.refs.snapshot import diff_snapshots, list_snapshots, new_snapshot, write_diff_report
+    from owstudy.collect.refs.spreadsheet import import_sheet
+
+    if not args.path.exists():
+        raise UsageError(f"spreadsheet not found: {args.path}")
+    root = args.data_dir / "raw" / "reference"
+    previous = list_snapshots("spreadsheet", root)
+    folder = new_snapshot("spreadsheet", _today(), root)
+    try:
+        counts = import_sheet(args.path, folder)
+    except Exception:
+        shutil.rmtree(folder)  # a half-written snapshot is never left behind
+        raise
+    print(f"spreadsheet snapshot {folder}: {counts['series']} series, {counts['maps']} maps, {counts['bans']} bans")
+    if previous:
+        diff = diff_snapshots(previous[-1] / "sheet_series.csv", folder / "sheet_series.csv", ["series_key"],
+                              ignore=["locator"])  # fmt: skip
+        report = write_diff_report(diff, "spreadsheet", folder.name, args.data_dir / "interim" / "reports",
+                                   ["series_key"])  # fmt: skip
+        print(f"series since {previous[-1].name}: {_diff_summary(diff)} (details: {report})")
+    return 0
+
+
+def cmd_videos_list(args: argparse.Namespace, cfg: Config) -> int:
+    """Snapshot the channel's video list (no downloads) and report new and removed videos."""
+    from owstudy.collect.refs.snapshot import list_snapshots
+    from owstudy.collect.refs.youtube_list import list_channel, load_videos
+
+    root = args.data_dir / "raw" / "reference"
+    previous = list_snapshots("youtube", root)
+    folder = list_channel(root=root, date=_today())
+    ids = {v["id"] for v in load_videos(folder)}
+    print(f"youtube snapshot {folder}: {len(ids)} videos")
+    if previous:
+        old = {v["id"] for v in load_videos(previous[-1])}
+        print(f"since {previous[-1].name}: {len(ids - old)} added, {len(old - ids)} removed")
+    return 0
+
+
+def cmd_catalog_build(args: argparse.Namespace, cfg: Config) -> int:
+    from owstudy.collect.catalog.build import run_catalog
+
+    run = run_catalog(args.data_dir, cfg, args.scope_keys)
+    cat, links = run.catalog, run.links
+    s, m = cat.series, cat.maps
+    print(f"scope: {', '.join(args.scope_keys)}  (snapshots: "
+          + ", ".join(f"{k} {v}" for k, v in sorted(cat.snapshots.items())) + ")")  # fmt: skip
+    print(f"series: {len(s)} ({', '.join(f'{k} {v}' for k, v in s.status.value_counts().sort_index().items())}); "
+          f"{int((~s.sources.str.contains(';')).sum())} listed by one source only")  # fmt: skip
+    print(f"maps: {len(m)} ({', '.join(f'{k} {v}' for k, v in m.status.value_counts().sort_index().items())})")
+    print(f"lineups: {len(cat.lineups)} player rows; patch-day series to check: {len(cat.patch_day)}")
+    counts = links.status.value_counts().sort_index()
+    print("videos: " + (", ".join(f"{k} {v}" for k, v in counts.items()) or "none"))
+    linked = links[links.status == "linked"]
+    print("links: " + ", ".join(f"{k} {int((linked.link_confidence == k).sum())}" for k in ("high", "medium", "low"))
+          + f"; {int((linked.role == 'primary').sum())} series with a primary POV")  # fmt: skip
+    print(f"alias proposals to review: {len(cat.proposals)} (data/interim/entities/aliases_proposed.csv)")
+    print(f"wrote {len(run.paths)} files")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace, cfg: Config) -> int:
+    """Coverage per region-stage of the scope, from the last `catalog build`."""
+    from owstudy.collect.catalog.inventory import coverage_status
+
+    catalog_dir = args.data_dir / "interim" / "catalog"
+    if not (catalog_dir / "series.csv").exists():
+        raise UsageError("no catalog yet: run `owstudy-collect catalog build` first")
+    table = coverage_status(catalog_dir)
+    table = table[table.region_stage.isin(args.scope_keys)]
+    if table.empty:
+        print("nothing in the catalog for this scope yet")
+        return 0
+    print(table.to_string(index=False))
+    return 0
+
+
 HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {
     ("inventory",): cmd_inventory,
+    ("refs", "fetch"): cmd_refs_fetch,
+    ("refs", "import-sheet"): cmd_refs_import_sheet,
+    ("videos", "list"): cmd_videos_list,
+    ("catalog", "build"): cmd_catalog_build,
+    ("status",): cmd_status,
 }
 
 

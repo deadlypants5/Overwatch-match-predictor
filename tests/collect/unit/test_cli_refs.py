@@ -186,6 +186,9 @@ def test_diff_snapshots(tmp_path):
     ]  # fmt: skip
     row_b = diff[diff["series_key"] == "b"].iloc[0]
     assert (row_b["old_score1"], row_b["new_score1"]) == ("2", "3")
+    moved = tmp_path / "moved.csv"  # same values, different locator: not a change
+    moved.write_text("series_key,score1,score2,locator\na,3,1,x!2\nb,2,3,x!3\nc,3,0,x!9\n", encoding="utf-8")
+    assert diff_snapshots(old, moved, ["series_key"], ignore=["locator"]).empty
     report = write_diff_report(diff, "liquipedia", "2026-11-20", tmp_path / "reports", ["series_key"])
     assert report.name == "snapshot_diff_liquipedia_2026-11-20.csv"
     assert b"\r" not in report.read_bytes()

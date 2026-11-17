@@ -211,3 +211,166 @@ def match_videos(videos: list[dict], lp_series: list[dict], matcher: TeamMatcher
                 rec["status"], rec["series_key"], rec["note"] = assign(candidate_series(series, a, b, t, up), up)
         rows.append(rec)
     return rows
+
+
+# --- catalog video links (task T032) ---------------------------------------------------
+
+LINK_COLUMNS = ["video_id", "series_id", "status", "link_confidence", "role", "pov_player_id", "pov_team_id",
+                "confirmed", "note"]  # fmt: skip
+LINKED, UNMATCHED, NOT_OWCS_2026, DUPLICATE = "linked", "unmatched", "not_owcs_2026", "duplicate"
+PLAYOFF_WORDS = re.compile(r"final|playoff|upper|lower|road to|seeding|decider|last chance|third place", re.I)
+LOOKBACK_DAYS = 120  # a video is linked to a series at most this long before its upload
+UPLOAD_SLACK_DAYS = 1  # upload dates are UTC and series dates are local, so allow one day
+DUPLICATE_MAX_GAP_S = 60  # same series + same player + lengths within this = a re-upload
+
+
+def link_candidates(series: list[dict], a: str, b: str, title: Title, upload: dt.date | None) -> list[dict]:
+    """Played series between teams a and b (IDs) that fit the title's event, on or before the
+    upload date, nearest first (research R7)."""
+    region, stage = event_hint(title.event_text)
+    c = [s for s in series if {s["team_a_id"], s["team_b_id"]} == {a, b} and event_fits(s["event"], region, stage)]
+    if upload is not None:
+        lo, hi = upload - dt.timedelta(days=LOOKBACK_DAYS), upload + dt.timedelta(days=UPLOAD_SLACK_DAYS)
+        c = [s for s in c if s["day"] is not None and lo <= s["day"] <= hi]
+    return sorted(c, key=lambda s: (-(s["day"] or dt.date.min).toordinal(), s["series_id"]))
+
+
+def choose_series(candidates: list[dict], title: Title) -> tuple[dict | None, str, str]:
+    """(series, confidence, note): one candidate -> high; phase words narrow it to one -> medium;
+    otherwise the nearest date wins with low confidence (sent to review)."""
+    if not candidates:
+        return None, "", ""
+    if len(candidates) == 1:
+        return candidates[0], "high", ""
+    c = candidates
+    if title.phase:
+        playoff = bool(PLAYOFF_WORDS.search(title.phase))
+        narrowed = [s for s in c if s["playoff"] == playoff]
+        if len(narrowed) == 1:
+            return narrowed[0], "medium", f"{len(c)} candidates; picked by phase words '{title.phase}'"
+        c = narrowed or c
+    return c[0], "low", f"{len(candidates)} candidates; picked the nearest date before upload"
+
+
+def _player_lookup(lineups) -> dict[str, list[tuple[str, str, str]]]:
+    """series_id -> [(normalized name, player_id, team_id)] from the catalog lineups."""
+    from owstudy.collect.catalog.entities import normalize_alias
+
+    out: dict[str, list] = {}
+    for r in lineups.to_dict(orient="records"):
+        names = {normalize_alias(r.get("display", "") or ""), normalize_alias(r["player_id"].split(":", 1)[1])}
+        for n in sorted(names - {""}):
+            out.setdefault(r["series_id"], []).append((n, r["player_id"], r["team_id"]))
+    return out
+
+
+def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg):
+    """One row per video: the series it shows, link confidence, POV player and team, role.
+
+    `catalog` is a catalog.build.Catalog over every event, so a video of another region-stage
+    links there instead of showing up as unmatched. Returns a DataFrame of LINK_COLUMNS plus
+    `title` and `event_text` (used for scope filtering). `confirmed` starts false; it's set
+    after extraction from the HUD names (research R7).
+    """
+    import pandas as pd
+
+    from owstudy.collect.catalog.entities import normalize_alias
+    from owstudy.collect.refs.youtube_list import upload_day
+
+    series = [s for s in catalog.series.to_dict(orient="records") if s["status"] == "played"]
+    by_id = {s["series_id"]: s for s in series}
+    players = _player_lookup(catalog.lineups)
+    rows = []
+    for v in videos:
+        title_text = v.get("title") or ""
+        up = upload_day(v)
+        t = parse_title(title_text)
+        rec = {"video_id": v["id"], "series_id": "", "status": UNMATCHED, "link_confidence": "", "role": "",
+               "pov_player_id": "", "pov_team_id": "", "confirmed": False, "note": "",
+               "title": title_text, "event_text": t.event_text, "duration_s": v.get("duration") or 0,
+               "player_norm": normalize_alias(t.player)}  # fmt: skip
+        if BOOTCAMP_RE.search(title_text) and OWCS_EVENT.search(title_text):
+            rec.update(status=NOT_OWCS_2026, note="OWCS Preseason Bootcamp: out of scope (FR-023a)")
+        elif not OWCS_EVENT.search(t.event_text) or NOT_MAIN.search(title_text):
+            rec.update(status=NOT_OWCS_2026, note="not an OWCS main event")
+        elif up and up.year < 2026:
+            rec.update(status=NOT_OWCS_2026, note="uploaded before 2026")
+        elif not t.has_pair:
+            rec["note"] = "title names no 'Team A vs Team B'"
+        else:
+            a, b = catalog.names.id_of(t.team_a), catalog.names.id_of(t.team_b)
+            if not a or not b:
+                rec["note"] = "unknown team: " + ", ".join(x for x, r in ((t.team_a, a), (t.team_b, b)) if not r)
+            else:
+                pick, conf, note = choose_series(link_candidates(series, a, b, t, up), t)
+                if pick is None:
+                    rec["note"] = "no played 2026 series between these teams fits the event and date"
+                else:
+                    rec.update(series_id=pick["series_id"], status=LINKED, link_confidence=conf, note=note)
+                    _set_pov(rec, players.get(pick["series_id"], []), aliases, t.player)
+        rows.append(rec)
+
+    _set_roles(rows, by_id, cfg.video.povs_per_series)
+    cols = [*LINK_COLUMNS, "title", "event_text"]
+    return pd.DataFrame(rows, columns=[*cols, "duration_s", "player_norm"])[cols]
+
+
+def _set_pov(rec: dict, lineup: list[tuple[str, str, str]], aliases: AliasTable, player_text: str) -> None:
+    """POV player and team: the title's player name in the series lineups, else aliases.csv."""
+    for name, pid, tid in lineup:
+        if name == rec["player_norm"]:
+            rec.update(pov_player_id=pid, pov_team_id=tid)
+            return
+    if player_text:
+        r = aliases.resolve("player", player_text)
+        if r.stable_id:
+            rec["pov_player_id"] = r.stable_id
+            rec["pov_team_id"] = next((tid for _, pid, tid in lineup if pid == r.stable_id), "")
+
+
+def _set_roles(rows: list[dict], by_id: dict, povs_per_series: int) -> None:
+    """Duplicates first, then primary (longest video, ties by video_id), then with
+    povs_per_series = 2 a cross-check POV from the other team; the rest are unused."""
+    per_series: dict[str, list[dict]] = {}
+    for r in rows:
+        if r["status"] == LINKED:
+            per_series.setdefault(r["series_id"], []).append(r)
+    for sid, vids in per_series.items():
+        by_player: dict[str, list[dict]] = {}
+        for r in vids:
+            by_player.setdefault(r["pov_player_id"] or "text:" + r["player_norm"], []).append(r)
+        for group in by_player.values():
+            group.sort(key=lambda r: (-r["duration_s"], r["video_id"]))
+            keep = group[0]
+            for r in group[1:]:
+                if abs(r["duration_s"] - keep["duration_s"]) < DUPLICATE_MAX_GAP_S:
+                    r.update(status=DUPLICATE, role=DUPLICATE, note=f"re-upload of {keep['video_id']}")
+        live = sorted((r for r in vids if r["status"] == LINKED), key=lambda r: (-r["duration_s"], r["video_id"]))
+        for r in live:
+            r["role"] = "unused"
+        if not live:
+            continue
+        primary = live[0]
+        primary["role"] = "primary"
+        if povs_per_series == 2:
+            s = by_id.get(sid, {})
+            other = {s.get("team_a_id"), s.get("team_b_id")} - {primary["pov_team_id"]}
+            if primary["pov_team_id"] and len(other) == 1:
+                cross = [r for r in live[1:] if r["pov_team_id"] in other]
+                if cross:
+                    cross[0]["role"] = "cross_check"
+
+
+def in_scope_links(links, scope_series_ids: set[str], scope_keys) -> object:
+    """Rows to write for a scope: videos linked to an in-scope series, and videos linked to
+    nothing whose title names an in-scope region (and stage, if it gives one). So in-scope
+    unmatched videos and Bootcamp videos are listed; other region-stages' videos, and titles
+    that name no region at all, aren't."""
+
+    def keep(r) -> bool:
+        if r.series_id:
+            return r.series_id in scope_series_ids
+        region, stage = event_hint(r.event_text)
+        return region is not None and any(event_fits(k, region, stage) for k in scope_keys)
+
+    return links[[keep(r) for r in links.itertuples()]]

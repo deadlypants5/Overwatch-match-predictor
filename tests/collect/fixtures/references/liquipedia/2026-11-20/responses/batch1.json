@@ -1,0 +1,75 @@
+{
+ "batchcomplete": "",
+ "query": {
+  "pages": {
+   "1": {
+    "pageid": 1,
+    "ns": 0,
+    "title": "Overwatch Champions Series/2026/Asia/Stage 1/Korea/Regular Season",
+    "revisions": [
+     {
+      "revid": 101,
+      "timestamp": "2026-11-19T10:00:00Z",
+      "slots": {
+       "main": {
+        "contentmodel": "wikitext",
+        "*": "{{HiddenDataBox|name=Fixture Korea Stage 1 - Regular Season}}\n==Results==\n{{Matchlist|id=fixture|collapsed=false\n|M1={{Match\n    |bestof=5\n    |date=2026-04-14 - 19:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Team Alpha}}\n    |opponent2={{TeamOpponent|Bravo Esports}}\n    |map1={{Map|map=Busan|mode=Control|score1=2|score2=1|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=Hanaoka|mode=Clash|score1=2|score2=3|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=Numbani|mode=Hybrid|score1=3|score2=2|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map4={{Map|map=Havana|mode=Escort|score1=2|score2=1|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n|M2={{Match\n    |date=2026-04-15 - 19:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Charlie|score=W}}\n    |opponent2={{TeamOpponent|Delta Gaming|score=FF}}\n    |map1={{Map|map=Busan|mode=Control|score1=W|score2=FF|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n|M3={{Match\n    |date=2026-04-16 - 08:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Charlie}}\n    |opponent2={{TeamOpponent|Team Alpha}}\n    |map1={{Map|map=Lijiang Tower|mode=Control|score1=0|score2=2|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=Runasapi|mode=Push|score1=50.5|score2=80.25|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=Midtown|mode=Hybrid|score1=1|score2=2|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n|M4={{Match\n    |date=2026-12-01 - 19:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Bravo Esports}}\n    |opponent2={{TeamOpponent|Delta Gaming}}\n    |map1={{Map|map=|mode=|score1=|score2=|winner=\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=|mode=|score1=|score2=|winner=\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=|mode=|score1=|score2=|winner=\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n}}"
+       }
+      }
+     }
+    ]
+   },
+   "2": {
+    "pageid": 2,
+    "ns": 0,
+    "title": "Overwatch Champions Series/2026/Asia/Stage 1/Korea",
+    "revisions": [
+     {
+      "revid": 102,
+      "timestamp": "2026-11-19T11:00:00Z",
+      "slots": {
+       "main": {
+        "contentmodel": "wikitext",
+        "*": "{{Infobox league|name=Fixture Korea Stage 1}}\n==Participants==\n{{TeamParticipants|showplayerinfo=true\n|{{Opponent|Team Alpha\n  |players={{Persons\n    |{{Person|Ace|role=dps}}\n    |{{Person|Arrow|role=dps}}\n    |{{Person|Atlas|role=tank}}\n    |{{Person|Aura|role=sup}}\n    |{{Person|Axe|role=sup}}\n    |{{Person|AlphaCoach|role=coach|type=staff}}\n  }}\n  |qualification={{Qualification|method=invite|text=Partner Team}}\n}}\n|{{Opponent|Bravo Esports\n  |players={{Persons\n    |{{Person|Bolt|role=dps}}\n    |{{Person|Blaze|role=dps}}\n    |{{Person|Brick|role=tank}}\n    |{{Person|Breeze|role=sup}}\n    |{{Person|Byte|role=sup}}\n    |{{Person|BravoCoach|role=coach|type=staff}}\n  }}\n  |qualification={{Qualification|method=invite|text=Partner Team}}\n}}\n|{{Opponent|CHARLIE\n  |players={{Persons\n    |{{Person|Cy|role=dps}}\n    |{{Person|Cobra|role=dps}}\n    |{{Person|Comet|role=tank}}\n    |{{Person|Crane|role=sup}}\n    |{{Person|Cub|link=Cub (Korean player)|role=sup}}\n    |{{Person|CharlieCoach|role=coach|type=staff}}\n  }}\n  |qualification={{Qualification|method=invite|text=Partner Team}}\n}}\n|{{Opponent|Delta Gaming\n  |players={{Persons\n    |{{Person|Dash|role=dps}}\n    |{{Person|Dune|role=dps}}\n    |{{Person|Drift|role=tank}}\n    |{{Person|Dove|role=sup}}\n    |{{Person|Duke|role=sup}}\n    |{{Person|DeltaCoach|role=coach|type=staff}}\n  }}\n  |qualification={{Qualification|method=invite|text=Partner Team}}\n}}\n}}\n==Results==\n{{Matchlist|id=fixture|collapsed=false\n|M1={{Match\n    |bestof=7\n    |date=2026-04-25 - 18:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Bravo Esports}}\n    |opponent2={{TeamOpponent|Team Alpha}}\n    |map1={{Map|map=Lijiang Tower|mode=Control|score1=2|score2=0|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=Aatlis|mode=Flashpoint|score1=3|score2=1|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=Blizzard World|mode=Hybrid|score1=1|score2=2|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map4={{Map|map=Havana|mode=Escort|score1=3|score2=2|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n}}"
+       }
+      }
+     }
+    ]
+   },
+   "3": {
+    "pageid": 3,
+    "ns": 0,
+    "title": "Overwatch Champions Series/2026/NA/Stage 1/Regular Season",
+    "revisions": [
+     {
+      "revid": 103,
+      "timestamp": "2026-11-19T12:00:00Z",
+      "slots": {
+       "main": {
+        "contentmodel": "wikitext",
+        "*": "{{Matchlist|id=fixture|collapsed=false\n|M1={{Match\n    |bestof=5\n    |date=2026-04-14 - 15:00 {{Abbr/CDT}}\n    |vod=\n    |opponent1={{TeamOpponent|Echo}}\n    |opponent2={{TeamOpponent|Foxtrot}}\n    |map1={{Map|map=Busan|mode=Control|score1=2|score2=0|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=Havana|mode=Escort|score1=1|score2=2|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=Numbani|mode=Hybrid|score1=3|score2=2|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n}}"
+       }
+      }
+     }
+    ]
+   },
+   "4": {
+    "pageid": 4,
+    "ns": 0,
+    "title": "Overwatch Champions Series/2026/Preseason Bootcamp",
+    "revisions": [
+     {
+      "revid": 104,
+      "timestamp": "2026-11-19T13:00:00Z",
+      "slots": {
+       "main": {
+        "contentmodel": "wikitext",
+        "*": "{{Matchlist|id=fixture|collapsed=false\n|M1={{Match\n    |date=2026-03-05 - 19:00 {{Abbr/KST}}\n    |vod=\n    |opponent1={{TeamOpponent|Team Alpha}}\n    |opponent2={{TeamOpponent|Charlie}}\n    |map1={{Map|map=Busan|mode=Control|score1=2|score2=0|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map2={{Map|map=Havana|mode=Escort|score1=1|score2=2|winner=2\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    |map3={{Map|map=Numbani|mode=Hybrid|score1=3|score2=2|winner=1\n        |t1b1=ana|t2b1=tracer|banstart=1}}\n    }}\n}}"
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

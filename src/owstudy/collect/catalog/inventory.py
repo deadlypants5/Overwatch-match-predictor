@@ -159,6 +159,48 @@ def write_inventory(inv: Inventory, out_dir: str | Path) -> list[Path]:
     ]  # fmt: skip
 
 
+STATUS_COLUMNS = ["region_stage", "series", "one_source_series", "maps", "maps_with_replay", "maps_no_replay",
+                  "series_no_replay", "links_to_review", "patch_day_series", "excluded_maps"]  # fmt: skip
+
+
+def coverage_status(catalog_dir: str | Path) -> pd.DataFrame:
+    """Coverage per region-stage from the written catalog (`owstudy-collect status`, task T034).
+
+    - `maps`: played maps in scope (Clash and forfeit maps are counted in `excluded_maps`)
+    - `maps_with_replay` / `maps_no_replay`: played maps whose series has / has no primary POV video
+    - `links_to_review`: low-confidence video links not yet confirmed
+    - `patch_day_series`: series played on a patch day (catalog/patch_day_series.csv)
+    """
+    from owstudy.collect.catalog.build import region_stage
+
+    d = Path(catalog_dir)
+    series = read_table(d / "series.csv", required=["series_id", "region", "stage", "sources", "status"])
+    maps = read_table(d / "maps.csv", required=["map_id", "series_id", "status"])
+    links = read_table(d / "video_links.csv", required=["video_id", "series_id", "status", "link_confidence",
+                                                         "role", "confirmed"])  # fmt: skip
+    patch_day = read_table(d / "patch_day_series.csv", required=["series_id"])
+
+    series = series.assign(region_stage=[region_stage(r, s) for r, s in zip(series.region, series.stage)])
+    rs_of = dict(zip(series.series_id, series.region_stage))
+    with_replay = set(links[(links.role == "primary") & (links.status == "linked")].series_id)
+    review = links[(links.status == "linked") & (links.link_confidence == "low") & (links.confirmed != "true")]
+    maps = maps.assign(region_stage=maps.series_id.map(rs_of), replay=maps.series_id.isin(with_replay))
+    rows = []
+    for rs, g in series.groupby("region_stage"):
+        m = maps[maps.region_stage == rs]
+        played = m[m.status == "played"]
+        ids = set(g.series_id)
+        rows.append({
+            "region_stage": rs, "series": len(g), "one_source_series": int((~g.sources.str.contains(";")).sum()),
+            "maps": len(played), "maps_with_replay": int(played.replay.sum()),
+            "maps_no_replay": int((~played.replay).sum()),
+            "series_no_replay": int(sum(1 for s in g.series_id[g.status == "played"] if s not in with_replay)),
+            "links_to_review": int(review.series_id.isin(ids).sum()),
+            "patch_day_series": int(patch_day.series_id.isin(ids).sum()), "excluded_maps": len(m) - len(played),
+        })  # fmt: skip
+    return pd.DataFrame(rows, columns=STATUS_COLUMNS)
+
+
 def run_inventory(reference_root: str | Path, aliases_path: str | Path, pilot: str) -> Inventory:
     """Build the inventory from the latest liquipedia, spreadsheet and youtube snapshots."""
     lp_dir = latest_snapshot("liquipedia", root=reference_root)

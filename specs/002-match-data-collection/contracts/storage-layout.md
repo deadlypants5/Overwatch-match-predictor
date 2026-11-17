@@ -72,9 +72,33 @@ video_id,run_id,extractor_version,ts_start,ts_end,clock_start,side,killer_slot,k
 
 `video_id,extraction_key,state,attempts,last_error,updated_at` (state per data-model §3.1).
 
+### `catalog/series.csv` — key `series_id`
+
+`series_id,region,stage,phase,best_of,start_utc,local_date,tz,team_a_id,team_b_id,score_a,score_b,status,sources,in_pilot`.
+`sources` lists the snapshots that have the series (`liquipedia:<date>;spreadsheet:<date>`). A
+series only the spreadsheet lists has `series_id = sheet_<slug>` and one source.
+
+### `catalog/maps.csv` — key `(series_id, map_number)`
+
+`map_id,series_id,map_number,map_ref,mode_id,winner,patch_id,status`
+
+### `catalog/lineups.csv` — key `(series_id, team_id, player_id)`
+
+`series_id,team_id,player_id,source` with `source` = `match` or `event_roster`.
+
+### `catalog/patch_day_series.csv` — key `series_id`
+
+`series_id,local_date,patch_id,rule` with `rule` = `new_patch`, `pre_patch_region` or `hand_set`.
+
+### `entities/teams.csv`, `entities/players.csv`
+
+`team_id,name` and `player_id,name,liquipedia_page`, rebuilt by `catalog build`.
+
 ### `catalog/video_links.csv` — key `video_id`
 
-`video_id,series_id,status,link_confidence,role,pov_player_id,pov_team_id,confirmed,note`
+`video_id,series_id,status,link_confidence,role,pov_player_id,pov_team_id,confirmed,note`.
+Lists videos linked to an in-scope series, plus unlinked videos whose title names an in-scope
+region (so other region-stages' videos aren't listed as unmatched).
 
 ### `catalog/map_spans.csv` — key `(video_id, ts_start)`
 

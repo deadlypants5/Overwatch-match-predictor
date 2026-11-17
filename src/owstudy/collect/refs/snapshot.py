@@ -71,11 +71,13 @@ def latest_snapshot(source: str, pinned: str | None = None, root: str | Path = R
     return snaps[-1]
 
 
-def diff_snapshots(old_csv: str | Path, new_csv: str | Path, key_columns: Sequence[str]):
+def diff_snapshots(old_csv: str | Path, new_csv: str | Path, key_columns: Sequence[str], ignore: Sequence[str] = ()):
     """Records added, removed or changed between two versions of the same table.
 
     Returns a DataFrame with `change` (added / removed / changed), `changed_fields`
     (`;`-separated), the key columns, then `old_<col>` / `new_<col>` for every other column.
+    Columns in `ignore` (e.g. `locator`, which says where a record sits, not what it says)
+    aren't compared.
     """
     import pandas as pd
 
@@ -83,6 +85,8 @@ def diff_snapshots(old_csv: str | Path, new_csv: str | Path, key_columns: Sequen
 
     old = read_table(old_csv, required=key_columns)
     new = read_table(new_csv, required=key_columns)
+    old = old.drop(columns=[c for c in ignore if c in old.columns])
+    new = new.drop(columns=[c for c in ignore if c in new.columns])
     for name, df in (("old", old), ("new", new)):
         if df.duplicated(list(key_columns)).any():
             raise ValidationError(f"{name} table has duplicate keys over {list(key_columns)}")

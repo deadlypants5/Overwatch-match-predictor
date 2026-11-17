@@ -160,27 +160,28 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 ### Tests for User Story 1
 
-- [ ] T026 [P] [US1] **Small fake reference data for the catalog tests**
+- [x] T026 [P] [US1] **Small fake reference data for the catalog tests**
   Create fixture `tests/collect/fixtures/references/`: a tiny Liquipedia snapshot (4 series, 12 maps incl. one Clash map, one forfeit, one pair of teams meeting twice in the window), a matching spreadsheet snapshot (one series present only in the sheet), and a video list (one POV per series, one duplicate re-upload, one unmatched title)
-- [ ] T027 [P] [US1] **Test: building the catalog and linking videos**
+- [x] T027 [P] [US1] **Test: building the catalog and linking videos**
   Write `tests/collect/integration/test_catalog.py` on that fixture: each series appears once with `sources` listing both snapshots (US1 scenario 1); the sheet-only series is flagged; Clash map gets `status = clash_excluded` and the forfeit `status = forfeit`; repeated pairing resolved by phase words with `link_confidence = medium`; duplicate upload gets `role = duplicate`; unmatched title gets `status = unmatched` and no guess (scenario 5); series without a video keep their maps (scenario 4); `start_utc` is the Liquipedia local time converted from its `tz`; `patch_id` is the patch with the latest `live_date ≤ local_date`, so a series on a patch day gets that day's patch, except a Korea series on a patch day, which gets the previous patch; both are listed in `patch_day_series.csv`; a Preseason Bootcamp series in the fixture is left out of the catalog (FR-023a)
 
 ### Implementation for User Story 1
 
 - [ ] T028 [US1] **Download Liquipedia pages and read team lineups**
   **Waits for the Liquipedia API key** (requested 2026-11-16; `liquipedia_api_key` in `local.yaml`, refuse to fetch without it, never print or commit it). Parsing lineups from the 2026-11-15 snapshot can be built and tested before then.
+  **Status (2026-11-17):** lineup reading is done (`parse_lineups`, `parse_rosters`, `write_lp_tables(..., lineups)`). In 2026 no match lists its players, so every lineup comes from the event roster. Still to do once the key arrives: `fetch` itself. Until then `refs fetch liquipedia` refuses with exit code 3 and downloads nothing.
   Extend `src/owstudy/collect/refs/liquipedia.py`: `fetch(event_pages, client)` using MediaWiki `action=query&prop=revisions&rvprop=content|ids` (never `action=parse`, research R9), saving each raw response under `<snapshot>/responses/` and skipping pages whose revision ID is already cached; parse **lineups** per series into `lp_lineups.csv` (`series_key,team_text,player_page,player_display,source_kind ∈ {match, event_roster},locator`), falling back to the team's event roster when the match has none
-- [ ] T029 [US1] **List ObsSojourn's videos (no downloading)**
+- [x] T029 [US1] **List ObsSojourn's videos (no downloading)**
   Implement `src/owstudy/collect/refs/youtube_list.py`: `list_channel(channel_url) -> snapshot` using `yt-dlp` flat playlist (no video download), writing `obssojourn_videos.json` (`video_id,title,duration_s,upload_date`) to a new `youtube/<date>/` snapshot
 - [x] T030 [US1] **👤 You: fill in the 2026 patch dates**
   fill `configs/collect/patches.yaml` with every 2026 patch's `patch_id` and `live_date` from the official patch notes
-- [ ] T031 [US1] **Build the catalog of series, maps and lineups**
+- [x] T031 [US1] **Build the catalog of series, maps and lineups**
   Implement `src/owstudy/collect/catalog/build.py`: from the latest Liquipedia + spreadsheet snapshots write `data/interim/catalog/series.csv` (`series_id,region,stage,phase,best_of,start_utc,local_date,tz,team_a_id,team_b_id,score_a,score_b,status,sources,in_pilot`; `status ∈ {played, forfeit, walkover}`), `maps.csv` (`map_id,series_id,map_number,map_ref,mode_id,winner,patch_id,status`; `map_id = <series_id>-m<n>`; `winner ∈ {a, b, draw}`; `status ∈ {played, clash_excluded, forfeit}`) and `lineups.csv` (`series_id,team_id,player_id,source`); seed team/player aliases from Liquipedia page names and sheet abbreviations into `aliases_proposed.csv` for the researcher to accept; `series_id` = slug of the Liquipedia match key, so it stays stable across snapshots; leave out every OWCS Preseason Bootcamp series (FR-023a); assign `patch_id` as the latest patch with `live_date ≤ local_date`, except that on a patch day series in a `pre_patch_regions` region (Korea) get the previous patch, and series listed under `series:` in `configs/collect/patch_overrides.yaml` take the patch given there; write `patch_day_series.csv` (`series_id,local_date,patch_id`) listing series played on a patch day, for the researcher to check, with a `rule` column (`new_patch`, `pre_patch_region` or `hand_set`)
-- [ ] T032 [US1] **Link each video to its series**
+- [x] T032 [US1] **Link each video to its series**
   Implement linking in `src/owstudy/collect/catalog/link.py`: `link_videos(catalog, videos, aliases, cfg)` → `video_links.csv` (`video_id,series_id,status,link_confidence,role,pov_player_id,pov_team_id,confirmed,note`; `status ∈ {linked, unmatched, not_owcs_2026, duplicate}`; `link_confidence ∈ {high, medium, low}`; `role ∈ {primary, cross_check, unused, duplicate}`); candidate = same teams, matching event, series date ≤ upload date, nearest first, ties broken by phase words (research R7); primary POV per series = longest video, ties by `video_id`; with `povs_per_series: 2`, the longest video from the other team becomes `cross_check`; duplicates = same series + same player + |duration difference| < 60 s; `confirmed` starts `false`
-- [ ] T033 [US1] **Hook up the fetch, import and catalog commands**
+- [x] T033 [US1] **Hook up the fetch, import and catalog commands**
   Wire `owstudy-collect refs fetch liquipedia`, `refs import-sheet`, `videos list` and `catalog build` in `src/owstudy/collect/cli.py`; `refs fetch` prints the snapshot diff summary from T019
-- [ ] T034 [US1] **Add the `status` command (coverage per region-stage)**
+- [x] T034 [US1] **Add the `status` command (coverage per region-stage)**
   Implement `owstudy-collect status` in `src/owstudy/collect/cli.py` (and `src/owstudy/collect/catalog/inventory.py`): per region-stage — series, maps in scope, maps with replay, `no_replay`, low-confidence links waiting for review, and series played on a patch day
 - [ ] T035 [US1] **👤 You: approve name aliases and hand-check 30 video links**
   run `catalog build --scope pilot`, review `aliases_proposed.csv` and copy accepted rows into `data/interim/entities/aliases.csv`, then do the 30-link hand check from quickstart §2 and note the result in `data/interim/reports/link_check_pilot.md`

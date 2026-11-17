@@ -1,0 +1,6 @@
+series_key,sheet,row,phase,label,team1,team2,abbr1,abbr2,score1,score2,n_maps,locator
+Korea - Stage 1|7,Korea - Stage 1,7,Round Robin [Bo5],Week 1 | Day 1 | Game 1,Team Alpha,Bravo Esports,ALP,BRV,3,1,4,Korea - Stage 1!7
+Korea - Stage 1|33,Korea - Stage 1,33,Round Robin [Bo5],Week 1 | Day 2 | Game 1,Charlie,Delta Gaming,CHL,DLT,3,0,0,Korea - Stage 1!33
+Korea - Stage 1|59,Korea - Stage 1,59,Round Robin [Bo5],Week 1 | Day 3 | Game 1,Charlie,Team Alpha,CHL,ALP,0,3,3,Korea - Stage 1!59
+Korea - Stage 1|85,Korea - Stage 1,85,Round Robin [Bo5],Week 2 | Day 1 | Game 1,Delta Gaming,Team Alpha,DLT,ALP,3,2,5,Korea - Stage 1!85
+Korea - Stage 1|111,Korea - Stage 1,111,Grand Finals [Bo7],Playoffs | Grand Finals,Bravo Esports,Team Alpha,BRV,ALP,3,1,4,Korea - Stage 1!111
