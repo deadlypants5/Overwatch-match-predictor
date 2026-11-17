@@ -27,7 +27,7 @@ data/
 │   └── decisions/decisions.csv                  # append-only
 ├── interim/                                     # rebuildable; safe to delete and `build`
 │   ├── entities/  teams.csv players.csv heroes.csv maps.csv aliases.csv (hand-curated) aliases_proposed.csv icons/<hero_id>/*.png
-│   ├── catalog/   series.csv maps.csv lineups.csv video_links.csv map_spans.csv
+│   ├── catalog/   series.csv maps.csv lineups.csv video_links.csv map_spans.csv patch_day_series.csv
 │   ├── events/    hero_intervals.csv kills.csv objective.csv attacks.csv gaps.csv results.csv
 │   ├── reconciled/ maps.csv segments.csv segment_heroes.csv bans.csv attacks.csv field_sources.csv
 │   ├── verify/    comparisons.csv discrepancies.csv

@@ -1,0 +1,13 @@
+{
+  "source": "youtube",
+  "description": "ObsSojourn YouTube channel video list",
+  "retrieved_at": "2026-11-15",
+  "tool": "scripts/inventory (exploratory)",
+  "files": [
+    {
+      "path": "obssojourn_videos.json",
+      "sha256": "1f294afc67d91b153f21998ce0293a44ad9610bb798e3d3bdcfe16632cb1e0b4",
+      "bytes": 4464173
+    }
+  ]
+}

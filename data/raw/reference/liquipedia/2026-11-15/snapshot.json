@@ -1,0 +1,28 @@
+{
+  "source": "liquipedia",
+  "description": "Liquipedia page sources (MediaWiki API)",
+  "retrieved_at": "2026-11-15",
+  "tool": "scripts/inventory (exploratory)",
+  "files": [
+    {
+      "path": "batch1_2026-11-15.json",
+      "sha256": "e3ce678b43ebbc301bfb2f9d1a035629d53a501bf654d2e939b25f8ae74f84c8",
+      "bytes": 434146
+    },
+    {
+      "path": "batch2_2026-11-15.json",
+      "sha256": "ac887e4a3da005acbb97ff0d231406e468829fb57c340bc7b86df9bc0a75bafc",
+      "bytes": 354663
+    },
+    {
+      "path": "lp_maps.csv",
+      "sha256": "e8dbd9a16218e471cb9dc98ee19b89023eb54674af71db2229644c152cbe3829",
+      "bytes": 174619
+    },
+    {
+      "path": "lp_series.csv",
+      "sha256": "398a8e885c6f96c9ed8f4646aaa7c77517f66bf473a419c50c83705b7092ad4d",
+      "bytes": 99903
+    }
+  ]
+}

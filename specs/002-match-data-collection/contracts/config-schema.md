@@ -2,12 +2,14 @@
 
 ## In short
 
-Every setting the tool reads, with its default. There are four files:
+Every setting the tool reads, with its default. There are five kinds of file:
 
 - **`default.yaml`**: thresholds, tolerances, scope, download limits. Shared and committed.
 - **`local.yaml`**: your machine's settings (cache folder, contact for the User-Agent, terms
   acknowledgement). Not committed.
-- **`patches.yaml`**: 2026 patch go-live times, filled in by you (task T030).
+- **`patches.yaml`**: 2026 patch release dates, filled in by you (task T030).
+- **`patch_overrides.yaml`**: which regions' patch-day matches get the previous patch, plus
+  any series whose patch you set by hand.
 - **`hud/*.yaml`**: where each HUD element sits on screen, one file per HUD layout.
 
 All under `configs/collect/`, version-controlled (Constitution VI). Unknown keys are an error

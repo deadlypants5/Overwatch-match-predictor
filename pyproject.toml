@@ -1,0 +1,48 @@
+[project]
+name = "owstudy"
+version = "0.1.0"
+description = "Overwatch Champions Series 2026 study: match data collection and strength metrics"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "numpy",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+# Match data collection (feature 002): downloading, reading video, references
+collect = [
+    "yt-dlp",
+    "av",
+    "opencv-python-headless",
+    "rapidocr-onnxruntime",
+    "onnxruntime",
+    "rapidfuzz",
+    "requests",
+    "openpyxl",
+]
+
+[project.scripts]
+owstudy-collect = "owstudy.collect.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "hypothesis",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/owstudy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not network and not video'"
+markers = [
+    "network: needs internet access (skipped by default; run with -m network)",
+    "video: needs a cached video file (skipped by default; run with -m video)",
+]

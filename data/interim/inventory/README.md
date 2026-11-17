@@ -12,13 +12,13 @@ coverage. Per-event numbers are in `inventory_summary.csv`.
 
 This is exploratory output for spec 002, User Story 0 / FR-007a.
 
-## Sources (snapshots in `data/raw/reference/`)
+## Sources (dated snapshots in `data/raw/reference/`, each with a `snapshot.json` listing file fingerprints)
 
 | Source | File | Retrieved |
 |---|---|---|
-| OWCS 2026 Hero Bans & Metas spreadsheet | `spreadsheet/sheet_series.csv`, `sheet_maps.csv` | parsed 2026-11-15 |
-| Liquipedia page sources (all 2026 OWCS events, excluding open qualifiers and relegation) | `liquipedia/batch*_2026-11-15.json` → `lp_series.csv`, `lp_maps.csv` | 2026-11-15 |
-| ObsSojourn channel video list (titles, IDs, lengths, approximate upload month) | `youtube/obssojourn_videos_dated_2026-11-15.json` | 2026-11-15 |
+| OWCS 2026 Hero Bans & Metas spreadsheet | `spreadsheet/2026-11-15/sheet_series.csv`, `sheet_maps.csv` | parsed 2026-11-15 |
+| Liquipedia page sources (all 2026 OWCS events, excluding open qualifiers and relegation) | `liquipedia/2026-11-15/batch*_2026-11-15.json` → `lp_series.csv`, `lp_maps.csv` | 2026-11-15 |
+| ObsSojourn channel video list (titles, IDs, lengths, approximate upload month) | `youtube/2026-11-15/obssojourn_videos.json` | 2026-11-15 |
 
 ## Files
 
@@ -33,9 +33,9 @@ This is exploratory output for spec 002, User Story 0 / FR-007a.
 ## Regenerate
 
 ```text
-python -I scripts/inventory/parse_sheet.py "OWCS 2026 Hero Bans _ Metas(1).xlsx" data/raw/reference/spreadsheet
-python -I scripts/inventory/parse_lp.py data/raw/reference/liquipedia data/raw/reference/liquipedia/batch1_2026-11-15.json data/raw/reference/liquipedia/batch2_2026-11-15.json
-python -I scripts/inventory/inventory.py data/raw/reference/youtube/obssojourn_videos_dated_2026-11-15.json data/raw/reference/liquipedia/lp_series.csv data/raw/reference/liquipedia/lp_maps.csv data/raw/reference/spreadsheet/sheet_series.csv data/interim/inventory
+python -I scripts/inventory/parse_sheet.py "OWCS 2026 Hero Bans _ Metas(1).xlsx" data/raw/reference/spreadsheet/2026-11-15
+python -I scripts/inventory/parse_lp.py data/raw/reference/liquipedia/2026-11-15 data/raw/reference/liquipedia/2026-11-15/batch1_2026-11-15.json data/raw/reference/liquipedia/2026-11-15/batch2_2026-11-15.json
+python -I scripts/inventory/inventory.py data/raw/reference/youtube/2026-11-15/obssojourn_videos.json data/raw/reference/liquipedia/2026-11-15/lp_series.csv data/raw/reference/liquipedia/2026-11-15/lp_maps.csv data/raw/reference/spreadsheet/2026-11-15/sheet_series.csv data/interim/inventory
 ```
 
 ## Known limits

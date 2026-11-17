@@ -140,7 +140,7 @@ specs/002-match-data-collection/
 ```text
 pyproject.toml                         # shared with 001; extras: collect, dev; scripts: owstudy-strength, owstudy-collect
 configs/collect/
-├── default.yaml  patches.yaml  local.example.yaml
+├── default.yaml  patches.yaml  patch_overrides.yaml  local.example.yaml
 └── hud/  owcs2026_pov_v1.yaml  anchors/*.png  (broadcast layout added after FR-007b)
 
 src/owstudy/collect/

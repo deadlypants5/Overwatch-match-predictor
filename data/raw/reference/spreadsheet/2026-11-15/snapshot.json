@@ -1,0 +1,18 @@
+{
+  "source": "spreadsheet",
+  "description": "OWCS 2026 Hero Bans & Metas spreadsheet",
+  "retrieved_at": "2026-11-15",
+  "tool": "scripts/inventory (exploratory)",
+  "files": [
+    {
+      "path": "sheet_maps.csv",
+      "sha256": "94068ee4089f6908ffa18e37438b40596302b8a3c17d7ed968c8986cca80b37e",
+      "bytes": 94522
+    },
+    {
+      "path": "sheet_series.csv",
+      "sha256": "ba726df449323ff8976feeffb45c5f5281ed34662bb9548e1ff5e4f5dfe0d603",
+      "bytes": 75074
+    }
+  ]
+}

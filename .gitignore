@@ -5,3 +5,12 @@ Overwatch reference.pdf
 OWCS 2026 Hero Bans _ Metas(1).xlsx
 icons.png
 overwatch_2026_patches.txt
+
+# Match data collection: local settings and video never enter git (FR-007)
+configs/collect/local.yaml
+data/interim/probes/**/*.png
+*.mp4
+*.webm
+*.mkv
+.cache/
+.venv/

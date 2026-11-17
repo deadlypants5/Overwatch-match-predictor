@@ -1,0 +1,59 @@
+# Shared settings for owstudy-collect: scope, download limits, thresholds and tolerances.
+# Every key is described in specs/002-match-data-collection/contracts/config-schema.md.
+# Unknown keys are an error. Machine-specific values go in local.yaml (not committed).
+
+scope:
+  pilot: "Asia/Stage 1/Korea"
+  approved: ["Asia/Stage 1/Korea"]      # FR-023: expansions added here one at a time
+
+video:
+  source_kinds: [pov]                   # add "broadcast" only after FR-007b test + approval
+  povs_per_series: 1                    # 2 = also a cross-check POV from the other team
+  format: "bv*[vcodec^=avc1][height<=1080]/bv*[height<=1080]"
+  cache_max_videos: 2
+  sleep_between_downloads_s: [5, 15]
+  rate_limit: "8M"
+  delete_after_extract: true            # FR-007c
+
+sampling:
+  fps: 2
+  hud_anchor_min_score: 0.80
+
+recognition:
+  ocr_threads: 2
+  low_conf_threshold: 0.80              # FR-011
+  icon_min_margin: 0.08
+
+interpret:
+  swap_min_frames: 2
+  short_segment_s: 10
+  replay_repeat_window_s: 15
+  clock_must_advance: true
+
+retrieval:
+  liquipedia_min_interval_s: 2.0
+  owtv_min_interval_s: 5.0
+
+verify:                                 # FR-017 tolerances
+  team_kills_abs: 1
+  player_deaths_abs: 0
+  player_final_blows_abs: 0
+  date_tz_one_day_note: true
+  roster_match: exact
+  source_priority:                      # FR-021
+    date: liquipedia
+    teams: liquipedia
+    roster: liquipedia
+    series_result: liquipedia
+    map_winner: liquipedia
+    bans: spreadsheet
+    scoreboard: owtv
+    heroes: video
+    segments: video
+    objective: video
+
+export:
+  include: verified                     # verified | partial | all
+  source_ref_format: "yt:{video_id}@{hh}:{mm}:{ss}"
+  analysis_tables: true                 # FR-024a: kill_events, player_hero_map, player_hero_summary
+  summary_min_time_s: 60                # rates left empty below this time on a hero

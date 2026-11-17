@@ -72,21 +72,21 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 **Purpose**: Package, dependencies, configs and folders
 
-- [ ] T001 **Set up the Python project file**
+- [x] T001 **Set up the Python project file**
   Create `pyproject.toml` if it doesn't exist yet (feature 001 task T001 creates the same file; if it exists, extend it): package `owstudy` in src layout, `requires-python = ">=3.11"`, base deps pandas, numpy, PyYAML; optional extra `collect = [yt-dlp, av, opencv-python-headless, rapidocr-onnxruntime, onnxruntime, rapidfuzz, requests, openpyxl]`; dev group pytest, hypothesis; console script `owstudy-collect = "owstudy.collect.cli:main"`; pytest marker `network` (skipped by default) and `video` (needs a cached video)
-- [ ] T002 **Create the empty package folders**
+- [x] T002 **Create the empty package folders**
   Create the package skeleton from plan.md: `src/owstudy/__init__.py` (if missing), `src/owstudy/collect/__init__.py`, `src/owstudy/collect/__main__.py` (calls `cli.main()`), and empty `__init__.py` in `src/owstudy/collect/{io,refs,catalog,viewer,viewer/readers,interpret,verify}/`
-- [ ] T003 [P] **Create the test folders and shared test helpers**
+- [x] T003 [P] **Create the test folders and shared test helpers**
   Create the test tree `tests/collect/{unit,integration,viewer}/` and `tests/collect/fixtures/{synthetic_readings,references,planted,hud_frames}/`, plus `tests/collect/conftest.py` with fixtures `fixtures_dir`, `tmp_data_dir` (a temporary copy of the `data/` layout) and `cfg` (default config with `local.yaml` values stubbed)
-- [ ] T004 [P] **Write the default settings file**
+- [x] T004 [P] **Write the default settings file**
   Create `configs/collect/default.yaml` with exactly the keys and values in contracts/config-schema.md §default.yaml (scope, video, sampling, recognition, interpret, retrieval, verify incl. `source_priority`, export incl. `analysis_tables: true`, `summary_min_time_s: 60`)
-- [ ] T005 [P] **Write the local-settings example and an empty patch list**
+- [x] T005 [P] **Write the local-settings example and an empty patch list**
   Create `configs/collect/local.example.yaml` (keys `platform_terms_acknowledged: false`, `video_cache_dir`, `user_agent_contact`, `reviewer`, `owtv_api_key` (empty; never committed)) and `configs/collect/patches.yaml` (list of `{patch_id, live_date, note}`; already filled in by T030, so leave it as is)
-- [ ] T006 **Keep videos and local settings out of git**
+- [x] T006 **Keep videos and local settings out of git**
   Add to `.gitignore`: `configs/collect/local.yaml`, `data/interim/probes/**/*.png` (probe frame dumps), `*.mp4`, `*.webm`, `*.mkv`, `.cache/`. Video files must never enter the repo (FR-007)
-- [ ] T007 **Move the existing reference downloads into dated folders**
+- [x] T007 **Move the existing reference downloads into dated folders**
   Move the existing reference snapshots into dated folders **without changing their bytes** (`git mv`): `data/raw/reference/liquipedia/*` → `data/raw/reference/liquipedia/2026-11-15/`, `data/raw/reference/spreadsheet/*` → `data/raw/reference/spreadsheet/2026-11-15/`, `data/raw/reference/youtube/obssojourn_videos_dated_2026-11-15.json` → `data/raw/reference/youtube/2026-11-15/obssojourn_videos.json`; write a `snapshot.json` in each (`source`, `retrieved_at: 2026-11-15`, `tool: scripts/inventory (exploratory)`, file list with SHA-256). Update the paths in `data/interim/inventory/README.md`
-- [ ] T008 **Install and lock the dependencies**
+- [x] T008 **Install and lock the dependencies**
   Run `uv lock` and `uv sync --extra collect --group dev`; commit `uv.lock`
 
 ---
