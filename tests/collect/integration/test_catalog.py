@@ -98,6 +98,8 @@ def test_series_fields(cat):
     s3 = _series(cat, S3)  # Liquipedia order kept: Bravo is team a here
     assert (s3.team_a_id, s3.team_b_id, s3.phase, s3.best_of) == ("team:bravo_esports", "team:team_alpha", "Playoffs", "7")
     assert _series(cat, S4).best_of == "5"  # not on Liquipedia: from the sheet's "[Bo5]"
+    # the round comes from the spreadsheet: Liquipedia's playoffs page mixes several rounds
+    assert (_series(cat, S1)["round"], s3["round"]) == ("Round Robin", "Grand Finals")
 
 
 def test_sheet_only_series_is_flagged_and_keeps_its_maps(cat):

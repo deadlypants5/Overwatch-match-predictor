@@ -186,6 +186,7 @@ text under it holds the exact files, columns and rules an implementer needs.
   Implement `owstudy-collect status` in `src/owstudy/collect/cli.py` (and `src/owstudy/collect/catalog/inventory.py`): per region-stage — series, maps in scope, maps with replay, `no_replay`, low-confidence links waiting for review, and series played on a patch day
 - [ ] T035 [US1] **👤 You: approve name aliases and hand-check 30 video links**
   run `catalog build --scope pilot`, review `aliases_proposed.csv` and copy accepted rows into `data/interim/entities/aliases.csv`, then do the 30-link hand check from quickstart §2 and note the result in `data/interim/reports/link_check_pilot.md`
+  *Status 2026-11-17:* aliases done; first check 26/30 (repeat matchups mixed up: regular season vs seeding decider vs playoffs). The matcher now uses the spreadsheet's round names, one-video-per-player, video length and upload neighbours, which fixes all 4 and moves 17 other links. Left: re-check those 17 in `data/interim/reports/link_recheck_pilot.csv`. Incomplete replays go in `configs/collect/video_overrides.yaml`
 
 **Checkpoint**: Pilot catalog with links. Map winners are already enough for team Elo (feature 001 US1)
 

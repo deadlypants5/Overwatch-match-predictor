@@ -26,7 +26,8 @@ NOT_OWCS, BOOTCAMP, PRE_2026 = "not_owcs_main", "out_of_scope_bootcamp", "pre_20
 NO_TEAMS, UNKNOWN_TEAM, NO_SERIES = "no_teams_in_title", "unknown_team", "no_2026_series"
 
 PHASE = re.compile(
-    r"grand final|final|semifinal|quarterfinal|playoff|upper|lower|seeding|round robin|regular season|group|decider|road to",
+    r"grand final|final|semifinal|quarterfinal|playoff|upper|lower|seeding|round robin|regular season|group|decider|"
+    r"road to|last chance|third place",
     re.I,
 )
 OWCS_EVENT = re.compile(r"\bOWCS\b|Champions Clash|Midseason", re.I)
@@ -235,21 +236,140 @@ def link_candidates(series: list[dict], a: str, b: str, title: Title, upload: dt
     return sorted(c, key=lambda s: (-(s["day"] or dt.date.min).toordinal(), s["series_id"]))
 
 
+# Title words -> the rounds they can mean. ObsSojourn often calls a seeding decider "Playoffs",
+# so "playoff" allows every round on Liquipedia's playoffs page.
+ROUND_WORDS = [
+    (re.compile(r"grand final", re.I), {"grand finals", "grand final"}),
+    (re.compile(r"semi-?final", re.I), {"semifinals", "semifinal"}),
+    (re.compile(r"quarter-?final", re.I), {"quarterfinal", "quarterfinals"}),
+    (re.compile(r"third place|3rd place", re.I), {"third place match"}),
+    (re.compile(r"seeding|decider", re.I), {"seeding decider"}),
+    (re.compile(r"last chance", re.I), {"last chance qualifier"}),
+]
+DEFAULT_S_PER_MAP = 720.0  # used until high-confidence links give a measured value
+SAME_SERIES_GAP_S = 60  # POVs of one series are this close in length (unless the replay has holes)
+NEIGHBOUR_SPAN = 5  # channel-list positions looked at on each side of a video
+
+
+def phase_filter(candidates: list[dict], title: Title) -> tuple[list[dict], str]:
+    """Narrow candidates by the title's phase words. Returns (candidates, reason or "").
+
+    A named round ("Grand Finals", "Seeding Decider") keeps that round; other playoff words keep
+    playoff-page series (seeding deciders included); no phase words keep the regular season.
+    A filter that would leave nothing is skipped.
+    """
+    text = title.phase
+    for pattern, rounds in ROUND_WORDS:
+        if pattern.search(text):
+            kept = [s for s in candidates if str(s.get("round", "")).lower() in rounds]
+            if kept:
+                return kept, f"phase words '{text}' (round named)"
+    if PLAYOFF_WORDS.search(text):
+        kept = [s for s in candidates if s["playoff"]]
+        return (kept, f"phase words '{text}'") if kept else (candidates, "")
+    if not text or re.search(r"regular|round robin|group", text):
+        kept = [s for s in candidates if not s["playoff"]]
+        why = f"phase words '{text}'" if text else "no phase words in title (regular season)"
+        return (kept, why) if kept else (candidates, "")
+    return candidates, ""
+
+
 def choose_series(candidates: list[dict], title: Title) -> tuple[dict | None, str, str]:
-    """(series, confidence, note): one candidate -> high; phase words narrow it to one -> medium;
-    otherwise the nearest date wins with low confidence (sent to review)."""
+    """First pass, (series, confidence, note): one candidate -> high; the title's phase words
+    leave one -> medium; otherwise the nearest date with low confidence. Low links are revisited
+    by `settle_by_length`."""
     if not candidates:
         return None, "", ""
     if len(candidates) == 1:
         return candidates[0], "high", ""
-    c = candidates
-    if title.phase:
-        playoff = bool(PLAYOFF_WORDS.search(title.phase))
-        narrowed = [s for s in c if s["playoff"] == playoff]
-        if len(narrowed) == 1:
-            return narrowed[0], "medium", f"{len(c)} candidates; picked by phase words '{title.phase}'"
-        c = narrowed or c
+    c, why = phase_filter(candidates, title)
+    if len(c) == 1:
+        return c[0], "medium", f"{len(candidates)} candidates; picked by {why}"
     return c[0], "low", f"{len(candidates)} candidates; picked the nearest date before upload"
+
+
+def _n_maps(s: dict) -> int:
+    try:
+        return int(s["score_a"]) + int(s["score_b"])
+    except (TypeError, ValueError):
+        return 0
+
+
+def settle_by_length(rows: list[dict], options: dict[str, list[dict]]) -> None:
+    """Second pass for low-confidence links, using what the confident links show:
+
+    - a player has one video per series, so a series where this player already has a confident
+      video of a different length is ruled out;
+    - all POVs of one series are about the same length, so the series whose confident videos are
+      closest in length wins; with no confident video, the length expected from its map count.
+    """
+    import statistics
+
+    sure = [r for r in rows if r["status"] == LINKED and r["link_confidence"] in ("high", "medium")]
+    by_series: dict[str, list[dict]] = {}
+    for r in sure:
+        by_series.setdefault(r["series_id"], []).append(r)
+    per_map = [r["duration_s"] / r["_n_maps"] for r in sure if r["link_confidence"] == "high" and r["_n_maps"]]
+    s_per_map = statistics.median(per_map) if per_map else DEFAULT_S_PER_MAP
+
+    for r in rows:
+        if r["status"] != LINKED or r["link_confidence"] != "low":
+            continue
+        cands = options.get(r["video_id"], [])
+        player = r["pov_player_id"] or "text:" + r["player_norm"]
+        kept = []
+        for s in cands:
+            others = by_series.get(s["series_id"], [])
+            if any((o["pov_player_id"] or "text:" + o["player_norm"]) == player
+                   and abs(o["duration_s"] - r["duration_s"]) >= SAME_SERIES_GAP_S for o in others):
+                continue  # this player already has a different video of that series
+            if others:
+                cost = abs(statistics.median(o["duration_s"] for o in others) - r["duration_s"])
+                basis = "length of its other videos"
+            else:
+                cost = abs(_n_maps(s) * s_per_map - r["duration_s"])
+                basis = f"{_n_maps(s)} maps x {s_per_map:.0f} s"
+            kept.append((cost, s["series_id"], s, basis))
+        if not kept:
+            continue
+        kept.sort(key=lambda k: (k[0], k[1]))
+        cost, sid, s, basis = kept[0]
+        clear = len(kept) == 1 or (kept[1][0] - cost) >= SAME_SERIES_GAP_S * 3
+        r["series_id"] = sid
+        r["_pick"] = s
+        # medium only when the evidence is direct: other players' videos of that series, or
+        # every other candidate ruled out; a guess from the map count alone stays low
+        direct = basis.startswith("length") or len(kept) == 1
+        r["link_confidence"] = "medium" if clear and direct else "low"
+        r["note"] = (f"{len(cands)} candidates; {len(cands) - len(kept)} ruled out (same player already has a video), "
+                     f"picked by video length ({basis})")
+        r["_by_map_count"] = clear and not direct and (kept[1][0] - cost) >= s_per_map
+
+    # A guess from the map count is raised to medium when 3+ POVs of the same length (other
+    # players, so not one replay with holes) make the same clear pick.
+    guesses = [r for r in rows if r.get("_by_map_count")]
+    for r in guesses:
+        same = [o for o in guesses if o["series_id"] == r["series_id"]
+                and abs(o["duration_s"] - r["duration_s"]) < SAME_SERIES_GAP_S]
+        if len(same) >= 3:
+            r["link_confidence"] = "medium"
+            r["note"] += f"; {len(same)} POVs of this length agree"
+
+    # Last: ObsSojourn uploads a series' POVs together, so a still-low video whose neighbours in
+    # the channel list are confident links of one candidate series belongs to that series.
+    # This catches POVs shortened by holes in the replay, which video length gets wrong.
+    for i, r in enumerate(rows):
+        if r["status"] != LINKED or r["link_confidence"] != "low":
+            continue
+        cands = {s["series_id"]: s for s in options.get(r["video_id"], [])}
+        near = [o for o in rows[max(0, i - NEIGHBOUR_SPAN):i + NEIGHBOUR_SPAN + 1]
+                if o is not r and o["status"] == LINKED and o["link_confidence"] in ("high", "medium")
+                and o["series_id"] in cands]
+        votes = {o["series_id"] for o in near}
+        if len(votes) == 1 and len(near) >= 2:
+            sid = votes.pop()
+            r.update(series_id=sid, _pick=cands[sid], link_confidence="medium",
+                     note=f"{len(cands)} candidates; uploaded alongside {len(near)} confident videos of this series")
 
 
 def _player_lookup(lineups) -> dict[str, list[tuple[str, str, str]]]:
@@ -264,13 +384,16 @@ def _player_lookup(lineups) -> dict[str, list[tuple[str, str, str]]]:
     return out
 
 
-def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg):
+def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides=None):
     """One row per video: the series it shows, link confidence, POV player and team, role.
 
     `catalog` is a catalog.build.Catalog over every event, so a video of another region-stage
     links there instead of showing up as unmatched. Returns a DataFrame of LINK_COLUMNS plus
     `title` and `event_text` (used for scope filtering). `confirmed` starts false; it's set
     after extraction from the HUD names (research R7).
+
+    `overrides` (configs/collect/video_overrides.yaml) are the researcher's notes: a series set by
+    hand wins (confidence `manual`), and an incomplete replay is never the primary or cross-check POV.
     """
     import pandas as pd
 
@@ -281,6 +404,7 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg):
     by_id = {s["series_id"]: s for s in series}
     players = _player_lookup(catalog.lineups)
     rows = []
+    options: dict[str, list[dict]] = {}  # video -> candidates left after phase words (low links)
     for v in videos:
         title_text = v.get("title") or ""
         up = upload_day(v)
@@ -288,7 +412,7 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg):
         rec = {"video_id": v["id"], "series_id": "", "status": UNMATCHED, "link_confidence": "", "role": "",
                "pov_player_id": "", "pov_team_id": "", "confirmed": False, "note": "",
                "title": title_text, "event_text": t.event_text, "duration_s": v.get("duration") or 0,
-               "player_norm": normalize_alias(t.player)}  # fmt: skip
+               "player_norm": normalize_alias(t.player), "_n_maps": 0, "_title_player": t.player}  # fmt: skip
         if BOOTCAMP_RE.search(title_text) and OWCS_EVENT.search(title_text):
             rec.update(status=NOT_OWCS_2026, note="OWCS Preseason Bootcamp: out of scope (FR-023a)")
         elif not OWCS_EVENT.search(t.event_text) or NOT_MAIN.search(title_text):
@@ -302,17 +426,49 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg):
             if not a or not b:
                 rec["note"] = "unknown team: " + ", ".join(x for x, r in ((t.team_a, a), (t.team_b, b)) if not r)
             else:
-                pick, conf, note = choose_series(link_candidates(series, a, b, t, up), t)
+                cands = link_candidates(series, a, b, t, up)
+                pick, conf, note = choose_series(cands, t)
                 if pick is None:
                     rec["note"] = "no played 2026 series between these teams fits the event and date"
                 else:
-                    rec.update(series_id=pick["series_id"], status=LINKED, link_confidence=conf, note=note)
+                    rec.update(series_id=pick["series_id"], status=LINKED, link_confidence=conf, note=note,
+                               _n_maps=_n_maps(pick))  # fmt: skip
+                    if conf == "low":
+                        options[v["id"]] = phase_filter(cands, t)[0]
                     _set_pov(rec, players.get(pick["series_id"], []), aliases, t.player)
         rows.append(rec)
+
+    settle_by_length(rows, options)
+    _apply_overrides(rows, overrides or {}, by_id)
+    for r in rows:  # the POV player and team follow the (possibly changed) series
+        if "_pick" in r:
+            r.update(pov_player_id="", pov_team_id="")
+            _set_pov(r, players.get(r["series_id"], []), aliases, r["_title_player"])
 
     _set_roles(rows, by_id, cfg.video.povs_per_series)
     cols = [*LINK_COLUMNS, "title", "event_text"]
     return pd.DataFrame(rows, columns=[*cols, "duration_s", "player_norm"])[cols]
+
+
+def _apply_overrides(rows: list[dict], overrides: dict, by_id: dict) -> None:
+    from owstudy.collect.errors import ConfigError
+
+    # A video no longer in the channel list has no row, so its note simply has nothing to change.
+    for r in rows:
+        o = overrides.get(r["video_id"])
+        if o is None:
+            continue
+        if o.series_id:
+            if o.series_id not in by_id:
+                raise ConfigError(f"video_overrides.yaml: {o.video_id} -> unknown or unplayed series {o.series_id}")
+            if o.series_id != r["series_id"]:
+                r["_pick"] = by_id[o.series_id]
+            r.update(series_id=o.series_id, status=LINKED, link_confidence="manual", note="set by hand")
+        if o.incomplete:
+            r["_incomplete"] = True
+            r["note"] = "; ".join(x for x in (r["note"], "incomplete replay: not used as a main POV") if x)
+        if o.note:
+            r["note"] += f" ({o.note})"
 
 
 def _set_pov(rec: dict, lineup: list[tuple[str, str, str]], aliases: AliasTable, player_text: str) -> None:
@@ -345,7 +501,8 @@ def _set_roles(rows: list[dict], by_id: dict, povs_per_series: int) -> None:
             for r in group[1:]:
                 if abs(r["duration_s"] - keep["duration_s"]) < DUPLICATE_MAX_GAP_S:
                     r.update(status=DUPLICATE, role=DUPLICATE, note=f"re-upload of {keep['video_id']}")
-        live = sorted((r for r in vids if r["status"] == LINKED), key=lambda r: (-r["duration_s"], r["video_id"]))
+        live = sorted((r for r in vids if r["status"] == LINKED),
+                      key=lambda r: (bool(r.get("_incomplete")), -r["duration_s"], r["video_id"]))  # fmt: skip
         for r in live:
             r["role"] = "unused"
         if not live:
@@ -356,7 +513,7 @@ def _set_roles(rows: list[dict], by_id: dict, povs_per_series: int) -> None:
             s = by_id.get(sid, {})
             other = {s.get("team_a_id"), s.get("team_b_id")} - {primary["pov_team_id"]}
             if primary["pov_team_id"] and len(other) == 1:
-                cross = [r for r in live[1:] if r["pov_team_id"] in other]
+                cross = [r for r in live[1:] if r["pov_team_id"] in other and not r.get("_incomplete")]
                 if cross:
                     cross[0]["role"] = "cross_check"
 

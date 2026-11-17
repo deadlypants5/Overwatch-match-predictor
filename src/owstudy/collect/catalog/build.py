@@ -47,7 +47,7 @@ from owstudy.collect.config import Patch, PatchOverrides
 from owstudy.collect.io.tables import read_table, write_table
 from owstudy.collect.refs.liquipedia import parse_batch, parse_lineups, response_files
 
-SERIES_COLUMNS = ["series_id", "region", "stage", "phase", "best_of", "start_utc", "local_date", "tz",
+SERIES_COLUMNS = ["series_id", "region", "stage", "phase", "round", "best_of", "start_utc", "local_date", "tz",
                   "team_a_id", "team_b_id", "score_a", "score_b", "status", "sources", "in_pilot"]  # fmt: skip
 MAP_COLUMNS = ["map_id", "series_id", "map_number", "map_ref", "mode_id", "winner", "patch_id", "status"]
 LINEUP_COLUMNS = ["series_id", "team_id", "player_id", "source"]
@@ -118,6 +118,11 @@ def start_utc(day: dt.date | None, time: dt.time | None, tz: str, region: str) -
         return ""
     local = dt.datetime.combine(day, time)
     return (local - dt.timedelta(hours=offset)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def round_name(sheet_phase: str) -> str:
+    """Spreadsheet phase -> round name: 'Seeding Decider [Bo5]' -> 'Seeding Decider'."""
+    return re.sub(r"\s*\[Bo\d+\]", "", sheet_phase or "").strip()
 
 
 def best_of_from_phase(phase: str) -> str:
@@ -352,6 +357,9 @@ def build_catalog(
         s["sources"] = ";".join([lp_src] + ([sheet_src] if sh else []))
         if not s["best_of"] and sh:
             s["best_of"] = best_of_from_phase(sh["phase"])
+        # Liquipedia's "Playoffs" page also holds the seeding deciders and last-chance matches;
+        # the spreadsheet names the round (e.g. "Seeding Decider", "Grand Finals").
+        s["round"] = round_name(sh["phase"]) if sh else ""
         s["patch_id"], s["patch_rule"] = assign_patch(s["day"], s["event"], (s["series_key"], s["series_id"]),
                                                        patches, overrides)  # fmt: skip
         wins = Counter()
@@ -378,7 +386,7 @@ def build_catalog(
         rows = sheet_maps[sheet_maps.series_key == r["series_key"]].to_dict(orient="records")
         series.append({
             "series_key": r["series_key"], "series_id": sid, "event": r["event"], "region": region, "stage": stage,
-            "phase": re.sub(r"\s*\[Bo\d+\]", "", r["phase"]).strip(), "playoff": not re.search(
+            "phase": round_name(r["phase"]), "round": round_name(r["phase"]), "playoff": not re.search(
                 r"round robin|regular|group|swiss", r["phase"], re.I),
             "best_of": best_of_from_phase(r["phase"]), "start_utc": "", "day": None, "local_date": "", "tz": "",
             "team_a_text": r["team1"], "team_b_text": r["team2"],
@@ -481,7 +489,7 @@ def run_catalog(data_dir: str | Path, cfg, scope_keys: Sequence[str]) -> Catalog
     """`catalog build`: read the latest snapshots, build the catalog, link the channel's videos,
     and write the scoped results. No network."""
     from owstudy.collect.catalog.link import LINK_COLUMNS, in_scope_links, link_videos
-    from owstudy.collect.config import load_patch_overrides, load_patches
+    from owstudy.collect.config import load_patch_overrides, load_patches, load_video_overrides
     from owstudy.collect.refs.snapshot import latest_snapshot
     from owstudy.collect.refs.youtube_list import load_videos
 
@@ -497,7 +505,8 @@ def run_catalog(data_dir: str | Path, cfg, scope_keys: Sequence[str]) -> Catalog
         load_patch_overrides(config_dir / "patch_overrides.yaml", patches), cfg.scope.pilot,
     )  # fmt: skip
     yt_dir = latest_snapshot("youtube", root=ref)
-    links = link_videos(full, load_videos(yt_dir), aliases, cfg)
+    links = link_videos(full, load_videos(yt_dir), aliases, cfg,
+                        load_video_overrides(config_dir / "video_overrides.yaml"))  # fmt: skip
     full.snapshots["youtube"] = yt_dir.name
     cat = full.scoped(scope_keys)
     links = in_scope_links(links, set(cat.series.series_id), scope_keys)

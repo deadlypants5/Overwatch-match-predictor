@@ -74,7 +74,11 @@ video_id,run_id,extractor_version,ts_start,ts_end,clock_start,side,killer_slot,k
 
 ### `catalog/series.csv` — key `series_id`
 
-`series_id,region,stage,phase,best_of,start_utc,local_date,tz,team_a_id,team_b_id,score_a,score_b,status,sources,in_pilot`.
+`series_id,region,stage,phase,round,best_of,start_utc,local_date,tz,team_a_id,team_b_id,score_a,score_b,status,sources,in_pilot`.
+`phase` is Liquipedia's page (`Regular Season` or `Playoffs`). `round` is the spreadsheet's
+round name (`Round Robin`, `Seeding Decider`, `Last Chance Qualifier`, `Quarterfinal`,
+`Semifinals`, `Third Place Match`, `Grand Finals`); empty when the spreadsheet doesn't list
+the series. It matters because Liquipedia's playoffs page also holds the seeding deciders.
 `sources` lists the snapshots that have the series (`liquipedia:<date>;spreadsheet:<date>`). A
 series only the spreadsheet lists has `series_id = sheet_<slug>` and one source.
 
@@ -98,7 +102,10 @@ series only the spreadsheet lists has `series_id = sheet_<slug>` and one source.
 
 `video_id,series_id,status,link_confidence,role,pov_player_id,pov_team_id,confirmed,note`.
 Lists videos linked to an in-scope series, plus unlinked videos whose title names an in-scope
-region (so other region-stages' videos aren't listed as unmatched).
+region (so other region-stages' videos aren't listed as unmatched). `link_confidence` is
+`high` (one possible series), `medium` (picked by the title's round words, by other players'
+videos of the same length, or by upload neighbours), `low` (a guess, for review) or `manual`
+(set in `configs/collect/video_overrides.yaml`). The `note` says how each link was picked.
 
 ### `catalog/map_spans.csv` — key `(video_id, ts_start)`
 

@@ -2,7 +2,7 @@
 
 ## In short
 
-Every setting the tool reads, with its default. There are five kinds of file:
+Every setting the tool reads, with its default. There are six kinds of file:
 
 - **`default.yaml`**: thresholds, tolerances, scope, download limits. Shared and committed.
 - **`local.yaml`**: your machine's settings (cache folder, contact for the User-Agent, terms
@@ -10,6 +10,8 @@ Every setting the tool reads, with its default. There are five kinds of file:
 - **`patches.yaml`**: 2026 patch release dates, filled in by you (task T030).
 - **`patch_overrides.yaml`**: which regions' patch-day matches get the previous patch, plus
   any series whose patch you set by hand.
+- **`video_overrides.yaml`**: your notes on single videos: replays with missing maps, and
+  links you set by hand.
 - **`hud/*.yaml`**: where each HUD element sits on screen, one file per HUD layout.
 
 All under `configs/collect/`, version-controlled (Constitution VI). Unknown keys are an error
@@ -100,10 +102,27 @@ Which regions' patch-day matches get the previous patch, plus series whose patch
 hand. A hand-set series wins over every rule.
 
 ```yaml
-pre_patch_regions: ["Korea"]   # matched against the last part of the region-stage key
+pre_patch_regions: ["Korea", "Asia"]   # matched against the region ("Asia/Stage 1" -> "Asia")
 series:
   - {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "why"}
 ```
+
+## `video_overrides.yaml`
+
+Your notes on single videos, applied on every `catalog build`. A video no longer in the channel
+list is skipped.
+
+```yaml
+videos:
+  - video_id: NMW05IWrYgM     # the part after "watch?v=" in the YouTube link
+    incomplete: true          # missing maps or holes: never the primary or cross-check POV
+    note: "missing the final map"
+  - video_id: zCOinexAkr0
+    series_id: asia_stage_1_korea_main_playoffs_3   # the video shows this series (confidence "manual")
+```
+
+Each entry needs `incomplete: true`, a `series_id`, or both. Unknown keys and a video listed
+twice are errors (exit 2).
 
 ## `hud/<layout_id>.yaml`
 

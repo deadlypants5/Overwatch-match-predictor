@@ -325,6 +325,43 @@ def load_patch_overrides(path: str | Path, patches: list[Patch] | None = None) -
     return PatchOverrides(regions, series)
 
 
+@dataclass(frozen=True)
+class VideoOverride:
+    """A researcher's note on one video (configs/collect/video_overrides.yaml)."""
+
+    video_id: str
+    series_id: str = ""  # set: the video shows this series, whatever the matcher thinks
+    incomplete: bool = False  # true: maps or stretches missing, so never the main POV
+    note: str = ""
+
+
+def load_video_overrides(path: str | Path) -> dict[str, VideoOverride]:
+    """video_id -> override. A missing file means no overrides."""
+    path = Path(path)
+    if not path.exists():
+        return {}
+    data = _read_yaml(path) or {}
+    if not isinstance(data, dict) or set(data) - {"videos"}:
+        raise ConfigError(f"{path} must hold only a 'videos' list")
+    out: dict[str, VideoOverride] = {}
+    for i, row in enumerate(data.get("videos") or []):
+        if not isinstance(row, dict) or not row.get("video_id"):
+            raise ConfigError(f"{path} videos[{i}] needs a video_id")
+        unknown = sorted(set(row) - {"video_id", "series_id", "incomplete", "note"})
+        if unknown:
+            raise ConfigError(f"{path} videos[{i}]: unknown key(s) {', '.join(unknown)}")
+        if not isinstance(row.get("incomplete", False), bool):
+            raise ConfigError(f"{path} videos[{i}]: incomplete must be true or false")
+        vid = str(row["video_id"])
+        if vid in out:
+            raise ConfigError(f"{path}: video {vid} is listed twice")
+        if not row.get("series_id") and not row.get("incomplete"):
+            raise ConfigError(f"{path} videos[{i}] ({vid}) sets neither series_id nor incomplete")
+        out[vid] = VideoOverride(vid, str(row.get("series_id") or ""), bool(row.get("incomplete", False)),
+                                 str(row.get("note") or ""))  # fmt: skip
+    return out
+
+
 # --- extraction key (research R13) -----------------------------------------------------
 
 

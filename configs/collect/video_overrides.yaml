@@ -1,0 +1,22 @@
+# Your notes on single videos, applied every time `catalog build` runs.
+#
+# Each entry names a video (the part after "watch?v=" in its YouTube link) and one or both of:
+#   incomplete: true    the replay is missing maps or has holes, so it is never chosen as the
+#                       main POV (or the cross-check POV) for its series. It stays linked.
+#   series_id: <id>     the video shows this series, whatever the matcher picked (use the
+#                       series_id column of data/interim/catalog/series.csv). Its link
+#                       confidence becomes "manual".
+#   note: <text>        why; copied into the link's note.
+#
+# From the 30-link check on 2026-11-17 (data/interim/reports/link_check_pilot.csv).
+
+videos:
+  - video_id: NMW05IWrYgM
+    incomplete: true
+    note: "Bernar POV is missing the final map; Stalk3r's POV has every map"
+  - video_id: 1qc_gjDuE7w
+    incomplete: true
+    note: "Mealgaru POV has holes in the replay; don't use it"
+  - video_id: 8WIHatsJnx8
+    incomplete: true
+    note: "Mealgaru POV has holes in the replay"

@@ -127,7 +127,7 @@ replaces the earlier one in effect, but both stay in the file.
 ### 2.2 Catalog and linking (FR-008)
 
 - **CatalogSeries**: `series_id` (stable, from the Liquipedia match key), `region`, `stage`,
-  `phase`, `best_of`, `start_utc`, `local_date`, `tz`, `team_a_id`, `team_b_id` (Liquipedia
+  `phase`, `round` (spreadsheet round name, e.g. `Seeding Decider`), `best_of`, `start_utc`, `local_date`, `tz`, `team_a_id`, `team_b_id` (Liquipedia
   order), `score_a`, `score_b`, `status` (`played` | `forfeit` | `walkover`), `sources`
   (which snapshots list it), `in_pilot`.
 - **CatalogMap**: `map_id` = `<series_id>-m<n>`, `map_number`, `map_id_ref` (map entity),
@@ -135,7 +135,7 @@ replaces the earlier one in effect, but both stay in the file.
   (`played` | `clash_excluded` | `forfeit`).
 - **Lineup**: `series_id`, `team_id`, `player_id`, `source`, used for roster checks (series
   level; per-map rosters come only from the video).
-- **VideoLink**: `video_id` → `series_id`, `link_confidence` (`high`/`medium`/`low`),
+- **VideoLink**: `video_id` → `series_id`, `link_confidence` (`high`/`medium`/`low`/`manual`),
   `pov_team_id`, `pov_player_id`, `role` (`primary` | `cross_check` | `unused` | `duplicate`),
   `confirmed` (bool, set after extraction from HUD names, research R7), `status` (`linked` |
   `unmatched` | `not_owcs_2026` | `duplicate`).
