@@ -1,0 +1,55 @@
+hero_id,name,role
+hero:ana,Ana,support
+hero:anran,Anran,damage
+hero:ashe,Ashe,damage
+hero:baptiste,Baptiste,support
+hero:bastion,Bastion,damage
+hero:brigitte,Brigitte,support
+hero:cassidy,Cassidy,damage
+hero:dmon,D.Mon,tank
+hero:doctrine,Doctrine,support
+hero:domina,Domina,tank
+hero:doomfist,Doomfist,tank
+hero:dva,D.Va,tank
+hero:echo,Echo,damage
+hero:emre,Emre,damage
+hero:freja,Freja,damage
+hero:genji,Genji,damage
+hero:hanzo,Hanzo,damage
+hero:hazard,Hazard,tank
+hero:illari,Illari,support
+hero:jetpack_cat,Jetpack Cat,support
+hero:junker_queen,Junker Queen,tank
+hero:junkrat,Junkrat,damage
+hero:juno,Juno,support
+hero:kiriko,Kiriko,support
+hero:lifeweaver,Lifeweaver,support
+hero:lucio,Lúcio,support
+hero:mauga,Mauga,tank
+hero:mei,Mei,damage
+hero:mercy,Mercy,support
+hero:mizuki,Mizuki,support
+hero:moira,Moira,support
+hero:orisa,Orisa,tank
+hero:pharah,Pharah,damage
+hero:ramattra,Ramattra,tank
+hero:reaper,Reaper,damage
+hero:reinhardt,Reinhardt,tank
+hero:roadhog,Roadhog,tank
+hero:shion,Shion,damage
+hero:sierra,Sierra,damage
+hero:sigma,Sigma,tank
+hero:sojourn,Sojourn,damage
+hero:soldier_76,Soldier: 76,damage
+hero:sombra,Sombra,damage
+hero:symmetra,Symmetra,damage
+hero:torbjorn,Torbjörn,damage
+hero:tracer,Tracer,damage
+hero:vendetta,Vendetta,damage
+hero:venture,Venture,damage
+hero:widowmaker,Widowmaker,damage
+hero:winston,Winston,tank
+hero:wrecking_ball,Wrecking Ball,tank
+hero:wuyang,Wuyang,support
+hero:zarya,Zarya,tank
+hero:zenyatta,Zenyatta,support

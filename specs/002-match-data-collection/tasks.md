@@ -97,27 +97,27 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T009 **Load and check the settings**
+- [x] T009 **Load and check the settings**
   Implement `src/owstudy/collect/config.py`: frozen dataclasses mirroring contracts/config-schema.md; `load_config(path, local_path=None)` merges `local.yaml` on top, rejects unknown keys (exit 2), validates `verify.source_priority` values are in `{liquipedia, spreadsheet, owtv, video}`, `export.include ∈ {verified, partial, all}`, `video.povs_per_series ∈ {1, 2}`, `video.source_kinds ⊆ {pov, broadcast}`; `extraction_key(cfg, layout_path, icon_lib_dir, ocr_model_files)` = first 8 hex chars of SHA-256 over (extractor version, layout file hash, icon library hash, OCR model hash, `sampling` block) per research R13
-- [ ] T010 [P] **Test: settings loading**
+- [x] T010 [P] **Test: settings loading**
   Write `tests/collect/unit/test_config.py`: unknown key rejected; local overrides merged; bad `include` value rejected; `extraction_key` changes when the layout file, an icon file, or `sampling.fps` changes, and doesn't change otherwise
-- [ ] T011 **Write CSV tables exactly the same way every time**
+- [x] T011 **Write CSV tables exactly the same way every time**
   Implement `src/owstudy/collect/io/tables.py`: `write_table(rows_or_df, path, columns, key, decimals: dict[col, n])` enforcing the shared CSV rules and sorting by `key`; `read_table(path, columns)` that rejects unknown/missing columns; `append_rows(path, columns, rows)` for append-only files (never rewrites existing lines; checks the existing header matches)
-- [ ] T012 **Record file fingerprints for every run and snapshot**
+- [x] T012 **Record file fingerprints for every run and snapshot**
   Implement `src/owstudy/collect/io/manifest.py`: `write_run_json(folder, run)` with the fields in contracts/storage-layout.md §run.json; `write_folder_manifest(folder)` → `MANIFEST.sha256` over every other file in the folder (sorted); `verify_folder(folder) -> list[str]` returning changed or missing files; `snapshot_json(folder, source, retrieved_at, tool, files)`
-- [ ] T013 [P] **Test: tables and fingerprints**
+- [x] T013 [P] **Test: tables and fingerprints**
   Write `tests/collect/unit/test_tables_manifest.py`: two writes of the same rows are byte-identical and contain no `\r`; rows come out sorted by key; floats use the configured decimals; `append_rows` keeps earlier lines byte-for-byte and refuses a header mismatch; `verify_folder` reports an edited file
-- [ ] T014 **Stable IDs and the name-alias table**
-  Implement `src/owstudy/collect/catalog/entities.py`: stable ID helpers (`team:<slug>`, `player:<lp_page_slug>`, `hero:<slug>`, `map:<slug>`; `slug()` = lower-case ASCII, non-alphanumerics → `_`); `normalize_alias(text)` ("case-folded, whitespace collapsed"); `AliasTable.load(path)` reading `data/interim/entities/aliases.csv` (`entity_type,alias,stable_id,valid_from,valid_to,source`) and rejecting overlapping validity ("no overlapping validity for the same alias/type"); `resolve(entity_type, text, on_date, candidates=None) -> (stable_id | None, score)` with exact match first, then `rapidfuzz` ratio limited to `candidates`; `propose(...)` appends to `aliases_proposed.csv` (`alias,entity_type,candidate_stable_id,score,seen_in,seen_at`) and **never** writes `aliases.csv`
-- [ ] T015 [P] **Test: IDs and aliases**
+- [x] T014 **Stable IDs and the name-alias table**
+  Implement `src/owstudy/collect/catalog/entities.py`: stable ID helpers (`team:<slug>`, `player:<lp_page_slug>`, `hero:<slug>`, `map:<slug>`; `slug()` = lower-case ASCII with accents removed, `. ' :` dropped, other runs of non-alphanumerics → `_`, so `D.Va` → `hero:dva`, `King's Row` → `map:kings_row`); `normalize_alias(text)` ("case-folded, whitespace collapsed"); `AliasTable.load(path)` reading `data/interim/entities/aliases.csv` (`entity_type,alias,stable_id,valid_from,valid_to,source`) and rejecting overlapping validity ("no overlapping validity for the same alias/type"); `resolve(entity_type, text, on_date, candidates=None) -> (stable_id | None, score)` with exact match first, then `rapidfuzz` ratio limited to `candidates`; `propose(...)` appends to `aliases_proposed.csv` (`alias,entity_type,candidate_stable_id,score,seen_in,seen_at`) and **never** writes `aliases.csv`
+- [x] T015 [P] **Test: IDs and aliases**
   Write `tests/collect/unit/test_entities.py`: exact alias resolves by date (rename case: old and new name → same ID); overlapping validity rejected; a near-miss name returns `None` plus a proposal and is not auto-created (spec edge case); resolution limited to a candidate roster
-- [ ] T016 **Seed the hero, map and alias lists**
-  Seed `data/interim/entities/`: `heroes.csv` (`hero_id,name`; all heroes in the 2026 pool, `hero_id` slugs matching Liquipedia ban names such as `dva`, `ana`), `maps.csv` (`map_id,name,mode_id` with `mode_id ∈ {control, escort, hybrid, push, flashpoint, clash}`; all 2026 competitive maps), and an empty `aliases.csv` with header. These are hand-curated files that `build` never overwrites
-- [ ] T017 **Command-line shell with every command stubbed out**
+- [x] T016 **Seed the hero, map and alias lists**
+  Seed `data/interim/entities/`: `heroes.csv` (`hero_id,name,role`; all 54 heroes in the 2026 pool, `hero_id` such as `hero:dva`, `hero:ana`; Liquipedia spellings like `soldier76` come in as alias proposals), `maps.csv` (`map_id,name,mode_id` with `mode_id ∈ {control, escort, hybrid, push, flashpoint, clash}`; all 2026 competitive maps), and an empty `aliases.csv` with header. These are hand-curated files that `build` never overwrites
+- [x] T017 **Command-line shell with every command stubbed out**
   Implement `src/owstudy/collect/cli.py`: argparse with global options `--config`, `--scope` (`pilot` | region-stage key | `all`), `--data-dir`, `-v`, and every subcommand in contracts/cli.md registered as a stub; exception → exit code mapping: validation/audit failure `1`, usage/config `2`, retrieval blocked `3`, partial success `4`. `resolve_scope(cfg, scope)` returns the region-stage keys (`pilot` → `scope.pilot`; an unapproved key is a usage error unless `--force-scope`, FR-023)
-- [ ] T018 **Polite web client (rate limits and caching)**
+- [x] T018 **Polite web client (rate limits and caching)**
   Implement `src/owstudy/collect/refs/ratelimit.py`: `HttpClient(host_min_interval_s, cache_dir, user_agent)` that waits at least the configured interval per host (Liquipedia 2.0 s, OWTV 5.0 s), sends gzip and the User-Agent built from `user_agent_contact` in `local.yaml`, caches responses on disk keyed by URL+params, and raises `RetrievalBlocked` (exit 3) on HTTP 429/403 or a missing contact
-- [ ] T019 **Dated snapshots of reference data, with diffs**
+- [x] T019 **Dated snapshots of reference data, with diffs**
   Implement `src/owstudy/collect/refs/snapshot.py`: `new_snapshot(source, date) -> folder` under `data/raw/reference/<source>/<YYYY-MM-DD>/` (refuses if it exists); `latest_snapshot(source, pinned=None)`; `diff_snapshots(old, new, key_columns) -> DataFrame` of added/removed/changed records, written to `data/interim/reports/snapshot_diff_<source>_<date>.csv`
 
 **Checkpoint**: config, tables, manifests, aliases and the CLI shell work; `uv run pytest tests/collect/unit` passes

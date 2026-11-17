@@ -1,0 +1,33 @@
+map_id,name,mode_id
+map:aatlis,Aatlis,flashpoint
+map:antarctic_peninsula,Antarctic Peninsula,control
+map:blizzard_world,Blizzard World,hybrid
+map:busan,Busan,control
+map:circuit_royal,Circuit Royal,escort
+map:colosseo,Colosseo,push
+map:dorado,Dorado,escort
+map:eichenwalde,Eichenwalde,hybrid
+map:esperanca,Esperança,push
+map:hanaoka,Hanaoka,clash
+map:havana,Havana,escort
+map:hollywood,Hollywood,hybrid
+map:ilios,Ilios,control
+map:junkertown,Junkertown,escort
+map:kings_row,King's Row,hybrid
+map:lijiang_tower,Lijiang Tower,control
+map:midtown,Midtown,hybrid
+map:neon_junction,Neon Junction,hybrid
+map:nepal,Nepal,control
+map:new_junk_city,New Junk City,flashpoint
+map:new_queen_street,New Queen Street,push
+map:numbani,Numbani,hybrid
+map:oasis,Oasis,control
+map:paraiso,Paraíso,hybrid
+map:rialto,Rialto,escort
+map:route_66,Route 66,escort
+map:runasapi,Runasapi,push
+map:samoa,Samoa,control
+map:shambali_monastery,Shambali Monastery,escort
+map:suravasa,Suravasa,flashpoint
+map:watchpoint_gibraltar,Watchpoint: Gibraltar,escort
+map:watchpoint_grimsvotn,Watchpoint: Grímsvötn,escort
