@@ -468,11 +468,11 @@ errors.
 - OWTV fantasy results provide per-player scoreboard statistics per map (at least deaths, and
   eliminations). If they turn out to be per series only, scoreboard checks run at series level.
 - Patch IDs come from the official patch release dates. Each map gets the latest patch
-  released on or before the day its series was played (local date). A match played on a patch
-  day counts as played on that day's new patch. Matches are rarely played on patch days, so
-  the catalog lists any that are, for the researcher to check. The researcher can set the patch
-  by hand for a series where the rule is wrong (`configs/collect/patch_overrides.yaml`). The
-  three Korea Stage 1 series on April 17 are set to the patch before that day's hotfix.
+  released on or before the day its series was played (local date). For a match played on a
+  patch day: **Korean matches get the previous patch** (they finish before Blizzard's US-morning
+  release), and **matches in every other region get that day's new patch**. Matches are rarely
+  played on patch days, so the catalog lists any that are, for the researcher to check. The
+  rule and any hand-set exceptions live in `configs/collect/patch_overrides.yaml`.
 - A small gold set (about 5–10 maps covering every mode) is labeled by hand by the researcher
   once, to measure viewer accuracy.
 - Downloading or reading replays is done in a way the platforms permit; the researcher confirms

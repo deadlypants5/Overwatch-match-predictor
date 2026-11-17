@@ -92,11 +92,13 @@ owtv_api_key: ""                         # personal OWTV API key; keep secret, n
 
 ## `patch_overrides.yaml`
 
-Series whose patch you set by hand, for when the patch-day rule gives the wrong patch. The
-catalog uses these instead of the date rule.
+Which regions' patch-day matches get the previous patch, plus series whose patch you set by
+hand. A hand-set series wins over every rule.
 
 ```yaml
-- {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "played before the Apr 17 hotfix"}
+pre_patch_regions: ["Korea"]   # matched against the last part of the region-stage key
+series:
+  - {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "why"}
 ```
 
 ## `hud/<layout_id>.yaml`
