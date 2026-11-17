@@ -40,8 +40,9 @@ revision ID. Locator: `page@revid#match<n>`.
 **Permission (2026-11-16):** Liquipedia allows us to use its data as long as we credit it.
 Every export, chart or write-up that uses Liquipedia data must say so and link to
 liquipedia.net.
-A request was also sent to Liquipedia on 2026-11-16; waiting for an answer. Record the date and
-what they allowed here when they reply.
+**API key:** requested from Liquipedia on 2026-11-16 (with our contact); waiting for an answer.
+New Liquipedia downloads (task T028) wait until the key arrives. It goes in `local.yaml` as
+`liquipedia_api_key`, never in git. Record the date and any extra terms here when they reply.
 
 ## OWTV fantasy results (**to be fixed by the R10 probe**)
 

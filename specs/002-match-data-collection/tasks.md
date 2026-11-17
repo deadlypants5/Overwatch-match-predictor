@@ -168,6 +168,7 @@ text under it holds the exact files, columns and rules an implementer needs.
 ### Implementation for User Story 1
 
 - [ ] T028 [US1] **Download Liquipedia pages and read team lineups**
+  **Waits for the Liquipedia API key** (requested 2026-11-16; `liquipedia_api_key` in `local.yaml`, refuse to fetch without it, never print or commit it). Parsing lineups from the 2026-11-15 snapshot can be built and tested before then.
   Extend `src/owstudy/collect/refs/liquipedia.py`: `fetch(event_pages, client)` using MediaWiki `action=query&prop=revisions&rvprop=content|ids` (never `action=parse`, research R9), saving each raw response under `<snapshot>/responses/` and skipping pages whose revision ID is already cached; parse **lineups** per series into `lp_lineups.csv` (`series_key,team_text,player_page,player_display,source_kind ∈ {match, event_roster},locator`), falling back to the team's event roster when the match has none
 - [ ] T029 [US1] **List ObsSojourn's videos (no downloading)**
   Implement `src/owstudy/collect/refs/youtube_list.py`: `list_channel(channel_url) -> snapshot` using `yt-dlp` flat playlist (no video download), writing `obssojourn_videos.json` (`video_id,title,duration_s,upload_date`) to a new `youtube/<date>/` snapshot

@@ -101,6 +101,7 @@ class LocalSettings:
     user_agent_contact: str = ""
     reviewer: str = ""
     owtv_api_key: str = field(default="", repr=False)  # secret: never printed
+    liquipedia_api_key: str = field(default="", repr=False)  # secret: never printed
 
 
 @dataclass(frozen=True)
