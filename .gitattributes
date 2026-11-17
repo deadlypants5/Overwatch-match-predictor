@@ -1,0 +1,15 @@
+# Line endings.
+# Text files are stored and checked out with plain \n on every machine, so files written by
+# the tool (CSV writer rules: \n line endings) match byte for byte everywhere.
+* text=auto eol=lf
+
+# Raw data is immutable (FR-001) and fingerprinted in snapshot.json / MANIFEST.sha256,
+# so git must store and check it out exactly as written, with no line-ending conversion.
+data/raw/** -text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.pdf binary
+*.onnx binary
