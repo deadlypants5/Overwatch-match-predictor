@@ -226,25 +226,39 @@ HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {
 }
 
 
+def _add_global_options(parser: argparse.ArgumentParser, with_defaults: bool = True) -> None:
+    def d(value):
+        return {"default": value} if with_defaults else {}
+
+    parser.add_argument("--config", type=Path, help="settings file (default: %s)" % DEFAULT_CONFIG,
+                        **d(DEFAULT_CONFIG))
+    parser.add_argument("--scope", help="pilot (default), a region-stage key such as 'Asia/Stage 1/Korea', or all",
+                        **d("pilot"))
+    parser.add_argument("--force-scope", action="store_true", help="allow a region-stage that isn't approved yet",
+                        **d(False))
+    parser.add_argument("--data-dir", type=Path, help="data folder (default: data)", **d(Path("data")))
+    parser.add_argument("-v", "--verbose", action="count", **d(0))
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="owstudy-collect", description="Collect and verify OWCS 2026 match data.")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
-    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="settings file (default: %(default)s)")
-    parser.add_argument("--scope", default="pilot", help="pilot, a region-stage key such as 'Asia/Stage 1/Korea', or all")
-    parser.add_argument("--force-scope", action="store_true", help="allow a region-stage that isn't approved yet")
-    parser.add_argument("--data-dir", type=Path, default=Path("data"), help="data folder (default: %(default)s)")
-    parser.add_argument("-v", "--verbose", action="count", default=0)
+    _add_global_options(parser)
+    # The same options also work after the command (`catalog build --scope pilot`). There they
+    # default to SUPPRESS so they only override what was given before the command when typed.
+    shared = argparse.ArgumentParser(add_help=False, argument_default=argparse.SUPPRESS)
+    _add_global_options(shared, with_defaults=False)
 
     top = parser.add_subparsers(dest="cmd", metavar="COMMAND", required=True)
     groups: dict[str, argparse._SubParsersAction] = {}
     for path, help_text, task, setup in COMMANDS:
         if len(path) == 1:
-            p = top.add_parser(path[0], help=help_text, description=help_text)
+            p = top.add_parser(path[0], help=help_text, description=help_text, parents=[shared])
         else:
             if path[0] not in groups:
                 g = top.add_parser(path[0], help=f"{path[0]} commands")
                 groups[path[0]] = g.add_subparsers(dest="subcmd", metavar="SUBCOMMAND", required=True)
-            p = groups[path[0]].add_parser(path[1], help=help_text, description=help_text)
+            p = groups[path[0]].add_parser(path[1], help=help_text, description=help_text, parents=[shared])
         if setup is not None:
             setup(p)
         p.set_defaults(command_path=path, handler=HANDLERS.get(path, _not_built(task)))

@@ -7,13 +7,15 @@
 # Decided by the researcher on 2026-11-16.
 #
 # pre_patch_regions: regions whose patch-day matches get the PREVIOUS patch. A name is
-#   matched against the last part of the region-stage key (e.g. "Asia/Stage 1/Korea" -> "Korea").
+#   matched against the region of the region-stage key ("Asia/Stage 1/Korea" -> "Korea";
+#   the shared Asia playoffs "Asia/Stage 1" -> "Asia"). The Asia playoffs are played on
+#   Korean time, so they follow the Korea rule (decided by the researcher on 2026-11-17).
 # series: hand-set exceptions that win over every rule (empty for now).
 #
 # In the pilot this affects three Korea series on April 17 (hotfix p2026.13, Sierra only;
 # Sierra wasn't played, so the label doesn't change any hero data). They get p2026.12.
 
-pre_patch_regions: ["Korea"]
+pre_patch_regions: ["Korea", "Asia"]
 
 series: []
 # example: - {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "why"}

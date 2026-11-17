@@ -8,6 +8,7 @@ with one series Liquipedia doesn't have, and a short video list.
 from __future__ import annotations
 
 import dataclasses
+import datetime as dt
 import shutil
 from pathlib import Path
 
@@ -158,6 +159,16 @@ def test_patch_rules(cat):
     assert sorted(pd_rows.index) == sorted([S1, NA])
     assert pd_rows.loc[S1].rule == "pre_patch_region" and pd_rows.loc[NA].rule == "new_patch"
     assert pd_rows.loc[S1].local_date == "2026-04-14"
+
+
+def test_asia_playoffs_follow_korea_rule():
+    patches = load_patches(CONF / "patches.yaml")
+    overrides = PatchOverrides(("Korea", "Asia"), {})
+    day = dt.date(2026, 4, 14)  # p2026.12 went live this day
+    assert assign_patch(day, "Asia/Stage 1", ("x",), patches, overrides) == ("p2026.11", "pre_patch_region")
+    assert assign_patch(day, "Asia/Stage 1/Korea", ("x",), patches, overrides)[1] == "pre_patch_region"
+    assert assign_patch(day, "Asia/Stage 1/Japan", ("x",), patches, overrides) == ("p2026.12", "new_patch")
+    assert assign_patch(day, "NA/Stage 1", ("x",), patches, overrides) == ("p2026.12", "new_patch")
 
 
 def test_hand_set_patch_wins():

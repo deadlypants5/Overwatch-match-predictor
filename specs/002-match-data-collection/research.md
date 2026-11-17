@@ -248,7 +248,7 @@ one has a stated fallback, so nothing here is left open.
   auto-created (spec edge case). Exported aliases match 001's `entities/aliases.csv` schema.
 - **Patches**: `configs/collect/patches.yaml` lists `patch_id` and its release date. Each map
   gets the latest patch released on or before its series' local date, except that Korean
-  matches on a patch day get the previous patch (they end before the US-morning release); other
+  matches and the shared Asia playoffs (played on Korean time) on a patch day get the previous patch (they end before the US-morning release); other
   regions' patch-day matches get the new patch. The patch notes give dates but not times, so dates are
   compared, not times. Series played on a patch day are listed for the researcher to check.
 - **Time**: Liquipedia gives local time and time zone. Times are stored in UTC, and comparisons

@@ -6,7 +6,7 @@
 |---|---|---|
 | OWCS Hero Bans & Metas spreadsheet | Bans, map list and names, map scores, team abbreviations | From the fixed `.xlsx` file |
 | Liquipedia | Dates and time zones, teams, lineups, map winners, VOD links | Its official API, at most 1 request every 2 s |
-| OWTV fantasy results | Scoreboard figures (deaths, kills) | To be confirmed by the OWTV probe (task T065) |
+| OWTV | Scoreboard per player per map, hero playtime, bans, team fights, and the map event log (allowed as a main source) | Its official API with a key, under 60 requests a minute; the probe (T065) checks coverage |
 | YouTube (ObsSojourn channel) | The list of POV videos: IDs, titles, lengths | Video list only, no download |
 
 Each download is saved as a dated snapshot with values exactly as the source gives them.
@@ -59,7 +59,7 @@ In short: **no scripts on the website; use their official API, which needs a key
 - **The website can't be read by a program.** The terms forbid bots, scripts, scrapers and
   "data mining" tools, and forbid systematically pulling data into a database without written
   permission. So the probe must not fetch OWTV's web pages.
-- **There is an official API.** Documentation is at `owtv.gg/dapi-docs`. Keys go only to
+- **There is an official API.** Documentation is at `owtv.gg/api-docs`. Keys go only to
   approved supporters and contributors, one key per person or per named project.
 - **Research use is allowed with a key.** Rules that apply to us:
   - at most 60 requests per minute (our limit of 1 per 5 s is well inside this); stop when told to slow down
@@ -71,9 +71,34 @@ In short: **no scripts on the website; use their official API, which needs a key
 - **Questions and approval:** the contact email is on the terms page.
 - There is no `robots.txt`.
 
-**Permission:** the owner gave permission in Oct 2026 for an earlier scope. Not yet re-confirmed for
-the current scope (see task T065). Request for the current scope sent 2026-11-16; waiting for an
-answer. Record the date and what was allowed here when they answer.
+**Permission (2026-11-17):** granted for the current scope. The OWTV owner knows the project's
+scope and allows its data to be used **as a main source**, not only as a cross-check, as long as
+we stay **under 60 requests a minute**. (An earlier permission, Oct 2026, covered an older scope.)
+We've asked them for the layout of the map event log (`eventLog`), which their docs don't
+describe yet. The other terms above (credit with a link, no bulk dumps, key kept secret) still apply.
+
+### What the API offers (from `owtv.gg/api-docs`, read 2026-11-17)
+
+- **Access:** `GET https://owtv.gg/api/<collection>` (a list) or `/<collection>/<id>` (one item).
+  The key goes in the `X-API-Key` header. Read-only. Lists take `limit` (100 at most), `page`,
+  `sort`, `depth` (0 = IDs only, 1–2 = related items included) and `where[...]` filters.
+  Going over the limit returns 429. The API is in early access, so its layout may change: we keep
+  every answer exactly as received.
+- **Permissions (scopes) the key needs:** `read:matches`, `read:teams`, `read:tournaments`.
+- **Useful collections:**
+  - `match`: date, teams, score, best-of, winner, bracket side, links to its maps
+  - `match-map`: map, map order, winner, bans (`team1Ban`, `team2Ban`, `firstBan`), who picked the
+    map, replay code, `replayParsed`, **`eventLog`** (raw event log, layout not documented yet),
+    and links to player stats
+  - `map-fight`: each team fight, with start time (seconds from map start), length, kills,
+    deaths, ultimates used, and its own event log
+  - `player-map-stats`: one player on one map: eliminations, assists, deaths, damage, healing,
+    mitigation (**no final blows**)
+  - `player-map-stats-hero`: one player on one hero on one map: playtime, totals, ultimates,
+    perks
+  - `person`, `team`, `team-membership` (with join and leave dates), each with a Liquipedia link
+  - `game-hero`, `game-map`, `hero-perk`, `tournament`, `tournament-phase`, `region`
+- **Not in the API:** no VOD or video links; no in-game round data outside the event log.
 
 ## YouTube channel list
 

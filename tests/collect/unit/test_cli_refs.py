@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from owstudy.collect.cli import COMMANDS, HANDLERS, main, resolve_scope
+from owstudy.collect.cli import COMMANDS, HANDLERS, build_parser, main, resolve_scope
 from owstudy.collect.config import load_config
 from owstudy.collect.errors import RetrievalBlocked, UsageError, ValidationError
 from owstudy.collect.refs.ratelimit import HttpClient
@@ -47,6 +47,16 @@ def test_unbuilt_commands_name_their_task(path, _help, task, _setup, capsys, tmp
 def test_unapproved_scope_is_usage_error(capsys):
     assert main(["--config", str(DEFAULT), "--scope", "EMEA/Stage 1", "status"]) == 2
     assert "approved" in capsys.readouterr().err
+
+
+def test_options_also_work_after_the_command(capsys):
+    # `status --scope ...` must behave like `--scope ... status` (both orders are documented).
+    assert main(["status", "--config", str(DEFAULT), "--scope", "EMEA/Stage 1"]) == 2
+    assert "approved" in capsys.readouterr().err
+    args = build_parser().parse_args(["--scope", "all", "catalog", "build"])
+    assert args.scope == "all"  # not reset by the command's own (unused) --scope
+    args = build_parser().parse_args(["catalog", "build", "--scope", "all", "-v"])
+    assert args.scope == "all" and args.verbose == 1
 
 
 def test_bad_config_path_is_config_error(tmp_path):

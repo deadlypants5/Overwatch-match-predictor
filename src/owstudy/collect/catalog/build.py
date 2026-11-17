@@ -134,8 +134,11 @@ def sheet_series_id(sheet_key: str) -> str:
 
 
 def pre_patch_region(event: str) -> str:
-    """The part of a region-stage key matched against `pre_patch_regions` (its last part)."""
-    return event.split("/")[-1]
+    """The region matched against `pre_patch_regions`.
+
+    'Asia/Stage 1/Korea' -> 'Korea'; 'Asia/Stage 1' (the shared Asia playoffs) -> 'Asia'.
+    """
+    return split_event(event)[0]
 
 
 def assign_patch(

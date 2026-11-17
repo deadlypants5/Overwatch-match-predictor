@@ -190,7 +190,7 @@ def test_repo_patch_files_load():
     assert patches[0].live_date == dt.date(2026, 1, 8)
     assert [p.live_date for p in patches] == sorted(p.live_date for p in patches)
     overrides = load_patch_overrides(REPO / "configs" / "collect" / "patch_overrides.yaml", patches)
-    assert overrides.pre_patch_regions == ("Korea",)
+    assert overrides.pre_patch_regions == ("Korea", "Asia")
     assert overrides.series == {}
 
 
