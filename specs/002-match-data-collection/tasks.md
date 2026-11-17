@@ -132,20 +132,20 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 ### Tests for User Story 0
 
-- [ ] T020 [P] [US0] **Test: the inventory reproduces today's numbers**
+- [x] T020 [P] [US0] **Test: the inventory reproduces today's numbers**
   Write `tests/collect/integration/test_inventory.py`: running `owstudy-collect inventory --scope all` on the committed 2026-11-15 snapshots reproduces `data/interim/inventory/inventory_summary.csv` row for row (same series, maps, video counts; hours equal to 0.1); the pilot row reads 51 series, 186 maps, 25 series with video, 18.4 h one-POV
-- [ ] T021 [P] [US0] **Test: reading ObsSojourn video titles**
+- [x] T021 [P] [US0] **Test: reading ObsSojourn video titles**
   Write `tests/collect/unit/test_title_parse.py`: the title format `[ Player ] Nickname | Team A vs Team B | Event` parses into player, team texts and event text; titles with typos, abbreviations (from sheet `abbr1/abbr2`) and extra separators; non-OWCS titles (e.g., FaceIt Masters) → `not_owcs_main`
 
 ### Implementation for User Story 0
 
-- [ ] T022 [P] [US0] **Move the spreadsheet reader into the package (and read bans)**
+- [x] T022 [P] [US0] **Move the spreadsheet reader into the package (and read bans)**
   Port `scripts/inventory/parse_sheet.py` into `src/owstudy/collect/refs/spreadsheet.py`: `import_sheet(xlsx_path, snapshot_folder)` writes `sheet_series.csv`, `sheet_maps.csv` and **new** `sheet_bans.csv` (`series_key,map_number,team_text,hero_text,locator`) with a `locator` (`sheet!row` / `sheet!cell`) on every record (FR-004, contracts/reference-sources.md); behavior otherwise unchanged
-- [ ] T023 [P] [US0] **Move the Liquipedia reader into the package**
+- [x] T023 [P] [US0] **Move the Liquipedia reader into the package**
   Port `scripts/inventory/parse_lp.py` into `src/owstudy/collect/refs/liquipedia.py` as `parse_batch(json_files) -> (lp_series, lp_maps)` with behavior unchanged and a `locator` column (`page@revid#match<n>`)
-- [ ] T024 [US0] **Move video matching and inventory reports into the package**
+- [x] T024 [US0] **Move video matching and inventory reports into the package**
   Port the matching logic of `scripts/inventory/inventory.py` into `src/owstudy/collect/catalog/link.py` (`parse_title`, `event_hint`, `candidate_series`, `assign`) and the reporting into `src/owstudy/collect/catalog/inventory.py`, replacing the hard-coded `LP_CANON`/alias dict with `AliasTable` (seed those entries into `data/interim/entities/aliases.csv` with `source = manual`) and keeping outputs `inventory_summary.csv`, `series_inventory.csv`, `series_missing_video.csv`, `pilot_korea_stage1_series.csv`, `gap_coverage.csv`, `sheet_vs_liquipedia.csv`, `video_matches.csv` with their current columns
-- [ ] T025 [US0] **Add the `inventory` command and delete the old scripts**
+- [x] T025 [US0] **Add the `inventory` command and delete the old scripts**
   Wire `owstudy-collect inventory` in `src/owstudy/collect/cli.py` to read the latest snapshots and write `data/interim/inventory/`; once T020 passes, delete `scripts/inventory/` and update the "Regenerate" section of `data/interim/inventory/README.md` to the single command
 
 **Checkpoint**: Inventory reproducible with one command; old scripts removed

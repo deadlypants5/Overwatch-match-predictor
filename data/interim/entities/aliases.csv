@@ -1,1 +1,12 @@
 entity_type,alias,stable_id,valid_from,valid_to,source
+team,4 Angry Men,team:four_angry_men,,,manual
+team,AG,team:all_gamers,,,manual
+team,AG.AL,team:all_gamers,,,manual
+team,All Gamers Global,team:all_gamers,,,manual
+team,CR,team:crazy_raccoon,,,manual
+team,Falcons,team:team_falcons,,,manual
+team,JDG,team:jd_gaming,,,manual
+team,NYAMGaming,team:nyam_gaming,,,manual
+team,Nightmare,team:ntmr,,,manual
+team,Onside,team:onside_gaming,,,manual
+team,ZETA,team:zeta_division,,,manual

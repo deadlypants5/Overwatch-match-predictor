@@ -32,11 +32,22 @@ This is exploratory output for spec 002, User Story 0 / FR-007a.
 
 ## Regenerate
 
+One command, from the repo root. It reads the latest snapshots in `data/raw/reference/` and the
+team aliases in `data/interim/entities/aliases.csv`, and rewrites every file here. It covers
+every 2026 event whatever `--scope` says, and the same inputs always give the same bytes.
+
 ```text
-python -I scripts/inventory/parse_sheet.py "OWCS 2026 Hero Bans _ Metas(1).xlsx" data/raw/reference/spreadsheet/2026-11-15
-python -I scripts/inventory/parse_lp.py data/raw/reference/liquipedia/2026-11-15 data/raw/reference/liquipedia/2026-11-15/batch1_2026-11-15.json data/raw/reference/liquipedia/2026-11-15/batch2_2026-11-15.json
-python -I scripts/inventory/inventory.py data/raw/reference/youtube/2026-11-15/obssojourn_videos.json data/raw/reference/liquipedia/2026-11-15/lp_series.csv data/raw/reference/liquipedia/2026-11-15/lp_maps.csv data/raw/reference/spreadsheet/2026-11-15/sheet_series.csv data/interim/inventory
+uv run owstudy-collect inventory
 ```
+
+The pilot rows are labeled `PILOT Asia/Stage 1/Korea` (the pilot key in `default.yaml`).
+
+## Video statuses (`video_matches.csv`)
+
+`matched`, `matched_ambiguous` (the pair met more than once; see below), `no_2026_series`,
+`unknown_team`, `no_teams_in_title`, `pre_2026`, `not_owcs_main` (other tournaments,
+qualifiers, relegation) and `out_of_scope_bootcamp` (OWCS Preseason Bootcamp, which isn't
+collected, spec FR-023a).
 
 ## Known limits
 

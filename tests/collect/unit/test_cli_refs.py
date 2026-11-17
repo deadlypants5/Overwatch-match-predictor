@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from owstudy.collect.cli import COMMANDS, main, resolve_scope
+from owstudy.collect.cli import COMMANDS, HANDLERS, main, resolve_scope
 from owstudy.collect.config import load_config
 from owstudy.collect.errors import RetrievalBlocked, UsageError, ValidationError
 from owstudy.collect.refs.ratelimit import HttpClient
@@ -32,14 +32,14 @@ def test_scope_resolution(cfg):
     assert resolve_scope(cfg, "NA/Stage 1", force=True) == ["NA/Stage 1"]
 
 
-@pytest.mark.parametrize("path,_help,task,_setup", COMMANDS)
-def test_every_command_is_registered_and_stubbed(path, _help, task, _setup, capsys):
+@pytest.mark.parametrize("path,_help,task,_setup", [c for c in COMMANDS if c[0] not in HANDLERS])
+def test_unbuilt_commands_name_their_task(path, _help, task, _setup, capsys, tmp_path):
     extra = {
         ("refs", "fetch"): ["liquipedia"], ("refs", "import-sheet"): ["sheet.xlsx"],
         ("plant-errors",): ["--maps", "1", "--out", "x"],
         ("extract",): [], ("review",): [], ("export",): [],  # options only
     }.get(path, ["x"] if _setup else [])  # fmt: skip
-    code = main(["--config", str(DEFAULT), *path, *extra])
+    code = main(["--config", str(DEFAULT), "--data-dir", str(tmp_path), *path, *extra])
     assert code == 2
     assert task in capsys.readouterr().err
 

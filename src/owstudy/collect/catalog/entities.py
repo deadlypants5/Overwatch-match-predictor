@@ -139,6 +139,10 @@ class AliasTable:
                 return
         self._aliases.append(alias)
 
+    def entries(self, entity_type: str | None = None) -> list[Alias]:
+        """Alias rows (of one type, if given) in the order they were added."""
+        return [a for a in self._aliases if entity_type is None or a.entity_type == entity_type]
+
     def add_known(self, entity_type: str, stable_id: str, name: str) -> None:
         """Register an entity's own display name, so it resolves without an alias row."""
         self.add(Alias(entity_type, normalize_alias(name), stable_id, None, None, "entity"))

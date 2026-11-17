@@ -1,5 +1,5 @@
 scope,series,maps,series_with_video,series_missing_video,maps_with_video,maps_missing_video,pov_videos,hours_all_pov,hours_one_pov,hours_one_pov_per_team
-PILOT Korea Stage 1,51,186,25,26,92,94,125,107.2,18.4,34.8
+ALL 2026,613,2229,291,322,1096,1133,1318,1001.0,199.9,357.5
 Asia/Stage 1,17,52,4,13,18,34,39,42.1,4.5,8.9
 Asia/Stage 1/Japan,32,116,16,16,58,58,33,23.5,10.4,18.4
 Asia/Stage 1/Korea,51,186,25,26,92,94,125,107.2,18.4,34.8
@@ -22,4 +22,4 @@ Midseason Championship,28,78,22,6,62,16,231,120.9,12.1,24.2
 NA/Stage 1,21,82,16,5,59,23,70,58.0,11.7,21.1
 NA/Stage 2,21,75,9,12,35,40,32,25.8,6.4,10.8
 NA/Stage 3,21,75,13,8,50,25,42,39.6,9.2,16.3
-ALL 2026,613,2229,291,322,1096,1133,1318,1001.0,199.9,357.5
+PILOT Asia/Stage 1/Korea,51,186,25,26,92,94,125,107.2,18.4,34.8

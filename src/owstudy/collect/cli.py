@@ -87,7 +87,30 @@ def _not_built(task: str) -> Callable[[argparse.Namespace, Config], int]:
     return run
 
 
-HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {}
+def cmd_inventory(args: argparse.Namespace, cfg: Config) -> int:
+    """Footage inventory over every 2026 event (a survey, so --scope doesn't narrow it)."""
+    from owstudy.collect.catalog.inventory import pilot_label, run_inventory, write_inventory
+
+    data = args.data_dir
+    inv = run_inventory(data / "raw" / "reference", data / "interim" / "entities" / "aliases.csv", cfg.scope.pilot)
+    out = data / "interim" / "inventory"
+    paths = write_inventory(inv, out)
+    s = inv.summary.set_index("scope")
+    for label in (pilot_label(cfg.scope.pilot), "ALL 2026"):
+        r = s.loc[label]
+        print(
+            f"{label}: {int(r.series)} series, {int(r.maps)} maps, {int(r.series_with_video)} with a POV video "
+            f"({r.hours_one_pov:.1f} h of footage at one POV per series)"
+        )
+    counts = inv.videos.status.value_counts().sort_index()
+    print("videos: " + ", ".join(f"{k} {v}" for k, v in counts.items()))
+    print(f"wrote {len(paths)} files to {out}")
+    return 0
+
+
+HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {
+    ("inventory",): cmd_inventory,
+}
 
 
 def build_parser() -> argparse.ArgumentParser:
