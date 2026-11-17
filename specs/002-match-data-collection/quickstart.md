@@ -57,7 +57,7 @@ show `no_replay` and still have their reference maps.
 ## 3. Probes (run once, before any bulk processing)
 
 ```text
-uv run owstudy-collect refs probe-owtv <3 pilot series>
+uv run owstudy-collect refs probe-owtv     # picks 3 pilot series itself; or name them
 uv run owstudy-collect hud probe <3 pilot video ids, one Control, one Escort/Hybrid, one Push/Flashpoint>
 ```
 

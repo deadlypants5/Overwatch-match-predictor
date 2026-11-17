@@ -14,3 +14,7 @@ data/interim/probes/**/*.png
 *.mkv
 .cache/
 .venv/
+
+# OWTV data stays local: their terms forbid publishing it in bulk
+data/interim/probes/owtv/
+data/raw/reference/owtv/

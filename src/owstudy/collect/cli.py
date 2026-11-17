@@ -29,8 +29,11 @@ COMMANDS: list[tuple[tuple[str, ...], str, str, Setup | None]] = [
                 p.add_argument("--since-snapshot", metavar="ID"))),
     (("refs", "import-sheet"), "Parse the Hero Bans & Metas spreadsheet into a snapshot.", "T033",
      lambda p: p.add_argument("path", type=Path)),
-    (("refs", "probe-owtv"), "OWTV probe: save what OWTV offers for a few series.", "T064",
-     lambda p: _ids(p, "series", "series keys")),
+    (("refs", "probe-owtv"), "OWTV probe: what OWTV covers for the scope, plus 3 series in depth.", "T064",
+     lambda p: (p.add_argument("series", nargs="*", help="catalog series IDs to look at in depth "
+                               "(default: 3 picked to cover Control, Escort/Hybrid and Push/Flashpoint)"),
+                p.add_argument("--tournament", action="append", default=[], metavar="ID",
+                               help="OWTV tournament ID to use instead of searching (repeatable)"))),
     (("videos", "list"), "Snapshot the ObsSojourn channel's video list (no downloads).", "T033", None),
     (("catalog", "build"), "Build entities, alias proposals, series, maps, lineups and video links.", "T033", None),
     (("inventory",), "Footage inventory: series, maps and hours of POV video per event.", "T025", None),
@@ -178,6 +181,28 @@ def cmd_videos_list(args: argparse.Namespace, cfg: Config) -> int:
     return 0
 
 
+def cmd_refs_probe_owtv(args: argparse.Namespace, cfg: Config) -> int:
+    """OWTV probe (T064): coverage for the scope and 3 sample series, saved under data/interim/probes/owtv."""
+    from owstudy.collect.refs.owtv import OwtvApi, run_probe
+    from owstudy.collect.refs.ratelimit import HttpClient
+
+    if not cfg.local.owtv_api_key or cfg.local.owtv_api_key.startswith("<"):
+        from owstudy.collect.errors import RetrievalBlocked
+
+        raise RetrievalBlocked("no OWTV API key yet: set owtv_api_key in configs/collect/local.yaml. "
+                               "Nothing was downloaded.")  # fmt: skip
+    client = HttpClient({"owtv.gg": cfg.retrieval.owtv_min_interval_s},
+                        args.data_dir / "interim" / ".cache" / "owtv", cfg.local.user_agent_contact)  # fmt: skip
+    print(f"asking OWTV (one request every {cfg.retrieval.owtv_min_interval_s:g} s; this takes a few minutes)...")
+    res = run_probe(OwtvApi(client, cfg.local.owtv_api_key), args.data_dir, args.scope_keys,
+                    args.series, args.tournament)  # fmt: skip
+    for line in res.summary[4:12]:
+        if line.startswith("- "):
+            print(line[2:].replace("**", ""))
+    print(f"wrote {res.out_dir} (read summary.md there)")
+    return 0
+
+
 def cmd_catalog_build(args: argparse.Namespace, cfg: Config) -> int:
     from owstudy.collect.catalog.build import run_catalog
 
@@ -220,6 +245,7 @@ HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {
     ("inventory",): cmd_inventory,
     ("refs", "fetch"): cmd_refs_fetch,
     ("refs", "import-sheet"): cmd_refs_import_sheet,
+    ("refs", "probe-owtv"): cmd_refs_probe_owtv,
     ("videos", "list"): cmd_videos_list,
     ("catalog", "build"): cmd_catalog_build,
     ("status",): cmd_status,

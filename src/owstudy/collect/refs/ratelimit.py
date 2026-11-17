@@ -96,7 +96,14 @@ class HttpClient:
     def _paths(self, key: str) -> tuple[Path, Path]:
         return self.cache_dir / f"{key}.body", self.cache_dir / f"{key}.json"
 
-    def get(self, url: str, params: Mapping[str, Any] | None = None, use_cache: bool = True) -> CachedResponse:
+    def get(
+        self,
+        url: str,
+        params: Mapping[str, Any] | None = None,
+        use_cache: bool = True,
+        headers: Mapping[str, str] | None = None,
+    ) -> CachedResponse:
+        """`headers` are extra request headers (e.g. an API key). They are never cached or saved."""
         key = cache_key(url, params)
         body_path, meta_path = self._paths(key)
         if use_cache and body_path.exists() and meta_path.exists():
@@ -105,9 +112,9 @@ class HttpClient:
 
         host = urlsplit(url).hostname or ""
         self._wait_turn(host)
-        headers = {"User-Agent": self.user_agent, "Accept-Encoding": "gzip"}
+        sent = {**dict(headers or {}), "User-Agent": self.user_agent, "Accept-Encoding": "gzip"}
         try:
-            resp = self.session.get(url, params=dict(params or {}), headers=headers, timeout=self.timeout_s)
+            resp = self.session.get(url, params=dict(params or {}), headers=sent, timeout=self.timeout_s)
         except Exception as e:  # network down, DNS, timeout
             raise RetrievalBlocked(f"couldn't reach {host}: {e}") from e
 
