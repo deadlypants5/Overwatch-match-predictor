@@ -30,6 +30,7 @@ success (some videos failed; see state file).
 | `refs import-sheet PATH` | Parses the spreadsheet into a snapshot. | `data/raw/reference/spreadsheet/<date>/` |
 | `refs probe-owtv [SERIES…] [--tournament ID]` | R10 probe: how many of the scope's series and maps OWTV covers, plus 3 series in depth (picked automatically if none given). Needs `owtv_api_key`. | `data/interim/probes/owtv/<date>/` (kept out of git) |
 | `videos list` | Snapshot of the channel's video list (titles, IDs, lengths). | `data/raw/reference/youtube/<date>/` |
+| `videos details [--refresh]` | Saves the scope's video descriptions (match date, map timestamps), one video at a time, text only; videos already saved aren't asked again. Run `catalog build` after. | `data/raw/reference/youtube_details/<date>/` |
 | `catalog build` | Entities, aliases proposals, catalog series/maps, lineups, video links, primary POV choice. | `data/interim/{entities,catalog}/` |
 | `inventory` | Footage inventory (US0, FR-007a), replacing `scripts/inventory/`. | `data/interim/inventory/` |
 

@@ -384,7 +384,7 @@ def _player_lookup(lineups) -> dict[str, list[tuple[str, str, str]]]:
     return out
 
 
-def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides=None):
+def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides=None, details=None):
     """One row per video: the series it shows, link confidence, POV player and team, role.
 
     `catalog` is a catalog.build.Catalog over every event, so a video of another region-stage
@@ -394,7 +394,12 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides
 
     `overrides` (configs/collect/video_overrides.yaml) are the researcher's notes: a series set by
     hand wins (confidence `manual`), and an incomplete replay is never the primary or cross-check POV.
+
+    `details` (video_id -> saved page details, refs/youtube_details.py) give the description's
+    match date and map timestamps: the date picks the series (confidence `high`), and a map list
+    shorter than the series marks the replay incomplete.
     """
+    from owstudy.collect.refs.youtube_details import parse_description
     import pandas as pd
 
     from owstudy.collect.catalog.entities import normalize_alias
@@ -405,14 +410,20 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides
     players = _player_lookup(catalog.lineups)
     rows = []
     options: dict[str, list[dict]] = {}  # video -> candidates left after phase words (low links)
+    details = details or {}
+    series_maps = _series_maps(catalog.maps)
+    map_ref = _map_resolver(catalog, aliases)
     for v in videos:
         title_text = v.get("title") or ""
-        up = upload_day(v)
+        d = details.get(v["id"])
+        desc = parse_description(d.get("description")) if d else None
+        up = upload_day(d) if d and d.get("upload_date") else upload_day(v)  # exact date when known
         t = parse_title(title_text)
         rec = {"video_id": v["id"], "series_id": "", "status": UNMATCHED, "link_confidence": "", "role": "",
                "pov_player_id": "", "pov_team_id": "", "confirmed": False, "note": "",
                "title": title_text, "event_text": t.event_text, "duration_s": v.get("duration") or 0,
-               "player_norm": normalize_alias(t.player), "_n_maps": 0, "_title_player": t.player}  # fmt: skip
+               "player_norm": normalize_alias(t.player), "_n_maps": 0, "_title_player": t.player,
+               "_desc_maps": [(map_ref(n), n, s) for n, s in desc.maps] if desc else []}  # fmt: skip
         if BOOTCAMP_RE.search(title_text) and OWCS_EVENT.search(title_text):
             rec.update(status=NOT_OWCS_2026, note="OWCS Preseason Bootcamp: out of scope (FR-023a)")
         elif not OWCS_EVENT.search(t.event_text) or NOT_MAIN.search(title_text):
@@ -426,8 +437,13 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides
             if not a or not b:
                 rec["note"] = "unknown team: " + ", ".join(x for x, r in ((t.team_a, a), (t.team_b, b)) if not r)
             else:
-                cands = link_candidates(series, a, b, t, up)
-                pick, conf, note = choose_series(cands, t)
+                if desc and desc.match_date:
+                    cands = link_candidates(series, a, b, t, None)  # the match date replaces the upload window
+                    pick, conf, note = choose_by_description(cands, t, desc.match_date, rec["_desc_maps"],
+                                                             series_maps)  # fmt: skip
+                else:
+                    cands = link_candidates(series, a, b, t, up)
+                    pick, conf, note = choose_series(cands, t)
                 if pick is None:
                     rec["note"] = "no played 2026 series between these teams fits the event and date"
                 else:
@@ -439,6 +455,7 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides
         rows.append(rec)
 
     settle_by_length(rows, options)
+    _check_map_lists(rows, series_maps)
     _apply_overrides(rows, overrides or {}, by_id)
     for r in rows:  # the POV player and team follow the (possibly changed) series
         if "_pick" in r:
@@ -448,6 +465,108 @@ def link_videos(catalog, videos: list[dict], aliases: AliasTable, cfg, overrides
     _set_roles(rows, by_id, cfg.video.povs_per_series)
     cols = [*LINK_COLUMNS, "title", "event_text"]
     return pd.DataFrame(rows, columns=[*cols, "duration_s", "player_norm"])[cols]
+
+
+def _series_maps(maps) -> dict[str, list[str]]:
+    """series_id -> map refs in play order."""
+    out: dict[str, list[tuple[int, str]]] = {}
+    for m in maps.to_dict(orient="records"):
+        out.setdefault(m["series_id"], []).append((int(m["map_number"]), m["map_ref"]))
+    return {k: [ref for _, ref in sorted(v)] for k, v in out.items()}
+
+
+def _map_resolver(catalog, aliases: AliasTable):
+    """Map name as written in a description -> map ref, or "" if unknown."""
+    from owstudy.collect.catalog.entities import map_id
+
+    known = set(catalog.maps.map_ref)
+
+    def resolve(name: str) -> str:
+        try:
+            ref = map_id(name)
+        except ValueError:
+            return ""
+        if ref in known:
+            return ref
+        return aliases.resolve("map", name).stable_id or ""
+
+    return resolve
+
+
+def maps_fit(desc_maps, played: list[str]) -> bool:
+    """True when every map in the description is one of the series' maps, in the series' order.
+    Some videos hold only some maps (a highlight upload, or a replay with a map missing)."""
+    refs = [r for r, _, _ in desc_maps]
+    it = iter(played)
+    return bool(refs) and all(any(ref == m for m in it) for ref in refs)
+
+
+def choose_by_description(candidates: list[dict], title: Title, day: dt.date, desc_maps, series_maps):
+    """(series, confidence, note) from the description's match date, and its map list when the
+    date alone leaves several. The date is the local match day; one day either side is allowed
+    for time zones, an exact match preferred."""
+    exact = [s for s in candidates if s["day"] == day]
+    near = exact or [s for s in candidates if s["day"] and abs((s["day"] - day).days) <= 1]
+    if not near:
+        pick, conf, note = choose_series(candidates, title)
+        if pick is None:
+            return pick, conf, note
+        return pick, "low", f"no series on the description's match date {day}; " + note
+    if len(near) > 1 and desc_maps:
+        near = [s for s in near if maps_fit(desc_maps, series_maps.get(s["series_id"], []))] or near
+    if len(near) == 1:
+        return near[0], "high", f"match date {day} in the description"
+    pick, conf, note = choose_series(near, title)
+    return pick, ("medium" if conf != "low" else "low"), f"match date {day} in the description; " + note
+
+
+def _check_map_lists(rows: list[dict], series_maps: dict[str, list[str]]) -> None:
+    """Compare each linked video's description maps with its series: fewer maps (in order) means
+    an incomplete replay; different maps are noted and the link lowered for review."""
+    for r in rows:
+        if r["status"] != LINKED or not r["_desc_maps"]:
+            continue
+        played = series_maps.get(r["series_id"], [])
+        found = len(r["_desc_maps"])
+        if maps_fit(r["_desc_maps"], played):
+            if found < len(played):
+                r["_incomplete"] = True
+                r["note"] = "; ".join(x for x in (r["note"], f"description lists {found} of {len(played)} maps") if x)
+        else:
+            names = ", ".join(n for _, n, _ in r["_desc_maps"])
+            r["note"] = "; ".join(x for x in (r["note"], f"description maps differ from the series: {names}") if x)
+            if r["link_confidence"] in ("high", "medium"):
+                r["link_confidence"] = "low"
+
+
+VIDEO_MAP_COLUMNS = ["video_id", "order", "series_id", "map_number", "map_ref", "map_text", "start_s"]
+
+
+def video_maps(links, details: dict[str, dict], catalog, aliases: AliasTable) -> list[dict]:
+    """Where each map starts in each linked video, from the description timestamps.
+
+    `map_number` is the series' map with that name (repeats counted in order); empty if the
+    series has no such map."""
+    from owstudy.collect.refs.youtube_details import parse_description
+
+    series_maps = _series_maps(catalog.maps)
+    resolve = _map_resolver(catalog, aliases)
+    out = []
+    for r in links.to_dict(orient="records"):
+        d = details.get(r["video_id"])
+        if r["status"] != LINKED or not d:
+            continue
+        played = list(enumerate(series_maps.get(r["series_id"], []), start=1))
+        used: set[int] = set()
+        for order, (name, start) in enumerate(parse_description(d.get("description")).maps, start=1):
+            ref = resolve(name)
+            num = next((n for n, m in played if m == ref and n not in used), None)
+            if num is not None:
+                used.add(num)
+            out.append({"video_id": r["video_id"], "order": order, "series_id": r["series_id"],
+                        "map_number": num if num is not None else "", "map_ref": ref, "map_text": name,
+                        "start_s": start})  # fmt: skip
+    return out
 
 
 def _apply_overrides(rows: list[dict], overrides: dict, by_id: dict) -> None:

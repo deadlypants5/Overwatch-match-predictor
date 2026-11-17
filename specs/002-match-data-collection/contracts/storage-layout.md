@@ -17,7 +17,8 @@ data/
 │   │   ├── spreadsheet/<YYYY-MM-DD>/            # sheet_series.csv, sheet_maps.csv, sheet_bans.csv, snapshot.json
 │   │   ├── liquipedia/<YYYY-MM-DD>/             # responses/*.json, lp_series.csv, lp_maps.csv, lp_lineups.csv, snapshot.json
 │   │   ├── owtv/<YYYY-MM-DD>/                   # responses/*, owtv_map_player_stats.csv, snapshot.json
-│   │   └── youtube/<YYYY-MM-DD>/                # channel video list (obssojourn_videos.json), snapshot.json
+│   │   ├── youtube/<YYYY-MM-DD>/                # channel video list (obssojourn_videos.json), snapshot.json
+│   │   └── youtube_details/<YYYY-MM-DD>/        # video descriptions (details.json), snapshot.json
 │   ├── observations/<video_id>/<extraction_key>/
 │   │   ├── run.json                             # ExtractionRun
 │   │   ├── readings.csv                         # all non-kill readings
@@ -106,6 +107,12 @@ region (so other region-stages' videos aren't listed as unmatched). `link_confid
 `high` (one possible series), `medium` (picked by the title's round words, by other players'
 videos of the same length, or by upload neighbours), `low` (a guess, for review) or `manual`
 (set in `configs/collect/video_overrides.yaml`). The `note` says how each link was picked.
+
+### `catalog/video_maps.csv` — key `(video_id, order)`
+
+`video_id,order,series_id,map_number,map_ref,map_text,start_s`: where each map starts in a
+linked video, from the timestamps in its description. `map_number` is the series' map with that
+name; empty if the series has no such map. A head start for finding maps in the video (T054).
 
 ### `catalog/map_spans.csv` — key `(video_id, ts_start)`
 

@@ -1,0 +1,13 @@
+{
+  "source": "youtube_details",
+  "description": "ObsSojourn video descriptions (text only, no downloads)",
+  "retrieved_at": "2026-11-17",
+  "tool": "owstudy-collect 0.1.0 videos details",
+  "files": [
+    {
+      "path": "details.json",
+      "sha256": "547f28c11fdf4a08d64d27642d1340219696e53fdf10f5f6b1b16b1a3bb1c4c4",
+      "bytes": 237511
+    }
+  ]
+}

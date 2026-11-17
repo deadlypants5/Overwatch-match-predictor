@@ -105,6 +105,12 @@ describe yet. The other terms above (credit with a link, no bulk dumps, key kept
 Video ID, title, duration, approximate upload date, from `yt-dlp --flat-playlist` (no video
 download). Listing is a snapshot like any other source.
 
+**Video descriptions** (`videos details`): for the scope's videos only, one page read at a time
+with a 2 s pause, text only. Kept: `id`, `title`, `description`, `upload_date` (exact),
+`duration`. ObsSojourn's descriptions give `Match Date: April 25, 2026` and a `Timestamps:` list
+(`Map name: m:ss`). The match date picks the series (link confidence `high`); a map list shorter
+than the series marks the replay incomplete; the timestamps go to `catalog/video_maps.csv`.
+
 **Permission:** request sent to the ObsSojourn channel owner on 2026-11-16; waiting for an answer.
 Until they agree (and the platform terms are confirmed, task T039), `platform_terms_acknowledged`
 stays `false` and no videos are downloaded.

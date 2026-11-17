@@ -35,6 +35,8 @@ COMMANDS: list[tuple[tuple[str, ...], str, str, Setup | None]] = [
                 p.add_argument("--tournament", action="append", default=[], metavar="ID",
                                help="OWTV tournament ID to use instead of searching (repeatable)"))),
     (("videos", "list"), "Snapshot the ObsSojourn channel's video list (no downloads).", "T033", None),
+    (("videos", "details"), "Save in-scope videos' descriptions: match date and map times (no downloads).", "T032",
+     lambda p: p.add_argument("--refresh", action="store_true", help="ask again for videos already saved")),
     (("catalog", "build"), "Build entities, alias proposals, series, maps, lineups and video links.", "T033", None),
     (("inventory",), "Footage inventory: series, maps and hours of POV video per event.", "T025", None),
     (("hud", "probe"), "HUD probe: sample frames from a few videos and save crops and a checklist.", "T059",
@@ -203,6 +205,32 @@ def cmd_refs_probe_owtv(args: argparse.Namespace, cfg: Config) -> int:
     return 0
 
 
+def cmd_videos_details(args: argparse.Namespace, cfg: Config) -> int:
+    """Descriptions of the scope's videos (those in video_links.csv), one at a time, text only."""
+    from owstudy.collect.io.tables import read_table
+    from owstudy.collect.refs.youtube_details import PAUSE_S, fetch_details
+
+    links_path = args.data_dir / "interim" / "catalog" / "video_links.csv"
+    if not links_path.exists():
+        raise UsageError("no catalog yet: run `owstudy-collect catalog build` first")
+    links = read_table(links_path, required=["video_id", "status"])
+    ids = sorted(links[links.status != "not_owcs_2026"].video_id)
+    print(f"{len(ids)} videos in scope; asking YouTube for the ones not saved yet "
+          f"(one every {PAUSE_S:g} s or so, no downloads)...")  # fmt: skip
+
+    def progress(n: int, total: int) -> None:
+        if n % 10 == 0 or n == total:
+            print(f"  {n}/{total}")
+
+    folder, failed = fetch_details(ids, root=args.data_dir / "raw" / "reference", refresh=args.refresh,
+                                   progress=progress)  # fmt: skip
+    print(f"saved to {folder}" if folder else "nothing new to save")
+    if failed:
+        print(f"couldn't read {len(failed)} video(s): {', '.join(failed)}")
+    print("now run `owstudy-collect catalog build` to use them")
+    return 0
+
+
 def cmd_catalog_build(args: argparse.Namespace, cfg: Config) -> int:
     from owstudy.collect.catalog.build import run_catalog
 
@@ -247,6 +275,7 @@ HANDLERS: dict[tuple[str, ...], Callable[[argparse.Namespace, Config], int]] = {
     ("refs", "import-sheet"): cmd_refs_import_sheet,
     ("refs", "probe-owtv"): cmd_refs_probe_owtv,
     ("videos", "list"): cmd_videos_list,
+    ("videos", "details"): cmd_videos_details,
     ("catalog", "build"): cmd_catalog_build,
     ("status",): cmd_status,
 }

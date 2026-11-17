@@ -505,14 +505,20 @@ def run_catalog(data_dir: str | Path, cfg, scope_keys: Sequence[str]) -> Catalog
         load_patch_overrides(config_dir / "patch_overrides.yaml", patches), cfg.scope.pilot,
     )  # fmt: skip
     yt_dir = latest_snapshot("youtube", root=ref)
+    from owstudy.collect.catalog.link import VIDEO_MAP_COLUMNS, video_maps
+    from owstudy.collect.refs.youtube_details import load_details
+
+    details = load_details(ref)
     links = link_videos(full, load_videos(yt_dir), aliases, cfg,
-                        load_video_overrides(config_dir / "video_overrides.yaml"))  # fmt: skip
+                        load_video_overrides(config_dir / "video_overrides.yaml"), details)  # fmt: skip
     full.snapshots["youtube"] = yt_dir.name
     cat = full.scoped(scope_keys)
     links = in_scope_links(links, set(cat.series.series_id), scope_keys)
     catalog_dir = data / "interim" / "catalog"
     paths = write_catalog(cat, catalog_dir, entities)
     paths.append(write_table(links[LINK_COLUMNS], catalog_dir / "video_links.csv", LINK_COLUMNS, key=["video_id"]))
+    paths.append(write_table(video_maps(links, details, cat, aliases), catalog_dir / "video_maps.csv",
+                             VIDEO_MAP_COLUMNS, key=["video_id", "order"]))  # fmt: skip
     return CatalogRun(cat, links, paths)
 
 

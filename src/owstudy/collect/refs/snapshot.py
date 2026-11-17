@@ -13,7 +13,7 @@ from pathlib import Path
 from owstudy.collect.errors import UsageError, ValidationError
 
 REFERENCE_ROOT = Path("data/raw/reference")
-SOURCES = ("liquipedia", "spreadsheet", "owtv", "youtube")
+SOURCES = ("liquipedia", "spreadsheet", "owtv", "youtube", "youtube_details")
 DIFF_COLUMNS_FIXED = ("change", "changed_fields")
 
 
