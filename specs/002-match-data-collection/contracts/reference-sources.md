@@ -37,6 +37,10 @@ abbreviations (seed aliases).
 Terms: descriptive User-Agent with contact from `local.yaml`, gzip, ≤1 request per 2 s, cache by
 revision ID. Locator: `page@revid#match<n>`.
 
+**Permission (2026-11-16):** Liquipedia allows us to use its data as long as we credit it.
+Every export, chart or write-up that uses Liquipedia data must say so and link to
+liquipedia.net.
+
 ## OWTV fantasy results (**to be fixed by the R10 probe**)
 
 Planned record: `map_player_stats`: series key text, map_number (or empty if per series),
@@ -65,9 +69,14 @@ In short: **no scripts on the website; use their official API, which needs a key
 - There is no `robots.txt`.
 
 **Permission:** the owner gave permission in Oct 2026 for an earlier scope. Not yet re-confirmed for
-the current scope (see task T065). Record the date and what was allowed here when they answer.
+the current scope (see task T065). Request for the current scope sent 2026-11-16; waiting for an
+answer. Record the date and what was allowed here when they answer.
 
 ## YouTube channel list
 
 Video ID, title, duration, approximate upload date, from `yt-dlp --flat-playlist` (no video
 download). Listing is a snapshot like any other source.
+
+**Permission:** request sent to the ObsSojourn channel owner on 2026-11-16; waiting for an answer.
+Until they agree (and the platform terms are confirmed, task T039), `platform_terms_acknowledged`
+stays `false` and no videos are downloaded.

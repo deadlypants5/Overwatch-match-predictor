@@ -87,7 +87,16 @@ owtv_api_key: ""                         # personal OWTV API key; keep secret, n
 ## `patches.yaml`
 
 ```yaml
-- {patch_id: "p2026.01", live_from_utc: "2026-02-10T18:00:00Z", note: "Season 21"}
+- {patch_id: "p2026.03", live_date: "2026-02-10", note: "season: Season 1: Conquest"}
+```
+
+## `patch_overrides.yaml`
+
+Series whose patch you set by hand, for when the patch-day rule gives the wrong patch. The
+catalog uses these instead of the date rule.
+
+```yaml
+- {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "played before the Apr 17 hotfix"}
 ```
 
 ## `hud/<layout_id>.yaml`

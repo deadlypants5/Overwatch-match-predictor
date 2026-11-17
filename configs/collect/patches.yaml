@@ -1,0 +1,56 @@
+# 2026 Overwatch patches: when each one went live (task T030).
+# Source: overwatch_2026_patches.txt, compiled from the official patch notes
+# (https://overwatch.blizzard.com/en-us/news/patch-notes/).
+#
+# The patch notes give dates only, so patches are matched by date.
+# Each map gets the latest patch released on or before the day its series was
+# played (local date). A match played on a patch day counts as played on that
+# day's new patch. The catalog lists any such matches for you to check.
+#
+# January 1-7 have no patch here; that's fine, since play starts with Stage 1 in March.
+# Note: Blizzard restarted season numbers in February (Season 20 -> Season 1).
+
+- {patch_id: "p2026.01", live_date: "2026-01-08", note: "midseason: Season 20 midseason"}
+- {patch_id: "p2026.02", live_date: "2026-01-20", note: "regular"}
+- {patch_id: "p2026.03", live_date: "2026-02-10", note: "season: Season 1: Conquest"}
+- {patch_id: "p2026.04", live_date: "2026-02-13", note: "hotfix"}
+- {patch_id: "p2026.05", live_date: "2026-02-18", note: "regular"}
+- {patch_id: "p2026.06", live_date: "2026-02-24", note: "regular"}
+- {patch_id: "p2026.07", live_date: "2026-02-25", note: "regular"}
+- {patch_id: "p2026.08", live_date: "2026-03-10", note: "midseason: Season 1 midseason"}
+- {patch_id: "p2026.09", live_date: "2026-03-12", note: "hotfix"}
+- {patch_id: "p2026.10", live_date: "2026-03-31", note: "regular"}
+- {patch_id: "p2026.11", live_date: "2026-04-01", note: "regular: Underwatch Arcade mode"}
+- {patch_id: "p2026.12", live_date: "2026-04-14", note: "season: Season 2: Summit"}
+- {patch_id: "p2026.13", live_date: "2026-04-17", note: "hotfix"}
+- {patch_id: "p2026.14", live_date: "2026-04-23", note: "hotfix"}
+- {patch_id: "p2026.15", live_date: "2026-04-28", note: "regular"}
+- {patch_id: "p2026.16", live_date: "2026-05-12", note: "midseason: Season 2 midseason"}
+- {patch_id: "p2026.17", live_date: "2026-05-14", note: "hotfix"}
+- {patch_id: "p2026.18", live_date: "2026-05-21", note: "hotfix"}
+- {patch_id: "p2026.19", live_date: "2026-05-26", note: "regular"}
+- {patch_id: "p2026.20", live_date: "2026-06-16", note: "season: Season 3: Into the Tiger's Den"}
+- {patch_id: "p2026.21", live_date: "2026-06-18", note: "regular"}
+- {patch_id: "p2026.22", live_date: "2026-06-23", note: "hotfix"}
+- {patch_id: "p2026.23", live_date: "2026-06-24", note: "hotfix"}
+- {patch_id: "p2026.24", live_date: "2026-06-25", note: "hotfix"}
+- {patch_id: "p2026.25", live_date: "2026-06-30", note: "regular: Community Crafted mode"}
+- {patch_id: "p2026.26", live_date: "2026-07-01", note: "hotfix"}
+- {patch_id: "p2026.27", live_date: "2026-07-02", note: "hotfix"}
+- {patch_id: "p2026.28", live_date: "2026-07-14", note: "midseason: Season 3 midseason"}
+- {patch_id: "p2026.29", live_date: "2026-07-28", note: "regular"}
+- {patch_id: "p2026.30", live_date: "2026-07-30", note: "regular: Quick Play Hacked"}
+- {patch_id: "p2026.31", live_date: "2026-08-11", note: "season: Season 4: Heroes of Busan"}
+- {patch_id: "p2026.32", live_date: "2026-08-12", note: "hotfix"}
+- {patch_id: "p2026.33", live_date: "2026-08-14", note: "hotfix"}
+- {patch_id: "p2026.34", live_date: "2026-08-19", note: "regular"}
+- {patch_id: "p2026.35", live_date: "2026-08-20", note: "hotfix"}
+- {patch_id: "p2026.36", live_date: "2026-09-08", note: "midseason: Season 4 midseason"}
+- {patch_id: "p2026.37", live_date: "2026-09-10", note: "hotfix"}
+- {patch_id: "p2026.38", live_date: "2026-09-17", note: "hotfix"}
+- {patch_id: "p2026.39", live_date: "2026-09-22", note: "regular"}
+- {patch_id: "p2026.40", live_date: "2026-10-06", note: "season: Season 5: A Grim Doctrine"}
+- {patch_id: "p2026.41", live_date: "2026-10-13", note: "hotfix"}
+- {patch_id: "p2026.42", live_date: "2026-10-20", note: "regular"}
+- {patch_id: "p2026.43", live_date: "2026-11-03", note: "midseason: Season 5 midseason"}
+- {patch_id: "p2026.44", live_date: "2026-11-05", note: "hotfix"}

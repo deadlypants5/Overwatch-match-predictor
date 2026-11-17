@@ -1,0 +1,12 @@
+# Series whose patch is set by hand instead of by the patch-day rule.
+# The catalog uses these in place of the date rule and still lists them in
+# patch_day_series.csv, marked as overridden.
+#
+# April 17, 2026 hotfix (p2026.13, Sierra only): Blizzard released it in the US
+# morning, after these Korean evening matches ended, so they were played on the
+# previous patch. Sierra wasn't played in any of them, so either label gives the
+# same hero data. Decided by the researcher on 2026-11-16.
+
+- {series_key: "Asia/Stage 1/Korea|Regular Season|28", patch_id: "p2026.12", note: "Poker Face vs ONSIDE Gaming, 2026-04-17 17:15 KST, before the hotfix"}
+- {series_key: "Asia/Stage 1/Korea|Regular Season|29", patch_id: "p2026.12", note: "T1 vs ZETA Division, 2026-04-17 18:45 KST, before the hotfix"}
+- {series_key: "Asia/Stage 1/Korea|Regular Season|30", patch_id: "p2026.12", note: "Crazy Raccoon vs New Era, 2026-04-17 20:35 KST, before the hotfix"}

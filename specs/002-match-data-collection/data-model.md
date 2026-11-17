@@ -117,7 +117,7 @@ replaces the earlier one in effect, but both stay in the file.
 ### 2.1 Entities and aliases (FR-006)
 
 - **Team, Player, Hero, Map, Mode, Patch**: `stable_id`, display name, attributes (map → mode;
-  patch → `live_from` UTC; player → Liquipedia page).
+  patch → `live_date` (release date); player → Liquipedia page).
 - **Alias**: `entity_type`, `alias` (normalized: case-folded, whitespace collapsed), `stable_id`,
   `valid_from`, `valid_to`, `source` (`liquipedia`, `sheet_abbr`, `manual`). Hand-curated file.
   Tools write only **AliasProposal** rows (`alias`, candidate `stable_id`, fuzzy score, where

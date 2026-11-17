@@ -246,8 +246,10 @@ one has a stated fallback, so nothing here is left open.
   Tools only *propose* new aliases (`aliases_proposed.csv`, with fuzzy score and context). A name
   that's within fuzzy distance of an existing player but not aliased is flagged, never
   auto-created (spec edge case). Exported aliases match 001's `entities/aliases.csv` schema.
-- **Patches**: `configs/collect/patches.yaml` lists `patch_id` and its live date (UTC). Each map
-  gets the patch live at its series start.
+- **Patches**: `configs/collect/patches.yaml` lists `patch_id` and its release date. Each map
+  gets the latest patch released on or before its series' local date, so a match on a patch
+  day counts as on the new patch. The patch notes give dates but not times, so dates are
+  compared, not times. Series played on a patch day are listed for the researcher to check.
 - **Time**: Liquipedia gives local time and time zone. Times are stored in UTC, and comparisons
   happen in UTC. A one-day difference caused only by time zone is recorded as
   `agree_within_tolerance` with a note (spec edge case). The exported `date` is the event-local

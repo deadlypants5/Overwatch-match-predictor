@@ -27,6 +27,7 @@ data will be verified against the sources i provided"
   your decisions, so everything can be rebuilt with one command.
 - **Where it starts:** a pilot on Korea Stage 1 (51 series, 186 maps, ~18 h of footage). Other
   regions are added one at a time after the pilot passes.
+- **Left out:** the OWCS Preseason Bootcamp is not collected, in any region.
 - **Known gap:** only about half the pilot's maps have a POV video, so a test decides whether
   official broadcast VODs can fill the rest (FR-007b).
 
@@ -381,6 +382,9 @@ errors.
   to other regions, stages and LAN events happens only after the pilot meets SC-001, SC-002 and
   SC-007, and the researcher approves. Each expansion adds one region-stage (or event) at a
   time, and is tracked in the coverage summary.
+- **FR-023a**: The **OWCS Preseason Bootcamp** (March 2026) is out of scope. Its series, maps and
+  videos MUST NOT enter the catalog, the viewer runs or the export, in any region. Videos
+  of Bootcamp matches are listed as out of scope, not as unmatched.
 - **FR-024**: System MUST export the reconciled dataset in feature 001's input format, with an
   option to include or exclude non-`verified` maps, and a coverage and quality summary per
   region and stage.
@@ -463,8 +467,12 @@ errors.
   team indexes for each region and stage.
 - OWTV fantasy results provide per-player scoreboard statistics per map (at least deaths, and
   eliminations). If they turn out to be per series only, scoreboard checks run at series level.
-- Patch IDs come from the official patch release dates (each map gets the patch live on its
-  date).
+- Patch IDs come from the official patch release dates. Each map gets the latest patch
+  released on or before the day its series was played (local date). A match played on a patch
+  day counts as played on that day's new patch. Matches are rarely played on patch days, so
+  the catalog lists any that are, for the researcher to check. The researcher can set the patch
+  by hand for a series where the rule is wrong (`configs/collect/patch_overrides.yaml`). The
+  three Korea Stage 1 series on April 17 are set to the patch before that day's hotfix.
 - A small gold set (about 5–10 maps covering every mode) is labeled by hand by the researcher
   once, to measure viewer accuracy.
 - Downloading or reading replays is done in a way the platforms permit; the researcher confirms
