@@ -181,17 +181,17 @@ split segments, but marks them `kills_incomplete`.
 Built in export from reconciled segments, segment heroes and kill events
 (contracts/export.md §Analysis tables):
 
-- **KillEvent (exported)**: the interpreted KillEvent with stable IDs, plus `kill_no`,
-  `segment_no` and `attack_order` so it joins to segments.
-- **PlayerHeroMap**: one per `(map, player, hero)`. It sums the segments where the player was on
-  the hero: time, team kills and deaths, own kills and deaths, objective for and against (attack
-  and defense split for Escort/Hybrid), incomplete seconds.
-- **PlayerHeroSummary**: one per `(player, hero, mode)` plus `mode = all`, with totals and
-  per-10-minute rates over the exported maps. It's descriptive only and spans the whole
-  period, so it isn't time-safe as a feature. 001 provides pre-map values.
+- **MapSummary**: one per map: teams, players per team, bans, winner, kills and objective
+  progress per team (all modes), map length.
+- **HeroIntervalExport**: one per stint of a player on a hero. A stint ends at a hero swap, a
+  round start or (Escort/Hybrid) an attack/defense switch, so each player's stints tile the
+  map. Stints on a hero shorter than `min_interval_s` (20 s) are **transition** intervals (no
+  hero; the heroes passed through listed), and back-to-back short stints form one transition. Carries team and own kills and deaths and objective for and against during the stint.
+- **MapEvent**: one per event in time order (kill, hero swap, objective step, round and attack
+  boundaries, gaps), with actor and target team, player and hero. Kills are stored only here.
 
-Team kills and objective progress in a segment are credited in full to **every** player on the
-team during that segment (shared credit, like 001's time weighting). Own kills and deaths are
+Team kills and objective progress during a stint are credited in full to **every** player on the
+team at that time (shared credit, like 001's time weighting). Own kills and deaths are
 the player's personal kill-feed entries.
 
 ### 2.5 Reconciliation

@@ -5,8 +5,8 @@
 What an export contains:
 
 - **`input/`**: exactly the files feature 001 reads.
-- **`tables/`**: extra analysis tables (every kill; time, kills and deaths per player per hero).
-  These are descriptive only and must not be used as pre-map features.
+- **`tables/`**: three analysis tables (one row per map, one per player hero interval, one per
+  event) plus name lookups. These are descriptive only and must not be used as pre-map features.
 - **`summary/`**: coverage, quality, and every map that wasn't exported, with the reason.
 - **`provenance/`**: for each map, which video, timestamps and sources it came from.
 
@@ -16,9 +16,10 @@ data/processed/collection/<export_id>/          # export_id = <YYYYMMDD>-<short 
 │   ├── maps.csv  segments.csv  segment_heroes.csv  bans.csv  attacks.csv
 │   └── entities/aliases.csv
 ├── tables/                                     # extra analysis tables (FR-024a); outside input/ so 001's validator ignores them
-│   ├── kill_events.csv                         # one row per kill
-│   ├── player_hero_map.csv                     # one row per map × player × hero
-│   └── player_hero_summary.csv                 # one row per player × hero × mode (+ mode "all"), over the exported maps
+│   ├── maps.csv                                # one row per map: teams, players, bans, winner, kills, objective
+│   ├── hero_intervals.csv                      # one row per player stint on a hero
+│   ├── events.csv                              # one row per event (kills, swaps, objective, rounds, gaps)
+│   └── players.csv  teams.csv  heroes.csv      # ID → display name
 ├── summary/
 │   ├── coverage.csv                            # per region-stage (US4 scenario 2)
 │   ├── excluded_maps.csv                       # every non-exported catalog map + reason (FR-025)
@@ -56,88 +57,110 @@ data/processed/collection/<export_id>/          # export_id = <YYYYMMDD>-<short 
 
 ## Analysis tables (`tables/`, FR-024a)
 
-These cover the same maps as `input/` (same `--include` setting) and use the same stable IDs.
-They're **descriptive**: `player_hero_summary.csv` uses every exported map, including later
-ones, so it must not be joined onto a map as a prediction feature (Constitution II). Pre-map
-values come from feature 001.
+Three main tables plus name lookups. Each fact is stored once: kills live only in `events.csv`,
+and every per-player total can be added up from `hero_intervals.csv`. All tables cover the same
+maps as `input/` (same `--include` setting), use stable IDs rather than names, and hold every
+map in one file (filter by `map_id`). They're descriptive data, not pre-map features
+(Constitution II); pre-map values come from feature 001.
 
-### `kill_events.csv` — key `(map_id, kill_no)`
+### `maps.csv` — key `map_id`
 
-```csv
-map_id,kill_no,game_s,segment_no,attack_order,killer_team_id,killer_player_id,killer_hero_id,victim_team_id,victim_player_id,victim_hero_id,env_or_self,video_id,ts_video,conf,flags,verification
-m0001,1,42.50,1,,T1,P02,tracer,T2,P17,zenyatta,false,abc123,812.50,0.941,,verified
-m0001,2,61.00,1,,,,,T1,P04,lucio,true,abc123,831.00,0.902,,verified
-```
-
-- `kill_no`: 1, 2, … in game-time order (ties broken by video time, then victim slot).
-- `segment_no` / `attack_order`: the segment (and attack, for Escort/Hybrid) the kill falls in,
-  so it joins to `input/segments.csv`.
-- Environmental or self deaths: `env_or_self = true`, killer columns empty. They still count
-  toward the killing side's team total (`kills_a`/`kills_b`) because the scoreboard counts them
-  as deaths.
-- `flags`: `;`-separated from `low_conf`, `possible_replay`, `name_unresolved`.
-- `verification`: the map's export value (`verified` / `unverified`).
-- Kills inside a gap don't exist here. Those segments are flagged in `player_hero_map.csv`.
-
-### `player_hero_map.csv` — key `(map_id, player_id, hero_id)`
-
-One row for every hero a player was on during a map. All values come from the segments where
-that player was on that hero.
+One row per map: the overall result.
 
 | Column | Meaning |
 |---|---|
-| `map_id`, `series_id`, `date`, `patch_id`, `map_name`, `mode_id` | From `maps.csv`. |
-| `team_id`, `opponent_id`, `player_id`, `hero_id` | |
-| `won_map` | 1 if the player's team won the map, 0 if it lost, empty for a draw. |
-| `segments` | Number of segments on this hero. |
-| `time_s` | Seconds on this hero (sum of segment lengths). |
-| `time_share` | `time_s` ÷ map length. |
-| `team_kills` | The team's kills in those segments (opponent deaths, environmental included). |
-| `team_deaths` | The team's deaths in those segments (the opponent's kills). |
-| `own_kills` | Kill-feed final blows by this player on this hero. |
-| `own_deaths` | This player's deaths on this hero. |
-| `obj_for` | Objective progress the team gained in those segments. Normalized per mode (data-model §2.3). For Escort/Hybrid, this counts only segments where the team attacked. |
-| `obj_against` | Progress the opponent gained in those segments (for Escort/Hybrid, only segments where the team defended). |
-| `attack_time_s`, `defense_time_s` | Escort/Hybrid only: time on this hero while attacking and while defending. |
-| `defense_clock_used` | Escort/Hybrid only: the share of the opponent's attack clock that ran down during this hero's defending segments (0–1, the defender points used in 001 research R8). |
-| `incomplete_s` | Seconds of those segments marked `kills_incomplete` (a gap). Kill counts are lower bounds when this is > 0. |
-| `low_conf_segments` | Segments where this player's hero reading was low confidence. |
+| `map_id`, `series_id`, `region_stage`, `date`, `patch_id`, `map_number`, `map_name`, `mode_id` | From the catalog. |
+| `team_a_id`, `team_b_id` | Liquipedia order. |
+| `winner` | `a`, `b` or `draw`. |
+| `bans_a`, `bans_b` | Hero IDs each team banned on this map, `;`-separated. |
+| `players_a`, `players_b` | Player IDs who played any time on this map for each team, `;`-separated, sorted. |
+| `kills_a`, `kills_b` | Team kills (opponent deaths, environmental and self deaths included). Empty if the map has an unresolved gap. |
+| `obj_a`, `obj_b` | Total objective progress per team, normalized per mode (data-model §2.3). Escort/Hybrid: the sum of the team's attack progress (fraction of the route, checkpoints included). |
+| `map_length_s` | Game seconds from map start to map end. |
+| `kills_incomplete` | `true` if a gap hid part of the kill feed (kill counts are then lower bounds). |
+| `verification` | `verified` / `unverified`. |
+
+### `hero_intervals.csv` — key `(map_id, player_id, interval_no)`
+
+One row per stint of one player on one hero. A new interval starts when the player swaps
+hero, when a round starts, and (Escort/Hybrid) when the team switches between attacking and
+defending. So on Escort/Hybrid each interval is entirely attack or entirely defense. Dying
+doesn't end an interval. Each player's intervals tile the map with no gaps or overlaps.
+
+**Short swaps are "transitioning".** A stint on a hero lasting less than
+`export.min_interval_s` (default 20 s) isn't counted as playing that hero. A stint is measured
+from when it starts (a swap onto the hero, or a round or attack starting) to when it ends (a
+swap off, or the round, attack or map ending), so a swap made just before a round ends or the
+teams switch sides counts as a transition too. It becomes a **transition** interval:
+`interval_type = transition`, `hero_id` empty, and the heroes passed through listed in
+`transition_heroes`. Several short stints in a row are lumped into one transition interval.
+Its time, kills, deaths and objective are counted on the transition row, not on any hero.
+Round starts and attack/defense switches still split intervals as usual, transitions included.
+`events.csv` still records every swap with the hero actually played, and feature 001's
+`segment_heroes` keeps the hero actually on screen.
+
+Example: Lúcio 0–95 s, Mercy 95–107 s, Brigitte 107–115 s, Lúcio 115–300 s gives three
+intervals: Lúcio 0–95, transition 95–115 (`transition_heroes = mercy;brigitte`), Lúcio 115–300.
+
+| Column | Meaning |
+|---|---|
+| `map_id`, `team_id`, `opponent_id`, `player_id` | |
+| `interval_type` | `hero` or `transition` (see above). |
+| `hero_id` | The hero played; empty on transition intervals. |
+| `interval_no` | 1, 2, … per player in time order. |
+| `round_no` | Round (Control), attack (Escort/Hybrid) or point (Flashpoint) number; empty for Push. |
+| `side` | `attack` / `defend` on Escort/Hybrid; empty on other modes. |
+| `start_s`, `end_s`, `time_s` | Game seconds; `time_s = end_s − start_s`. |
+| `team_kills`, `team_deaths` | Kills by and deaths of the player's team during `[start_s, end_s)`. |
+| `own_kills`, `own_deaths` | This player's final blows and deaths during the interval. |
+| `obj_for`, `obj_against` | Objective progress gained by the team and by the opponent during the interval (same units as `obj_a`/`obj_b`). On Escort/Hybrid, attack intervals only have `obj_for` and defense intervals only `obj_against`; the other is 0. |
+| `incomplete_s` | Seconds of the interval hidden by a gap. Kill counts are lower bounds when > 0. |
+| `transition_heroes` | Transition intervals only: the heroes passed through, `;`-separated in time order. |
+| `low_conf` | `true` if the hero reading for this interval was low confidence. |
 | `verification` | The map's export value. |
 
-### `player_hero_summary.csv` — key `(player_id, hero_id, mode_id)`
+Team kills and objective progress are credited in full to every player on the team during the
+interval (shared credit, like 001's time weighting).
 
-Totals of `player_hero_map.csv` over all exported maps. There is one row per mode and one
-`mode_id = all` row. On the `all` row the objective columns are empty, because progress isn't
-comparable across modes.
+### `events.csv` — key `(map_id, event_no)`
+
+Everything that happened on a map, in time order. The `actor_*` columns say who did it; the
+`target_*` columns say who it happened to.
 
 | Column | Meaning |
 |---|---|
-| `player_id`, `hero_id`, `mode_id` | |
-| `team_ids` | `;`-separated teams the player was on while playing this hero (rosters change). |
-| `first_date`, `last_date` | Date range covered. |
-| `maps`, `maps_won` | Maps with any time on this hero, and how many the team won. Not a hero win rate: a player can swap off a hero mid-map. |
-| `time_s` | Total seconds. |
-| `team_kills`, `team_deaths`, `own_kills`, `own_deaths` | Totals. |
-| `team_kills_per10`, `team_deaths_per10`, `own_kills_per10`, `own_deaths_per10` | Per 10 minutes on the hero. |
-| `team_kill_diff_per10` | `team_kills_per10 − team_deaths_per10`. |
-| `obj_for`, `obj_against`, `obj_for_per10`, `obj_against_per10` | Per mode only. |
-| `defense_clock_used_mean` | Escort/Hybrid only: time-weighted mean over defending segments. |
-| `incomplete_s` | Total incomplete seconds. |
-| `verified_maps` | Number of the maps that are `verified`. |
+| `map_id`, `event_no` | `event_no` 1, 2, … in game-time order (ties: video time, then the order of event types below, then slot). |
+| `game_s`, `ts_video` | Game seconds, and the timestamp in the primary video (`provenance/map_provenance.csv` names the video). |
+| `event_type` | `map_start`, `round_start`, `hero_swap`, `kill`, `objective`, `attack_start`, `attack_end`, `gap_start`, `gap_end`, `round_end`, `map_end`. |
+| `actor_team_id`, `actor_player_id`, `actor_hero_id` | Killer (`kill`); the player and their new hero (`hero_swap`); the team that made progress (`objective`) or is attacking (`attack_*`). |
+| `target_team_id`, `target_player_id`, `target_hero_id` | Victim (`kill`). |
+| `value` | `objective`: the team's progress so far (same units as `obj_a`); `hero_swap`: the previous hero ID; `round_*`/`attack_*`: the round or attack number; `gap_*`: the gap kind (`no_hud`, `replay`, `pause`). |
+| `env_or_self` | `kill` only: `true` for environmental or self deaths (killer columns empty). These still count toward the other team's kills, because the scoreboard counts them as deaths. |
+| `conf`, `flags` | Reading confidence; `flags` `;`-separated from `low_conf`, `possible_replay`, `name_unresolved`. |
 
-Rates are empty when `time_s < 60`, so a few seconds on a hero can't produce extreme rates.
-The 60 s cut-off is set by `export.summary_min_time_s` in the config.
+`objective` events are written each time a team's progress rises by at least
+`export.objective_event_step` (default 0.01) and at every capture or checkpoint, so progress over
+time can be plotted without storing every frame. Kills inside a gap aren't known and don't appear.
+
+### `players.csv`, `teams.csv`, `heroes.csv` — key `*_id`
+
+Turn IDs back into names: `player_id,display_name,liquipedia_page`; `team_id,display_name`;
+`hero_id,display_name,role`.
 
 ### Consistency checks (run by `export`; exit 1 on failure)
 
-- Per map, for each team: `kill_events` rows with the opponent as victim = `maps.csv` kills for
-  that team.
-- Per map and player: `Σ time_s` over that player's heroes = map length.
-- Per map, team and hero row: `team_kills` = kills in `kill_events` whose `segment_no` is one of
-  that player's segments on that hero.
+- Per map and team: `kill` events with the opponent as target = that team's `kills_*` in `maps.csv`.
+- Per map and player: intervals tile `[0, map_length_s)`, so `Σ time_s` = `map_length_s`.
+- Per interval: `team_kills`, `team_deaths`, `own_kills` and `own_deaths` equal the `kill`
+  events in `[start_s, end_s)`.
+- Every `hero` interval comes from a hero stint of at least `min_interval_s`; every
+  `transition` interval is made only of shorter stints, and no two transition intervals are
+  next to each other within a round.
+- Per map and player: `Σ obj_for` over the player's intervals = the team's `obj_*` in `maps.csv`.
 - Per map and team: `Σ own_kills` over the team's players + the opponent's `env_or_self` deaths
   = the team's kills.
-- `player_hero_summary` totals = sums of `player_hero_map`.
+- Every `players_*` ID has at least one interval on that map, and every interval's player is
+  listed in `players_*`.
 
 Acceptance: `owstudy-strength validate data/processed/collection/<id>/input` exits 0 (SC-007).
 Rebuilding the export from the same raw layer, configs and decisions gives byte-identical files

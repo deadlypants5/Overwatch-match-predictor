@@ -57,7 +57,7 @@ success (some videos failed; see state file).
 
 | Command | Does |
 |---|---|
-| `export [--include verified\|partial\|all] [--out DIR] [--no-analysis-tables]` | Writes feature 001 input, the analysis tables (kill events, player × hero per map and summary, FR-024a), summary and provenance (contracts/export.md). Runs the analysis-table consistency checks, then 001's validator if available (SC-007). |
+| `export [--include verified\|partial\|all] [--out DIR] [--no-analysis-tables]` | Writes feature 001 input, the analysis tables (maps, hero intervals, events, name lookups; FR-024a), summary and provenance (contracts/export.md). Runs the analysis-table consistency checks, then 001's validator if available (SC-007). |
 | `status` | Coverage table per region-stage: in scope, with replay, processed, verified, open discrepancies by kind, excluded by reason. |
 
 ## Python API (`owstudy.collect`)

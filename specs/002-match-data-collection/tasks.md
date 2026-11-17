@@ -27,7 +27,7 @@ the researcher (watching video, naming icons, approving).
 | 4. Catalog and links (US1) 🎯 MVP | Every pilot series and map, each linked to a video | T026–T035 | T030, T035 |
 | 5. Virtual viewer (US2) | Heroes, kills, objective and attacks read from each video | T036–T063 | T039, T060, T062, T063 |
 | 6. Verification (US3) | Every map checked against the references; disagreements reviewed | T064–T081 | T065, T081 |
-| 7. Export (US4) | Feature 001's input files plus kill and player × hero tables | T082–T089 | T089 |
+| 7. Export (US4) | Feature 001's input files plus map, hero interval and events tables | T082–T089 | T089 |
 | 8. Broadcast test and pilot gate | Decide on broadcast VODs, then whether to expand past the pilot | T090–T093 | T092, T093 |
 | 9. Polish | READMEs, safety tests, speed measurements | T094–T098 | – |
 
@@ -79,7 +79,7 @@ text under it holds the exact files, columns and rules an implementer needs.
 - [x] T003 [P] **Create the test folders and shared test helpers**
   Create the test tree `tests/collect/{unit,integration,viewer}/` and `tests/collect/fixtures/{synthetic_readings,references,planted,hud_frames}/`, plus `tests/collect/conftest.py` with fixtures `fixtures_dir`, `tmp_data_dir` (a temporary copy of the `data/` layout) and `cfg` (default config with `local.yaml` values stubbed)
 - [x] T004 [P] **Write the default settings file**
-  Create `configs/collect/default.yaml` with exactly the keys and values in contracts/config-schema.md §default.yaml (scope, video, sampling, recognition, interpret, retrieval, verify incl. `source_priority`, export incl. `analysis_tables: true`, `summary_min_time_s: 60`)
+  Create `configs/collect/default.yaml` with exactly the keys and values in contracts/config-schema.md §default.yaml (scope, video, sampling, recognition, interpret, retrieval, verify incl. `source_priority`, export incl. `analysis_tables: true`, `objective_event_step: 0.01`, `min_interval_s: 20`)
 - [x] T005 [P] **Write the local-settings example and an empty patch list**
   Create `configs/collect/local.example.yaml` (keys `platform_terms_acknowledged: false`, `video_cache_dir`, `user_agent_contact`, `reviewer`, `owtv_api_key` (empty; never committed)) and `configs/collect/patches.yaml` (list of `{patch_id, live_date, note}`; already filled in by T030, so leave it as is)
 - [x] T006 **Keep videos and local settings out of git**
@@ -320,7 +320,7 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 ## Phase 7: User Story 4 - Export the verified dataset (Priority: P4)
 
-**Goal**: Feature 001 input, the analysis tables (kill events, player × hero), coverage summary and provenance, all in one reproducible export
+**Goal**: Feature 001 input, the analysis tables (maps, hero intervals, events), coverage summary and provenance, all in one reproducible export
 
 **Independent Test**: Export and run feature 001's `owstudy-strength validate` on `input/` with 0 errors (SC-007); export twice and diff (SC-008)
 
@@ -328,23 +328,23 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 - [ ] T082 [P] [US4] **Test: the export matches feature 001's input format**
   Write `tests/collect/integration/test_export.py` on the planted-error fixture after decisions: `input/` has exactly the files and columns of feature 001's contracts/input-schema.md; `verification` is `verified` only for `verified` maps; `--include verified` drops the others and lists them in `summary/excluded_maps.csv` with `reason ∈ {no_replay, forfeit, clash, remake_only, open_conflict, unverified_excluded, not_processed}` (FR-025); every catalog map is either exported or excluded; every exported map has a `provenance/map_provenance.csv` row with video, span, extraction key and confirming sources (SC-003); two exports are byte-identical except `manifest.json` `created_at`; if `owstudy.strength` is importable, its validator returns 0 errors on `input/`
-- [ ] T083 [P] [US4] **Test: kill-event and player × hero tables**
-  Write `tests/collect/unit/test_analysis_tables.py` on a hand-computed 2-map fixture (one Control, one Hybrid, with a mid-map swap, an environmental death and a gap): `kill_events.csv` rows, `kill_no` order and `segment_no`; `player_hero_map.csv` values for the swapping player on each hero (`time_s`, `time_share`, `team_kills`, `team_deaths`, `own_kills`, `own_deaths`, `obj_for`, `obj_against`, `attack_time_s`, `defense_time_s`, `defense_clock_used`, `incomplete_s`) equal hand values; `player_hero_summary.csv` per-mode and `all` rows (objective empty on `all`), per-10-minute rates, rates empty when `time_s < summary_min_time_s`; each consistency check in contracts/export.md fails on a deliberately broken copy
+- [ ] T083 [P] [US4] **Test: map, hero interval and events tables**
+  Write `tests/collect/unit/test_analysis_tables.py` on a hand-computed 2-map fixture (one Control, one Hybrid, with a mid-map swap, a swap back to the first hero, a 12-second swap mid-map followed by an 8-second swap, a short hero pick at map start, a swap 10 seconds before a round ends, an environmental death and a gap): `maps.csv` row values (`players_*`, `bans_*`, `kills_*`, `obj_*` incl. Hybrid, `kills_incomplete`); `hero_intervals.csv` for the swapping player gives two separate intervals on the same hero, intervals split at round starts and at the Hybrid attack/defense switch, the 12- and 8-second swaps form one `transition` interval (no `hero_id`, both heroes in `transition_heroes`, its kills counted on it) and the short map-start pick and the swap just before the round ends are transitions too, and `time_s`, `team_kills`, `team_deaths`, `own_kills`, `own_deaths`, `obj_for`, `obj_against`, `incomplete_s` equal hand values; `events.csv` still shows every swap with the hero actually played; `events.csv` order and `event_type`/actor/target/`value` for a kill, an environmental death, a swap, objective steps of `objective_event_step` and gap start/end; each consistency check in contracts/export.md fails on a deliberately broken copy
 
 ### Implementation for User Story 4
 
 - [ ] T084 [US4] **Export feature 001's input files**
   Implement `src/owstudy/collect/export.py`: `export(cfg, include, out_dir)` writing `data/processed/collection/<YYYYMMDD>-<hash>/input/` from `reconciled/` with the field mapping in contracts/export.md (`date` = event-local date, `series_start` = UTC, `source_ref = yt:<primary video>@<span start>`, `kills_*` empty if `kills_incomplete` and unresolved, `obj_*` only for symmetric modes, `entities/aliases.csv` with team/player/hero aliases only)
-- [ ] T085 [US4] **Kill-event and player × hero tables**
-  Implement `src/owstudy/collect/analysis.py`: `kill_events.csv` (key `(map_id, kill_no)`; `kill_no` in game-time order, ties by video time then victim slot; `flags ⊆ {low_conf, possible_replay, name_unresolved}` joined by `;`), `player_hero_map.csv` (key `(map_id, player_id, hero_id)`; shared-credit team kills/objective over that player's segments on that hero, Escort/Hybrid split by attacking/defending), `player_hero_summary.csv` (key `(player_id, hero_id, mode_id)` plus `mode_id = all`; totals, `*_per10` rates, empty below `summary_min_time_s`, objective columns empty on `all`); all with the columns in contracts/export.md §Analysis tables; skipped when `analysis_tables: false` or `--no-analysis-tables`
+- [ ] T085 [US4] **Map, hero interval and events tables**
+  Implement `src/owstudy/collect/analysis.py`: `maps.csv` (key `map_id`), `hero_intervals.csv` (key `(map_id, player_id, interval_no)`; a new interval at each hero swap, round start and Escort/Hybrid attack/defense switch; hero stints shorter than `min_interval_s` become `interval_type = transition` intervals (empty `hero_id`, heroes in `transition_heroes`), back-to-back short stints lumped into one; shared-credit team kills and objective), `events.csv` (key `(map_id, event_no)`; time order with the tie rule in contracts/export.md; objective events every `objective_event_step` and at captures/checkpoints; `flags ⊆ {low_conf, possible_replay, name_unresolved}` joined by `;`) and the `players.csv`/`teams.csv`/`heroes.csv` lookups; all with the columns in contracts/export.md §Analysis tables; skipped when `analysis_tables: false` or `--no-analysis-tables`
 - [ ] T086 [US4] **Consistency checks for the analysis tables**
-  Implement the analysis-table consistency checks in `src/owstudy/collect/analysis.py` (kill events per team = map kills; Σ `time_s` per player = map length; `team_kills` = kill events in that player's hero segments; Σ `own_kills` + opponent environmental deaths = team kills; summary = sum of per-map rows); `export` exits 1 if any fail
+  Implement the analysis-table consistency checks in `src/owstudy/collect/analysis.py` (kill events per team = map kills; each player's intervals tile the map; interval kills and deaths = kill events in the interval; Σ `obj_for` per player = team objective; `hero` intervals ≥ `min_interval_s` and no two transitions side by side; Σ `own_kills` + opponent environmental deaths = team kills; `players_*` match the intervals); `export` exits 1 if any fail
 - [ ] T087 [US4] **Coverage, quality and provenance reports**
   Implement `summary/coverage.csv` (per region-stage: maps in scope, with replay, processed, verified, open discrepancies by kind, excluded by reason), `summary/quality.csv` (gold accuracy, link-check result, discrepancy counts) and `summary/excluded_maps.csv`, plus `provenance/map_provenance.csv`, `provenance/field_sources.csv` and `manifest.json` (hashes of snapshots, reading keys, decisions file, configs; tool version; include setting; `created_at`) in `src/owstudy/collect/export.py`
 - [ ] T088 [US4] **Hook up `export` and run feature 001's validator**
   Wire `export` in `src/owstudy/collect/cli.py`; after writing, call `owstudy.strength.io.validate.load_inputs` on `input/` when feature 001 is installed and report its errors (SC-007), otherwise print that the check was skipped
 - [ ] T089 [US4] **👤 You: export the pilot and check it**
-  run `export --scope pilot --include verified`, run `owstudy-strength validate` on it, export again and diff, and spot-check one gold map's swapping player in `player_hero_map.csv` against the hand labels (quickstart §8)
+  run `export --scope pilot --include verified`, run `owstudy-strength validate` on it, export again and diff, and spot-check one gold map's swapping player in `hero_intervals.csv` against the hand labels (quickstart §8)
 
 **Checkpoint**: Pilot dataset handed to feature 001, with analysis tables and coverage summary
 
@@ -448,7 +448,7 @@ T082 test_export.py | T083 test_analysis_tables.py
 
 1. **+ US2**: probe → layout → icons → gold set passes SC-002 → bulk pilot extraction
 2. **+ US3**: OWTV probe → verification → review → `audit` clean
-3. **+ US4**: export to feature 001, plus kill events and player × hero tables
+3. **+ US4**: export to feature 001, plus map, hero interval and events tables
 4. **+ Broadcast test**: decide gap fill, then the pilot gate, then one region-stage at a time
 
 ### Working alone

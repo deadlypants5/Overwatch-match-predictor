@@ -55,5 +55,6 @@ verify:                                 # FR-017 tolerances
 export:
   include: verified                     # verified | partial | all
   source_ref_format: "yt:{video_id}@{hh}:{mm}:{ss}"
-  analysis_tables: true                 # FR-024a: kill_events, player_hero_map, player_hero_summary
-  summary_min_time_s: 60                # rates left empty below this time on a hero
+  analysis_tables: true                 # FR-024a: maps, hero_intervals, events, name lookups
+  objective_event_step: 0.01            # write an objective event each time progress rises this much
+  min_interval_s: 20                    # hero stints shorter than this count as transitioning, not playing the hero

@@ -52,10 +52,10 @@ map-level dataset in feature 001's input format.
   rebuild (and marked stale if the sources change). An audit proves nothing changed without a
   decision. A hand-labeled gold set measures viewer accuracy.
 - **Analysis tables** (FR-024a, contracts/export.md): next to the 001 input, every export also
-  has `kill_events.csv` (one row per kill, with heroes on both sides), `player_hero_map.csv`
-  (time on hero, team kills and deaths, own kills and deaths, objective for and against, per
-  map) and `player_hero_summary.csv` (totals and per-10-minute rates per player × hero × mode).
-  The summary is descriptive and isn't time-safe as a feature.
+  has `maps.csv` (one row per map: teams, players, bans, winner, kills, objective),
+  `hero_intervals.csv` (one row per player stint on a hero, with kills, deaths and objective
+  during it) and `events.csv` (every event in time order; the only place kills are stored), plus
+  ID → name lookups. They're descriptive and aren't time-safe as features.
 
 Work starts with two **probes** (R5: does the POV HUD show everything; R10: what OWTV
 provides), each with a fallback already decided, before any bulk processing.
@@ -97,7 +97,7 @@ series / 2,229 maps, ~1,318 POV videos (inventory 2026-11-15)
 | Principle | How this plan complies | Status |
 |-----------|------------------------|--------|
 | I. Map is the unit | Catalog, spans, events, reconciled records, comparisons and export are all keyed by `map_id` = `<series_id>-m<n>`. Series-level data is used only for checks (lineups, series score) and never exported as a training row. | ✅ |
-| II. Temporal integrity | This feature produces no features or ratings. The player × hero summary covers the whole period and is labeled descriptive only, never a pre-map feature (FR-024a). It supplies what 001 needs to enforce ordering: correct `date`, UTC `series_start` and `patch_id` per map, with dates checked across sources in one time zone (R11). Nothing here aggregates across maps, so no leakage path exists. 001's leakage tests run on this export. | ✅ (N/A for features) |
+| II. Temporal integrity | This feature produces no features or ratings. The analysis tables are labeled descriptive only, never pre-map features (FR-024a). It supplies what 001 needs to enforce ordering: correct `date`, UTC `series_start` and `patch_id` per map, with dates checked across sources in one time zone (R11). Nothing here aggregates across maps, so no leakage path exists. 001's leakage tests run on this export. | ✅ (N/A for features) |
 | III. Documented math | No rating math. The objective normalization per mode feeds 001's formulas and is documented in data-model §2.3 with unit tests. | ✅ |
 | IV. Provenance & verification | Every reading carries video ID, timestamps, clock, type, value, confidence, method and extractor version, and resolves to its run date via `run.json` (FR-002). Raw layers are immutable with hash manifests. Corrections exist only as logged decisions. Cross-checks against Liquipedia, spreadsheet and OWTV, with every disagreement logged with both values. Verification status per map, and export with/without unverified maps (`--include`). Terms-of-use gate before downloads, rate limits, no video stored. | ✅ |
 | V. Baselines first | Not a modeling feature. The analogous rule here: viewer accuracy is measured against a hand-labeled gold set before bulk use (FR-022), and broadcasts are measured against POVs before use (FR-007b). | ✅ (N/A) |
@@ -185,7 +185,7 @@ src/owstudy/collect/
 │   └── gold.py                        # gold init/score (FR-022)
 ├── reconcile.py                       # interim events + refs + decisions → reconciled tables
 ├── export.py                          # 001 input dir, summary, provenance, manifest
-└── analysis.py                        # kill_events, player_hero_map, player_hero_summary + consistency checks (FR-024a)
+└── analysis.py                        # maps, hero_intervals, events, name lookups + consistency checks (FR-024a)
 
 tests/collect/
 ├── fixtures/  synthetic_readings/  references/  planted/  hud_frames/ (a few committed PNG crops, no video)

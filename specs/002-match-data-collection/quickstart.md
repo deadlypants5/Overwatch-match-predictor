@@ -124,11 +124,11 @@ uv run owstudy-strength validate data/processed/collection/<export_id>/input
 uv run owstudy-collect export --scope pilot --include verified   # again, then diff
 ```
 
-**You should see:** 001 validation exits 0 (SC-007). `tables/` has `kill_events.csv`,
-`player_hero_map.csv` and `player_hero_summary.csv`, and the export's consistency checks pass:
-kill events add up to the map kill totals, each player's hero times add up to the map length,
-and the summary equals the sum of the per-map rows. **Manual check**: on one gold map, pick a
-player who swapped heroes and compare their `player_hero_map` rows with the hand labels. The
+**You should see:** 001 validation exits 0 (SC-007). `tables/` has `maps.csv`,
+`hero_intervals.csv`, `events.csv` and the name lookups, and the export's consistency checks pass:
+kill events add up to the map kill totals and to each interval's kills, and each player's
+intervals add up to the map length and the team's objective total. **Manual check**: on one gold
+map, pick a player who swapped heroes and compare their `hero_intervals` rows with the hand labels. The
 two exports are byte-identical apart from `manifest.json` timestamps (SC-008). `summary/excluded_maps.csv` lists every non-exported pilot
 map with a reason (FR-025). Each exported map's provenance row gives video, span, extraction
 key and confirming sources (SC-003).

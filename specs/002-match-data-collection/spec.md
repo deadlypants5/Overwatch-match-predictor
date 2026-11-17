@@ -388,13 +388,19 @@ errors.
 - **FR-024**: System MUST export the reconciled dataset in feature 001's input format, with an
   option to include or exclude non-`verified` maps, and a coverage and quality summary per
   region and stage.
-- **FR-024a**: Alongside the feature 001 input, the export MUST include (a) a kill events
-  table, one row per kill with game time, segment, killer and victim (team, player, hero) and
-  whether it was an environmental or self death; (b) a per-map table with one row per player ×
-  hero, giving time on the hero, team kills and deaths, the player's own kills and deaths, and
-  objective progress for and against during that time; and (c) a summary over all exported
-  maps per player × hero × mode, with totals and per-10-minute rates. The summary is
-  descriptive and MUST NOT be used as a pre-map feature (Constitution II).
+- **FR-024a**: Alongside the feature 001 input, the export MUST include three analysis tables,
+  each holding every exported map in one file and using stable IDs, with each fact stored once:
+  (a) a **map table**, one row per map, with teams, the players on each team, bans, winner,
+  total kills and total objective progress per team; (b) a **hero interval table**, one row per
+  stint of a player on a hero (split at hero swaps, round starts and, on Escort/Hybrid,
+  attack/defense switches; stints on a hero shorter than 20 seconds are marked as
+  **transitioning** rather than playing that hero, with back-to-back short stints lumped into
+  one transition interval), with start, end, team and own kills and deaths, and objective
+  progress for and against during the stint; and (c) an **events table**, one row per event
+  in time order (kills with killer and victim player and hero, hero swaps, objective progress,
+  rounds, attacks, gaps). Kills appear only in the events table. Name lookup tables turn IDs
+  into names. The tables are descriptive and MUST NOT be used as pre-map features
+  (Constitution II).
 - **FR-025**: Every map in the catalog that is not exported MUST appear in the summary with its
   reason (no replay, forfeit, Clash, open conflict, unverified and excluded by setting).
 
