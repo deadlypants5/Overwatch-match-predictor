@@ -25,8 +25,9 @@ the researcher (watching video, naming icons, approving).
 | 2. Foundations | Settings loader, CSV writer, IDs and aliases, command-line shell | T009–T019 | – |
 | 3. Footage inventory (US0) | Today's inventory as one tested command | T020–T025 | – |
 | 4. Catalog and links (US1) 🎯 MVP | Every pilot series and map, each linked to a video | T026–T035 | T030, T035 |
+| 4b. OWTV probe (before the viewer) | What OWTV covers for the pilot, and how much of Phase 5 it replaces | T064–T065 | T065 |
 | 5. Virtual viewer (US2) | Heroes, kills, objective and attacks read from each video | T036–T063 | T039, T060, T062, T063 |
-| 6. Verification (US3) | Every map checked against the references; disagreements reviewed | T064–T081 | T065, T081 |
+| 6. Verification (US3) | Every map checked against the references; disagreements reviewed | T066–T081 | T081 |
 | 7. Export (US4) | Feature 001's input files plus map, hero interval and events tables | T082–T089 | T089 |
 | 8. Broadcast test and pilot gate | Decide on broadcast VODs, then whether to expand past the pilot | T090–T093 | T092, T093 |
 | 9. Polish | READMEs, safety tests, speed measurements | T094–T098 | – |
@@ -35,11 +36,11 @@ the researcher (watching video, naming icons, approving).
 
 1. **T030** Fill in the 2026 patch dates
 2. **T035** Approve name aliases and hand-check 30 video links
-3. **T039** Confirm platform terms and run the HUD probe on 3 videos
-4. **T060** Name the hero icons (about 15 minutes)
-5. **T062** Label 6 gold maps and tune until the viewer is accurate
-6. **T063** Run extraction on the whole pilot (~18 h of footage; can run overnight)
-7. **T065** Run the OWTV probe (permission granted 2026-11-17)
+3. **T065** Run the OWTV probe (permission granted 2026-11-17), then decide how much of Phase 5 is still needed
+4. **T039** Confirm platform terms and run the HUD probe on 3 videos
+5. **T060** Name the hero icons (about 15 minutes)
+6. **T062** Label 6 gold maps and tune until the viewer is accurate
+7. **T063** Run extraction on the whole pilot (~18 h of footage; can run overnight)
 8. **T081** Review every discrepancy
 9. **T089** Export the pilot and check it
 10. **T092** Run the broadcast test and decide on gap fill
@@ -190,7 +191,29 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 ---
 
+## Phase 4b: OWTV probe, before the virtual viewer (research R10)
+
+**Why it comes first**: OWTV's API (permission granted 2026-11-17 to use it as a main source)
+has, per map, a raw event log, each player's time on each hero, team fights with times, bans and
+the scoreboard. If it covers the pilot, much of Phase 5 (reading the same things from video)
+becomes a fallback for uncovered maps plus a cross-check. The probe answers that before the
+riskiest phase starts.
+
+**Independent Test**: The probe runs on 3 pilot series and saves every answer as received; its
+summary says, for the whole pilot, how many maps have a parsed replay and an event log
+
+- [ ] T064 [US3] **OWTV probe command**
+  Implement `refs probe-owtv` in `src/owstudy/collect/refs/owtv.py` (probe mode only): call OWTV's **official API** (`https://owtv.gg/api/<collection>`, docs at `owtv.gg/api-docs`, key from `local.yaml` `owtv_api_key` in the `X-API-Key` header) through `HttpClient` (≥5 s interval, so ≤12 requests a minute, well under OWTV's 60). Never fetch OWTV's web pages: their terms forbid scripts and scrapers (see contracts/reference-sources.md §OWTV). For the given series, fetch `match`, `match-map` (with `eventLog`), `map-fight`, `player-map-stats` and `player-map-stats-hero`; also list the pilot's `match-map` items with `depth=0` to count `replayParsed` and non-empty `eventLog` for every pilot map. Save answers byte for byte to `data/interim/probes/owtv/` and print which fields appear, at what level, and the event types found in `eventLog`. Test it on a fake API answer (no network in tests)
+- [ ] T065 [US3] **👤 You: run the OWTV probe, then decide how much of Phase 5 is still needed**
+  Permission granted 2026-11-17 for the current scope, as a main source, under 60 requests a minute (recorded in contracts/reference-sources.md §OWTV). Once the key is in `local.yaml` as `owtv_api_key`, run `refs probe-owtv` on 3 pilot series (one Control, one Escort/Hybrid, one Push/Flashpoint). Write the real field list, the pilot coverage (maps with a parsed replay and event log) and what the event log contains (using OWTV's event-log layout once they send it) into contracts/reference-sources.md §OWTV and research.md R10. Then decide, with the implementer, which Phase 5 tasks OWTV makes unnecessary or turns into a fallback, and update spec.md, plan.md and this list before Phase 5 starts
+
+**Checkpoint**: Pilot OWTV coverage known; Phase 5's scope settled
+
+---
+
 ## Phase 5: User Story 2 - Virtual viewer extracts map events from a replay (Priority: P2)
+
+**Scope depends on T065**: tasks OWTV makes unnecessary are dropped or become a fallback for maps OWTV doesn't cover.
 
 **Goal**: Each linked POV video is processed unattended into immutable readings, then interpreted into hero intervals, kills, objective progress, attacks, gaps and segments
 
@@ -271,14 +294,10 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 **Independent Test**: Plant known errors (wrong winner, wrong player, missing kill, wrong ban, wrong date) in a copy of a few reconciled maps; every one is caught and logged with both values (SC-006). Works entirely on fixtures, so it doesn't depend on US2 having processed real video
 
-### OWTV probe (research R10)
+### OWTV reader
 
-- [ ] T064 [US3] **OWTV probe command**
-  Implement `refs probe-owtv` in `src/owstudy/collect/refs/owtv.py` (probe mode only): for given series, call OWTV's **official API** (`owtv.gg/api-docs`, key in the `X-API-Key` header) with the key from `local.yaml` through `HttpClient` (≥5 s interval). Never fetch OWTV's web pages: their terms forbid scripts and scrapers (see contracts/reference-sources.md §OWTV), save them to `data/interim/probes/owtv/`, and print which stats appear and at what level
-- [ ] T065 [US3] **👤 You: run the OWTV probe (permission already granted)**
-  Permission granted 2026-11-17 for the current scope, as a main source, under 60 requests a minute (recorded in contracts/reference-sources.md §OWTV). Once the key is in `local.yaml` as `owtv_api_key`, run the probe on 3 pilot series, and write the real field list, how many pilot maps have a parsed replay and event log, and what the event log contains into contracts/reference-sources.md §OWTV and research.md R10
 - [ ] T066 [US3] **OWTV reader, built from the probe result**
-  Implement the OWTV adapter in `src/owstudy/collect/refs/owtv.py` per the probe result: `fetch(series, client) -> snapshot` writing `owtv_map_player_stats.csv` (`series_key_text,map_number,player_text,team_text,deaths,eliminations,final_blows,locator`; `map_number` empty if per series) to `data/raw/reference/owtv/<date>/`; wire `refs fetch owtv`
+  Implement the OWTV adapter in `src/owstudy/collect/refs/owtv.py` per the probe result (T065; if OWTV becomes a main source this moves ahead of Phase 5): `fetch(series, client) -> snapshot` writing `owtv_map_player_stats.csv` (`series_key_text,map_number,player_text,team_text,deaths,eliminations,assists,locator`; OWTV gives no final blows) to `data/raw/reference/owtv/<date>/`; wire `refs fetch owtv`
 
 ### Tests for User Story 3
 
@@ -390,7 +409,8 @@ text under it holds the exact files, columns and rules an implementer needs.
 - **Foundational (Phase 2)**: needs Setup; **blocks every story**
 - **US0 (Phase 3)**: needs Foundational
 - **US1 (Phase 4)**: needs US0's ported parsers (T022–T024)
-- **US2 (Phase 5)**: needs US1's catalog and links for real runs. Its unit tests and interpretation code (T041–T045, T054–T058) only need Foundational and fixtures
+- **OWTV probe (Phase 4b)**: needs Foundational, the catalog (to pick pilot series) and the OWTV key; **settles Phase 5's scope**
+- **US2 (Phase 5)**: needs US1's catalog and links for real runs, and the Phase 4b decision. Its unit tests and interpretation code (T041–T045, T054–T058) only need Foundational and fixtures
 - **US3 (Phase 6)**: code and tests run on fixtures after Foundational; real pilot review (T081) needs US2's pilot extraction (T063)
 - **US4 (Phase 7)**: code and tests run on fixtures once US3's reconcile exists (T072); the real export (T089) needs T081
 - **Broadcast test (Phase 8)**: needs US2 (viewer) and pilot POV readings
@@ -398,11 +418,11 @@ text under it holds the exact files, columns and rules an implementer needs.
 
 ### Critical path (pilot)
 
-T001–T019 → T022–T025 → T028–T035 → T036–T040 (probe) → T046–T053 → T060–T063 (icons, gold, bulk extract) → T064–T066, T072–T081 → T084–T089 → T090–T093
+T001–T019 → T022–T025 → T028–T035 → T064–T065 (OWTV probe and decision) → T036–T040 (HUD probe) → T046–T053 → T060–T063 (icons, gold, bulk extract) → T066, T072–T081 → T084–T089 → T090–T093
 
 ### Human steps on the critical path
 
-T030 patches · T035 alias + link check · T039 terms + HUD probe · T060 icon naming · T062 gold labels · T063 bulk run · T065 OWTV probe · T081 review · T089 export check · T092 broadcast decision · T093 gate
+T030 patches · T035 alias + link check · T065 OWTV probe + Phase 5 decision · T039 terms + HUD probe · T060 icon naming · T062 gold labels · T063 bulk run · T081 review · T089 export check · T092 broadcast decision · T093 gate
 
 ---
 
@@ -448,10 +468,11 @@ T082 test_export.py | T083 test_analysis_tables.py
 
 ### Incremental delivery
 
-1. **+ US2**: probe → layout → icons → gold set passes SC-002 → bulk pilot extraction
-2. **+ US3**: OWTV probe → verification → review → `audit` clean
-3. **+ US4**: export to feature 001, plus map, hero interval and events tables
-4. **+ Broadcast test**: decide gap fill, then the pilot gate, then one region-stage at a time
+1. **+ OWTV probe**: pilot coverage and event-log contents → decide Phase 5's scope
+2. **+ US2**: HUD probe → layout → icons → gold set passes SC-002 → bulk pilot extraction
+3. **+ US3**: OWTV reader → verification → review → `audit` clean
+4. **+ US4**: export to feature 001, plus map, hero interval and events tables
+5. **+ Broadcast test**: decide gap fill, then the pilot gate, then one region-stage at a time
 
 ### Working alone
 

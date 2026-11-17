@@ -57,12 +57,15 @@ show `no_replay` and still have their reference maps.
 ## 3. Probes (run once, before any bulk processing)
 
 ```text
-uv run owstudy-collect hud probe <3 pilot video ids, one Control, one Escort/Hybrid, one Push/Flashpoint>
 uv run owstudy-collect refs probe-owtv <3 pilot series>
+uv run owstudy-collect hud probe <3 pilot video ids, one Control, one Escort/Hybrid, one Push/Flashpoint>
 ```
 
-**You should see:** `data/interim/probes/hud/checklist.md` answers each R5 item. The OWTV probe fills in
-the OWTV section of [reference-sources.md](./contracts/reference-sources.md). Any "no" answer
+Run the OWTV probe first: its result decides how much the video viewer still has to do.
+
+**You should see:** the OWTV probe fills in the OWTV section of
+[reference-sources.md](./contracts/reference-sources.md), including how many pilot maps OWTV
+covers. `data/interim/probes/hud/checklist.md` answers each R5 item. Any "no" answer
 follows the fallback in research R5/R10 before continuing.
 
 ## 4. Viewer on one video (US2)

@@ -18,8 +18,9 @@
 
 - **Storage:** plain CSV, YAML and JSON files. Raw readings and source downloads are never
   edited; everything else can be rebuilt from them in one command.
-- **Checks before bulk work:** two probes. Does the POV HUD show everything the viewer needs?
-  What does OWTV actually provide? Each has a fallback decided in advance.
+- **Checks before bulk work:** two probes, OWTV first. What does OWTV provide for the pilot
+  (it may replace much of the video reading)? Then: does the POV HUD show everything the viewer
+  still needs? Each has a fallback decided in advance.
 - **Time:** the pilot (~18 h of footage) should take about 5–10 hours unattended.
 - **Open item:** POVs alone can't reach 95% pilot coverage, so the broadcast test decides
   (see "Open item for the researcher" below).
@@ -57,8 +58,9 @@ map-level dataset in feature 001's input format.
   during it) and `events.csv` (every event in time order; the only place kills are stored), plus
   ID → name lookups. They're descriptive and aren't time-safe as features.
 
-Work starts with two **probes** (R5: does the POV HUD show everything; R10: what OWTV
-provides), each with a fallback already decided, before any bulk processing.
+Work starts with two **probes**, each with a fallback already decided, before any bulk
+processing: first R10 (what OWTV provides; its answer settles how much the viewer must do),
+then R5 (does the POV HUD show everything the viewer still needs).
 
 ## Technical Context
 
@@ -206,7 +208,8 @@ import each other, which keeps the "fix without re-watching" rule structural.
 
 1. **Inventory and catalog**: snapshot references, build entities/aliases and the catalog,
    link videos, and choose one primary POV per series.
-2. **Probes**: HUD probe (R5) and OWTV probe (R10). Apply fallbacks if needed.
+2. **Probes**: OWTV probe (R10) first, then decide which viewer work OWTV replaces; then the
+   HUD probe (R5). Apply fallbacks if needed.
 3. **Icon library and layout**: tune the HUD layout on probe frames, then harvest and label icons.
 4. **Gold set**: extract the 6 gold maps' videos with `--keep-video --check-determinism`. The
    researcher labels them, then `gold score`. Iterate on readers/rules until SC-002 passes.

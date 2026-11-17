@@ -223,6 +223,12 @@ one has a stated fallback, so nothing here is left open.
 
 ## R10. **Probe**: OWTV fantasy results
 
+> **Update 2026-11-17:** OWTV has an official API (`owtv.gg/api-docs`), and the owner allowed it
+> as a **main source**, under 60 requests a minute. Per map it offers the scoreboard (no final
+> blows), each player's time per hero, team fights with times, bans and a raw event log. The
+> probe now runs **before Phase 5** (task T064–T065): if OWTV covers the pilot, much of the
+> video viewer becomes a fallback and cross-check. The original decision is kept below.
+
 - **Decision**: A probe task looks at 3 pilot series on OWTV to find out whether results are
   **per map or per series**, which stats are given (deaths, eliminations, final blows), and
   whether the data comes from a page or a JSON endpoint the page itself calls. The result goes
